@@ -15,8 +15,8 @@ one or more of the three parts without affecting the other parts.
 
 Overview
 ===
-
-
+![Pic1](/Images/Pic1.png)
+![Pic2](/Images/Pic2.png)
 ####Backend - intro
 At a high level, we have a Model and View class, each with various components. The Model class consists of a Turtle, Variables, CommandHistory, (XMLWriter), UserDefinedCommand, and Parser classes. The Turtle’s State component contains the turtle information that is relevant to the front end for drawing, and it has protected methods for altering its state based on the outcome of commands. Variables contains a collection of the active Variable instances in the user programming environment, and it has protected methods to add or subtract Variable instances. 
 
@@ -52,7 +52,7 @@ User Interface
 ===
 
 The layout of the user interface will be as follows:
-
+![UI Pic](/Images/UI.jpg)
 
 Text commands are entered via a command box at the bottom of the screen. If the command is valid, it will be executed by the turtle(s) in the turtle window. If it is not, a pop-up message box will display the error and nothing in the current workspace will change.
 The right pane displays the current workspace. User-defined variables and commands are displayed and made clickable to edit – a valid edit will be reflected on the screen, otherwise a pop-up error message box will appear. A drop-down menu for command history below displays the list of executed commands in reverse chronological order.
