@@ -3,7 +3,15 @@ SLogo Design
 
 Introduction
 ===
-	Our program is an IDE that supports users to write SLogo programs. The program needs to provide user interface for users to enter commands, parse the command and modify a display based on the command. The top level architecture of our program follows the Model-View-Controller architectural pattern. The pattern allows us to divide the program into three parts. The model represents the data structures for the different types of display objects (like turtle objects, and command objects). The view is composed of the different graphical windows that will be used as user interfaces. The controller will co-ordinate command updates from the view to the model. These three parts of the program will provide APIs to interface with each other with minimal reveal of internal variables. Using this well defined interface, our goal is to have flexibility when extending one or more of the three parts without affecting the other parts. 
+
+Our program is an IDE that supports users to write SLogo programs. The program needs to provide user interface for
+users to enter commands, parse the command and modify a display based on the command. The top level architecture of our program
+follows the Model-View-Controller architectural pattern. The pattern allows us to divide the program into three parts. The 
+model represents the data structures for the different types of display objects (like turtle objects, and command objects). The
+view is composed of the different graphical windows that will be used as user interfaces. The controller will co-ordinate 
+command updates from the view to the model. These three parts of the program will provide APIs to interface with each other 
+with minimal reveal of internal variables. Using this well defined interface, our goal is to have flexibility when extending 
+one or more of the three parts without affecting the other parts. 
 
 Overview
 ===
@@ -13,8 +21,6 @@ Overview
 At a high level, we have a Model and View class, each with various components. The Model class consists of a Turtle, Variables, CommandHistory, (XMLWriter), UserDefinedCommand, and Parser classes. The Turtle’s State component contains the turtle information that is relevant to the front end for drawing, and it has protected methods for altering its state based on the outcome of commands. Variables contains a collection of the active Variable instances in the user programming environment, and it has protected methods to add or subtract Variable instances. 
 
 Before continuing the description of the main model classes, it’s necessary to understand our architecture for receiving, parsing, and executing commands. First, the user inputs the command to the front end and sends it, and the front end calls Model.parseCommand(Str input). This method makes a call to the Parser object that lives in Model, giving the Parser both the string input as well as a copy of the current variables in Variables. 
-
-
 
 ####Backend - parser design
 The Parser is responsible for returning a correct Command object (or throwing an exception if the input is malformatted). We will use the command pattern to accomplish this, and to encapsulate the request for a command from the execution of the command itself. The Command interface specifies one method, execute(). A class would be created for each command, and each class would implement Command (ex: Move implements Command). The Parser would be responsible for creating a tree of Executable commands. While primitive commands like move and turn would be leaf nodes in this tree, control flow commands like for loops, if statements, and while loops would be parent nodes that have a List of Executable children. The Parser would create this tree, return the root of the tree to Model, and Model would perform a preorder traversal of the tree, calling the execute method on each node. Model would act as the invoker, and parser would be the client. At a later time, perhaps we could eliminate the large number of Command implementation classes and replace them with lambda expressions.
@@ -97,6 +103,7 @@ public void execute(Turtle turt, Vars var){} throws turt or var not found except
 Public class TurtleView(){
 	protected void setColor(); throws invalid color exception
 	protected void setImage(); throws image file not found exception
+	protected void setBackground();
 }
 
 public class messageBox(){
@@ -123,13 +130,36 @@ Inside the MoveForward Command, execute is called by root’s execute method. Mo
 Design Considerations:
 ===
 
-	The easiest way to break the program down into packages was to follow the Model-View-Controller pattern. But, After discussing the pattern in detail, we figured out that the controller part only adds to the complexity of our program because it creates a need for multi way communication with three classes, and for that cost we could saw that it wasn’t going to help us clean up the code in the other classes to a great detail. We finally decided to modify the pattern by taking out the controller part. We decided to create two singleton classes that will act as the highest level layers for the model and the view, and the previous jobs of the controller were now going to be divided between these two top level classes. And because they are singleton classes we could access their API from anywhere in our code, giving us the maximum flexibility with the rest of our design. 
+The easiest way to break the program down into packages was to follow the Model-View-Controller pattern. But, After 
+discussing the pattern in detail, we figured out that the controller part only adds to the complexity of our program 
+because it creates a need for multi way communication with three classes, and for that cost we could saw that it wasn’t 
+going to help us clean up the code in the other classes to a great detail. We finally decided to modify the pattern by 
+taking out the controller part. We decided to create two singleton classes that will act as the highest level layers 
+for the model and the view, and the previous jobs of the controller were now going to be divided between these two top 
+level classes. And because they are singleton classes we could access their API from anywhere in our code, giving us 
+the maximum flexibility with the rest of our design. 
 
-	For the relationship between the different view classes and the model classes they correspond to, we wanted to use the Observer design pattern with our view classes registered as observers of the model classes which are the observables. Registering the view classes as observers of the model classes requires passing instances of the view classes into the model classes. We considered the different options of how to pass the view class instances to their respective observables. One option was to add get methods in our top level view class that returns the respective observer classes. Another option was to set up these observer-observable relationship in class constructors. After discussing possible pros and cons for each approach, we think setting up the relationships in the constructors is a better approach to follow. There is no additional hidden dependency compared to a getter and setter, and the relationship is closed; it can’t be changed by other programmers calling the get methods from other classes.
+For the relationship between the different view classes and the model classes they correspond to, we wanted to use the 
+Observer design pattern with our view classes registered as observers of the model classes which are the observables. 
+Registering the view classes as observers of the model classes requires passing instances of the view classes into the 
+model classes. We considered the different options of how to pass the view class instances to their respective 
+observables. One option was to add get methods in our top level view class that returns the respective observer 
+classes. Another option was to set up these observer-observable relationship in class constructors. After discussing 
+possible pros and cons for each approach, we think setting up the relationships in the constructors is a better 
+approach to follow. There is no additional hidden dependency compared to a getter and setter, and the relationship is 
+closed; it can’t be changed by other programmers calling the get methods from other classes.
+Even after deciding to follow the observer pattern for the view and model class relationships, we noted that we were 
+also required to support editing of the different model classes(variables and user defined commands)  through the view 
+classes. To support this feature, we needed to take observer pattern one more step further and consider binding 	
+relationships. We pondered on how binding analogous view and model classes will help us update the view classes only through 
+modifications to model classes and how it will help us filter invalid edits and keep the view classes identical to their 
+analogous model classes. 
 
-	Even after deciding to follow the observer pattern for the view and model class relationships, we noted that we were also required to support editing of the different model classes(variables and user defined commands)  through the view classes. To support this feature, we needed to take observer pattern one more step further and consider binding relationships. We pondered on how binding analogous view and model classes will help us update the view classes only through modifications to model classes and how it will help us filter invalid edits and keep the view classes identical to their analogous model classes. 
-
-	We want all of our classes to be as opaque as possible, and make any dependencies clear. However, in order for our parser to recognize references to variables, it must have access to a list of variables. This requires some read-only access to vars from the parser. This seemed like the only design that kept the structure of our command objects simple. Therefore, the parser will have read-access to the variables. This also provides an interface for other classes to access the vars, but this cannot be avoided.
+We want all of our classes to be as opaque as possible, and make any dependencies clear. However, in order for our 
+parser to recognize references to variables, it must have access to a list of variables. This requires some read-only 
+access to vars from the parser. This seemed like the only design that kept the structure of our command objects simple.
+Therefore, the parser will have read-access to the variables. This also provides an interface for other classes to 
+access the vars, but this cannot be avoided.
 
 Team Responsiblities
 ===
