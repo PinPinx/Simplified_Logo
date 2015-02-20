@@ -1,15 +1,14 @@
 package view.Button;
 
-import javax.swing.JButton;
+import javafx.scene.control.Button;
 
-public abstract class customButton extends JButton{
+public abstract class customButton extends Button{
 
 	Object savedDataType;
-	String label;
 	
 	public customButton(String l, Object o){
-		label = l;
 		savedDataType = o;
+		this.setText(l);
 	}
 
 }
