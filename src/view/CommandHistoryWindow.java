@@ -2,10 +2,16 @@ package view;
 
 import java.util.Observable;
 
-public class CommandHistoryWindow implements ViewComponent{
+public class CommandHistoryWindow extends viewButtonList{
 
 	@Override
 	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void UIEvent() {
 		// TODO Auto-generated method stub
 		
 	}

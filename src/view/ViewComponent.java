@@ -2,6 +2,8 @@ package view;
 
 import java.util.Observer;
 
-public interface ViewComponent extends Observer{
+public abstract interface ViewComponent extends Observer{
+	
+	abstract void UIEvent();
 
 }

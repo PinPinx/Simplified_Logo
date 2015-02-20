@@ -9,4 +9,10 @@ public class CommandPort implements ViewComponent{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void UIEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }
