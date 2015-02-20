@@ -2,8 +2,6 @@ package view.Components;
 
 import java.util.Observable;
 
-import view.Button.viewButtonList;
-
 public class UDCommandWindow extends viewButtonList{
 
 	@Override
