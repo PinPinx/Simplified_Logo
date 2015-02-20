@@ -1,6 +1,13 @@
 SLogo Design
 =====
 
+CHANGES FROM RECITATION:
+-making the command tree a string tree?
+-making the parser separate from the interpreter?
+
+
+
+
 Introduction
 ===
 
