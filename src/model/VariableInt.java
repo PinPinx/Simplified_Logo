@@ -1,5 +1,6 @@
 package model;
 
+
 public class VariableInt extends Variable {
 	private int myValue;
 	

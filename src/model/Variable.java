@@ -11,5 +11,5 @@ public abstract class Variable {
 	public String getName(){
 		return this.myName;
 	}
-	
+
 }
