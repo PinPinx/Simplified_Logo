@@ -9,7 +9,7 @@ public class CommandHistoryWindow extends viewButtonList{
 	}
 
 	@Override
-	public void update() {
+	public void update(Object updateObject) {
 		// TODO Auto-generated method stub
 		
 	}

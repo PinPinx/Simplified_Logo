@@ -5,7 +5,7 @@ import view.*;
 public class CommandPort implements ViewComponent{
 
 	@Override
-	public void update() {
+	public void update(Object updateObject) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -5,7 +5,7 @@ import view.ViewComponent;
 public class TurtleWindow implements ViewComponent{
 
 	@Override
-	public void update() {
+	public void update(Object updateObject) {
 		// TODO Auto-generated method stub
 		
 	}
