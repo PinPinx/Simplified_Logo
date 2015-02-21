@@ -37,9 +37,8 @@ public class Main extends Application{
 	       
 	       sp.setContent(content2);
 	       root.getChildren().add(sp);
-	       
-	       
-	       tw.update(0, 0, 100, 100);
+
+
 	       List<Variable> vList = new ArrayList<Variable>();
 	      /* Variable v1 = new VariableInt("var1" , 2);
 	       Variable v2 = new VariableInt("var2" , 1);

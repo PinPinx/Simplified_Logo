@@ -2,19 +2,19 @@ package view.Components;
 
 import java.util.HashMap;
 
+import model.TurtleUpdate;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import view.TurtleImage;
 import view.ViewComponent;
 
 public class TurtleWindow extends Group implements ViewComponent{
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
-	private HashMap<Integer, ImageView> myTurtles = new HashMap<>();
+	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
 	
 	public TurtleWindow(double width, double height){
 	 mainCanvas = new Canvas(width, height);
@@ -23,11 +23,7 @@ public class TurtleWindow extends Group implements ViewComponent{
 	 this.getChildren().addAll(mainCanvas);
 	 
 	 addTurtle();
-	 gc.get(0).setStroke(Color.RED);
-	 gc.get(0).strokeLine(100, 100, 300, 300);
-	 myTurtles.get(0).setRotate(45);
 	 
-	 changeBackground();
 	}
 
 	@Override
@@ -35,16 +31,22 @@ public class TurtleWindow extends Group implements ViewComponent{
 		// TODO Auto-generated method stub
 	}
 	
-	public void update(double x1, double y1, double x2, double y2){
-		//gc.strokeLine(x1, y1, x2, y2);
+	public void update(TurtleUpdate tu){
+		TurtleImage ti = myTurtles.get(0);
+		ti.setRotate(tu.getTurtleAngle().getAngleValue());
+		ti.moveTo(tu.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates().getY());
+		ti.hide(tu.isTurtleHidden());
+		if (tu.isTurtlePenUp()){
+			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates().getY(), ti.getTranslateX(),  ti.getTranslateY());
+		}
 	}
 	
 	public void addTurtle(){
-		addTurtle(300,300);
+		addTurtle(250, 250);
 	}
 	
 	public void addTurtle(double xPos, double yPos){
-		ImageView turtle = new ImageView(new Image("images/duke.gif"));
+		TurtleImage turtle = new TurtleImage("images/duke.gif");
 		myTurtles.put(myTurtles.size(), turtle);
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
@@ -52,8 +54,8 @@ public class TurtleWindow extends Group implements ViewComponent{
 		this.getChildren().addAll(turtle, layer);
 	}
 	
-	public void changeBackground(){
-		mainGC.setFill(Color.GRAY);
+	public void changeBackground(Color c){
+		mainGC.setFill(c);
 		mainGC.fillRect(0, 0, mainCanvas.getWidth(), mainCanvas.getHeight());
 	}
 
