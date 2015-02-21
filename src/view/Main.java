@@ -28,6 +28,8 @@ public class Main extends Application{
 	       CommandPort cp = new CommandPort(500, 50);
 	       content1.getChildren().addAll(tw, cp);
 	       
+	       
+	       
 	       VariablesWindow vw = new VariablesWindow();
 	       content2.getChildren().addAll(content1, vw);
 	       content2.setSpacing(50);
