@@ -1,11 +1,10 @@
 package view;
 import view.Button.*;
+import view.Components.*;
 import javafx.application.Application;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 
 public class Main extends Application{
 	
@@ -14,10 +13,12 @@ public class Main extends Application{
 	       Group root = new Group();
 	       Scene scene = new Scene(root, 500, 500);
 	       
-	       
-	       variablesButton b = new variablesButton("testButton", 6.0);
-	       //Button b = new Button("hi");
-	       root.getChildren().add(b);
+	       VariablesWindow window = new VariablesWindow();
+	       variablesButton b1 = new variablesButton("var 1", 5.0);
+	       variablesButton b2 = new variablesButton("var 2", 3.0);
+	       window.addButton(b1);
+	       window.addButton(b2);
+	       root.getChildren().add(window);
 	       
 
 	       stage.setTitle("Test for view components");

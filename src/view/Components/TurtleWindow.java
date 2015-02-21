@@ -1,21 +1,21 @@
 package view.Components;
 
-import java.util.Observable;
-
 import view.ViewComponent;
 
 public class TurtleWindow implements ViewComponent{
-	
 
-	public void UIEvent() {
+	@Override
+	public void update(Object updateObject) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void UIEvent() {
 		// TODO Auto-generated method stub
 		
 	}
+	
+
 
 }
