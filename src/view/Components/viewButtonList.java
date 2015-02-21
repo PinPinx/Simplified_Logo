@@ -12,5 +12,9 @@ public abstract class viewButtonList extends ScrollPane implements ViewComponent
 		content.getChildren().add(b);
 		this.setContent(content);
 	}
+	
+	public void setDimensions(){
+		this.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+	}
 
 }
