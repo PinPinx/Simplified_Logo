@@ -58,6 +58,15 @@ public class TurtleWindow extends Group implements ViewComponent{
 		mainGC.setFill(c);
 		mainGC.fillRect(0, 0, mainCanvas.getWidth(), mainCanvas.getHeight());
 	}
+	
+	public void changePenColor(Color c){
+		//this method will be expanded to using turtle IDs.
+		gc.get(0).setStroke(c);
+	}
+	
+	public void changeLineWidth(double width){
+		gc.get(0).setLineWidth(width);
+	}
 
 	@Override
 	public void UIEvent() {

@@ -45,4 +45,8 @@ public class TurtleImage extends ImageView{
 		this.setTranslateY(yPos);
 	}
 
+	public void reSize(double width, double height){
+		this.setFitWidth(width);
+		this.setFitHeight(height);
+	}
 }
