@@ -11,6 +11,7 @@ public abstract class Variable {
 	 * Returns a nondestructible value.
 	 */
 	abstract public Object getValue();
+	abstract public Variable clone();
 	
 	public String getName(){
 		return this.myName;

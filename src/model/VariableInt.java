@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 
 public class VariableInt extends Variable {
@@ -8,12 +9,17 @@ public class VariableInt extends Variable {
 	
 	public VariableInt(String name, int value) {
 		super(name);
-		this.myProperty.set(value);
+		this.myProperty = new SimpleIntegerProperty(value);
 	}
 	
 	@Override
 	public Object getValue() {
 		return this.myProperty.getValue();
+	}
+
+	@Override
+	public Variable clone() {
+		return new VariableInt(this.getName(),this.myProperty.get());
 	}
 	
 }

@@ -62,6 +62,10 @@ public class VariablesCollection implements Observable {
 	}
 	
 	public List<Variable> getVariablesCollection(){
-		return new ArrayList<>(this.myVariableList);
+		List<Variable> ret = new ArrayList<>();
+		for(Variable v : this.myVariableList){
+			ret.add(v.clone());
+		}
+		return ret;
 	}
 }
