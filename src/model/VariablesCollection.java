@@ -1,12 +1,20 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import view.Observer;
 import Exceptions.DuplicateVariableException;
 import Exceptions.VariableNotFoundException;
 
-public class VariablesCollection {
+public class VariablesCollection implements Observable {
 	private List<Variable> myVariableList;
+	private List<Observer> myObserverList;
+	
+	public VariablesCollection(){
+		this.myVariableList = new ArrayList<>();
+		this.myObserverList = new ArrayList<>();
+	}
 	
 	public Object getVariableValue(String varName) throws VariableNotFoundException{
 		for(Variable v : this.myVariableList){
@@ -34,5 +42,26 @@ public class VariablesCollection {
 			}
 		}
 		throw new VariableNotFoundException();
+	}
+
+	@Override
+	public void addObserver(Observer o) {
+		this.myObserverList.add(o);
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		this.myObserverList.remove(o);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for(Observer o : this.myObserverList){
+			o.update(getVariablesCollection());
+		}
+	}
+	
+	public List<Variable> getVariablesCollection(){
+		return new ArrayList<>(this.myVariableList);
 	}
 }
