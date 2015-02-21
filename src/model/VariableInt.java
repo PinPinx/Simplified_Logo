@@ -1,12 +1,19 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
+
 
 public class VariableInt extends Variable {
-	private int myValue;
+	private IntegerProperty myProperty;
+	
+	public VariableInt(String name, int value) {
+		super(name);
+		this.myProperty.set(value);
+	}
 	
 	@Override
 	public Object getValue() {
-		return this.myValue;
+		return this.myProperty.getValue();
 	}
 	
 }

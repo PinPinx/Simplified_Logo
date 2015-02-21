@@ -1,10 +1,17 @@
 package model;
 
-public class VariableString extends Variable {
-	private String myValue;
+import javafx.beans.property.StringProperty;
 
+public class VariableString extends Variable {
+	private StringProperty myValue;
+
+	public VariableString(String name, String value) {
+		super(name);
+		
+	}
+	
 	@Override
 	public Object getValue() {
-		return new String(this.myValue);
+		return new String(myValue.getValue());
 	}
 }
