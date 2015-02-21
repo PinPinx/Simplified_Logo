@@ -1,5 +1,5 @@
 package model;
 
-public class Variable {
+public interface Variable {
 
 }
