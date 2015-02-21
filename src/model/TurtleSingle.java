@@ -17,7 +17,7 @@ public class TurtleSingle implements Turtle, Observable {
 
 	@Override
 	public Coordinates getCoordinates() {
-		return this.myCoordinates;
+		return new Coordinates(this.myCoordinates);
 	}
 	
 	@Override

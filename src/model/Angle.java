@@ -13,6 +13,9 @@ public class Angle {
 	public double getAngleValue(){
 		return this.myValue;
 	}
+	public double getAngleValueInRadians(){
+		return this.myValue/360.0*2*Math.PI;
+	}
 	
 	public void addAngleValue(Angle a){
 		this.myValue += a.getAngleValue();
