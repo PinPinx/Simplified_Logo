@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -18,17 +19,21 @@ public class Main extends Application{
 	       Group root = new Group();
 	       Scene scene = new Scene(root, 1000, 700);
 	       ScrollPane sp = new ScrollPane();
-	       HBox content = new HBox();
+	       HBox content2 = new HBox();
+	       VBox content1 = new VBox();
 	       
 	       
 	       
 	       TurtleWindow tw = new TurtleWindow(500, 500);
+	       CommandPort cp = new CommandPort(500, 50);
+	       content1.getChildren().addAll(tw, cp);
+	       
 	       VariablesWindow vw = new VariablesWindow();
-	       content.getChildren().add(tw);
-	       content.getChildren().add(vw);
+	       content2.getChildren().addAll(content1, vw);
+	       content2.setSpacing(50);
 	       
 	       
-	       sp.setContent(content);
+	       sp.setContent(content2);
 	       root.getChildren().add(sp);
 	       
 	       
