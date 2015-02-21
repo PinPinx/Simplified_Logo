@@ -1,7 +1,11 @@
 package view;
 
+import javax.swing.JFileChooser;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 public class TurtleImage extends ImageView{
 	private Image myImage;

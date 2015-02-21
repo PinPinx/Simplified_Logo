@@ -24,6 +24,8 @@ public class TurtleWindow extends Group implements ViewComponent{
 	 
 	 addTurtle();
 	 
+	 myTurtles.get(0).setRotate(45);
+	 
 	}
 
 	@Override
