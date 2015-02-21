@@ -28,6 +28,8 @@ public class Main extends Application{
 	       CommandPort cp = new CommandPort(500, 50);
 	       content1.getChildren().addAll(tw, cp);
 	       
+	       
+	       
 	       VariablesWindow vw = new VariablesWindow();
 	       content2.getChildren().addAll(content1, vw);
 	       content2.setSpacing(50);
@@ -35,9 +37,8 @@ public class Main extends Application{
 	       
 	       sp.setContent(content2);
 	       root.getChildren().add(sp);
-	       
-	       
-	       tw.update(0, 0, 100, 100);
+
+
 	       List<Variable> vList = new ArrayList<Variable>();
 	      /* Variable v1 = new VariableInt("var1" , 2);
 	       Variable v2 = new VariableInt("var2" , 1);

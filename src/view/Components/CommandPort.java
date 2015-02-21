@@ -8,28 +8,37 @@ import javafx.scene.layout.HBox;
 import view.*;
 
 public class CommandPort extends ScrollPane implements ViewComponent{
+	private TextField myTextField;
+	private Button myRunButton;
 	
 	
 	public CommandPort(double width, double height){
 		HBox hb = new HBox();
-		Button run = new Button("Run");
-		TextField textField = new TextField ();
-		textField.setPrefHeight(height);
-		textField.setPrefWidth(width);
-		textField.setText("Enter your command Here");
-		hb.getChildren().addAll(textField, run);
+		myRunButton = new Button("Run");
+		myRunButton.setOnAction(e->runCommand());
+		myTextField = new TextField ();
+		myTextField.setPrefHeight(height);
+		myTextField.setPrefWidth(width);
+		myTextField.setText("Enter your command Here");
+		hb.getChildren().addAll(myTextField, myRunButton);
 		this.setContent(hb);
+	}
+
+	private void runCommand() {
+		//Send command to parser here. 
+		String command = myTextField.getText();
+		System.out.println(command);
+		myTextField.clear();
 	}
 
 	@Override
 	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void UIEvent() {
 		// TODO Auto-generated method stub
+		
 		
 	}
 
