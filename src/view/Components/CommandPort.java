@@ -1,13 +1,11 @@
 package view.Components;
 
-import java.util.Observable;
-
-import view.ViewComponent;
+import view.*;
 
 public class CommandPort implements ViewComponent{
 
 	@Override
-	public void update(Observable o, Object arg) {
+	public void update() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -17,4 +15,5 @@ public class CommandPort implements ViewComponent{
 		// TODO Auto-generated method stub
 		
 	}
+
 }
