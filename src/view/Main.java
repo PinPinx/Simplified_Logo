@@ -34,10 +34,10 @@ public class Main extends Application{
 	       
 	       tw.update(0, 0, 100, 100);
 	       List<Variable> vList = new ArrayList<Variable>();
-	       Variable v1 = new VariableInt("var1" , 2);
+	      /* Variable v1 = new VariableInt("var1" , 2);
 	       Variable v2 = new VariableInt("var2" , 1);
 	       vList.add(v1);
-	       vList.add(v2);
+	       vList.add(v2);*/
 	       vw.update(vList);
 	       
 

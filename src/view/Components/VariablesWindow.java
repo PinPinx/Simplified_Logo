@@ -26,7 +26,7 @@ public class VariablesWindow extends viewButtonList{
 	public void update(List<Variable> variableList){
 		for (Variable v : variableList){
 			String name = v.getName();
-			String value = v.getValue();
+			String value = (String) v.getValue();
 			variablesButton b = new variablesButton(name, value);
 			addButton(b);
 		}
