@@ -3,6 +3,7 @@ package view.Components;
 import java.util.List;
 
 import view.Button.*;
+import view.Button.viewButtonList;
 import model.Variable;
 
 public class VariablesWindow extends viewButtonList{

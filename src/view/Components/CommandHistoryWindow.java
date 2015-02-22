@@ -1,5 +1,7 @@
 package view.Components;
 
+import view.Button.viewButtonList;
+
 public class CommandHistoryWindow extends viewButtonList{
 
 	@Override
