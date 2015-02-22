@@ -1,5 +1,6 @@
 package view;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -11,6 +12,7 @@ public class TurtleImage extends ImageView{
 	private final static double default_yPosition = 0.0;
 	private final static double default_width = 50.0;
 	private final static double default_height = 50.0;
+	
 	
 	public TurtleImage(String imagePath){
 		this(imagePath, default_xPosition, default_yPosition, default_width, default_height);
@@ -27,6 +29,15 @@ public class TurtleImage extends ImageView{
 		this.setTranslateY(yPos);
 		this.setFitWidth(width);
 		this.setFitHeight(height);
+		
+		this.setOnMousePressed(new EventHandler<MouseEvent>() {
+		    @Override
+		    public void handle(MouseEvent event) {
+		        if (event.isSecondaryButtonDown()) {
+		            myContextMenu.show(myImage, event.getScreenX(), event.getScreenY());
+		        }
+		    }
+		});
 	}
 	
 	public void hide(boolean hidden){
