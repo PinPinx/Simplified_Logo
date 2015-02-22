@@ -14,8 +14,10 @@ public class Left extends SimpleTurtleCommand{
 	}
 
 	@Override
-	public void execute() throws BadArgumentException{
-		myState.getTurtle().addAngle(new Angle(interpret()));
+	public double execute() throws BadArgumentException{
+		double param = referenceNode.execute();
+		myState.getTurtle().addAngle(new Angle(param));
+		return param;
 	}
 
 	

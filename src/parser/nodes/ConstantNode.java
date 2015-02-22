@@ -24,7 +24,7 @@ public class ConstantNode extends SyntaxNode {
 	}*/
 	
 	@Override
-	public int interpret() {
+	public double execute() {
 		return myValue;
 	}
 

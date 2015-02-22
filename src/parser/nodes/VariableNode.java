@@ -11,13 +11,14 @@ public class VariableNode extends SyntaxNode{
 	public VariableNode(State s,String input) throws VariableNotFoundException{
 		myName=input;
 		myState=s;
-		myState.getVariablesCollection();
+		myState.getVariablesCollection().getVariableValue(myName);
+		
 	}
 	
 	@Override
-	public int interpret() throws BadArgumentException{
+	public double execute() throws BadArgumentException{
 		try{
-			return (Integer) myState.getVariablesCollection().getVariableValue(myName);
+			return (Double) myState.getVariablesCollection().getVariableValue(myName);
 		}
 		catch(VariableNotFoundException e){
 			throw new BadArgumentException();

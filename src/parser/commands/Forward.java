@@ -15,10 +15,11 @@ public class Forward extends SimpleTurtleCommand{
 
 	//TODO: Make interpret more transparent/right now it's hard to tell what the first line is doing
 	@Override
-	public void execute() throws BadArgumentException{
-		double distance = (double) referenceNode.interpret();
+	public double execute() throws BadArgumentException{
+		double distance = (double) referenceNode.execute();
 		Coordinates displacement = angleToCoordinates(myState.getTurtle().getAngle(), distance);
 		myState.getTurtle().addCoordinates(displacement);
+		return distance;
 	}
 
 	

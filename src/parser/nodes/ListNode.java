@@ -11,7 +11,9 @@ public class ListNode extends SyntaxNode {
 	protected List<SyntaxNode> myList= new ArrayList<SyntaxNode>();
 	
 	public ListNode(Stack<SyntaxNode> input){
-		myList.addAll(input);
+		while (!input.empty()){
+			myList.add(input.pop());
+		}
 	}
 
 	public List<SyntaxNode> getList(){
@@ -19,13 +21,10 @@ public class ListNode extends SyntaxNode {
 	}
 	
 	@Override
-	public int interpret() throws BadArgumentException {
-		try{
-			return myList.get(myList.size()-1).interpret();
+	public double execute() throws BadArgumentException {
+		for (int i=0; i<myList.size()-1; i++){
+			myList.get(i).execute();
 		}
-		catch(BadArgumentException e){
-			throw e;
-		}
+		return myList.get(myList.size()-1).execute();
 	}
-
 }
