@@ -1,5 +1,7 @@
 package model;
 
+import view.View;
+
 public class State {
 	private Turtle myTurtle;
 	private VariablesCollection myVariablesCollection;
@@ -9,6 +11,7 @@ public class State {
 		this.myTurtle = t;
 		this.myVariablesCollection = v;
 		this.myCommandHistory = c;
+		myTurtle.addObserver(View.getInstance().getTurtleWindow());
 	}
 	
 	public Turtle getTurtle() {

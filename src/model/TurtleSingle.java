@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.Observer;
+import view.TurtleImage;
 
 public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
@@ -109,6 +110,7 @@ public class TurtleSingle implements Turtle {
 	public void notifyObservers() {
 		for(Observer o : this.myObservers){
 			o.update(createTurtleUpdate());
+			System.out.println(this.myObservers.size());
 		}
 	}
 	

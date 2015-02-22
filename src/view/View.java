@@ -1,5 +1,6 @@
 package view;
 
+import model.Model;
 import view.Components.CommandPort;
 import view.Components.SLogoMenuBar;
 import view.Components.TurtleWindow;
@@ -16,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class View {
+	private static View instance;
 	
 	private Stage myStage;
 	private Scene myScene;
@@ -48,6 +50,14 @@ public class View {
 		addCommandPortWindow();
 		addVariablesWindow();
 		
+		instance = this;
+	}
+	
+	public static View getInstance(){
+		if(instance == null){
+			throw new RuntimeException("View accessed before instantiation");
+		}
+		return instance;
 	}
 	
 	
@@ -109,6 +119,10 @@ public class View {
 		
 	}
 	*/
+	
+	public TurtleWindow getTurtleWindow(){
+		return myTurtleWindow;
+	}
 	
 	
 	public Stage getStage() {
