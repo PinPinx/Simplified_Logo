@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import view.TurtleImage;
 import view.ViewComponent;
 
-public class TurtleWindow extends Group implements ViewComponent{
+public class TurtleWindow extends Group implements ViewComponent {
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();

@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JFileChooser;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
