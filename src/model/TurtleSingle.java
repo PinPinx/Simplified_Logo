@@ -5,7 +5,7 @@ import java.util.List;
 
 import view.Observer;
 
-public class TurtleSingle implements Turtle, Observable {
+public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isActive;
