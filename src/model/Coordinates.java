@@ -23,4 +23,8 @@ public class Coordinates {
 	public double getY(){
 		return this.myPoint.getY();
 	}
+	public boolean equals(Coordinates c){
+		return this.getX() == c.getX() &&
+				this.getY() == c.getY();
+	}
 }

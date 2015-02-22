@@ -13,6 +13,7 @@ public class Parser {
 		//TODO
 		CommandRoot root = new CommandRoot(command);
 		Command testCommand = new Forward(this.myState, 50);
+		root.addCommand(testCommand);
 		return root;
 	}
 }

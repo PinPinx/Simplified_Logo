@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import view.Observer;
@@ -9,6 +10,12 @@ public class TurtleSingle implements Turtle, Observable {
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isActive;
 	private List<Observer> myObservers;
+	
+	public TurtleSingle(){
+		this.myCoordinates = new Coordinates(0,0);
+		this.myAngle = new Angle(0);
+		this.myObservers = new ArrayList<>();
+	}
 	
 	@Override
 	public Angle getAngle() {
