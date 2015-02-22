@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 
 /**
@@ -77,6 +79,15 @@ public class SLogoMenuBar extends MenuBar {
 		//MenuItem myLanguage 	 = makeMenuItem(LANGUAGE, event -> );
 		//preferences.addAll(myBackground, myTurtleImage, myPenColor, myLanguage);
 		return preferences;
+	}
+	
+	private FileChooser makeImageChooser() {
+		FileChooser imageChooser = new FileChooser();
+        imageChooser.setTitle("Choose Image File");
+        imageChooser.getExtensionFilters().addAll(
+        		new ExtensionFilter("JPG Images", "*.jpg"),
+        		new ExtensionFilter("PNG Images", "*.png"));
+        return imageChooser;
 	}
 	
 	
