@@ -7,8 +7,6 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import view.TurtleImage;
-import view.ViewComponent;
 
 public class TurtleWindow extends Group implements ViewComponent {
 	private Canvas mainCanvas;
