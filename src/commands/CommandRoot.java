@@ -1,5 +1,6 @@
 package commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommandRoot implements Command {
@@ -8,8 +9,13 @@ public class CommandRoot implements Command {
 	
 	public CommandRoot(String s){
 		this.myString = s;
+		this.myChildren = new ArrayList<>();
 	}
 
+	public void addCommand(Command c){
+		this.myChildren.add(c);
+	}
+	
 	@Override
 	public void execute() {
 		for(Command c : this.myChildren){

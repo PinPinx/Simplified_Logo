@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import view.Observer;
@@ -10,6 +11,12 @@ public class TurtleSingle implements Turtle, Observable {
 	private boolean isPenUp, isHidden, isActive;
 	private List<Observer> myObservers;
 	
+	public TurtleSingle(){
+		this.myCoordinates = new Coordinates(0,0);
+		this.myAngle = new Angle(0);
+		this.myObservers = new ArrayList<>();
+	}
+	
 	@Override
 	public Angle getAngle() {
 		return new Angle(this.myAngle);
@@ -17,17 +24,17 @@ public class TurtleSingle implements Turtle, Observable {
 
 	@Override
 	public Coordinates getCoordinates() {
-		return this.myCoordinates;
+		return new Coordinates(this.myCoordinates);
 	}
 	
 	@Override
 	public Coordinates getOldCoordinates() {
-		return this.myOldCoordinates;
+		return new Coordinates(this.myOldCoordinates);
 	}
 
 	@Override
 	public void addAngle(Angle a) {
-		this.myAngle.addAngleValue(a);
+		this.myAngle.addAngle(a);
 		notifyObservers();
 	}
 

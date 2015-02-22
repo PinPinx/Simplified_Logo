@@ -3,8 +3,8 @@ package model;
 public class Angle {
 	private double myValue;
 	
-	public Angle(int ang){
-		this.myValue = ang;
+	public Angle(double parameter){
+		this.myValue = parameter;
 	}
 	public Angle(Angle a){
 		this.myValue = a.getAngleValue();
@@ -13,9 +13,16 @@ public class Angle {
 	public double getAngleValue(){
 		return this.myValue;
 	}
+	public double getAngleValueInRadians(){
+		return this.myValue/360.0*2*Math.PI;
+	}
 	
-	public void addAngleValue(Angle a){
+	public void addAngle(Angle a){
 		this.myValue += a.getAngleValue();
+		modAngleValue();
+	}
+	public void addAngleValue(double a){
+		this.myValue += a;
 		modAngleValue();
 	}
 	
@@ -33,5 +40,9 @@ public class Angle {
 				this.myValue += 360;
 			}
 		}
+	}
+	
+	public boolean equals(Angle a){
+		return this.myValue == a.getAngleValue();
 	}
 }
