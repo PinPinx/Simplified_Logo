@@ -12,7 +12,14 @@ public class Parser {
 	public CommandRoot parse(String command){
 		//TODO
 		CommandRoot root = new CommandRoot(command);
-		Command testCommand = new Forward(this.myState, 50);
+		
+		Command testCommand;
+		if(command.length()>5){
+			testCommand = new Forward(this.myState, 50);
+		}
+		else{
+			testCommand = new Left(this.myState, 90);
+		}
 		root.addCommand(testCommand);
 		return root;
 	}

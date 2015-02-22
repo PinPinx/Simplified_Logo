@@ -29,12 +29,12 @@ public class TurtleSingle implements Turtle, Observable {
 	
 	@Override
 	public Coordinates getOldCoordinates() {
-		return this.myOldCoordinates;
+		return new Coordinates(this.myOldCoordinates);
 	}
 
 	@Override
 	public void addAngle(Angle a) {
-		this.myAngle.addAngleValue(a);
+		this.myAngle.addAngle(a);
 		notifyObservers();
 	}
 
