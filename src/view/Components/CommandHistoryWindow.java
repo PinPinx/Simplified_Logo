@@ -1,6 +1,6 @@
 package view.Components;
 
-import view.Button.viewButtonList;
+import view.Buttons.viewButtonList;
 
 public class CommandHistoryWindow extends viewButtonList{
 

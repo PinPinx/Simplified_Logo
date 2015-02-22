@@ -1,6 +1,6 @@
-package view.Button;
+package view.Buttons;
 
-import view.Button.*;
+import view.Buttons.*;
 import view.Components.ViewComponent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
