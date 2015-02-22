@@ -1,4 +1,4 @@
-package view;
+package view.Components;
 
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
@@ -30,6 +30,7 @@ public class TurtleImage extends ImageView{
 		this.setFitWidth(width);
 		this.setFitHeight(height);
 		
+		/*
 		this.setOnMousePressed(new EventHandler<MouseEvent>() {
 		    @Override
 		    public void handle(MouseEvent event) {
@@ -38,6 +39,7 @@ public class TurtleImage extends ImageView{
 		        }
 		    }
 		});
+		*/
 	}
 	
 	public void hide(boolean hidden){
