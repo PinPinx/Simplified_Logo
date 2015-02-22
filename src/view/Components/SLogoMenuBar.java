@@ -1,6 +1,7 @@
 package view.Components;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import view.View;
@@ -21,7 +22,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
  */
 public class SLogoMenuBar extends MenuBar {
 	
-	// temporarily hardcoded to English - will be drawn from reference libraries 
+	// TODO: temporarily hardcoded to English - will be drawn from reference libraries 
 	// once locales are set up
 	
 	private View myView;
@@ -51,9 +52,9 @@ public class SLogoMenuBar extends MenuBar {
 		myView = view;
 		
 		addMenuList(PREFERENCES, makePreferencesMenu());
-		addMenuList(FILE, makePreferencesMenu());
-		addMenuList(EDIT, makePreferencesMenu());
-		addMenuList(HELP, makePreferencesMenu());
+		addMenuList(FILE, makeFileMenu());
+		addMenuList(EDIT, makeEditMenu());
+		//addMenuList(HELP, makeHelpMenu());
 	}
 	
 	
@@ -73,13 +74,18 @@ public class SLogoMenuBar extends MenuBar {
 	
 	private List<MenuItem> makePreferencesMenu() {
 		ArrayList<MenuItem> preferences = new ArrayList<MenuItem>();
-		//MenuItem myBackground  = makeMenuItem(BACKGROUND, event -> myView.changeBackgroundColor());
-		//MenuItem myTurtleImage = makeMenuItem(TURTLE_IMAGE, event -> );
+		
+		FileChooser turtleImageChooser = makeImageChooser();
+		MenuItem myTurtleImage = makeMenuItem(TURTLE_IMAGE, event -> turtleImageChooser.showOpenDialog(myView.getStage()));
+		//TODO: How to pass the image file to turtle?
+		
+		MenuItem myBackground  = makeMenuItem(BACKGROUND, event -> myView.changeBackgroundColor());
 		//MenuItem myPenColor	 = makeMenuItem(PEN_COLOR, event -> );
 		//MenuItem myLanguage 	 = makeMenuItem(LANGUAGE, event -> );
-		//preferences.addAll(myBackground, myTurtleImage, myPenColor, myLanguage);
-		return preferences;
+		preferences.addAll(Arrays.asList(myBackground, myTurtleImage));
+		return new ArrayList<MenuItem>();
 	}
+	
 	
 	private FileChooser makeImageChooser() {
 		FileChooser imageChooser = new FileChooser();
