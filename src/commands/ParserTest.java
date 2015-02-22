@@ -10,9 +10,11 @@ import model.VariablesCollection;
 
 import org.junit.Test;
 
+import Exceptions.CommandNameNotFoundException;
+
 public class ParserTest {	
 	@Test
-	public void testParse() {
+	public void testParse() throws CommandNameNotFoundException {
 		State myState = new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory());
 		Parser myParser = new Parser(myState);
 		CommandRoot root = myParser.parse("blah blah blah");
