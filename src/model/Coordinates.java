@@ -17,6 +17,9 @@ public class Coordinates {
 	public void add(double x, double y){
 		this.myPoint = new Point2D(myPoint.getX() + x, myPoint.getY() + y);
 	}
+	public void scale(double factor){
+		myPoint = new Point2D(myPoint.getX()*factor, myPoint.getY()*factor);
+	}
 	public double getX(){
 		return this.myPoint.getX();
 	}
