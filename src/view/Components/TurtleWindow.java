@@ -7,10 +7,8 @@ import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import view.TurtleImage;
-import view.ViewComponent;
 
-public class TurtleWindow extends Group implements ViewComponent{
+public class TurtleWindow extends Group implements ViewComponent {
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
@@ -24,22 +22,23 @@ public class TurtleWindow extends Group implements ViewComponent{
 	 
 	 addTurtle();
 	 
-	 myTurtles.get(0).setRotate(45);
 	 
 	}
 
-	@Override
-	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
-	}
 	
-	public void update(TurtleUpdate tu){
+	
+	@Override
+	public void update(Object updateObject){
+		System.out.println("I was here");
+		TurtleUpdate tu = (TurtleUpdate) updateObject;
 		TurtleImage ti = myTurtles.get(0);
 		ti.setRotate(tu.getTurtleAngle().getAngleValue());
 		ti.moveTo(tu.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates().getY());
 		ti.hide(tu.isTurtleHidden());
-		if (tu.isTurtlePenUp()){
+		System.out.println(tu.isTurtleHidden());
+		if (!tu.isTurtlePenUp()){
 			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates().getY(), ti.getTranslateX(),  ti.getTranslateY());
+			System.out.println(tu.getTurtleOldCoordinates().getX()+" "+ tu.getTurtleOldCoordinates().getY()+" "+ ti.getTranslateX()+" "+ti.getTranslateY());
 		}
 	}
 	

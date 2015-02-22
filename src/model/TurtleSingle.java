@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.Observer;
+import view.TurtleImage;
 
-public class TurtleSingle implements Turtle, Observable {
+public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isActive;
@@ -109,6 +110,7 @@ public class TurtleSingle implements Turtle, Observable {
 	public void notifyObservers() {
 		for(Observer o : this.myObservers){
 			o.update(createTurtleUpdate());
+			System.out.println(this.myObservers.size());
 		}
 	}
 	

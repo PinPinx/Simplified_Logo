@@ -1,4 +1,5 @@
-package view;
+package view.Buttons;
+
 
 public class UDCommandsButton extends customButton{
 

@@ -22,6 +22,6 @@ public class Model {
 	}
 	
 	public void parse(String command){
-		this.myParser.parse(command);
+		this.myParser.parse(command).execute();
 	}
 }

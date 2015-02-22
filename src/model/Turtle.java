@@ -1,6 +1,6 @@
 package model;
 
-public interface Turtle {
+public interface Turtle extends Observable {
 	public Angle getAngle(); 
 	public Coordinates getCoordinates();
 	public Coordinates getOldCoordinates();

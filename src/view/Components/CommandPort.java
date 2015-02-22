@@ -1,13 +1,14 @@
 package view.Components;
 
 
+import model.Model;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import view.*;
 
-public class CommandPort extends ScrollPane implements ViewComponent{
+public class CommandPort extends ScrollPane implements ViewComponent {
 	private TextField myTextField;
 	private Button myRunButton;
 	
@@ -27,7 +28,7 @@ public class CommandPort extends ScrollPane implements ViewComponent{
 	private void runCommand() {
 		//Send command to parser here. 
 		String command = myTextField.getText();
-		System.out.println(command);
+		Model.getInstance().parse(command);
 		myTextField.clear();
 	}
 
