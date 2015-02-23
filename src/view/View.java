@@ -19,11 +19,11 @@ import javafx.stage.Stage;
 
 public class View {
 	private static View instance;
-	
+
 	private Stage myStage;
 	private Scene myScene;
 	private BorderPane myBorderPane;
-	
+
 	private TurtleWindow myTurtleWindow;
 	private Toolbar myToolbar;
 	private VBox myListWindows;
@@ -31,14 +31,15 @@ public class View {
 	private UserDefinedCommandsWindow myUDCommandsWindow;
 	private VariablesWindow myVariablesWindow;
 	private CommandHistoryWindow myCommandHistWindow;
-	
+
 	private CommandPort myCommandPort;
 	private SLogoMenuBar myMenuBar;
+
 	
 	private static final String TITLE = "SLOGO";
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
-	
-	
+
+
 	public View(Stage stage) {
 		
 		// set up the main border pane and stage	
@@ -61,6 +62,7 @@ public class View {
 		
 	}
 
+
 	
 	private void addTurtleWindow() {
 		//TODO: Dimensions hard coded for now
@@ -76,7 +78,6 @@ public class View {
 	 */
 	
 	private void addTopBars() {
-		
 		VBox top = new VBox();
 		myMenuBar = new SLogoMenuBar(this);
 		myToolbar = new Toolbar();
@@ -85,17 +86,16 @@ public class View {
 	}
 	
 	
-	
 	private void addListWindows() {
 		initLists();
-		
+
 		myUDListWindows = new HBox();
 		myUDListWindows.getChildren().addAll(myVariablesWindow, myUDCommandsWindow);
-		
+
 		myListWindows = new VBox();
 		myListWindows.getChildren().addAll(myUDListWindows, myCommandHistWindow);
 		myBorderPane.setCenter(myListWindows);
-		
+
 	}
 	
 
@@ -118,15 +118,15 @@ public class View {
 	/*
 	private void showMessage(String message) {
 		MessageBox messageBox = new MessageBox(message);
-		
+
 	}
-	*/
-	
+	 */
+
 	public void showView() {
 		myStage.show();
 	}
-	
-	
+
+
 	public Stage getStage() {
 		return myStage;
 	}
@@ -152,5 +152,4 @@ public class View {
 		}
 		return instance;
 	}
-
 }

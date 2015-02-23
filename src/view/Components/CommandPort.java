@@ -1,6 +1,7 @@
 package view.Components;
 
 
+import Exceptions.CommandNameNotFoundException;
 import model.Model;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -28,7 +29,12 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 	private void runCommand() {
 		//Send command to parser here. 
 		String command = myTextField.getText();
-		Model.getInstance().parse(command);
+		try {
+			Model.getInstance().parse(command);
+		} catch (CommandNameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		myTextField.clear();
 	}
 

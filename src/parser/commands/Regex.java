@@ -1,4 +1,4 @@
-package commands;
+package parser.commands;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import Exceptions.CommandNameNotFoundException;
 import model.Model;
 
 
@@ -46,6 +47,15 @@ public class Regex {
 		}
 		return GeneralType.OTHER;
 	}
+	
+	public String getCommandType(String s) throws CommandNameNotFoundException{
+		for (Entry<String, Pattern> p : this.commandPatterns) {
+			if (match(s, p.getValue())) {
+				return p.getKey();
+			}
+		}
+		throw new CommandNameNotFoundException();
+	}
 
 	private void testMatches (String[] tests, List<Entry<String, Pattern>> patterns) {
 		for (String s : tests) {
@@ -79,4 +89,5 @@ public class Regex {
 		return patterns;
 	}
 }
+
 

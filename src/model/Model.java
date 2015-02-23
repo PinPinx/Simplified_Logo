@@ -1,6 +1,8 @@
 package model;
 
-import commands.Parser;
+import parser.commands.Parser;
+import Exceptions.BadArgumentException;
+import Exceptions.CommandNameNotFoundException;
 
 public class Model {
 	private Parser myParser;
@@ -21,7 +23,12 @@ public class Model {
 		return instance;
 	}
 	
-	public void parse(String command){
-		this.myParser.parse(command).execute();
+	public void parse(String command) throws CommandNameNotFoundException{
+		try {
+			myParser.parse(command).execute(myState);
+		} catch (BadArgumentException e) {
+			e.printStackTrace();
+		}
 	}
+
 }

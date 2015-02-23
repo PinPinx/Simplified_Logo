@@ -1,4 +1,4 @@
-package commands;
+package parser.commands;
 
 import static org.junit.Assert.*;
 import model.Angle;
@@ -16,19 +16,19 @@ public class ParserTest {
 		State myState = new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory());
 		Parser myParser = new Parser(myState);
 		CommandRoot root = myParser.parse("blah blah blah");
-		root.execute();
+		root.execute(new State());
 		Coordinates result = myState.getTurtle().getCoordinates();
 		Coordinates desired = new Coordinates(50,0);
 		assertTrue(result.equals(desired));
 		
 		root = myParser.parse("hi");
-		root.execute();
+		root.execute(new State());
 		Angle result2 = myState.getTurtle().getAngle();
 		Angle desired2 = new Angle(90);
 		assertTrue(result2.equals(desired2));
 		
 		root = myParser.parse("blah blah blah");
-		root.execute();
+		root.execute(new State());
 		result = myState.getTurtle().getCoordinates();
 		desired = new Coordinates(50,50);
 		assertTrue(result.equals(desired));
