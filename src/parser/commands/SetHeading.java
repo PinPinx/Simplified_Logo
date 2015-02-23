@@ -10,14 +10,13 @@ public class SetHeading extends SimpleTurtleCommand{
 
 	private double angleMoved;
 	
-	public SetHeading(State s, Stack<SyntaxNode> input)
+	public SetHeading(Stack<SyntaxNode> input)
 			throws BadArgumentException {
-		super(s, input);
-		// TODO Auto-generated constructor stub
+		super(input);
 	}
 	
-	public double execute() throws BadArgumentException{
-		double param = referenceNode.execute();
+	public double execute(State myState) throws BadArgumentException{
+		double param = referenceNode.execute(myState);
 		angleMoved = (param - myState.getTurtle().getAngle().getAngleValue())%360;
 		myState.getTurtle().getAngle().setAngleValue(param);
 		return angleMoved;

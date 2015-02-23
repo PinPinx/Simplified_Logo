@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import model.State;
 import Exceptions.BadArgumentException;
 
 public class ListNode extends SyntaxNode {
@@ -21,10 +22,10 @@ public class ListNode extends SyntaxNode {
 	}
 	
 	@Override
-	public double execute() throws BadArgumentException {
+	public double execute(State myState) throws BadArgumentException {
 		for (int i=0; i<myList.size()-1; i++){
-			myList.get(i).execute();
+			myList.get(i).execute(myState);
 		}
-		return myList.get(myList.size()-1).execute();
+		return myList.get(myList.size()-1).execute(myState);
 	}
 }

@@ -9,14 +9,14 @@ import Exceptions.BadArgumentException;
 
 public class Back extends SimpleTurtleCommand {
 
-	public Back(State s, Stack<SyntaxNode> input) throws BadArgumentException {
-		super(s, input);
+	public Back(Stack<SyntaxNode> input) throws BadArgumentException {
+		super(input);
 	}
 	
-	//TODO: This is duplicated code
+	//TODO: This is duplicated code from Forward
 	@Override
-	public double execute() throws BadArgumentException{
-		double distance = (double) referenceNode.execute();
+	public double execute(State myState) throws BadArgumentException{
+		double distance = (double) referenceNode.execute(myState);
 		Coordinates displacement = angleToCoordinates(myState.getTurtle().getAngle(), distance);
 		myState.getTurtle().addCoordinates(displacement);
 		return distance;

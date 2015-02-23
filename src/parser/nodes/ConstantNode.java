@@ -1,5 +1,7 @@
 package parser.nodes;
 
+import model.State;
+
 //import java.util.Stack;
 
 public class ConstantNode extends SyntaxNode {
@@ -24,7 +26,7 @@ public class ConstantNode extends SyntaxNode {
 	}*/
 	
 	@Override
-	public double execute() {
+	public double execute(State myState) {
 		return myValue;
 	}
 

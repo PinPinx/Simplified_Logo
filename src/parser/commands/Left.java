@@ -4,19 +4,18 @@ import java.util.Stack;
 
 import Exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
-import model.Angle;
 import model.State;
 
 public class Left extends SimpleTurtleCommand{
 	
-	public Left(State s, Stack<SyntaxNode> input) throws BadArgumentException {
-		super(s, input);
+	public Left(Stack<SyntaxNode> input) throws BadArgumentException {
+		super(input);
 	}
 
 	@Override
-	public double execute() throws BadArgumentException{
-		double param = referenceNode.execute();
-		myState.getTurtle().addAngle(new Angle(param));
+	public double execute(State myState) throws BadArgumentException{
+		double param = referenceNode.execute(myState);
+		myState.getTurtle().addDegree(param);
 		return param;
 	}
 

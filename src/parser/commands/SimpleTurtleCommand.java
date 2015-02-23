@@ -4,18 +4,15 @@ import java.util.Stack;
 
 import model.Angle;
 import model.Coordinates;
-import model.State;
 import parser.nodes.SyntaxNode;
+import parser.nodes.UnaryNode;
 import Exceptions.BadArgumentException;
 
-public abstract class SimpleTurtleCommand extends Executable {
-
-	protected SyntaxNode referenceNode;
+public abstract class SimpleTurtleCommand extends UnaryNode {
 	
-	public SimpleTurtleCommand(State s, Stack<SyntaxNode> input)
+	public SimpleTurtleCommand(Stack<SyntaxNode> input)
 			throws BadArgumentException {
-		super(s);
-		referenceNode = input.pop();
+		super(input);
 	}
 	
 	protected Coordinates angleToCoordinates(Angle angle, double distance){
