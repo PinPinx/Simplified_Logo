@@ -36,7 +36,10 @@ public class VariablesCollection implements Observable {
 					var.setValue(varValue);
 					return;
 				} catch (VariableWrongTypeException e) {
-					throw new DuplicateVariableException();
+					try {
+						deleteVariable(varName);
+					} catch (VariableNotFoundException e1) {} //never happens
+					addVariable(varName, varValue);
 				}
 			}
 		}
