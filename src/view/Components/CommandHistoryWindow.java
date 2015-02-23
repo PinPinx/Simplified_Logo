@@ -1,8 +1,20 @@
 package view.Components;
 
-import view.Buttons.viewButtonList;
 
-public class CommandHistoryWindow extends viewButtonList{
+public class CommandHistoryWindow extends ListWindow {
+
+
+	public CommandHistoryWindow(int w, int h) {
+		super(w, h, "Command History");
+		
+	}
+
+	
+	@Override
+	public void update(Object updateObject) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void UIEvent() {
@@ -10,11 +22,6 @@ public class CommandHistoryWindow extends viewButtonList{
 		
 	}
 
-	@Override
-	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 

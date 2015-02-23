@@ -1,6 +1,5 @@
 package view;
 
-import model.Model;
 import view.Components.CommandPort;
 import view.Components.SLogoMenuBar;
 import view.Components.TurtleWindow;
@@ -74,7 +73,7 @@ public class View {
 	
 	private void addTurtleWindow() {
 		//TODO: Dimensions hard coded for now
-		myTurtleWindow = new TurtleWindow(500, 500);
+		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 4/5);
 		myBorderPane.setLeft(myTurtleWindow);
 		BorderPane.setMargin(myTurtleWindow, new Insets(5));
 	}
