@@ -10,6 +10,8 @@ import model.VariablesCollection;
 
 import org.junit.Test;
 
+import parser.nodes.CommandRoot;
+
 public class ParserTest {	
 	@Test
 	public void testParse() {

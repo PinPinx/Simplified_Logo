@@ -3,6 +3,7 @@ package commands;
 import java.util.Collections;
 import java.util.Stack;
 
+import parser.nodes.CommandRoot;
 import Exceptions.CommandNameNotFoundException;
 import model.State;
 
@@ -12,7 +13,6 @@ public class Parser {
 	
 	public Parser(State s){
 		this.myState = s;
-		this.myRegex = new Regex();
 	}
 	
 	public CommandRoot parse(String command) throws CommandNameNotFoundException{
@@ -34,22 +34,5 @@ public class Parser {
 		}
 		root.addCommand(testCommand);
 		return root;
-	}
-	
-	public int parsePart(Stack<String> stack, int index) throws CommandNameNotFoundException{
-		int numArgs;
-		Class<?> cls;
-		try {
-			cls = Class.forName("Forward");
-			numArgs = cls.getConstructors()[0].getParameterCount() - 1;
-		} catch (ClassNotFoundException e) {
-			throw new CommandNameNotFoundException();
-		}	
-		
-		if(numArgs == 0){
-			return 0;
-		}
-		
-		return parsePart(commandStream, index + 1);
 	}
 }

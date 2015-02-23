@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import parser.nodes.CommandRoot;
 import commands.Command;
-import commands.CommandRoot;
 import view.Observer;
 
 public class CommandHistory implements Observable {
