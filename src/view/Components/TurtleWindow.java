@@ -9,18 +9,19 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class TurtleWindow extends Group implements ViewComponent {
+
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
 
-
 	public TurtleWindow(double width, double height) {
+
 		mainCanvas = new Canvas(width, height);
 		mainGC = mainCanvas.getGraphicsContext2D();
-
-		this.getChildren().addAll(mainCanvas);
-
+		
+		this.getChildren().add(mainCanvas);
+		
 		addTurtle();
 
 		myTurtles.get(0).setRotate(45);
@@ -65,13 +66,14 @@ public class TurtleWindow extends Group implements ViewComponent {
 		mainGC.fillRect(0, 0, mainCanvas.getWidth(), mainCanvas.getHeight());
 	}
 
-	public void changePenColor(Color c) {
-		// this method will be expanded to using turtle IDs.
-		gc.get(0).setStroke(c);
+	public void changePenColor(Color c, int turtleID) {
+		gc.get(turtleID).setStroke(c);
+
 	}
 
-	public void changeLineWidth(double width) {
-		gc.get(0).setLineWidth(width);
+	public void changeTurtleImage(String imagePath, int turtleID) {
+		myTurtles.get(turtleID).changeImage(imagePath);
+
 	}
 
 	@Override

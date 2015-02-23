@@ -37,7 +37,6 @@ public class SLogoMenuBar extends MenuBar {
 	
 	// items under Preferences
 	public static final String PREFERENCES = "Preferences";
-	public static final String TURTLE_IMAGE = "Turtle Image";
 	public static final String LANGUAGE = "Language";
 	
 	// items under Edit
@@ -83,23 +82,9 @@ public class SLogoMenuBar extends MenuBar {
 	private List<MenuItem> makePreferencesMenu() {
 		ArrayList<MenuItem> preferences = new ArrayList<MenuItem>();
 		
-		FileChooser turtleImageChooser = makeImageChooser();
-		//MenuItem myTurtleImage = makeMenuItem(TURTLE_IMAGE, event -> turtleImageChooser.showOpenDialog(myView.getStage()));
-		//TODO: How to pass the image file to turtle?
-		
 		//MenuItem myLanguage 	 = makeMenuItem(LANGUAGE, event -> );
 		//preferences.addAll(Arrays.asList(myTurtleImage));
 		return preferences;
-	}
-	
-	
-	private FileChooser makeImageChooser() {
-		FileChooser imageChooser = new FileChooser();
-        imageChooser.setTitle("Choose Image File");
-        imageChooser.getExtensionFilters().addAll(
-        		new ExtensionFilter("JPG Images", "*.jpg"),
-        		new ExtensionFilter("PNG Images", "*.png"));
-        return imageChooser;
 	}
 	
 	

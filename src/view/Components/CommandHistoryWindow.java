@@ -8,6 +8,10 @@ public class CommandHistoryWindow extends ListWindow {
 
 	public CommandHistoryWindow(int w, int h) {
 		super(w, h, "Command History");
+		//test
+		for (int i=0; i<20; i++) {
+			myList.getChildren().add(new Button(("yo")));
+		}
 	}
 
 	@Override
@@ -21,9 +25,6 @@ public class CommandHistoryWindow extends ListWindow {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-
 
 
 

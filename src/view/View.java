@@ -1,17 +1,14 @@
 package view;
 
-import java.util.Arrays;
-
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
 import view.Components.SLogoMenuBar;
+import view.Components.Toolbar;
 import view.Components.TurtleWindow;
 import view.Components.UserDefinedCommandsWindow;
 import view.Components.VariablesWindow;
-import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -28,6 +25,7 @@ public class View {
 	private BorderPane myBorderPane;
 	
 	private TurtleWindow myTurtleWindow;
+	private Toolbar myToolbar;
 	private VBox myListWindows;
 	private HBox myUDListWindows;
 	private UserDefinedCommandsWindow myUDCommandsWindow;
@@ -36,7 +34,6 @@ public class View {
 	
 	private CommandPort myCommandPort;
 	private SLogoMenuBar myMenuBar;
-	private ColorPicker myColorPicker;
 	
 	private static final String TITLE = "SLOGO";
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
@@ -44,39 +41,49 @@ public class View {
 	
 	public View(Stage stage) {
 		
-		myStage = stage;
-		myStage.setTitle(TITLE);
-		
+		// set up the main border pane and stage	
 		myBorderPane = new BorderPane();
 		myBorderPane.setBackground(new Background(new BackgroundFill(BACKGROUND_COLOR, null, null)));
 		myScene = new Scene(myBorderPane, Main.SIZE.width, Main.SIZE.height);
+		
+		myStage = stage;
+		myStage.setTitle(TITLE);
 		myStage.setScene(myScene);
 		
-		addTop();
+		// place window items in their place
+		addTopBars();
 		addListWindows();
 		addTurtleWindow();
 		addCommandPortWindow();
+		myToolbar.setTurtleWindow(myTurtleWindow);
 		
 		instance = this;
-	}
-	
-	
-	public static View getInstance(){
-		if(instance == null){
-			throw new RuntimeException("View accessed before instantiation");
-		}
-		return instance;
-	}
-	
-	
-	private void addTop() {
-		VBox top = new VBox();
-		myMenuBar = new SLogoMenuBar(this);
-		initializeColorPicker();
-		top.getChildren().addAll(myMenuBar, myColorPicker);
-		myBorderPane.setTop(top);
 		
 	}
+
+	
+	private void addTurtleWindow() {
+		//TODO: Dimensions hard coded for now
+		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 3/5);
+		myBorderPane.setLeft(myTurtleWindow);
+		BorderPane.setMargin(myTurtleWindow, new Insets(5));
+	}
+	
+	
+	
+	/**
+	 * Constructs a menu bar and a tool bar to be placed at the top
+	 */
+	
+	private void addTopBars() {
+		
+		VBox top = new VBox();
+		myMenuBar = new SLogoMenuBar(this);
+		myToolbar = new Toolbar();
+		top.getChildren().addAll(myMenuBar, myToolbar);
+		myBorderPane.setTop(top);
+	}
+	
 	
 	
 	private void addListWindows() {
@@ -91,6 +98,7 @@ public class View {
 		
 	}
 	
+
 	
 	private void initLists() {
 		myCommandHistWindow = new CommandHistoryWindow(Main.SIZE.width * 2/5, Main.SIZE.height * 2/5);
@@ -98,35 +106,14 @@ public class View {
 		myVariablesWindow = new VariablesWindow(Main.SIZE.width * 1/5, Main.SIZE.height * 2/5);		
 	}
 	
-	
-	
-	private void addTurtleWindow() {
-		//TODO: Dimensions hard coded for now
-		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 4/5);
-		myBorderPane.setLeft(myTurtleWindow);
-		BorderPane.setMargin(myTurtleWindow, new Insets(5));
-	}
-	
-	
+		
 	private void addCommandPortWindow() {
 		//TODO: Dimensions hard coded for now
 		myCommandPort = new CommandPort(500, 50);
 		myBorderPane.setBottom(myCommandPort);
 		BorderPane.setMargin(myCommandPort, new Insets(5));
 	}
-	
-	private void initializeColorPicker() {
-		myColorPicker = new ColorPicker();
-		myColorPicker.setStyle("-fx-color-label-visible: false ;");
-		myColorPicker.setOnAction((ActionEvent t) -> {
-		      changeBackgroundColor(myColorPicker.getValue());
-	    });
-	}
-	
-	
-	private void changeBackgroundColor(Color c) {
-		myTurtleWindow.changeBackground(c);
-	}
+
 	
 	/*
 	private void showMessage(String message) {
@@ -142,6 +129,28 @@ public class View {
 	
 	public Stage getStage() {
 		return myStage;
+	}
+	
+	public TurtleWindow getTurtleWindow() {
+		return myTurtleWindow;
+	}
+	
+	
+	public VariablesWindow getVariablesWindow() {
+		return myVariablesWindow;
+	}
+	
+	
+	public CommandHistoryWindow getCommandHistoryWindow() {
+		return myCommandHistWindow;
+	}
+	
+	
+	public static View getInstance(){
+		if(instance == null){
+			throw new RuntimeException("View accessed before instantiation");
+		}
+		return instance;
 	}
 
 }
