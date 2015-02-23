@@ -1,6 +1,8 @@
 package view.Components;
 
+
 public class CommandHistoryWindow extends ListWindow {
+
 
 	public CommandHistoryWindow(int w, int h) {
 		super(w, h, "Command History");
