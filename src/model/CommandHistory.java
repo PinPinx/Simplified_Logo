@@ -22,7 +22,7 @@ public class CommandHistory implements Observable {
 		notifyObservers();
 	}
 	
-	public List<String> getCommandList(){
+	private List<String> getCommandList(){
 		ArrayList<String> ret = new ArrayList<>();
 		for(CommandRoot cr : myCommandList){
 			ret.add(cr.toString());
