@@ -8,8 +8,7 @@ import Exceptions.VariableNotFoundException;
 public class VariableNode extends SyntaxNode{
 	private String myName;
 	
-	public VariableNode(String input) throws VariableNotFoundException,
-												 BadArgumentException{
+	public VariableNode(String input){
 		myName=input;
 	}
 	

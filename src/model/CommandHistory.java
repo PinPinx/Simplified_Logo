@@ -17,7 +17,7 @@ public class CommandHistory implements Observable {
 	}
 	
 	public void addCommand(CommandRoot cr){
-		myCommandList.add(cr)
+		myCommandList.add(cr);
 		notifyObservers();
 	}
 	
