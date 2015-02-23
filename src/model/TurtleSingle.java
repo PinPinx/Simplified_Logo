@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.Observer;
-import view.TurtleImage;
 
 public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
@@ -13,83 +12,71 @@ public class TurtleSingle implements Turtle {
 	private List<Observer> myObservers;
 	
 	public TurtleSingle(){
-		this.myCoordinates = new Coordinates(0,0);
-		this.myAngle = new Angle(0);
-		this.myObservers = new ArrayList<>();
+		myCoordinates = new Coordinates(0,0);
+		myOldCoordinates = new Coordinates(myCoordinates);
+		myAngle = new Angle(0);
+		myObservers = new ArrayList<>();
 	}
 	
 	@Override
 	public Angle getAngle() {
-		return new Angle(this.myAngle);
+		return new Angle(myAngle);
 	}
 
 	@Override
 	public Coordinates getCoordinates() {
-		return new Coordinates(this.myCoordinates);
+		return new Coordinates(myCoordinates);
 	}
 	
 	@Override
 	public Coordinates getOldCoordinates() {
-		return new Coordinates(this.myOldCoordinates);
+		return new Coordinates(myOldCoordinates);
 	}
 
 	@Override
-	public void addAngle(Angle a) {
-		this.myAngle.addAngle(a);
-		notifyObservers();
-	}
-
-	@Override
-	public void setAngle(Angle a) {
-		this.myAngle = new Angle(a);
+	public void addDegree(Double d) {
+		myAngle.addAngleValue(d);;
 		notifyObservers();
 	}
 
 	@Override
 	public void addCoordinates(Coordinates c) {
-		this.myOldCoordinates = new Coordinates(this.myCoordinates);
-		this.myCoordinates.addCoordinates(c);
-		notifyObservers();
-	}
-
-	@Override
-	public void setCoordinates(Coordinates c) {
-		this.myOldCoordinates = new Coordinates(this.myCoordinates);
-		this.myCoordinates = c;
+		myOldCoordinates = new Coordinates(myCoordinates);
+		myCoordinates.addCoordinates(c);
 		notifyObservers();
 	}
 
 	@Override
 	public void setHidden(boolean b) {
-		this.isHidden = b;
+		isHidden = b;
 		notifyObservers();
 	}
 
 	@Override
 	public void setActive(boolean b) {
-		this.isActive = b;
+		isActive = b;
 		notifyObservers();
 	}
 
 	@Override
 	public void setPenUp(boolean b) {
-		this.isPenUp = b;
+		isPenUp = b;
 		notifyObservers();
 	}
 
 	@Override
 	public boolean getHidden() {
-		return this.isHidden;
+		return isHidden;
 	}
 
 	@Override
 	public boolean getActive() {
-		return this.isActive;
+		return isActive;
 	}
 
 	@Override
 	public boolean getPenUp() {
-		return this.isPenUp;
+		return isPenUp;
 	}
 
 	private TurtleUpdate createTurtleUpdate(){
@@ -98,19 +85,19 @@ public class TurtleSingle implements Turtle {
 	
 	@Override
 	public void addObserver(Observer o) {
-		this.myObservers.add(o);
+		myObservers.add(o);
 	}
 
 	@Override
 	public void removeObserver(Observer o) {
-		this.myObservers.remove(o);
+		myObservers.remove(o);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for(Observer o : this.myObservers){
+		for(Observer o : myObservers){
 			o.update(createTurtleUpdate());
-			System.out.println(this.myObservers.size());
+			System.out.println(myObservers.size());
 		}
 	}
 	

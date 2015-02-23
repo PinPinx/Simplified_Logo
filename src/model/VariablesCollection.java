@@ -3,9 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.StringProperty;
 import view.Observer;
 import Exceptions.DuplicateVariableException;
+import Exceptions.VariableCreationException;
 import Exceptions.VariableNotFoundException;
+import Exceptions.VariableWrongTypeException;
 
 public class VariablesCollection implements Observable {
 	private List<Variable> myVariableList;
@@ -17,7 +20,7 @@ public class VariablesCollection implements Observable {
 	}
 	
 	public Object getVariableValue(String varName) throws VariableNotFoundException{
-		for(Variable v : this.myVariableList){
+		for(Variable v : myVariableList){
 			if(v.getName().equals(varName)){
 				return v.getValue();
 			}
@@ -25,47 +28,50 @@ public class VariablesCollection implements Observable {
 		throw new VariableNotFoundException();
 	}
 	
-	public void addVariable(Variable v) throws DuplicateVariableException{
-		for(Variable var : this.myVariableList){
-			if(var.getName().equals(v.getName())){
-				throw new DuplicateVariableException();
+	public void addVariable(String varName, String varValue) throws DuplicateVariableException, VariableCreationException{
+		for(Variable var : myVariableList){
+			if(var.getName().equals(varName)){
+				try {
+					var.setValue(varValue);
+					return;
+				} catch (VariableWrongTypeException e) {
+					throw new DuplicateVariableException();
+				}
 			}
 		}
-		this.myVariableList.add(v);
+		Variable newVar = VariableFactory.createVariable(varName, varValue);
+		myVariableList.add(newVar);
 	}
 	
 	public void deleteVariable(String varName) throws VariableNotFoundException{
-		for(Variable v : this.myVariableList){
+		for(Variable v : myVariableList){
 			if(v.getName().equals(varName)){
-				this.myVariableList.remove(v);
+				myVariableList.remove(v);
 				return;
 			}
 		}
 		throw new VariableNotFoundException();
 	}
-
+	
 	@Override
 	public void addObserver(Observer o) {
-		this.myObserverList.add(o);
+		myObserverList.add(o);
 	}
 
 	@Override
 	public void removeObserver(Observer o) {
-		this.myObserverList.remove(o);
+		myObserverList.remove(o);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for(Observer o : this.myObserverList){
-			o.update(getVariablesCollection());
+		ArrayList<StringProperty> variableDisplayProperties = new ArrayList<>();
+		for(Variable v : myVariableList){
+			variableDisplayProperties.add(v.getStringProperty());
+		}
+		for(Observer o : myObserverList){
+			o.update(variableDisplayProperties);
 		}
 	}
 	
-	public List<Variable> getVariablesCollection(){
-		List<Variable> ret = new ArrayList<>();
-		for(Variable v : this.myVariableList){
-			ret.add(v.clone());
-		}
-		return ret;
-	}
 }
