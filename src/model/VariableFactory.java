@@ -1,12 +1,16 @@
 package model;
 
 import Exceptions.VariableCreationException;
+import Exceptions.VariableCreationInvalidValueException;
 import commands.GeneralType;
 import commands.Regex;
 
 public class VariableFactory {
-	public static Variable createVariable(String varName, String varValue) throws VariableCreationException{
-		if(Regex.getInstance().getType(varValue) == GeneralType.CONSTANT){
+	public static Variable createVariable(String varName, String varValue) throws VariableCreationException, VariableCreationInvalidValueException{
+		switch(Regex.getInstance().getType(varValue)){
+		case COMMAND: case COMMENT: case OTHER:
+			return new VariableString(varName, varValue);		
+		case CONSTANT:
 			try{
 				int i = Integer.parseInt(varValue);
 				return new VariableInt(varName, i);
@@ -18,8 +22,9 @@ public class VariableFactory {
 					throw new VariableCreationException();
 				}
 			}
+		case GROUPEND: case GROUPSTART: case LISTEND: case LISTSTART: default:
+			throw new VariableCreationInvalidValueException();
+		
 		}
-		throw new VariableCreationException();
-
 	}
 }
