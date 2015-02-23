@@ -1,12 +1,13 @@
 package view.Components;
 
+import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public abstract class ListWindow implements ViewComponent {
+public abstract class ListWindow extends Group implements ViewComponent {
 	
 	protected BorderPane myPane;
 	protected Label myLabel;
@@ -19,7 +20,8 @@ public abstract class ListWindow implements ViewComponent {
 		width = w;
 		height = h;
 		myPane = new BorderPane();
-		
+		myPane.setPrefSize(width, height);
+		getChildren().add(myPane);
 		addLabel(label);
 		initScrollList();
 	}

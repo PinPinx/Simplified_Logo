@@ -1,13 +1,9 @@
 package view.Components;
 
-import javafx.scene.control.Button;
+public class UserDefinedCommandsWindow extends ListWindow {
 
-
-public class CommandHistoryWindow extends ListWindow {
-
-
-	public CommandHistoryWindow(int w, int h) {
-		super(w, h, "Command History");
+	public UserDefinedCommandsWindow(int w, int h) {
+		super(w, h, "User Defined Commands");
 	}
 
 	@Override
@@ -21,10 +17,5 @@ public class CommandHistoryWindow extends ListWindow {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-
-
-
 
 }
