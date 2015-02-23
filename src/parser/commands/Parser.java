@@ -1,4 +1,4 @@
-package commands;
+package parser.commands;
 
 import java.util.Collections;
 import java.util.Stack;
