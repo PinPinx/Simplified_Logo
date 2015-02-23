@@ -1,8 +1,14 @@
 package view.Components;
 
-import view.Buttons.viewButtonList;
+import javafx.scene.control.Button;
 
-public class CommandHistoryWindow extends viewButtonList{
+
+public class CommandHistoryWindow extends ListWindow {
+
+
+	public CommandHistoryWindow(int w, int h) {
+		super(w, h, "Command History");
+	}
 
 	@Override
 	public void UIEvent() {
@@ -15,6 +21,9 @@ public class CommandHistoryWindow extends viewButtonList{
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+
 
 
 

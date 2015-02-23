@@ -7,6 +7,7 @@ import javafx.beans.property.StringProperty;
 import view.Observer;
 import Exceptions.DuplicateVariableException;
 import Exceptions.VariableCreationException;
+import Exceptions.VariableCreationInvalidValueException;
 import Exceptions.VariableNotFoundException;
 import Exceptions.VariableWrongTypeException;
 
@@ -28,7 +29,7 @@ public class VariablesCollection implements Observable {
 		throw new VariableNotFoundException();
 	}
 	
-	public void addVariable(String varName, String varValue) throws DuplicateVariableException, VariableCreationException{
+	public void addVariable(String varName, String varValue) throws DuplicateVariableException, VariableCreationException, VariableCreationInvalidValueException{
 		for(Variable var : myVariableList){
 			if(var.getName().equals(varName)){
 				try {

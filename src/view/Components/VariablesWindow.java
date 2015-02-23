@@ -5,10 +5,11 @@ import java.util.List;
 import view.Buttons.*;
 import model.Variable;
 
-public class VariablesWindow extends viewButtonList{
-	
-	public VariablesWindow(){
-		setDimensions();
+public class VariablesWindow extends ListWindow {
+
+
+	public VariablesWindow(int w, int h) {
+		super(w, h, "User Defined Variables");
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class VariablesWindow extends viewButtonList{
 			String name = v.getName();
 			String value = (String) v.getValue();
 			variablesButton b = new variablesButton(name, value);
-			addButton(b);
+			//addButton(b);
 		}
 	}
 

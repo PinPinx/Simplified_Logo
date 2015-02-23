@@ -1,9 +1,12 @@
 package view;
 
-import model.Model;
+import java.util.Arrays;
+
+import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
 import view.Components.SLogoMenuBar;
 import view.Components.TurtleWindow;
+import view.Components.UserDefinedCommandsWindow;
 import view.Components.VariablesWindow;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -12,6 +15,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -24,9 +28,14 @@ public class View {
 	private BorderPane myBorderPane;
 	
 	private TurtleWindow myTurtleWindow;
+	private VBox myListWindows;
+	private HBox myUDListWindows;
+	private UserDefinedCommandsWindow myUDCommandsWindow;
+	private VariablesWindow myVariablesWindow;
+	private CommandHistoryWindow myCommandHistWindow;
+	
 	private CommandPort myCommandPort;
 	private SLogoMenuBar myMenuBar;
-	private VariablesWindow myVariablesWindow;
 	private ColorPicker myColorPicker;
 	
 	private static final String TITLE = "SLOGO";
@@ -39,19 +48,18 @@ public class View {
 		myStage.setTitle(TITLE);
 		
 		myBorderPane = new BorderPane();
-		myBorderPane.setBackground(new Background(
-				new BackgroundFill(BACKGROUND_COLOR, null, null)));
+		myBorderPane.setBackground(new Background(new BackgroundFill(BACKGROUND_COLOR, null, null)));
 		myScene = new Scene(myBorderPane, Main.SIZE.width, Main.SIZE.height);
 		myStage.setScene(myScene);
 		
-		
 		addTop();
+		addListWindows();
 		addTurtleWindow();
 		addCommandPortWindow();
-		addVariablesWindow();
 		
 		instance = this;
 	}
+	
 	
 	public static View getInstance(){
 		if(instance == null){
@@ -65,16 +73,36 @@ public class View {
 		VBox top = new VBox();
 		myMenuBar = new SLogoMenuBar(this);
 		initializeColorPicker();
-		
 		top.getChildren().addAll(myMenuBar, myColorPicker);
 		myBorderPane.setTop(top);
 		
 	}
 	
 	
+	private void addListWindows() {
+		initLists();
+		
+		myUDListWindows = new HBox();
+		myUDListWindows.getChildren().addAll(myVariablesWindow, myUDCommandsWindow);
+		
+		myListWindows = new VBox();
+		myListWindows.getChildren().addAll(myUDListWindows, myCommandHistWindow);
+		myBorderPane.setCenter(myListWindows);
+		
+	}
+	
+	
+	private void initLists() {
+		myCommandHistWindow = new CommandHistoryWindow(Main.SIZE.width * 2/5, Main.SIZE.height * 2/5);
+		myUDCommandsWindow = new UserDefinedCommandsWindow(Main.SIZE.width * 1/5, Main.SIZE.height * 2/5);
+		myVariablesWindow = new VariablesWindow(Main.SIZE.width * 1/5, Main.SIZE.height * 2/5);		
+	}
+	
+	
+	
 	private void addTurtleWindow() {
 		//TODO: Dimensions hard coded for now
-		myTurtleWindow = new TurtleWindow(500, 500);
+		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 4/5);
 		myBorderPane.setLeft(myTurtleWindow);
 		BorderPane.setMargin(myTurtleWindow, new Insets(5));
 	}
@@ -87,14 +115,6 @@ public class View {
 		BorderPane.setMargin(myCommandPort, new Insets(5));
 	}
 	
-	
-	private void addVariablesWindow() {
-	    myVariablesWindow = new VariablesWindow();
-	    myBorderPane.setRight(myVariablesWindow);
-	    BorderPane.setMargin(myCommandPort, new Insets(5));
-	}
-	
-	
 	private void initializeColorPicker() {
 		myColorPicker = new ColorPicker();
 		myColorPicker.setStyle("-fx-color-label-visible: false ;");
@@ -104,12 +124,7 @@ public class View {
 	}
 	
 	
-	public void showView() {
-		myStage.show();
-	}
-	
-	
-	public void changeBackgroundColor(Color c) {
+	private void changeBackgroundColor(Color c) {
 		myTurtleWindow.changeBackground(c);
 	}
 	
@@ -120,11 +135,8 @@ public class View {
 	}
 	*/
 	
-	public TurtleWindow getTurtleWindow(){
-		return myTurtleWindow;
-	}
-	public VariablesWindow getVariablesWindow(){
-		return myVariablesWindow;
+	public void showView() {
+		myStage.show();
 	}
 	
 	

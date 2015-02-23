@@ -1,9 +1,10 @@
 package view.Components;
 
-import view.Buttons.viewButtonList;
+public class UserDefinedCommandsWindow extends ListWindow {
 
-public class UDCommandWindow extends viewButtonList{
-
+	public UserDefinedCommandsWindow(int w, int h) {
+		super(w, h, "User Defined Commands");
+	}
 
 	@Override
 	public void UIEvent() {
@@ -16,4 +17,5 @@ public class UDCommandWindow extends viewButtonList{
 		// TODO Auto-generated method stub
 		
 	}
+
 }

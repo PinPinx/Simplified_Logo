@@ -18,13 +18,13 @@ public class CommandHistory implements Observable {
 	}
 	
 	public void addCommand(CommandRoot cr){
-		this.myCommandList.add(cr);
+		myCommandList.add(cr);
 		notifyObservers();
 	}
 	
-	public List<String> getCommandList(){
+	private List<String> getCommandList(){
 		ArrayList<String> ret = new ArrayList<>();
-		for(CommandRoot cr : this.myCommandList){
+		for(CommandRoot cr : myCommandList){
 			ret.add(cr.toString());
 		}
 		return ret;
@@ -32,17 +32,17 @@ public class CommandHistory implements Observable {
 	
 	@Override
 	public void addObserver(Observer o) {
-		this.myObserverList.add(o);
+		myObserverList.add(o);
 	}
 
 	@Override
 	public void removeObserver(Observer o) {
-		this.myObserverList.remove(o);
+		myObserverList.remove(o);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for(Observer o : this.myObserverList){
+		for(Observer o : myObserverList){
 			o.update(getCommandList());
 		}
 	}
