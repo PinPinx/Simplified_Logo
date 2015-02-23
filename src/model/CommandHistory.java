@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import parser.nodes.CommandRoot;
-import commands.Command;
 import view.Observer;
 
 public class CommandHistory implements Observable {
@@ -18,7 +17,7 @@ public class CommandHistory implements Observable {
 	}
 	
 	public void addCommand(CommandRoot cr){
-		myCommandList.add(cr);
+		myCommandList.add(cr)
 		notifyObservers();
 	}
 	

@@ -1,7 +1,7 @@
 package model;
 
+import parser.commands.Parser;
 import Exceptions.CommandNameNotFoundException;
-import commands.Parser;
 
 public class Model {
 	private Parser myParser;

@@ -23,7 +23,6 @@ public class Parser {
 			commandStringStack.push(commandStream[i]);
 		}
 		
-		parsePart(commandStringStack, 0);
 		
 		Command testCommand;
 		if(command.length()>5){
@@ -34,22 +33,5 @@ public class Parser {
 		}
 		root.addCommand(testCommand);
 		return root;
-	}
-	
-	public int parsePart(Stack<String> stack, int index) throws CommandNameNotFoundException{
-		int numArgs;
-		Class<?> cls;
-		try {
-			cls = Class.forName("Forward");
-			numArgs = cls.getConstructors()[0].getParameterCount() - 1;
-		} catch (ClassNotFoundException e) {
-			throw new CommandNameNotFoundException();
-		}	
-		
-		if(numArgs == 0){
-			return 0;
-		}
-		
-		return parsePart(commandStream, index + 1);
 	}
 }
