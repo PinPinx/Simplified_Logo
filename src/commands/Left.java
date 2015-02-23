@@ -14,7 +14,7 @@ public class Left extends PrimitiveCommand {
 
 	@Override
 	public void execute() {
-		this.myState.getTurtle().addAngle(new Angle(this.parameter));
+		this.myState.getTurtle().addDegree(new Angle(this.parameter));
 	}
 
 	

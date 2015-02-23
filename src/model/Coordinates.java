@@ -6,25 +6,29 @@ public class Coordinates {
 	private Point2D myPoint;
 	
 	public Coordinates(double x, double y){
-		this.myPoint = new Point2D(x,y);
+		myPoint = new Point2D(x,y);
 	}
 	public Coordinates(Coordinates c){
-		this.myPoint = new Point2D(c.getX(), c.getY());
+		myPoint = new Point2D(c.getX(), c.getY());
 	}
 	public void addCoordinates(Coordinates p){
-		this.myPoint = new Point2D(myPoint.getX() + p.getX(), myPoint.getY() + p.getY());
+		myPoint = new Point2D(this.myPoint.getX() + p.getX(), this.myPoint.getY() + p.getY());
 	}
 	public void add(double x, double y){
-		this.myPoint = new Point2D(myPoint.getX() + x, myPoint.getY() + y);
+		myPoint = new Point2D(myPoint.getX() + x, myPoint.getY() + y);
 	}
 	public double getX(){
-		return this.myPoint.getX();
+		return myPoint.getX();
 	}
 	public double getY(){
-		return this.myPoint.getY();
+		return myPoint.getY();
 	}
 	public boolean equals(Coordinates c){
 		return this.getX() == c.getX() &&
 				this.getY() == c.getY();
+	}
+	public double distance(Coordinates c){
+		return Math.pow(this.getX() - c.getX(),2) 
+				+ Math.pow(this.getY() - c.getY(),2); 
 	}
 }
