@@ -11,16 +11,27 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import model.Model;
+
 
 public class Regex {
 	String languageFileString;
 	List<Entry<String, Pattern>> generalPatterns = new ArrayList<>();
 	List<Entry<String, Pattern>> commandPatterns = new ArrayList<>();
+	
+	private static Regex instance;
 
-	public Regex(){
+	private Regex(){
 		languageFileString = "resources/languages/English";
 		commandPatterns.addAll(makePatterns(languageFileString));
 		generalPatterns.addAll(makePatterns("resources/languages/Syntax"));
+	}
+	
+	public static Regex getInstance(){
+		if(instance == null){
+			instance = new Regex();
+		}
+		return instance;
 	}
 	
 	private boolean match (String input, Pattern regex) {
@@ -30,7 +41,7 @@ public class Regex {
 	public GeneralType getType(String s){
 		for (Entry<String, Pattern> p : this.generalPatterns) {
 			if (match(s, p.getValue())) {
-				return GeneralType.findType(p.toString());
+				return GeneralType.findType(p.getKey());
 			}
 		}
 		return GeneralType.OTHER;
