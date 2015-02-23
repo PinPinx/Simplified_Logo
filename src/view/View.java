@@ -123,6 +123,9 @@ public class View {
 	public TurtleWindow getTurtleWindow(){
 		return myTurtleWindow;
 	}
+	public VariablesWindow getVariablesWindow(){
+		return myVariablesWindow;
+	}
 	
 	
 	public Stage getStage() {
