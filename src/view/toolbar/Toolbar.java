@@ -1,5 +1,6 @@
-package view.Components;
+package view.toolbar;
 
+import view.Components.TurtleWindow;
 import javafx.scene.Group;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.HBox;
@@ -16,16 +17,15 @@ public class Toolbar extends Group {
 	// once locales are set up
 
 	// items under File
-	public static final String TURTLE_IMAGE = "Change turtle image";
+	public static final String TURTLE_IMAGE = "Turtle image";
 	public static final String TOGGLE_ACTIVE = "Toggle active/inactive";
-	public static final String PEN_COLOR = "Change pen color";
-	public static final String PEN_WIDTH = "Change pen width";
-	public static final String BACKGROUND_COLOR = "Change background color";
+	public static final String PEN_COLOR = "Pen color";
+	public static final String BACKGROUND_COLOR = "Background color";
 
 	public Toolbar() {
 		myToolbar = new HBox();
 		this.getChildren().add(myToolbar);
-
+		
 		addBackgroundColorPicker();
 		addTurtleImageSelector();
 		addPenColorPicker();
@@ -38,21 +38,17 @@ public class Toolbar extends Group {
 		myTurtleWindow = tw;
 	}
 
-	// TODO: add Label
+	
 	private void addBackgroundColorPicker() {
-
-		ColorPicker bgColorPicker = new ColorPicker();
-		bgColorPicker.setStyle("-fx-color-label-visible: false ;");
-		bgColorPicker.setOnAction(event -> {
-			myTurtleWindow.changeBackground(bgColorPicker.getValue());
-		});
-
-		myToolbar.getChildren().add(bgColorPicker);
+		BackgroundColorToolbarItem bgcolor = new BackgroundColorToolbarItem(BACKGROUND_COLOR, myTurtleWindow);
+		myToolbar.getChildren().add(bgcolor);
 	}
+	
 
-	// TODO:
+	
 	private void addPenColorPicker() {
-
+		TurtlePenColorToolbarItem pencolor = new TurtlePenColorToolbarItem(PEN_COLOR, myTurtleWindow);
+		myToolbar.getChildren().add(pencolor);
 	}
 
 	// TODO:

@@ -1,5 +1,6 @@
-package view.Components;
+package view.toolbar;
 
+import view.Components.TurtleWindow;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -16,16 +17,14 @@ public abstract class ToolbarItem extends HBox {
 	
 	protected ToolbarItem(String label, TurtleWindow tw) {
 		myTurtleWindow = tw;
+		myNode = createNode();
 		this.setAlignment(Pos.CENTER);
 		this.setPadding(new Insets(5));
 		this.setBackground(new Background(new BackgroundFill(Color.GREY, null, null)));
 		Label myLabel = new Label(label);
-		this.getChildren().add(myLabel);
+		this.getChildren().addAll(myLabel, myNode);
 	}
 	
-	protected void setNode(Node node) {
-		myNode = node;
-		this.getChildren().add(node);
-	}
+	protected abstract Node createNode();
 
 }

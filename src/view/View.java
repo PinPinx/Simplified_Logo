@@ -3,10 +3,10 @@ package view;
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
 import view.Components.SLogoMenuBar;
-import view.Components.Toolbar;
 import view.Components.TurtleWindow;
 import view.Components.UserDefinedCommandsWindow;
 import view.Components.VariablesWindow;
+import view.toolbar.Toolbar;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
@@ -52,8 +52,8 @@ public class View {
 		myStage.setScene(myScene);
 		
 		// place window items in their place
-		addTopBars();
 		addListWindows();
+		addTopBars();
 		addTurtleWindow();
 		addCommandPortWindow();
 		myToolbar.setTurtleWindow(myTurtleWindow);

@@ -1,7 +1,9 @@
-package view.Components;
+package view.toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import view.Components.TurtleWindow;
 
 public abstract class TurtleSpecificToolbarItem extends ToolbarItem {
 	
