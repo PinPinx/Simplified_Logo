@@ -26,8 +26,9 @@ public class VariablesWindow extends ListWindow {
 	public void update(List<Variable> variableList){
 		for (Variable v : variableList){
 			String name = v.getName();
-			String value = (String) v.getValue();
-			//addButton(b);
+			String value = v.getValue().toString();
+			VariableLabel vl = new VariableLabel(name, value);
+			myList.getChildren().add(vl);
 		}
 	}
 

@@ -6,6 +6,8 @@ import model.Model;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 
 public class CommandPort extends ScrollPane implements ViewComponent {
@@ -21,6 +23,7 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 		myTextField.setPrefHeight(height);
 		myTextField.setPrefWidth(width);
 		myTextField.setText("Enter your command Here");
+		myTextField.setOnKeyPressed(e->runCommand(e));
 		hb.getChildren().addAll(myTextField, myRunButton);
 		this.setContent(hb);
 	}
@@ -35,6 +38,12 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 			e.printStackTrace();
 		}
 		myTextField.clear();
+	}
+	
+	private void runCommand(KeyEvent e){
+		if (e.getCode()==KeyCode.ENTER){
+			runCommand();
+    	}
 	}
 
 	@Override

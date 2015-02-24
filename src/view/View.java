@@ -1,5 +1,10 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Variable;
+import model.VariableInt;
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
 import view.Components.SLogoMenuBar;
