@@ -31,8 +31,6 @@ public class TurtleWindow extends Group implements ViewComponent {
 		
 		addTurtle();
 
-		myTurtles.get(0).setRotate(45);
-
 	}
 	
 
@@ -56,7 +54,7 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 
 	public void addTurtle(double xPos, double yPos) {
-		TurtleImage turtle = new TurtleImage("images/duke.gif");
+		TurtleImage turtle = new TurtleImage("images/duke.gif", xPos, yPos);
 		myTurtles.put(myTurtles.size(), turtle);
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();

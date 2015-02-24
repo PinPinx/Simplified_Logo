@@ -9,8 +9,8 @@ public class TurtleImage extends ImageView{
 	private Image myImage;
 	private final static double default_xPosition = 0.0;
 	private final static double default_yPosition = 0.0;
-	private final static double default_width = 50.0;
-	private final static double default_height = 50.0;
+	private final static double default_width = 30.0;
+	private final static double default_height = 30.0;
 	
 	
 	public TurtleImage(String imagePath){
