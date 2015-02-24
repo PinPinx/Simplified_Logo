@@ -1,5 +1,7 @@
 package view.Components;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -36,9 +38,11 @@ public class TurtleImage extends ImageView{
 		this.setImage(myImage);
 	}
 	
-	public void changeImage(String imagePath){
-		myImage = new Image(getClass().getResource(imagePath).toExternalForm());
+	
+	public void changeImage(File file) {
+		myImage = new Image(file.toURI().toString());
 		this.setImage(myImage);
+		
 	}
 	
 	public void moveTo(double xPos, double yPos){

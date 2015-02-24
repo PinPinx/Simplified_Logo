@@ -13,7 +13,7 @@ public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 	
 	//TODO: Hardcoded to English for now
 	private static final String CHOOSE = "Choose";
-	private String imagePath;
+	private File myFile;
 	
 	protected TurtleImageToolbarItem(String label, Toolbar tb) {
 		super(label, tb);
@@ -22,7 +22,7 @@ public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 
 	@Override
 	public void changeTurtleProperties(int turtleID) {
-		myToolbar.getTurtleWindow().changeTurtleImage(imagePath, turtleID);
+		myToolbar.getTurtleWindow().changeTurtleImage(myFile, turtleID);
 		
 	}
 
@@ -34,9 +34,7 @@ public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.show();
 			
-			File image = makeImageChooser().showOpenDialog(stage);
-			imagePath = image.getAbsolutePath();
-			
+			myFile = makeImageChooser().showOpenDialog(stage);
 			
 			getAndModifyTurtles();
 		});

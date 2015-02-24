@@ -1,5 +1,6 @@
 package view.Components;
 
+import java.io.File;
 import java.util.HashMap;
 
 import model.TurtleUpdate;
@@ -67,9 +68,8 @@ public class TurtleWindow extends Group implements ViewComponent {
 
 	}
 
-	public void changeTurtleImage(String imagePath, int turtleID) {
-		System.out.printf("Changing %d to %s\n", turtleID, imagePath);
-		myTurtles.get(turtleID).changeImage(imagePath);
+	public void changeTurtleImage(File file, int turtleID) {
+		myTurtles.get(turtleID).changeImage(file);
 
 	}
 	
