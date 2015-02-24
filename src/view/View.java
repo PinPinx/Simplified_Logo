@@ -52,9 +52,9 @@ public class View {
 		myStage.setScene(myScene);
 		
 		// place window items in their place
-		addListWindows();
 		addTopBars();
 		addTurtleWindow();
+		addListWindows();
 		addCommandPortWindow();
 		
 		myToolbar.setTurtleWindow(myTurtleWindow);
@@ -128,10 +128,6 @@ public class View {
 	}
 
 
-	public Stage getStage() {
-		return myStage;
-	}
-	
 	public TurtleWindow getTurtleWindow() {
 		return myTurtleWindow;
 	}

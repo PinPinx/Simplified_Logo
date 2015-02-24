@@ -22,13 +22,18 @@ public abstract class ToolbarItem extends HBox {
 	protected Toolbar myToolbar; // where the item is held
 	protected Node myNode;
 	
+	// Graphic properties
+	private static final Color ITEM_COLOR = Color.DARKGREY;
+	private static final int PADDING = 3;
+	private static final int CORNER_RADIUS = 5;
+	
 	protected ToolbarItem(String label, Toolbar container) {
 		myToolbar = container;
 		myNode = createNode();
 		
 		this.setAlignment(Pos.CENTER);
-		this.setPadding(new Insets(3));
-		this.setBackground(new Background(new BackgroundFill(Color.DARKGREY, new CornerRadii(5), null)));
+		this.setPadding(new Insets(PADDING));
+		this.setBackground(new Background(new BackgroundFill(ITEM_COLOR, new CornerRadii(CORNER_RADIUS), null)));
 		
 		Label myLabel = new Label(label);
 		this.getChildren().addAll(myLabel, myNode);

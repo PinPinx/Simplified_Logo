@@ -41,7 +41,9 @@ public class SLogoMenuBar extends MenuBar {
 	
 	public static final String HELP = "Help";
 	
-	private static final Color BACKGROUND_COLOR = Color.GREY;
+	
+	// graphic options
+	private static final Color BAR_COLOR = Color.GREY;
 	
 	
 	
@@ -50,7 +52,7 @@ public class SLogoMenuBar extends MenuBar {
 		super();
 		
 		this.setBackground(new Background(
-				new BackgroundFill(BACKGROUND_COLOR, null, null)));
+				new BackgroundFill(BAR_COLOR, null, null)));
 
 		addMenuList(FILE, makeFileMenu());
 		addMenuList(PREFERENCES, makePreferencesMenu());
