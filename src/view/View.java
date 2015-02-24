@@ -80,7 +80,7 @@ public class View {
 	
 	private void addTopBars() {
 		VBox top = new VBox();
-		myMenuBar = new SLogoMenuBar(this);
+		myMenuBar = new SLogoMenuBar();
 		myToolbar = new Toolbar();
 		top.getChildren().addAll(myMenuBar, myToolbar);
 		myBorderPane.setTop(top);

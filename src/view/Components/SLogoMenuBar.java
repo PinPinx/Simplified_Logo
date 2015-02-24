@@ -25,8 +25,6 @@ import javafx.stage.FileChooser.ExtensionFilter;
  */
 public class SLogoMenuBar extends MenuBar {
 	
-	private View myView;	
-	
 	// TODO: labels temporarily hardcoded to English - will be drawn from reference libraries 
 	// once locales are set up
 	
@@ -50,7 +48,7 @@ public class SLogoMenuBar extends MenuBar {
 	
 	
 	
-	public SLogoMenuBar(View view) {
+	public SLogoMenuBar() {
 		
 		super();
 		

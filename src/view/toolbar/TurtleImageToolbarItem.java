@@ -5,8 +5,6 @@ import java.io.File;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
@@ -30,11 +28,8 @@ public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 	protected Node createNode() {
 		Button choose = new Button(CHOOSE);
 		choose.setOnAction(event -> {
-			Stage stage = new Stage();
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.show();
 			
-			myFile = makeImageChooser().showOpenDialog(stage);
+			myFile = makeImageChooser().showOpenDialog(null);
 			
 			getAndModifyTurtles();
 		});
