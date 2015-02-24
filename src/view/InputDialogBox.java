@@ -2,18 +2,23 @@ package view;
 
 import javafx.scene.control.TextField;
 
+/**
+ * DialogBox that includes a TextField to retrieve user input.
+ * 
+ * @author lien
+ *
+ */
 public class InputDialogBox extends DialogBox {
 	
 	protected TextField myTextField;
 	
-	public InputDialogBox(String message) {
-		super(message);
+	public InputDialogBox(String prompt) {
+		super(prompt);
 	}
 	
 	public String showInputDialog() {
 		myStage.showAndWait();		
 		return myTextField.getText();
-		
 	}
 	
 	@Override
@@ -26,6 +31,5 @@ public class InputDialogBox extends DialogBox {
 		myTextField = new TextField();
 		myPane.setCenter(myTextField);
 	}
-
 	
 }

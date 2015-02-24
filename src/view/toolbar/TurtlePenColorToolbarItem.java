@@ -3,7 +3,12 @@ package view.toolbar;
 import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;import javafx.scene.paint.Color;
 
-
+/**
+ * Toolbar Item to change pen color.
+ * 
+ * @author lien
+ *
+ */
 public class TurtlePenColorToolbarItem extends TurtleSpecificToolbarItem {
 	
 	private Color color;

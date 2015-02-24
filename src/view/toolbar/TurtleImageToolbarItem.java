@@ -7,6 +7,12 @@ import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+/**
+ * Toolbar Item to change turtle image.
+ * 
+ * @author lien
+ *
+ */
 public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 	
 	//TODO: Hardcoded to English for now

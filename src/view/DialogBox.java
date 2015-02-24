@@ -9,6 +9,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Pop-up box to display a message.
+ * 
+ * @author lien
+ *
+ */
 public class DialogBox {
 
 	protected Stage myStage;
@@ -24,8 +30,12 @@ public class DialogBox {
 		createDialogBox();
 		initStage();
 	}
-
+	
+	/**
+	 * Initialize the stage to display the dialog.
+	 */
 	private void initStage() {
+		
 		myStage = new Stage();
 		myStage.initModality(Modality.WINDOW_MODAL);
 
@@ -38,10 +48,10 @@ public class DialogBox {
 		myStage.show();
 	}
 
+	
 	protected void createDialogBox() {
 		addText();
 		addOKButton();
-		setOKAction();
 	}
 
 	
@@ -53,17 +63,14 @@ public class DialogBox {
 	
 	private void addOKButton() {
 		myOKButton = new Button("OK");
-		myPane.setBottom(myOKButton);
-
-	}
-	
-	
-	protected void setOKAction() {
 		myOKButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				myStage.close();
 			}
-		});		
+		});
+		myPane.setBottom(myOKButton);
+
 	}
+
 }
