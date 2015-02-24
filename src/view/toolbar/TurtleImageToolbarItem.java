@@ -49,7 +49,8 @@ public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 		imageChooser.setTitle("Choose Image File");
 		imageChooser.getExtensionFilters().addAll(
 				new ExtensionFilter("JPG Images", "*.jpg"),
-				new ExtensionFilter("PNG Images", "*.png"));
+				new ExtensionFilter("PNG Images", "*.png"),
+				new ExtensionFilter("GIF Images", "*.gif"));
 		return imageChooser;
 	}
 	
