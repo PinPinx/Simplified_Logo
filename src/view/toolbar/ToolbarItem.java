@@ -26,6 +26,7 @@ public abstract class ToolbarItem extends HBox {
 	private static final Color ITEM_COLOR = Color.DARKGREY;
 	private static final int PADDING = 3;
 	private static final int CORNER_RADIUS = 5;
+	private static final int SPACING = 3;
 	
 	protected ToolbarItem(String label, Toolbar container) {
 		myToolbar = container;
@@ -34,6 +35,7 @@ public abstract class ToolbarItem extends HBox {
 		this.setAlignment(Pos.CENTER);
 		this.setPadding(new Insets(PADDING));
 		this.setBackground(new Background(new BackgroundFill(ITEM_COLOR, new CornerRadii(CORNER_RADIUS), null)));
+		this.setSpacing(SPACING);
 		
 		Label myLabel = new Label(label);
 		this.getChildren().addAll(myLabel, myNode);

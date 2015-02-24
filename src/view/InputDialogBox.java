@@ -1,6 +1,8 @@
 package view;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 /**
  * DialogBox that includes a TextField to retrieve user input.
@@ -10,7 +12,8 @@ import javafx.scene.control.TextField;
  */
 public class InputDialogBox extends DialogBox {
 	
-	protected TextField myTextField;
+	private TextField myTextField;
+	private static final int PADDING= 10;
 	
 	public InputDialogBox(String prompt) {
 		super(prompt);
@@ -23,13 +26,14 @@ public class InputDialogBox extends DialogBox {
 	
 	@Override
 	protected void createDialogBox() {
-		super.createDialogBox();
 		addInputField();
+		super.createDialogBox();
 	}
 	
 	private void addInputField() {
 		myTextField = new TextField();
 		myPane.setCenter(myTextField);
+		BorderPane.setMargin(myTextField, new Insets(PADDING));
 	}
 	
 }

@@ -2,6 +2,9 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -22,11 +25,17 @@ public class DialogBox {
 	private String myMessage;
 	protected BorderPane myPane;
 	protected Button myOKButton;
+	
+	// graphics properties
+	private static final int width  = 500;
+	private static final int height = 200;
+	private static final Insets TEXT_INSETS = new Insets(20, 0, 10, 0);
+	private static final Insets BUTTON_INSETS = new Insets(10, 0, 20, 0);
 
 	public DialogBox(String message) {
 		myMessage = message;
 		myPane = new BorderPane();
-		myPane.setPrefSize(500, 200);
+		myPane.setPrefSize(width, height);
 		createDialogBox();
 		initStage();
 	}
@@ -52,12 +61,16 @@ public class DialogBox {
 	protected void createDialogBox() {
 		addText();
 		addOKButton();
+		for (Node node: myPane.getChildren()) {
+			BorderPane.setAlignment(node,Pos.CENTER);
+		}
 	}
 
 	
 	private void addText() {
 		Text text = new Text(myMessage);
 		myPane.setTop(text);
+		BorderPane.setMargin(text, TEXT_INSETS);
 	}
 
 	
@@ -70,6 +83,8 @@ public class DialogBox {
 			}
 		});
 		myPane.setBottom(myOKButton);
+		BorderPane.setMargin(myOKButton, BUTTON_INSETS);
+		
 
 	}
 

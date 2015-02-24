@@ -43,7 +43,7 @@ public class SLogoMenuBar extends MenuBar {
 	
 	
 	// graphic options
-	private static final Color BAR_COLOR = Color.GREY;
+	private static final Color BAR_COLOR = Color.BLACK;
 	
 	
 	
