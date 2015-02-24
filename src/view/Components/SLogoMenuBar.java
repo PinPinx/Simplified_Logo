@@ -46,7 +46,7 @@ public class SLogoMenuBar extends MenuBar {
 	
 	public static final String HELP = "Help";
 	
-	private static final Color BACKGROUND_COLOR = Color.DARKGREY;
+	private static final Color BACKGROUND_COLOR = Color.GREY;
 	
 	
 	

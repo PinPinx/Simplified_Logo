@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
@@ -19,7 +20,7 @@ public abstract class ToolbarItem extends HBox {
 		myNode = createNode();
 		this.setAlignment(Pos.CENTER);
 		this.setPadding(new Insets(5));
-		this.setBackground(new Background(new BackgroundFill(Color.GREY, null, null)));
+		this.setBackground(new Background(new BackgroundFill(Color.DARKGREY, new CornerRadii(5), null)));
 		Label myLabel = new Label(label);
 		this.getChildren().addAll(myLabel, myNode);
 	}
