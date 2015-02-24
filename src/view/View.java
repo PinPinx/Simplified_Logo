@@ -116,12 +116,12 @@ public class View {
 	}
 
 	
-	/*
-	private void showMessage(String message) {
-		MessageBox messageBox = new MessageBox(message);
-
+	
+	public void showDialog(String message) {
+		DialogBox dialog = new DialogBox(message);
+		dialog.show();
 	}
-	 */
+	 
 
 	public void showView() {
 		myStage.show();
