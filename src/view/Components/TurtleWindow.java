@@ -58,7 +58,7 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 
 	public void addTurtle(double xPos, double yPos) {
-		TurtleImage turtle = new TurtleImage("images/duke.gif", xPos, yPos);
+		TurtleImage turtle = new TurtleImage();
 		turtle.moveTo(xPos, yPos);
 		myTurtles.put(myTurtles.size(), turtle);
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());

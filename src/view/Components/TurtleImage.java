@@ -11,7 +11,12 @@ public class TurtleImage extends ImageView{
 	private final static double default_yPosition = 0.0;
 	private final static double default_width = 30.0;
 	private final static double default_height = 30.0;
+	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
 	
+	
+	public TurtleImage() {
+		this(DEFAULT_IMAGEPATH, default_xPosition, default_yPosition, default_width, default_height);
+	}
 	
 	public TurtleImage(String imagePath){
 		this(imagePath, default_xPosition, default_yPosition, default_width, default_height);
@@ -22,7 +27,7 @@ public class TurtleImage extends ImageView{
 	}
 	
 	public TurtleImage(String imagePath, double xPos, double yPos, double width, double height){
-		myImage = new Image(imagePath);
+		myImage = new Image(getClass().getResourceAsStream(imagePath));
 		this.setImage(myImage);
 		this.setTranslateX(xPos);
 		this.setTranslateY(yPos);
@@ -38,11 +43,14 @@ public class TurtleImage extends ImageView{
 		this.setImage(myImage);
 	}
 	
+	public void changeImage(String imagePath) {
+		myImage = new Image(imagePath);
+	}
+	
 	
 	public void changeImage(File file) {
 		myImage = new Image(file.toURI().toString());
 		this.setImage(myImage);
-		
 	}
 	
 	public void moveTo(double xPos, double yPos){
