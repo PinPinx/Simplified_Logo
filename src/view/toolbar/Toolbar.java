@@ -29,7 +29,7 @@ public class Toolbar extends Group {
 		addBackgroundColorPicker();
 		addTurtleImageSelector();
 		addPenColorPicker();
-		addPenWidthEditor();
+		
 
 	}
 	
@@ -37,37 +37,30 @@ public class Toolbar extends Group {
 	public void setTurtleWindow(TurtleWindow tw) {
 		myTurtleWindow = tw;
 	}
+	
+	public TurtleWindow getTurtleWindow() {
+		return myTurtleWindow;
+	}
 
 	
 	private void addBackgroundColorPicker() {
-		BackgroundColorToolbarItem bgcolor = new BackgroundColorToolbarItem(BACKGROUND_COLOR, myTurtleWindow);
+		BackgroundColorToolbarItem bgcolor = new BackgroundColorToolbarItem(BACKGROUND_COLOR, this);
 		myToolbar.getChildren().add(bgcolor);
 	}
 	
 
 	
 	private void addPenColorPicker() {
-		TurtlePenColorToolbarItem pencolor = new TurtlePenColorToolbarItem(PEN_COLOR, myTurtleWindow);
+		TurtlePenColorToolbarItem pencolor = new TurtlePenColorToolbarItem(PEN_COLOR, this);
 		myToolbar.getChildren().add(pencolor);
 	}
 
-	// TODO:
-	private void addPenWidthEditor() {
-
-	}
 
 	private void addTurtleImageSelector() {
 		// TODO Auto-generated method stub
 
 	}
 
-	private FileChooser makeImageChooser() {
-		FileChooser imageChooser = new FileChooser();
-		imageChooser.setTitle("Choose Image File");
-		imageChooser.getExtensionFilters().addAll(
-				new ExtensionFilter("JPG Images", "*.jpg"),
-				new ExtensionFilter("PNG Images", "*.png"));
-		return imageChooser;
-	}
+
 
 }

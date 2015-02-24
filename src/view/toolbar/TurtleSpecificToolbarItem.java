@@ -3,12 +3,11 @@ package view.toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.Components.TurtleWindow;
 
 public abstract class TurtleSpecificToolbarItem extends ToolbarItem {
 	
-	protected TurtleSpecificToolbarItem(String label, TurtleWindow tw) {
-		super(label, tw);
+	protected TurtleSpecificToolbarItem(String label, Toolbar tb) {
+		super(label, tb);
 		myNode.setOnMouseClicked(event -> {
 			List<Integer >turtleIDs = getTurtleIDs();
 			for (int turtleID: turtleIDs) {

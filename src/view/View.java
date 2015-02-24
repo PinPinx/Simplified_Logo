@@ -56,6 +56,7 @@ public class View {
 		addTopBars();
 		addTurtleWindow();
 		addCommandPortWindow();
+		
 		myToolbar.setTurtleWindow(myTurtleWindow);
 		
 		instance = this;

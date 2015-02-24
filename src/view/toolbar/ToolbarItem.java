@@ -1,6 +1,5 @@
 package view.toolbar;
 
-import view.Components.TurtleWindow;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -12,11 +11,11 @@ import javafx.scene.paint.Color;
 
 public abstract class ToolbarItem extends HBox {
 	
-	protected TurtleWindow myTurtleWindow;
+	protected Toolbar myToolbar;
 	protected Node myNode;
 	
-	protected ToolbarItem(String label, TurtleWindow tw) {
-		myTurtleWindow = tw;
+	protected ToolbarItem(String label, Toolbar container) {
+		myToolbar = container;
 		myNode = createNode();
 		this.setAlignment(Pos.CENTER);
 		this.setPadding(new Insets(5));

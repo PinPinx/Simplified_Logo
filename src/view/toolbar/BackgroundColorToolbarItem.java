@@ -1,13 +1,12 @@
 package view.toolbar;
 
-import view.Components.TurtleWindow;
 import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
 
 public class BackgroundColorToolbarItem extends ToolbarItem {
 
-	protected BackgroundColorToolbarItem(String label, TurtleWindow tw) {
-		super(label, tw);
+	protected BackgroundColorToolbarItem(String label, Toolbar tb) {
+		super(label, tb);
 	}
 
 	@Override
@@ -16,7 +15,7 @@ public class BackgroundColorToolbarItem extends ToolbarItem {
 		ColorPicker bgColorPicker = new ColorPicker();
 		bgColorPicker.setStyle("-fx-color-label-visible: false ;");
 		bgColorPicker.setOnAction(event -> {
-			myTurtleWindow.changeBackground(bgColorPicker.getValue());
+			myToolbar.getTurtleWindow().changeBackground(bgColorPicker.getValue());
 		});
 		
 		return bgColorPicker;

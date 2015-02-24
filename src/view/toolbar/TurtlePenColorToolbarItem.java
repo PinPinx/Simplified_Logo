@@ -1,18 +1,17 @@
 package view.toolbar;
 
-import view.Components.TurtleWindow;
 import javafx.scene.Node;
 import javafx.scene.control.ColorPicker;
 
 public class TurtlePenColorToolbarItem extends TurtleSpecificToolbarItem {
 
-	protected TurtlePenColorToolbarItem(String label, TurtleWindow tw) {
-		super(label, tw);
+	protected TurtlePenColorToolbarItem(String label, Toolbar tb) {
+		super(label, tb);
 	}
 
 	@Override
 	public void changeTurtleProperties(int turtleID) {
-		myTurtleWindow.changePenColor(((ColorPicker) myNode).getValue(), turtleID);
+		myToolbar.getTurtleWindow().changePenColor(((ColorPicker) myNode).getValue(), turtleID);
 		
 	}
 
