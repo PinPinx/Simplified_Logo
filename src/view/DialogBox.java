@@ -20,6 +20,7 @@ public class DialogBox {
 	public DialogBox(String message) {
 		myMessage = message;
 		myPane = new BorderPane();
+		myPane.setPrefSize(500, 200);
 		createDialogBox();
 		initStage();
 	}

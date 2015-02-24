@@ -28,7 +28,6 @@ public class Toolbar extends Group {
 		TurtleImageToolbarItem turtleimg   = new TurtleImageToolbarItem(TURTLE_IMAGE, this);
 		
 		myToolbar.getChildren().addAll(bgcolor, pencolor, turtleimg);
-		
 
 	}
 	
