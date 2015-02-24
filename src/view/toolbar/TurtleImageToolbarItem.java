@@ -1,6 +1,7 @@
 package view.toolbar;
 
 import java.io.File;
+import java.util.Arrays;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -48,9 +49,7 @@ public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 		FileChooser imageChooser = new FileChooser();
 		imageChooser.setTitle("Choose Image File");
 		imageChooser.getExtensionFilters().addAll(
-				new ExtensionFilter("JPG Images", "*.jpg"),
-				new ExtensionFilter("PNG Images", "*.png"),
-				new ExtensionFilter("GIF Images", "*.gif"));
+				new ExtensionFilter("Images", Arrays.asList("*.jpg", "*.png", "*.gif")));
 		return imageChooser;
 	}
 	

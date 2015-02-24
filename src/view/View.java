@@ -1,10 +1,6 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import model.Variable;
-import model.VariableInt;
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
 import view.Components.SLogoMenuBar;
@@ -123,7 +119,7 @@ public class View {
 	
 	
 	public void showDialog(String message) {
-		DialogBox dialog = new DialogBox(message);
+		DialogBox dialog = new MessageDialogBox(message);
 		dialog.show();
 	}
 	 

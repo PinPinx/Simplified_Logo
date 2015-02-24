@@ -1,8 +1,5 @@
 package view.Components;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,21 +20,20 @@ import javafx.scene.paint.Color;
 public class SLogoMenuBar extends MenuBar {
 	
 	// TODO: labels temporarily hardcoded to English - will be drawn from reference libraries 
-	// once locales are set up
+	// once Locales are set up
 	
 	// items under File
 	public static final String FILE = "File";
 	public static final String SAVE_WORKSPACE = "Save workspace";
 	public static final String LOAD_WORKSPACE = "Load workspace";
 	
-	// items under Preferences
-	public static final String PREFERENCES = "Preferences";
-	public static final String LANGUAGE = "Language";
-	
 	// items under Edit
 	public static final String EDIT = "Edit";
 	public static final String UNDO = "Undo";
 	public static final String REDO = "Redo";
+	
+	// items under Settings
+	public static final String SETTINGS = "Settings";
 	
 	public static final String HELP = "Help";
 	
@@ -53,10 +49,11 @@ public class SLogoMenuBar extends MenuBar {
 		
 		this.setBackground(new Background(
 				new BackgroundFill(BAR_COLOR, null, null)));
-
-		addMenuList(FILE, makeFileMenu());
-		addMenuList(PREFERENCES, makePreferencesMenu());
-		addMenuList(EDIT, makeEditMenu());
+		this.setHover(true);
+		
+		makeFileMenu();
+		makeEditMenu();
+		makeSettingsMenu();
 		//addMenuList(HELP, makeHelpMenu());
 		
 	}
@@ -69,43 +66,37 @@ public class SLogoMenuBar extends MenuBar {
 	}
 	
 	
-	private void addMenuList(String label, List<MenuItem> itemsList) {
-		Menu menuList = new Menu(label);
-		menuList.getItems().addAll(itemsList);
-		getMenus().add(menuList);
+	private void makeFileMenu() {
+		Menu file = new Menu(FILE);
+		
+		//TODO: add action
+		MenuItem save = makeMenuItem(SAVE_WORKSPACE, null);
+		MenuItem load = makeMenuItem(LOAD_WORKSPACE, null);
+		
+		file.getItems().addAll(save, load);
+		this.getMenus().add(file);
 	}
 	
 	
-	private List<MenuItem> makePreferencesMenu() {
-		ArrayList<MenuItem> preferences = new ArrayList<MenuItem>();
+	private void makeEditMenu() {
+		Menu edit = new Menu(EDIT);
 		
-		//MenuItem myLanguage 	 = makeMenuItem(LANGUAGE, event -> );
-		//preferences.addAll(Arrays.asList(myTurtleImage));
-		return preferences;
+		//TODO: add action
+		MenuItem undo = makeMenuItem(UNDO, null);
+		MenuItem redo = makeMenuItem(REDO, null);
+		
+		edit.getItems().addAll(undo, redo);
+		this.getMenus().add(edit);
 	}
 	
+	private void makeSettingsMenu() {
+		Menu settings = new Menu(SETTINGS);
 	
-	private List<MenuItem> makeFileMenu() {
-		ArrayList<MenuItem> file = new ArrayList<MenuItem>();
 		
-		//TODO
-		MenuItem mySave = makeMenuItem(SAVE_WORKSPACE, null);
-		MenuItem myLoad = makeMenuItem(LOAD_WORKSPACE, null);
-		
-		file.addAll(Arrays.asList(mySave, myLoad));
-		return file;
+		//settings.getItems().addAll(save, load);
+		this.getMenus().add(settings);
 	}
-	
-	
-	private List<MenuItem> makeEditMenu() {
-		ArrayList<MenuItem> edit = new ArrayList<MenuItem>();
-		
-		//TODO
-		MenuItem myUndo = makeMenuItem(UNDO, null);
-		MenuItem myRedo = makeMenuItem(REDO, null);
-		
-		edit.addAll(Arrays.asList(myUndo, myRedo));
-		return edit;
-	}
+
+
 
 }
