@@ -6,7 +6,6 @@ A development environment that helps users write SLogo programs.
 
 ##Not done:  
 * allow users to choose the language SLogo commands are written in 
-* access an HTML formatted help page **doing**
 * visually display the results of the turtle executing commands **incomplete**
 * show commands previously run in the environment  **box already set up** 
 * show variables currently available in the environment (even better, make their values directly clickable to edit) **box already set up**
@@ -18,4 +17,5 @@ A development environment that helps users write SLogo programs.
 * choose an image to use for the turtle
 * specify a color to use for the pen
 * enter commands to the turtle interactively
+* access an HTML formatted help page
 

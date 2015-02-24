@@ -21,6 +21,8 @@ public class DialogBox {
 	protected Scene myScene;
 	protected BorderPane myPane;
 	protected String myTitle;
+	
+	private static final String OKAY = "OK";
 
 
 	public DialogBox() {
@@ -48,7 +50,7 @@ public class DialogBox {
 	}
 	
 	private void addOKButton() {
-		Button okButton = new Button("OK");
+		Button okButton = new Button(OKAY);
 		okButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

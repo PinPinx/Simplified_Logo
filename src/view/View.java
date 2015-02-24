@@ -24,18 +24,20 @@ public class View {
 	private Stage myStage;
 	private Scene myScene;
 	private BorderPane myBorderPane;
-
-	private TurtleWindow myTurtleWindow;
+	
+	private SLogoMenuBar myMenuBar;
 	private Toolbar myToolbar;
-	private VBox myListWindows;
-	private HBox myUDListWindows;
+	
+	private TurtleWindow myTurtleWindow;
+	private CommandPort myCommandPort;
+
 	private UserDefinedCommandsWindow myUDCommandsWindow;
 	private VariablesWindow myVariablesWindow;
 	private CommandHistoryWindow myCommandHistWindow;
+	private VBox myListWindows;
+	private HBox myUDListWindows;
 
-	private CommandPort myCommandPort;
-	private SLogoMenuBar myMenuBar;
-
+	private HelpDialogBox myHelpBox;
 	
 	private static final String TITLE = "SLOGO";
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
@@ -57,6 +59,7 @@ public class View {
 		addTurtleWindow();
 		addListWindows();
 		addCommandPortWindow();
+		generateHelpPage();
 		
 		myToolbar.setTurtleWindow(myTurtleWindow);
 		
@@ -65,7 +68,7 @@ public class View {
 	}
 
 
-	
+
 	private void addTurtleWindow() {
 		//TODO: Dimensions hard coded for now
 		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 4/5);
@@ -81,7 +84,7 @@ public class View {
 	
 	private void addTopBars() {
 		VBox top = new VBox();
-		myMenuBar = new SLogoMenuBar();
+		myMenuBar = new SLogoMenuBar(this);
 		myToolbar = new Toolbar();
 		top.getChildren().addAll(myMenuBar, myToolbar);
 		myBorderPane.setTop(top);
@@ -116,7 +119,14 @@ public class View {
 		BorderPane.setMargin(myCommandPort, new Insets(5));
 	}
 
+	private void generateHelpPage() {
+		myHelpBox = new HelpDialogBox();
+		
+	}
 	
+	public void showHelp() {
+		myHelpBox.show();
+	}
 	
 	public void showDialog(String message) {
 		DialogBox dialog = new MessageDialogBox(message);

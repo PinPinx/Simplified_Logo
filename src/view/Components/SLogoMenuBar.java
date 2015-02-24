@@ -1,6 +1,7 @@
 package view.Components;
 
 
+import view.View;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -19,6 +20,8 @@ import javafx.scene.paint.Color;
  */
 public class SLogoMenuBar extends MenuBar {
 	
+	private View myView;
+	
 	// TODO: labels temporarily hardcoded to English - will be drawn from reference libraries 
 	// once Locales are set up
 	
@@ -35,7 +38,10 @@ public class SLogoMenuBar extends MenuBar {
 	// items under Settings
 	public static final String SETTINGS = "Settings";
 	
+	// items under HELP
 	public static final String HELP = "Help";
+	public static final String OPEN_HELP = "Open Help";
+	public static final String ABOUT = "About";
 	
 	
 	// graphic options
@@ -43,10 +49,10 @@ public class SLogoMenuBar extends MenuBar {
 	
 	
 	
-	public SLogoMenuBar() {
+	public SLogoMenuBar(View view) {
 		
 		super();
-		
+		myView = view;
 		this.setBackground(new Background(
 				new BackgroundFill(BAR_COLOR, null, null)));
 		this.setHover(true);
@@ -54,7 +60,7 @@ public class SLogoMenuBar extends MenuBar {
 		makeFileMenu();
 		makeEditMenu();
 		makeSettingsMenu();
-		//addMenuList(HELP, makeHelpMenu());
+		makeHelpMenu();
 		
 	}
 	
@@ -91,12 +97,20 @@ public class SLogoMenuBar extends MenuBar {
 	
 	private void makeSettingsMenu() {
 		Menu settings = new Menu(SETTINGS);
-	
-		
-		//settings.getItems().addAll(save, load);
 		this.getMenus().add(settings);
 	}
 
+	private void makeHelpMenu() {
+		Menu help = new Menu(HELP);
+		
+		MenuItem openHelp = makeMenuItem(OPEN_HELP, event -> {myView.showHelp();});
+		
+		//TODO: add action		
+		MenuItem about = makeMenuItem(ABOUT, null);
+		
+		help.getItems().addAll(openHelp, about);
+		this.getMenus().add(help);
+	}
 
 
 }
