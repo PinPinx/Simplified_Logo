@@ -19,11 +19,15 @@ public class TurtleWindow extends Group implements ViewComponent {
 
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
+	private double myWidth;
+	private double myHeight;
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
 
 	public TurtleWindow(double width, double height) {
-
+		
+		myWidth = width;
+		myHeight = height;
 		mainCanvas = new Canvas(width, height);
 		mainGC = mainCanvas.getGraphicsContext2D();
 		
@@ -50,11 +54,12 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 
 	public void addTurtle() {
-		addTurtle(250, 250);
+		addTurtle(myWidth/2, myHeight/2);
 	}
 
 	public void addTurtle(double xPos, double yPos) {
 		TurtleImage turtle = new TurtleImage("images/duke.gif", xPos, yPos);
+		turtle.moveTo(xPos, yPos);
 		myTurtles.put(myTurtles.size(), turtle);
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import view.View;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -13,8 +12,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 
 
 /**
@@ -44,7 +41,9 @@ public class SLogoMenuBar extends MenuBar {
 	
 	public static final String HELP = "Help";
 	
-	private static final Color BACKGROUND_COLOR = Color.GREY;
+	
+	// graphic options
+	private static final Color BAR_COLOR = Color.BLACK;
 	
 	
 	
@@ -53,7 +52,7 @@ public class SLogoMenuBar extends MenuBar {
 		super();
 		
 		this.setBackground(new Background(
-				new BackgroundFill(BACKGROUND_COLOR, null, null)));
+				new BackgroundFill(BAR_COLOR, null, null)));
 
 		addMenuList(FILE, makeFileMenu());
 		addMenuList(PREFERENCES, makePreferencesMenu());

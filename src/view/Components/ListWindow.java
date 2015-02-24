@@ -7,6 +7,12 @@ import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Generic window to display boxes, with a scroll bar as needed.
+ * 
+ * @author lien
+ *
+ */
 public abstract class ListWindow extends Group implements ViewComponent {
 	
 	protected BorderPane myPane;

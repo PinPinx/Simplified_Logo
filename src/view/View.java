@@ -57,9 +57,9 @@ public class View {
 		myStage.setScene(myScene);
 		
 		// place window items in their place
-		addListWindows();
 		addTopBars();
 		addTurtleWindow();
+		addListWindows();
 		addCommandPortWindow();
 		
 		myToolbar.setTurtleWindow(myTurtleWindow);
@@ -72,7 +72,7 @@ public class View {
 	
 	private void addTurtleWindow() {
 		//TODO: Dimensions hard coded for now
-		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 3/5);
+		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 4/5);
 		myBorderPane.setLeft(myTurtleWindow);
 		BorderPane.setMargin(myTurtleWindow, new Insets(5));
 	}
@@ -133,10 +133,6 @@ public class View {
 	}
 
 
-	public Stage getStage() {
-		return myStage;
-	}
-	
 	public TurtleWindow getTurtleWindow() {
 		return myTurtleWindow;
 	}
