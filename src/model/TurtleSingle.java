@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.Observer;
-import view.TurtleImage;
 
 public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
