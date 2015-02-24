@@ -1,25 +1,47 @@
 package view.toolbar;
 
+import java.io.File;
+
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
-
+	
+	//TODO: Hardcoded to English for now
+	private static final String CHOOSE = "Choose";
+	private String imagePath;
+	
 	protected TurtleImageToolbarItem(String label, Toolbar tb) {
 		super(label, tb);
 	}
 
-	@Override
-	protected Node createNode() {
-		
-		return null;
-	}
-	
+
 	@Override
 	public void changeTurtleProperties(int turtleID) {
-		// TODO Auto-generated method stub
+		myToolbar.getTurtleWindow().changeTurtleImage(imagePath, turtleID);
 		
+	}
+
+	@Override
+	protected Node createNode() {
+		Button choose = new Button(CHOOSE);
+		choose.setOnAction(event -> {
+			Stage stage = new Stage();
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.show();
+			
+			File image = makeImageChooser().showOpenDialog(stage);
+			imagePath = image.getAbsolutePath();
+			
+			
+			getAndModifyTurtles();
+		});
+		
+		return choose;
 	}
 
 

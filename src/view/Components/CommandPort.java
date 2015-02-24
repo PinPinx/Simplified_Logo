@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import view.*;
 
 public class CommandPort extends ScrollPane implements ViewComponent {
 	private TextField myTextField;
@@ -15,7 +14,7 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 	
 	
 	public CommandPort(double width, double height){
-		HBox hb = new HBox();
+		HBox hb = new HBox(5);
 		myRunButton = new Button("Run");
 		myRunButton.setOnAction(e->runCommand());
 		myTextField = new TextField ();

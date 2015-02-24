@@ -2,10 +2,7 @@ package view.toolbar;
 
 import view.Components.TurtleWindow;
 import javafx.scene.Group;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.layout.HBox;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Toolbar extends Group {
 
@@ -23,12 +20,14 @@ public class Toolbar extends Group {
 	public static final String BACKGROUND_COLOR = "Background color";
 
 	public Toolbar() {
-		myToolbar = new HBox();
+		myToolbar = new HBox(2);
 		this.getChildren().add(myToolbar);
 		
-		addBackgroundColorPicker();
-		addTurtleImageSelector();
-		addPenColorPicker();
+		BackgroundColorToolbarItem bgcolor = new BackgroundColorToolbarItem(BACKGROUND_COLOR, this);
+		TurtlePenColorToolbarItem pencolor = new TurtlePenColorToolbarItem(PEN_COLOR, this);
+		TurtleImageToolbarItem turtleimg   = new TurtleImageToolbarItem(TURTLE_IMAGE, this);
+		
+		myToolbar.getChildren().addAll(bgcolor, pencolor, turtleimg);
 		
 
 	}
@@ -41,26 +40,6 @@ public class Toolbar extends Group {
 	public TurtleWindow getTurtleWindow() {
 		return myTurtleWindow;
 	}
-
-	
-	private void addBackgroundColorPicker() {
-		BackgroundColorToolbarItem bgcolor = new BackgroundColorToolbarItem(BACKGROUND_COLOR, this);
-		myToolbar.getChildren().add(bgcolor);
-	}
-	
-
-	
-	private void addPenColorPicker() {
-		TurtlePenColorToolbarItem pencolor = new TurtlePenColorToolbarItem(PEN_COLOR, this);
-		myToolbar.getChildren().add(pencolor);
-	}
-
-
-	private void addTurtleImageSelector() {
-		// TODO Auto-generated method stub
-
-	}
-
 
 
 }

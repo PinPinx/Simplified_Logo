@@ -2,7 +2,6 @@ package view.Components;
 
 import java.util.List;
 
-import view.Buttons.*;
 import model.Variable;
 
 public class VariablesWindow extends ListWindow {
@@ -28,7 +27,6 @@ public class VariablesWindow extends ListWindow {
 		for (Variable v : variableList){
 			String name = v.getName();
 			String value = (String) v.getValue();
-			variablesButton b = new variablesButton(name, value);
 			//addButton(b);
 		}
 	}

@@ -27,11 +27,7 @@ public class TurtleWindow extends Group implements ViewComponent {
 		myTurtles.get(0).setRotate(45);
 
 	}
-
-	@Override
-	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
-	}
+	
 
 	public void update(TurtleUpdate tu) {
 		TurtleImage ti = myTurtles.get(0);
@@ -72,8 +68,15 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 
 	public void changeTurtleImage(String imagePath, int turtleID) {
+		System.out.printf("Changing %d to %s\n", turtleID, imagePath);
 		myTurtles.get(turtleID).changeImage(imagePath);
 
+	}
+	
+	
+	@Override
+	public void update(Object updateObject) {
+		// TODO Auto-generated method stub
 	}
 
 	@Override
