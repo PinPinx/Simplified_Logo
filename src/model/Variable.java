@@ -30,8 +30,8 @@ public abstract class Variable {
 	protected StringProperty getStringProperty() {
 		return myDisplayProperty;
 	}
-	
 	protected StringProperty getNameProperty(){
 		return myNameProperty;
 	}
+
 }

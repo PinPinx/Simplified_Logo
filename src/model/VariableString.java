@@ -22,7 +22,7 @@ public class VariableString extends Variable {
 
 	@Override
 	public Variable clone() {
-		return new VariableString(this.getName(), this.myProperty.get());
+		return new VariableString(this.getNameProperty().getValue(), this.myProperty.get());
 	}
 
 	@Override

@@ -14,7 +14,6 @@ public class VariableDouble extends Variable {
 		super(name);
 		this.myProperty = new SimpleDoubleProperty(value);
 		this.myDisplayProperty = new SimpleStringProperty();
-		this.myNameProperty = new SimpleStringProperty(name);
 		myDisplayProperty.bindBidirectional(myProperty, new NumberStringConverter());
 	}
 
@@ -25,7 +24,7 @@ public class VariableDouble extends Variable {
 
 	@Override
 	public Variable clone() {
-		return new VariableDouble(this.getName(), this.myProperty.get());
+		return new VariableDouble(this.getNameProperty().getValue(), this.myProperty.get());
 	}
 
 	@Override
