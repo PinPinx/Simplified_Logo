@@ -31,7 +31,7 @@ public class VariablesCollection implements Observable {
 			addVariable(varName, "0");
 		} catch (VariableCreationException
 				| VariableCreationInvalidValueException e) {throw new VariableNotFoundException();}//not possible
-
+		
 		return getVariableValue(varName);
 		
 	}

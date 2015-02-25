@@ -9,16 +9,22 @@ import view.Observer;
 
 public class CommandHistory implements Observable {
 	private List<CommandRoot> myCommandList;
+	private List<CommandRoot> myUDCommands;
 	private List<Observer> myObserverList;
 
 	public CommandHistory() {
 		this.myCommandList = new LinkedList<>();
+		this.myUDCommands = new ArrayList<>();
 		this.myObserverList = new ArrayList<>();
 	}
 
 	public void addCommand(CommandRoot cr) {
 		myCommandList.add(cr);
 		notifyObservers();
+	}
+	
+	public void addUDCommand(To udCommand){
+		myUDCommands.add()
 	}
 
 	private List<String> getCommandList() {
