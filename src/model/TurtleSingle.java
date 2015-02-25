@@ -96,6 +96,7 @@ public class TurtleSingle implements Turtle {
 	@Override
 	public void notifyObservers() {
 		for(Observer o : myObservers){
+			System.out.println("I notify el view: " + myObservers.size());
 			o.update(createTurtleUpdate());
 			System.out.println(myObservers.size());
 		}

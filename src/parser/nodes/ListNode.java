@@ -28,4 +28,8 @@ public class ListNode extends SyntaxNode {
 		}
 		return myList.get(myList.size()-1).execute(myState);
 	}
+	
+	public int getSize(){
+		return myList.size();
+	}
 }

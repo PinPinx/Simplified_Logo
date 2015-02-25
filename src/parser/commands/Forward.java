@@ -19,9 +19,8 @@ public class Forward extends SimpleTurtleCommand{
 		double distance = (double) referenceNode.execute(myState);
 		Coordinates displacement = angleToCoordinates(myState.getTurtle().getAngle(), distance);
 		myState.getTurtle().addCoordinates(displacement);
+		System.out.println("Distance moved: " + distance);
 		return distance;
 	}
-
-	
 	
 }
