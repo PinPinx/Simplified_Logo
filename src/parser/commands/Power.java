@@ -1,4 +1,4 @@
-package parser.math;
+package parser.commands;
 
 import java.util.Stack;
 

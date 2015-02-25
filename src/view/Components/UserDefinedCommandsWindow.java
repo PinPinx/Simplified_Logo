@@ -18,4 +18,10 @@ public class UserDefinedCommandsWindow extends ListWindow {
 		
 	}
 
+	@Override
+	public void update(Object updateObject1, Object updateObject2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -1,4 +1,4 @@
-package parser.bool;
+package parser.commands;
 
 import java.util.Stack;
 
@@ -7,15 +7,18 @@ import Exceptions.BadArgumentException;
 import parser.nodes.BinaryNode;
 import parser.nodes.SyntaxNode;
 
-public class Equal extends BinaryNode{
+public class If extends BinaryNode {
 
-	public Equal(Stack<SyntaxNode> input) throws BadArgumentException {
+	public If(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 	}
 
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		return nodeOne.execute(myState) == nodeTwo.execute(myState) ? 1 : 0;
+		if(nodeOne.execute(myState)!=1){
+			return nodeTwo.execute(myState);
+		}
+		return 0;
 	}
 
 }

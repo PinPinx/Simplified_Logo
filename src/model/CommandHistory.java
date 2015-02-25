@@ -10,25 +10,25 @@ import view.Observer;
 public class CommandHistory implements Observable {
 	private List<CommandRoot> myCommandList;
 	private List<Observer> myObserverList;
-	
-	public CommandHistory(){
+
+	public CommandHistory() {
 		this.myCommandList = new LinkedList<>();
 		this.myObserverList = new ArrayList<>();
 	}
-	
-	public void addCommand(CommandRoot cr){
+
+	public void addCommand(CommandRoot cr) {
 		myCommandList.add(cr);
 		notifyObservers();
 	}
-	
-	private List<String> getCommandList(){
+
+	private List<String> getCommandList() {
 		ArrayList<String> ret = new ArrayList<>();
-		for(CommandRoot cr : myCommandList){
+		for (CommandRoot cr : myCommandList) {
 			ret.add(cr.toString());
 		}
 		return ret;
 	}
-	
+
 	@Override
 	public void addObserver(Observer o) {
 		myObserverList.add(o);
@@ -41,7 +41,7 @@ public class CommandHistory implements Observable {
 
 	@Override
 	public void notifyObservers() {
-		for(Observer o : myObserverList){
+		for (Observer o : myObserverList) {
 			o.update(getCommandList());
 		}
 	}

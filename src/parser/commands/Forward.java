@@ -22,12 +22,5 @@ public class Forward extends SimpleTurtleCommand{
 		myState.getTurtle().addCoordinates(displacement);
 		return distance;
 	}
-
-	public static void main(String[] args) throws BadArgumentException{
-		Stack<SyntaxNode> stack = new Stack<SyntaxNode>();
-		stack.push(new ConstantNode(50));
-		Forward f = new Forward(stack);
-		System.out.println(f.getClass().toString());
-	}
 	
 }

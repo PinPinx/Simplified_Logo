@@ -1,20 +1,19 @@
 package parser.commands;
 
+import java.util.Stack;
+
 import model.State;
 import parser.nodes.SyntaxNode;
 
 public class PenUp extends SyntaxNode {
-
-	boolean penUp;
 	
-	public PenUp(boolean input){
-		penUp=input;
+	public PenUp(Stack<SyntaxNode> input){
 	}
 	
 	@Override
 	public double execute(State myState){
-		myState.getTurtle().setPenUp(penUp);
-		return !penUp ? 1 : 0;
+		myState.getTurtle().setPenUp(true);
+		return 0;
 	}
 
 }

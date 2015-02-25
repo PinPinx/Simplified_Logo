@@ -12,6 +12,8 @@ public class Right extends SimpleTurtleCommand {
 	public Right(Stack<SyntaxNode> input) throws BadArgumentException{
 		super(input);
 	}
+	
+	//TODO: Duplicated code with left
 	@Override
 	public double execute(State myState) throws BadArgumentException {
 		double param = referenceNode.execute(myState);

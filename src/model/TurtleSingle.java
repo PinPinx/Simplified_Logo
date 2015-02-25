@@ -97,7 +97,6 @@ public class TurtleSingle implements Turtle {
 	public void notifyObservers() {
 		for(Observer o : myObservers){
 			o.update(createTurtleUpdate());
-			System.out.println(myObservers.size());
 		}
 	}
 	
