@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.TurtleUpdate;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class TurtleWindow extends Group implements ViewComponent {
+public class TurtleWindow extends Group implements TurtleObserver {
 
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
@@ -33,14 +34,20 @@ public class TurtleWindow extends Group implements ViewComponent {
 		addTurtle();
 
 	}
-
+	
+	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {		
+		return new Point2D(myWidth/2 + mathCoords.getX(), myHeight/2 - mathCoords.getY());
+	}
+	
 	public void addTurtle() {
-		addTurtle(myWidth / 2, myHeight / 2);
+
+		addTurtle(0, 0);
 	}
 
 	public void addTurtle(double xPos, double yPos) {
 		TurtleImage turtle = new TurtleImage();
-		turtle.moveTo(xPos, yPos);
+		Point2D pos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
+		turtle.moveTo(pos.getX(), pos.getY());
 		myTurtles.put(myTurtles.size(), turtle);
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
@@ -70,32 +77,23 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 
 	@Override
-	public void update(Object updateObject) {
-		TurtleUpdate tu = (TurtleUpdate) updateObject;
+	public void update(TurtleUpdate tu) {
 		TurtleImage ti = myTurtles.get(0);
-		ti.setRotate(tu.getTurtleAngle().getAngleValue());
-		ti.moveTo(tu.getTurtleNewCoordinates().getX()+myWidth/2, tu
-				.getTurtleNewCoordinates().getY()+myHeight/2);
+		
+		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(
+				tu.getTurtleOldCoordinates().getX(), 
+				tu.getTurtleOldCoordinates().getY()));
+		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(
+				tu.getTurtleNewCoordinates().getX(), 
+				tu.getTurtleNewCoordinates().getY()));
+		
+		ti.setRotate(-tu.getTurtleAngle().getAngleValue());
+		ti.moveTo(newPos.getX(), newPos.getY());
 		ti.hide(tu.isTurtleHidden());
 
 		if (!tu.isTurtlePenUp()) {
-			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX()+myWidth/2,
-					tu.getTurtleOldCoordinates().getY()+myHeight/2, ti.getTranslateX(),
-					ti.getTranslateY());
+			gc.get(0).strokeLine(oldPos.getX(), oldPos.getY(), newPos.getX(), newPos.getY());
 		}
-	}
-
-	@Override
-	public void UIEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

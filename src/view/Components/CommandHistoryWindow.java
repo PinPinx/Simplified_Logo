@@ -1,8 +1,11 @@
 package view.Components;
 
+import model.CommandHistoryUpdate;
 import javafx.scene.control.Button;
 
-public class CommandHistoryWindow extends ListWindow {
+
+
+public class CommandHistoryWindow extends ListWindow implements CommandsObserver{
 
 	public CommandHistoryWindow(int w, int h) {
 		super(w, h, "Command History");
@@ -12,24 +15,13 @@ public class CommandHistoryWindow extends ListWindow {
 		}
 	}
 
-	@Override
-	public void UIEvent() {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void update(Object updateObject) {
+	public void update(CommandHistoryUpdate chu) {
 		// TODO Auto-generated method stub
 
 		
 	}
 
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

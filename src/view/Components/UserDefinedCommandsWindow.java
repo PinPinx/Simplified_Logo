@@ -1,27 +1,18 @@
 package view.Components;
 
-public class UserDefinedCommandsWindow extends ListWindow {
+import model.CommandHistoryUpdate;
+
+public class UserDefinedCommandsWindow extends ListWindow implements CommandsObserver{
 
 	public UserDefinedCommandsWindow(int w, int h) {
 		super(w, h, "User Defined Commands");
 	}
 
 	@Override
-	public void UIEvent() {
+	public void update(CommandHistoryUpdate chu) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

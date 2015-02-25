@@ -1,6 +1,7 @@
 package view.Components;
 
 import Exceptions.CommandNameNotFoundException;
+import Exceptions.SyntaxErrorWrongFormat;
 import model.Model;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -9,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 
-public class CommandPort extends ScrollPane implements ViewComponent {
+public class CommandPort extends ScrollPane{
 	private TextField myTextField;
 	private Button myRunButton;
 
@@ -31,7 +32,7 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 		String command = myTextField.getText();
 		try {
 			Model.getInstance().parse(command);
-		} catch (CommandNameNotFoundException e) {
+		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -44,20 +45,6 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 		}
 	}
 
-	@Override
-	public void update(Object updateObject) {
-	}
 
-	@Override
-	public void UIEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

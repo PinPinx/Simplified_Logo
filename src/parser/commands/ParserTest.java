@@ -12,11 +12,12 @@ import org.junit.Test;
 
 import Exceptions.BadArgumentException;
 import Exceptions.CommandNameNotFoundException;
+import Exceptions.SyntaxErrorWrongFormat;
 import parser.nodes.CommandRoot;
 
 public class ParserTest {	
 	@Test
-	public void testParse() throws BadArgumentException, CommandNameNotFoundException {
+	public void testParse() throws BadArgumentException, CommandNameNotFoundException, SyntaxErrorWrongFormat {
 		State myState = new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory());
 		Parser myParser = new Parser(myState);
 		CommandRoot root = myParser.parse("fd 50");

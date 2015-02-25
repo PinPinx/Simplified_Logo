@@ -1,9 +1,8 @@
 package view.Components;
 
-import view.Observer;
 
 
-public abstract interface ViewComponent extends Observer{
+public abstract interface ViewComponent{
 	
 	abstract void UIEvent();
 
