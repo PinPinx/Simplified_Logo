@@ -78,14 +78,14 @@ public class TurtleWindow extends Group implements ViewComponent {
 		TurtleUpdate tu = (TurtleUpdate) updateObject;
 		TurtleImage ti = myTurtles.get(0);
 		ti.setRotate(tu.getTurtleAngle().getAngleValue());
-		ti.moveTo(tu.getTurtleNewCoordinates().getX(), tu
-				.getTurtleNewCoordinates().getY());
+		ti.moveTo(tu.getTurtleNewCoordinates().getX()+myWidth/2, tu
+				.getTurtleNewCoordinates().getY()+myHeight/2);
 		ti.hide(tu.isTurtleHidden());
 
 		if (!tu.isTurtlePenUp()) {
-			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX(),
-					tu.getTurtleOldCoordinates().getY(), ti.getTranslateX(),
-					ti.getTranslateY());
+			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX()+myWidth/2,
+					tu.getTurtleOldCoordinates().getY()+myHeight/2, ti.getTranslateX()+myWidth/2,
+					ti.getTranslateY()+myHeight/2);
 		}
 	}
 
