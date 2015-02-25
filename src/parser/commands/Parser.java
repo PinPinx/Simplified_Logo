@@ -1,15 +1,12 @@
 package parser.commands;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.Stack;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Syntax;
-import parser.nodes.CommandRoot;
-import parser.nodes.ConstantNode;
-import parser.nodes.ListNode;
-import parser.nodes.SyntaxNode;
-import parser.nodes.VariableNode;
+import parser.nodes.*;
+import Exceptions.BadArgumentException;
 import Exceptions.CommandNameNotFoundException;
 import model.State;
 
@@ -25,7 +22,6 @@ public class Parser {
 		String[] commandStream = command.split("\\p{Space}");
 		Stack<Stack<SyntaxNode>> inputStack = new Stack<Stack<SyntaxNode>>();
 		inputStack.push(new Stack<>());
-		
 		for(int i = commandStream.length-1; i >= 0; i--){
 			switch(Regex.getInstance().getType(commandStream[i])){
 			case COMMAND:
@@ -33,19 +29,12 @@ public class Parser {
 				className = Regex.getInstance().getCommandType(commandStream[i]);
 				Class<?> cls;
 				try {
-					cls = Class.forName("parser.commands.Forward");
-					
+					String str = "parser.commands." + className;
+					cls = Class.forName(str);
 				} catch (ClassNotFoundException e) {throw new CommandNameNotFoundException();} //TODO never happens?
 				
 				try {
-					try {
-						SyntaxNode s = cls.asSubclass(SyntaxNode.class).getConstructor(Stack.class).newInstance(new Object[]{inputStack});
-						inputStack.peek().push(s);
-					} catch (NoSuchMethodException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-//					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack));
+					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack.peek()));
 				} catch (InstantiationException | IllegalAccessException
 						| IllegalArgumentException
 						| InvocationTargetException | SecurityException e) {

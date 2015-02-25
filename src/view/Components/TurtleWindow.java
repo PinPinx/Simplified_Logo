@@ -2,12 +2,9 @@ package view.Components;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import model.TurtleUpdate;
 import javafx.scene.Group;
@@ -35,21 +32,6 @@ public class TurtleWindow extends Group implements ViewComponent {
 
 		addTurtle();
 
-	}
-
-	public void update(TurtleUpdate tu) {
-		TurtleImage ti = myTurtles.get(0);
-		ti.setRotate(tu.getTurtleAngle().getAngleValue());
-		ti.moveTo(tu.getTurtleNewCoordinates().getX(), tu
-				.getTurtleNewCoordinates().getY());
-		ti.hide(tu.isTurtleHidden());
-
-		if (tu.isTurtlePenUp()) {
-			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX(),
-					tu.getTurtleOldCoordinates().getY(), ti.getTranslateX(),
-					ti.getTranslateY());
-
-		}
 	}
 
 	public void addTurtle() {
@@ -89,13 +71,31 @@ public class TurtleWindow extends Group implements ViewComponent {
 
 	@Override
 	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
+		TurtleUpdate tu = (TurtleUpdate) updateObject;
+		TurtleImage ti = myTurtles.get(0);
+		ti.setRotate(tu.getTurtleAngle().getAngleValue());
+		ti.moveTo(tu.getTurtleNewCoordinates().getX()+myWidth/2, tu
+				.getTurtleNewCoordinates().getY()+myHeight/2);
+		ti.hide(tu.isTurtleHidden());
+
+		if (!tu.isTurtlePenUp()) {
+			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX()+myWidth/2,
+					tu.getTurtleOldCoordinates().getY()+myHeight/2, ti.getTranslateX()+myWidth/2,
+					ti.getTranslateY()+myHeight/2);
+		}
 	}
 
 	@Override
 	public void UIEvent() {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public void update(Object updateObject1, Object updateObject2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

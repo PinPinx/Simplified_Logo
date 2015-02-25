@@ -14,11 +14,6 @@ public class VariableNode extends SyntaxNode{
 	
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		try{
 			return (double) myState.getVariablesCollection().getVariableValue(myName);
-		}
-		catch(VariableNotFoundException e){
-			throw new BadArgumentException();
-		}
 	}
 }

@@ -22,6 +22,14 @@ public class CommandHistoryWindow extends ListWindow {
 	public void update(Object updateObject) {
 		// TODO Auto-generated method stub
 
+		
 	}
+
+	@Override
+	public void update(Object updateObject1, Object updateObject2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
