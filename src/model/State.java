@@ -13,6 +13,7 @@ public class State {
 		this.myCommandHistory = c;
 		myTurtle.addObserver(View.getInstance().getTurtleWindow());
 		myVariablesCollection.addObserver(View.getInstance().getVariablesWindow());
+		myCommandHistory.addObserver(View.getInstance().getCommandHistoryWindow());
 	}
 	
 	public Turtle getTurtle() {
