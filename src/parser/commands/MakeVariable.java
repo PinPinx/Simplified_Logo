@@ -4,7 +4,6 @@ import java.util.Stack;
 
 import model.State;
 import Exceptions.BadArgumentException;
-import Exceptions.DuplicateVariableException;
 import Exceptions.VariableCreationException;
 import Exceptions.VariableCreationInvalidValueException;
 import parser.nodes.BinaryNode;

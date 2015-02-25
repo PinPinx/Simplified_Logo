@@ -1,12 +1,14 @@
 package parser.commands;
 
+import java.util.Stack;
+
 import Exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
 
 public class PenQuery extends SyntaxNode{
 	
-	public PenQuery(){
+	public PenQuery(Stack<SyntaxNode> input){
 	}
 
 	@Override
