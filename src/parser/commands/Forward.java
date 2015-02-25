@@ -2,6 +2,7 @@ package parser.commands;
 
 import java.util.Stack;
 
+import parser.nodes.ConstantNode;
 import parser.nodes.SyntaxNode;
 import Exceptions.BadArgumentException;
 import model.Coordinates;
@@ -22,6 +23,11 @@ public class Forward extends SimpleTurtleCommand{
 		return distance;
 	}
 
-	
+	public static void main(String[] args) throws BadArgumentException{
+		Stack<SyntaxNode> stack = new Stack<SyntaxNode>();
+		stack.push(new ConstantNode(50));
+		Forward f = new Forward(stack);
+		System.out.println(f.getClass().toString());
+	}
 	
 }

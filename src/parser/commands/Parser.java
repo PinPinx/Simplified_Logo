@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.Stack;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Syntax;
 import parser.nodes.CommandRoot;
 import parser.nodes.ConstantNode;
 import parser.nodes.ListNode;
@@ -32,12 +33,19 @@ public class Parser {
 				className = Regex.getInstance().getCommandType(commandStream[i]);
 				Class<?> cls;
 				try {
-					cls = Class.forName("parser.commands." + className + ".java");
+					cls = Class.forName("parser.commands.Forward");
 					
 				} catch (ClassNotFoundException e) {throw new CommandNameNotFoundException();} //TODO never happens?
 				
 				try {
-					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack));
+					try {
+						SyntaxNode s = cls.asSubclass(SyntaxNode.class).getConstructor(Stack.class).newInstance(new Object[]{inputStack});
+						inputStack.peek().push(s);
+					} catch (NoSuchMethodException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+//					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack));
 				} catch (InstantiationException | IllegalAccessException
 						| IllegalArgumentException
 						| InvocationTargetException | SecurityException e) {

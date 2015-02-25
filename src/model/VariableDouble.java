@@ -14,6 +14,7 @@ public class VariableDouble extends Variable {
 		super(name);
 		this.myProperty = new SimpleDoubleProperty(value);
 		this.myDisplayProperty = new SimpleStringProperty();
+		this.myNameProperty = new SimpleStringProperty(name);
 		myDisplayProperty.bindBidirectional(myProperty, new NumberStringConverter());
 	}
 
