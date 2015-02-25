@@ -1,12 +1,12 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import parser.commands.MakeUserInstruction;
 import parser.nodes.CommandRoot;
-
 import view.Components.CommandsObserver;
 
 public class CommandHistory implements ObservableCommand {
@@ -29,12 +29,12 @@ public class CommandHistory implements ObservableCommand {
 		myUDCommands.add(udCommand);
 	}
 
-	private List<String> getCommandList() {
+	private CommandHistoryUpdate getCommandUpdate() {
 		ArrayList<String> ret = new ArrayList<>();
 		for (CommandRoot cr : myCommandList) {
 			ret.add(cr.toString());
 		}
-		return ret;
+		return new CommandHistoryUpdate((List<String>) Collections.unmodifiableCollection(ret));
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class CommandHistory implements ObservableCommand {
 	@Override
 	public void notifyObservers() {
 		for (CommandsObserver o : myObserverList) {
-			o.update(getCommandList());
+			o.update(getCommandUpdate());
 		}
 	}
 }

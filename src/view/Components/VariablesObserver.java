@@ -4,10 +4,12 @@ import java.util.List;
 
 
 
+
+import model.VariablesCollectionUpdate;
 import javafx.beans.property.StringProperty;
 
 public interface VariablesObserver{
 	
-	public void update(List<StringProperty> nameList, List<StringProperty> valueList);
+	public void update(VariablesCollectionUpdate vcu);
 
 }

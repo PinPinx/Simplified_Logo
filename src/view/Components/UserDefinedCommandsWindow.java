@@ -2,6 +2,8 @@ package view.Components;
 
 import java.util.List;
 
+import model.CommandHistoryUpdate;
+
 public class UserDefinedCommandsWindow extends ListWindow implements CommandsObserver{
 
 	public UserDefinedCommandsWindow(int w, int h) {
@@ -9,7 +11,7 @@ public class UserDefinedCommandsWindow extends ListWindow implements CommandsObs
 	}
 
 	@Override
-	public void update(List<String> commandList) {
+	public void update(CommandHistoryUpdate chu) {
 		// TODO Auto-generated method stub
 		
 	}
