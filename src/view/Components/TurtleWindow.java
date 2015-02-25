@@ -86,7 +86,6 @@ public class TurtleWindow extends Group implements ViewComponent {
 			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX(),
 					tu.getTurtleOldCoordinates().getY(), ti.getTranslateX(),
 					ti.getTranslateY());
-
 		}
 	}
 
