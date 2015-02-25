@@ -20,6 +20,7 @@ public class VariablesWindow extends ListWindow implements VariablesObserver{
 
 	@Override
 	public void update(VariablesCollectionUpdate vcu) {
+		myList.getChildren().clear();
 		List<StringProperty> nameList = vcu.getNameProperties();
 		List<StringProperty> valueList = vcu.getDisplayProperties();
 		for (int i=0; i<nameList.size(); i++){

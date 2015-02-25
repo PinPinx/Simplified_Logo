@@ -9,28 +9,28 @@ public class TurtleImage extends ImageView{
 	private Image myImage;
 	private final static double default_xPosition = 0.0;
 	private final static double default_yPosition = 0.0;
-	private final static double default_width = 30.0;
-	private final static double default_height = 30.0;
+	private static double myWidth = 30.0;
+	private static double myHeight = 30.0;
 	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
 	
 	
 	public TurtleImage() {
-		this(DEFAULT_IMAGEPATH, default_xPosition, default_yPosition, default_width, default_height);
+		this(DEFAULT_IMAGEPATH, default_xPosition, default_yPosition, myWidth, myHeight);
 	}
 	
 	public TurtleImage(String imagePath){
-		this(imagePath, default_xPosition, default_yPosition, default_width, default_height);
+		this(imagePath, default_xPosition, default_yPosition, myWidth, myHeight);
 	}
 	
 	public TurtleImage(String imagePath, double xPos, double yPos){
-		this(imagePath, xPos, yPos, default_width, default_height);
+		this(imagePath, xPos, yPos, myWidth, myHeight);
 	}
 	
 	public TurtleImage(String imagePath, double xPos, double yPos, double width, double height){
 		myImage = new Image(getClass().getResourceAsStream(imagePath));
 		this.setImage(myImage);
-		this.setTranslateX(xPos);
-		this.setTranslateY(yPos);
+		this.setTranslateX(xPos-myWidth/2);
+		this.setTranslateY(yPos-myHeight/2);
 		this.setFitWidth(width);
 		this.setFitHeight(height);
 	}
@@ -54,11 +54,13 @@ public class TurtleImage extends ImageView{
 	}
 	
 	public void moveTo(double xPos, double yPos){
-		this.setTranslateX(xPos);
-		this.setTranslateY(yPos);
+		this.setTranslateX(xPos-myWidth/2);
+		this.setTranslateY(yPos-myHeight/2);
 	}
 
 	public void resize(double width, double height){
+		myWidth = width;
+		myHeight = height;
 		this.setFitWidth(width);
 		this.setFitHeight(height);
 	}

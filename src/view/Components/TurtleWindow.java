@@ -80,8 +80,8 @@ public class TurtleWindow extends Group implements TurtleObserver{
 
 		if (!tu.isTurtlePenUp()) {
 			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX()+myWidth/2,
-					tu.getTurtleOldCoordinates().getY()+myHeight/2, ti.getTranslateX(),
-					ti.getTranslateY());
+					tu.getTurtleOldCoordinates().getY()+myHeight/2, tu.getTurtleNewCoordinates().getX()+myWidth/2,
+					tu.getTurtleNewCoordinates().getY()+myHeight/2);
 		}
 	}
 
