@@ -1,5 +1,6 @@
-package view;
+package view.Components;
 
+import view.DialogBox;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;

@@ -9,13 +9,13 @@ public class UserDefinedCommandsWindow extends ListWindow {
 	@Override
 	public void UIEvent() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(Object updateObject) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

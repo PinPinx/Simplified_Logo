@@ -25,18 +25,17 @@ public class TurtleWindow extends Group implements ViewComponent {
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
 
 	public TurtleWindow(double width, double height) {
-		
+
 		myWidth = width;
 		myHeight = height;
 		mainCanvas = new Canvas(width, height);
 		mainGC = mainCanvas.getGraphicsContext2D();
-		
+
 		this.getChildren().add(mainCanvas);
-		
+
 		addTurtle();
 
 	}
-	
 
 	public void update(TurtleUpdate tu) {
 		TurtleImage ti = myTurtles.get(0);
@@ -54,7 +53,7 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 
 	public void addTurtle() {
-		addTurtle(myWidth/2, myHeight/2);
+		addTurtle(myWidth / 2, myHeight / 2);
 	}
 
 	public void addTurtle(double xPos, double yPos) {
@@ -81,13 +80,13 @@ public class TurtleWindow extends Group implements ViewComponent {
 		myTurtles.get(turtleID).changeImage(file);
 
 	}
-	
+
 	public List<Integer> getAvailableTurtles() {
 		List<Integer> turtleIDs = new ArrayList<Integer>(myTurtles.keySet());
 		Collections.sort(turtleIDs);
 		return turtleIDs;
 	}
-	
+
 	@Override
 	public void update(Object updateObject) {
 		// TODO Auto-generated method stub

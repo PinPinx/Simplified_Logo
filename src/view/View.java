@@ -3,6 +3,7 @@ package view;
 
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
+import view.Components.HelpDialogBox;
 import view.Components.SLogoMenuBar;
 import view.Components.TurtleWindow;
 import view.Components.UserDefinedCommandsWindow;
@@ -18,6 +19,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Singleton class which 
+ * 
+ * @author lien
+ *
+ */
 public class View {
 	private static View instance;
 

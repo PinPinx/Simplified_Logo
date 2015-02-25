@@ -1,6 +1,5 @@
 package view.Components;
 
-
 import Exceptions.CommandNameNotFoundException;
 import model.Model;
 import javafx.scene.control.Button;
@@ -13,23 +12,22 @@ import javafx.scene.layout.HBox;
 public class CommandPort extends ScrollPane implements ViewComponent {
 	private TextField myTextField;
 	private Button myRunButton;
-	
-	
-	public CommandPort(double width, double height){
+
+	public CommandPort(double width, double height) {
 		HBox hb = new HBox(5);
 		myRunButton = new Button("Run");
-		myRunButton.setOnAction(e->runCommand());
-		myTextField = new TextField ();
+		myRunButton.setOnAction(e -> runCommand());
+		myTextField = new TextField();
 		myTextField.setPrefHeight(height);
 		myTextField.setPrefWidth(width);
 		myTextField.setText("Enter your command Here");
-		myTextField.setOnKeyPressed(e->runCommand(e));
+		myTextField.setOnKeyPressed(e -> runCommand(e));
 		hb.getChildren().addAll(myTextField, myRunButton);
 		this.setContent(hb);
 	}
 
 	private void runCommand() {
-		//Send command to parser here. 
+		// Send command to parser here.
 		String command = myTextField.getText();
 		try {
 			Model.getInstance().parse(command);
@@ -39,11 +37,11 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 		}
 		myTextField.clear();
 	}
-	
-	private void runCommand(KeyEvent e){
-		if (e.getCode()==KeyCode.ENTER){
+
+	private void runCommand(KeyEvent e) {
+		if (e.getCode() == KeyCode.ENTER) {
 			runCommand();
-    	}
+		}
 	}
 
 	@Override
@@ -53,8 +51,7 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 	@Override
 	public void UIEvent() {
 		// TODO Auto-generated method stub
-		
-		
+
 	}
 
 }
