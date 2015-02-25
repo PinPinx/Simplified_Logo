@@ -14,6 +14,7 @@ import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
 import parser.nodes.CommandRoot;
+import parser.parser.Parser;
 
 public class ParserTest {	
 	@Test

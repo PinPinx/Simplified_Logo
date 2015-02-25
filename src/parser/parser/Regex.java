@@ -1,4 +1,4 @@
-package parser.commands;
+package parser.parser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
