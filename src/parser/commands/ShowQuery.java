@@ -1,4 +1,4 @@
-package parser.queries;
+package parser.commands;
 
 import parser.nodes.SyntaxNode;
 import Exceptions.BadArgumentException;

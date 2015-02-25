@@ -1,16 +1,17 @@
-package parser.queries;
+package parser.commands;
 
 import Exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
 
-public class XCor extends SyntaxNode{
-	public XCor(){
+public class Heading extends SyntaxNode{
+	
+	public Heading(){
 	}
 
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		return myState.getTurtle().getCoordinates().getX();
+		return myState.getTurtle().getAngle().getAngleValue();
 	}
 	
 	

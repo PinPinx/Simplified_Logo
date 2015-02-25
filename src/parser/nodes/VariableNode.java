@@ -16,4 +16,8 @@ public class VariableNode extends SyntaxNode{
 	public double execute(State myState) throws BadArgumentException {
 			return (double) myState.getVariablesCollection().getVariableValue(myName);
 	}
+	
+	public String getName(){
+		return myName;
+	}
 }

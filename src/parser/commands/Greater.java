@@ -1,4 +1,4 @@
-package parser.bool;
+package parser.commands;
 
 import java.util.Stack;
 

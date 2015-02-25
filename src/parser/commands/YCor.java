@@ -1,17 +1,16 @@
-package parser.queries;
+package parser.commands;
 
 import Exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
 
-public class PenQuery extends SyntaxNode{
-	
-	public PenQuery(){
+public class YCor extends SyntaxNode{
+	public YCor(){
 	}
 
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		return !myState.getTurtle().getPenUp() ? 1 : 0;
+		return myState.getTurtle().getCoordinates().getY();
 	}
 	
 	
