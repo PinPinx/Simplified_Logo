@@ -30,7 +30,7 @@ public class VariablesCollection implements ObservableVariables {
 		try {
 			addVariable(varName, "0");
 		} catch (VariableCreationException
-				| VariableCreationInvalidValueException e) {}//not possible but throw new VariableNotFoundException();
+				| VariableCreationInvalidValueException e) {}//not possible but throw new VariableNotFoundException(); TODO
 		
 		return getVariableValue(varName);
 		
@@ -41,23 +41,26 @@ public class VariablesCollection implements ObservableVariables {
 			if(var.getNameProperty().get().equals(varName)){
 				try {
 					var.setValue(varValue);
+					notifyObservers();
 					return;
 				} catch (VariableWrongTypeException e) {
 					try {
 						deleteVariable(varName);
-					} catch (VariableNotFoundException e1) {} //never happens
+					} catch (VariableNotFoundException e1) {} //never happens TODO
 					addVariable(varName, varValue);
 				}
 			}
 		}
 		Variable newVar = VariableFactory.createVariable(varName, varValue);
 		myVariableList.add(newVar);
+		notifyObservers();
 	}
 	
 	public void deleteVariable(String varName) throws VariableNotFoundException{
 		for(Variable v : myVariableList){
 			if(v.getNameProperty().get().equals(varName)){
 				myVariableList.remove(v);
+				notifyObservers();
 				return;
 			}
 		}
