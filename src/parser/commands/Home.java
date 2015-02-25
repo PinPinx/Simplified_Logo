@@ -21,8 +21,8 @@ public class Home extends SyntaxNode {
 	}
 	
 	private double moveToPosition(double x, double y, Turtle turtle){
-		double xDiff = turtle.getCoordinates().getX() - x;
-		double yDiff = turtle.getCoordinates().getY() - y;
+		double xDiff = x - turtle.getCoordinates().getX();
+		double yDiff = y - turtle.getCoordinates().getY();
 		double distance = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
 		turtle.addCoordinates(new Coordinates(xDiff, yDiff));
 		return distance;
