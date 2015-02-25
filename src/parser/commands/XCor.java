@@ -1,11 +1,13 @@
 package parser.commands;
 
+import java.util.Stack;
+
 import Exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
 
 public class XCor extends SyntaxNode{
-	public XCor(){
+	public XCor(Stack<SyntaxNode> input){
 	}
 
 	@Override

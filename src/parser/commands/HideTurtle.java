@@ -1,20 +1,19 @@
 package parser.commands;
 
+import java.util.Stack;
+
 import model.State;
 import Exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 
 public class HideTurtle extends SyntaxNode {
-
-	boolean hide;
 	
-	public HideTurtle(State s, boolean input){
-		hide = input;
+	public HideTurtle(Stack<SyntaxNode> input){
 	}
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		myState.getTurtle().setHidden(hide);
-		return !hide ? 1 : 0;
+		myState.getTurtle().setHidden(true);
+		return 0;
 	}
 
 }
