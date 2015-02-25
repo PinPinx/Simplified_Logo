@@ -39,10 +39,15 @@ public class VariableLabel extends HBox{
     		String value = myTextField.getText();
     		myTextField.clear();
     		
+    		myValue.setValue(value);
+    		myValueLabel.setText(myValue.getValue());
+    		
+    		System.out.println("changed to "+myValue.getValue());
+    		
     		this.getChildren().remove(myTextField);
     		this.getChildren().add(myValueLabel);
     		
-    		myValue.setValue(value);
+    		
     	}
     }
 	
