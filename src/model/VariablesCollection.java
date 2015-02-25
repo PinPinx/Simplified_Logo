@@ -76,7 +76,7 @@ public class VariablesCollection implements ObservableVariables {
 			variableDisplayProperties.add(v.getStringProperty());
 			variableNameProperties.add(v.getNameProperty());
 		}
-		VariablesCollectionUpdate vcu = new VariablesCollectionUpdate(variableDisplayProperties, variableNameProperties);
+		VariablesCollectionUpdate vcu = new VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
 		for(VariablesObserver o : myObserverList){
 			o.update(vcu);
 		}

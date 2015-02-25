@@ -3,6 +3,7 @@ package view.Components;
 import Exceptions.CommandNameNotFoundException;
 import Exceptions.SyntaxErrorWrongFormat;
 import model.Model;
+import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -11,12 +12,14 @@ import javafx.scene.layout.HBox;
 
 public class VariableLabel extends HBox{
 	Label myVarLabel;
+	StringProperty myName;
 	Label myValueLabel;
+	StringProperty myValue;
 	TextField myTextField;
 	
-	public VariableLabel(String myName, String myValue){
-		myVarLabel = new Label(myName+" = ");
-		myValueLabel = new Label(myValue);
+	public VariableLabel(StringProperty myName, StringProperty myValue){
+		myVarLabel = new Label(myName.getValue()+" = ");
+		myValueLabel = new Label(myValue.getValue());
 		myValueLabel.setOnMouseClicked(e->takeEdit());
         this.getChildren().addAll(myVarLabel, myValueLabel);
 	}
@@ -31,16 +34,14 @@ public class VariableLabel extends HBox{
     public void processInput(KeyEvent e){
     	if (e.getCode()==KeyCode.ENTER){
     		//myValueLabel.setText(myTextField.getText());
-    		//Re parsing the command for now, we can later use another API per backend updates. 
-    		String command = "MAKE "+myVarLabel.getText()+myTextField.getText();
-    		try {
-				Model.getInstance().parse(command);
-			} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+    		
+    		String value = myTextField.getText();
+    		myTextField.clear();
+    		
     		this.getChildren().remove(myTextField);
     		this.getChildren().add(myValueLabel);
+    		
+    		myValue.setValue(value);
     	}
     }
 	

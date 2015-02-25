@@ -23,9 +23,7 @@ public class VariablesWindow extends ListWindow implements VariablesObserver{
 		List<StringProperty> nameList = vcu.getNameProperties();
 		List<StringProperty> valueList = vcu.getDisplayProperties();
 		for (int i=0; i<nameList.size(); i++){
-			String name = nameList.get(i).getName();
-			String value = valueList.get(i).getValue();
-			VariableLabel vl = new VariableLabel(name, value);
+			VariableLabel vl = new VariableLabel(nameList.get(i), valueList.get(i));
 			myList.getChildren().add(vl);	
 		}
 		
