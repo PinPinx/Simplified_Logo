@@ -8,4 +8,8 @@ public class CommandHistoryUpdate {
 	public CommandHistoryUpdate(List<String> commands){
 		this.myCommands = commands;
 	}
+	
+	public List<String> getCommandHistory(){
+		return myCommands;
+	}
 }
