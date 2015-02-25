@@ -1,9 +1,11 @@
 package view.Components;
 
+import java.util.List;
+
 import javafx.scene.control.Button;
 
 
-public class CommandHistoryWindow extends ListWindow {
+public class CommandHistoryWindow extends ListWindow implements CommandsObserver{
 
 
 	public CommandHistoryWindow(int w, int h) {
@@ -15,22 +17,11 @@ public class CommandHistoryWindow extends ListWindow {
 	}
 
 	@Override
-	public void UIEvent() {
+	public void update(List<String> commandList) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 

@@ -6,12 +6,13 @@ import java.util.List;
 
 import parser.commands.MakeUserInstruction;
 import parser.nodes.CommandRoot;
-import view.Observer;
 
-public class CommandHistory implements Observable {
+import view.Components.CommandsObserver;
+
+public class CommandHistory implements ObservableCommand {
 	private List<CommandRoot> myCommandList;
+	private List<CommandsObserver> myObserverList;
 	private List<MakeUserInstruction> myUDCommands;
-	private List<Observer> myObserverList;
 
 	public CommandHistory() {
 		this.myCommandList = new LinkedList<>();
@@ -37,18 +38,18 @@ public class CommandHistory implements Observable {
 	}
 
 	@Override
-	public void addObserver(Observer o) {
+	public void addObserver(CommandsObserver o) {
 		myObserverList.add(o);
 	}
 
 	@Override
-	public void removeObserver(Observer o) {
+	public void removeObserver(CommandsObserver o) {
 		myObserverList.remove(o);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for (Observer o : myObserverList) {
+		for (CommandsObserver o : myObserverList) {
 			o.update(getCommandList());
 		}
 	}

@@ -3,13 +3,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.Observer;
+
+import view.Components.TurtleObserver;
 
 public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isActive;
-	private List<Observer> myObservers;
+	private List<TurtleObserver> myObservers;
 	
 	public TurtleSingle(){
 		myCoordinates = new Coordinates(0,0);
@@ -84,20 +85,22 @@ public class TurtleSingle implements Turtle {
 	}
 	
 	@Override
-	public void addObserver(Observer o) {
+	public void addObserver(TurtleObserver o) {
 		myObservers.add(o);
 	}
 
 	@Override
-	public void removeObserver(Observer o) {
+	public void removeObserver(TurtleObserver o) {
 		myObservers.remove(o);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for(Observer o : myObservers){
+		for(TurtleObserver o : myObservers){
 			o.update(createTurtleUpdate());
 		}
 	}
+
+	
 	
 }

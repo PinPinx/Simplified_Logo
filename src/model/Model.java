@@ -4,6 +4,7 @@ import parser.commands.Parser;
 import parser.nodes.CommandRoot;
 import Exceptions.BadArgumentException;
 import Exceptions.CommandNameNotFoundException;
+import Exceptions.SyntaxErrorWrongFormat;
 
 public class Model {
 	private Parser myParser;
@@ -23,7 +24,7 @@ public class Model {
 		return instance;
 	}
 	
-	public void parse(String command) throws CommandNameNotFoundException{
+	public void parse(String command) throws CommandNameNotFoundException, SyntaxErrorWrongFormat{
 		try {
 			CommandRoot hello = myParser.parse(command);
 			hello.execute(myState);

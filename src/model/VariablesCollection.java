@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.beans.property.StringProperty;
-import view.Observer;
+import view.Components.VariablesObserver;
 import Exceptions.DuplicateVariableException;
 import Exceptions.VariableCreationException;
 import Exceptions.VariableCreationInvalidValueException;
 import Exceptions.VariableNotFoundException;
 import Exceptions.VariableWrongTypeException;
 
-public class VariablesCollection implements Observable {
+public class VariablesCollection implements ObservableVariables {
 	private List<Variable> myVariableList;
-	private List<Observer> myObserverList;
+	private List<VariablesObserver> myObserverList;
 	
 	public VariablesCollection(){
 		this.myVariableList = new ArrayList<>();
@@ -30,7 +30,7 @@ public class VariablesCollection implements Observable {
 		try {
 			addVariable(varName, "0");
 		} catch (VariableCreationException
-				| VariableCreationInvalidValueException e) {}//not possible but throw new VariableNotFoundException();
+				| VariableCreationInvalidValueException e) {}//not possible but throw new VariableNotFoundException(); TODO
 		
 		return getVariableValue(varName);
 		
@@ -41,38 +41,32 @@ public class VariablesCollection implements Observable {
 			if(var.getNameProperty().get().equals(varName)){
 				try {
 					var.setValue(varValue);
+					notifyObservers();
 					return;
 				} catch (VariableWrongTypeException e) {
 					try {
 						deleteVariable(varName);
-					} catch (VariableNotFoundException e1) {} //never happens
+					} catch (VariableNotFoundException e1) {} //never happens TODO
 					addVariable(varName, varValue);
 				}
 			}
 		}
 		Variable newVar = VariableFactory.createVariable(varName, varValue);
 		myVariableList.add(newVar);
+		notifyObservers();
 	}
 	
 	public void deleteVariable(String varName) throws VariableNotFoundException{
 		for(Variable v : myVariableList){
 			if(v.getNameProperty().get().equals(varName)){
 				myVariableList.remove(v);
+				notifyObservers();
 				return;
 			}
 		}
 		throw new VariableNotFoundException();
 	}
 	
-	@Override
-	public void addObserver(Observer o) {
-		myObserverList.add(o);
-	}
-
-	@Override
-	public void removeObserver(Observer o) {
-		myObserverList.remove(o);
-	}
 
 	@Override
 	public void notifyObservers() {
@@ -82,9 +76,21 @@ public class VariablesCollection implements Observable {
 			variableDisplayProperties.add(v.getStringProperty());
 			variableNameProperties.add(v.getNameProperty());
 		}
-		for(Observer o : myObserverList){
+		for(VariablesObserver o : myObserverList){
 			o.update(variableNameProperties, variableDisplayProperties);
 		}
+	}
+
+	@Override
+	public void addObserver(VariablesObserver o) {
+		// TODO Auto-generated method stub
+		myObserverList.add(o);
+	}
+
+	@Override
+	public void removeObserver(VariablesObserver o) {
+		// TODO Auto-generated method stub
+		myObserverList.remove(o);
 	}
 	
 }
