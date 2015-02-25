@@ -6,14 +6,15 @@ import model.State;
 import Exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 
-public class HideTurtle extends SyntaxNode {
+public class ShowTurtle extends SyntaxNode {
 	
-	public HideTurtle(Stack<SyntaxNode> input){
+	public ShowTurtle(Stack<SyntaxNode> input){
 	}
+	
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		myState.getTurtle().setHidden(true);
-		return 0;
+		myState.getTurtle().setHidden(false);
+		return 1;
 	}
 
 }

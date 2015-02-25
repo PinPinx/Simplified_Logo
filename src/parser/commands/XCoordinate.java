@@ -2,18 +2,18 @@ package parser.commands;
 
 import java.util.Stack;
 
-import model.State;
 import Exceptions.BadArgumentException;
+import model.State;
 import parser.nodes.SyntaxNode;
 
-public class HideTurtle extends SyntaxNode {
-	
-	public HideTurtle(Stack<SyntaxNode> input){
-	}
-	@Override
-	public double execute(State myState) throws BadArgumentException {
-		myState.getTurtle().setHidden(true);
-		return 0;
+public class XCoordinate extends SyntaxNode{
+	public XCoordinate(Stack<SyntaxNode> input){
 	}
 
+	@Override
+	public double execute(State myState) throws BadArgumentException {
+		return myState.getTurtle().getCoordinates().getX();
+	}
+	
+	
 }

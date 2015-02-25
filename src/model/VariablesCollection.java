@@ -20,7 +20,7 @@ public class VariablesCollection implements Observable {
 		this.myObserverList = new ArrayList<>();
 	}
 	
-	public Object getVariableValue(String varName) {
+	public Object getVariableValue(String varName){
 		for(Variable v : myVariableList){
 			if(v.getNameProperty().get().equals(varName)){
 				return v.getValue();
@@ -29,13 +29,14 @@ public class VariablesCollection implements Observable {
 		//variable not found
 		try {
 			addVariable(varName, "0");
-		} catch (DuplicateVariableException | VariableCreationException
-				| VariableCreationInvalidValueException e) {}//not possible
+		} catch (VariableCreationException
+				| VariableCreationInvalidValueException e) {}//not possible but throw new VariableNotFoundException();
+		
 		return getVariableValue(varName);
 		
 	}
 	
-	public void addVariable(String varName, String varValue) throws DuplicateVariableException, VariableCreationException, VariableCreationInvalidValueException{
+	public void addVariable(String varName, String varValue) throws VariableCreationException, VariableCreationInvalidValueException{
 		for(Variable var : myVariableList){
 			if(var.getNameProperty().get().equals(varName)){
 				try {

@@ -4,16 +4,18 @@ import java.util.Stack;
 
 import model.State;
 import Exceptions.BadArgumentException;
+import parser.nodes.BinaryNode;
 import parser.nodes.SyntaxNode;
 
-public class HideTurtle extends SyntaxNode {
-	
-	public HideTurtle(Stack<SyntaxNode> input){
+public class Or extends BinaryNode{
+
+	public Or(Stack<SyntaxNode> input) throws BadArgumentException {
+		super(input);
 	}
+
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		myState.getTurtle().setHidden(true);
-		return 0;
+		return nodeOne.execute(myState) != 0 || nodeTwo.execute(myState) !=0 ? 1 : 0;
 	}
 
 }
