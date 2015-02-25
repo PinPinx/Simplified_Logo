@@ -1,14 +1,15 @@
 package model;
 
 import Exceptions.VariableWrongTypeException;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public abstract class Variable {
-	private String myName;
 	protected StringProperty myDisplayProperty;
+	protected StringProperty myNameProperty;
 	
 	public Variable(String name){
-		this.myName = name;
+		this.myNameProperty = new SimpleStringProperty(name);
 	}
 	
 	/**
@@ -29,9 +30,8 @@ public abstract class Variable {
 	protected StringProperty getStringProperty() {
 		return myDisplayProperty;
 	}
-	
-	public String getName(){
-		return new String(this.myName);
+	protected StringProperty getNameProperty(){
+		return myNameProperty;
 	}
 
 }

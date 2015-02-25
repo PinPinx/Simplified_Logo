@@ -2,6 +2,7 @@ package parser.commands;
 
 import java.util.Stack;
 
+import parser.nodes.ConstantNode;
 import parser.nodes.SyntaxNode;
 import Exceptions.BadArgumentException;
 import model.Coordinates;

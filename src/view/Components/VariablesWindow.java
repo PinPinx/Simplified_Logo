@@ -2,6 +2,7 @@ package view.Components;
 
 import java.util.List;
 
+import javafx.beans.property.StringProperty;
 import model.Variable;
 
 public class VariablesWindow extends ListWindow {
@@ -23,13 +24,18 @@ public class VariablesWindow extends ListWindow {
 		
 	}
 	
-	public void update(List<Variable> variableList){
-		for (Variable v : variableList){
-			String name = v.getName();
-			String value = v.getValue().toString();
+
+	@Override
+	public void update(Object updateObject1, Object updateObject2) {
+		List<StringProperty> nameList = (List<StringProperty>) updateObject1;
+		List<StringProperty> valueList = (List<StringProperty>) updateObject2;
+		for (int i=0; i<nameList.size(); i++){
+			String name = nameList.get(i).getName();
+			String value = valueList.get(i).getValue();
 			VariableLabel vl = new VariableLabel(name, value);
-			myList.getChildren().add(vl);
+			myList.getChildren().add(vl);	
 		}
+		
 	}
 
 }
