@@ -30,7 +30,8 @@ public class VariablesCollection implements ObservableVariables {
 		try {
 			addVariable(varName, "0");
 		} catch (VariableCreationException
-				| VariableCreationInvalidValueException e) {}//not possible
+				| VariableCreationInvalidValueException e) {}//not possible but throw new VariableNotFoundException();
+		
 		return getVariableValue(varName);
 		
 	}

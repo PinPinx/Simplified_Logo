@@ -1,6 +1,7 @@
 package view.Components;
 
 import Exceptions.CommandNameNotFoundException;
+import Exceptions.SyntaxErrorWrongFormat;
 import model.Model;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -34,7 +35,7 @@ public class VariableLabel extends HBox{
     		String command = "MAKE "+myVarLabel.getText()+myTextField.getText();
     		try {
 				Model.getInstance().parse(command);
-			} catch (CommandNameNotFoundException e1) {
+			} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
