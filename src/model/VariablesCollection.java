@@ -3,13 +3,13 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.DuplicateVariableException;
+import exceptions.VariableCreationException;
+import exceptions.VariableCreationInvalidValueException;
+import exceptions.VariableNotFoundException;
+import exceptions.VariableWrongTypeException;
 import javafx.beans.property.StringProperty;
 import view.Components.VariablesObserver;
-import Exceptions.DuplicateVariableException;
-import Exceptions.VariableCreationException;
-import Exceptions.VariableCreationInvalidValueException;
-import Exceptions.VariableNotFoundException;
-import Exceptions.VariableWrongTypeException;
 
 public class VariablesCollection implements ObservableVariables {
 	private List<Variable> myVariableList;

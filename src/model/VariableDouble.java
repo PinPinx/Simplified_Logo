@@ -1,6 +1,6 @@
 package model;
 
-import Exceptions.VariableWrongTypeException;
+import exceptions.VariableWrongTypeException;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;

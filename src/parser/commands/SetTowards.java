@@ -2,11 +2,11 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import model.Angle;
 import model.State;
 import model.Turtle;
 import parser.nodes.SyntaxNode;
-import Exceptions.BadArgumentException;
 
 public class SetTowards extends BinaryTurtleCommand {
 

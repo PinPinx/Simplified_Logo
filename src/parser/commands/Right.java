@@ -2,7 +2,7 @@ package parser.commands;
 
 import java.util.Stack;
 
-import Exceptions.BadArgumentException;
+import exceptions.BadArgumentException;
 import model.Angle;
 import model.State;
 import parser.nodes.SyntaxNode;

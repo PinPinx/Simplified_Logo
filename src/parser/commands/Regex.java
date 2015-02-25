@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import Exceptions.CommandNameNotFoundException;
+import exceptions.CommandNameNotFoundException;
 import model.Model;
 
 

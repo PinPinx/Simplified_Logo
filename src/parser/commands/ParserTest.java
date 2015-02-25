@@ -10,9 +10,9 @@ import model.VariablesCollection;
 
 import org.junit.Test;
 
-import Exceptions.BadArgumentException;
-import Exceptions.CommandNameNotFoundException;
-import Exceptions.SyntaxErrorWrongFormat;
+import exceptions.BadArgumentException;
+import exceptions.CommandNameNotFoundException;
+import exceptions.SyntaxErrorWrongFormat;
 import parser.nodes.CommandRoot;
 
 public class ParserTest {	

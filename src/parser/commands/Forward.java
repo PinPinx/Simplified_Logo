@@ -2,9 +2,9 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import parser.nodes.ConstantNode;
 import parser.nodes.SyntaxNode;
-import Exceptions.BadArgumentException;
 import model.Coordinates;
 import model.State;
 

@@ -1,8 +1,8 @@
 package parser.nodes;
 
+import exceptions.BadArgumentException;
+import exceptions.VariableNotFoundException;
 import model.State;
-import Exceptions.BadArgumentException;
-import Exceptions.VariableNotFoundException;
 
 
 public class VariableNode extends SyntaxNode{

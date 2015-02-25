@@ -1,10 +1,10 @@
 package model;
 
+import exceptions.BadArgumentException;
+import exceptions.CommandNameNotFoundException;
+import exceptions.SyntaxErrorWrongFormat;
 import parser.commands.Parser;
 import parser.nodes.CommandRoot;
-import Exceptions.BadArgumentException;
-import Exceptions.CommandNameNotFoundException;
-import Exceptions.SyntaxErrorWrongFormat;
 
 public class Model {
 	private Parser myParser;

@@ -2,11 +2,11 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import model.Angle;
 import model.Coordinates;
 import parser.nodes.SyntaxNode;
 import parser.nodes.UnaryNode;
-import Exceptions.BadArgumentException;
 
 public abstract class SimpleTurtleCommand extends UnaryNode {
 	

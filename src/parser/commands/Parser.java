@@ -5,10 +5,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
+import exceptions.CommandNameNotFoundException;
+import exceptions.SyntaxErrorWrongFormat;
 import parser.nodes.*;
-import Exceptions.BadArgumentException;
-import Exceptions.CommandNameNotFoundException;
-import Exceptions.SyntaxErrorWrongFormat;
 import model.State;
 
 public class Parser {

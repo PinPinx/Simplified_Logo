@@ -2,10 +2,10 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import model.Coordinates;
 import model.State;
 import model.Turtle;
-import Exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 
 public class Home extends SyntaxNode {

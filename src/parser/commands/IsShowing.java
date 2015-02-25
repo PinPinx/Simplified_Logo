@@ -2,8 +2,8 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
-import Exceptions.BadArgumentException;
 import model.State;
 
 public class IsShowing extends SyntaxNode{
