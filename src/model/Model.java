@@ -26,9 +26,7 @@ public class Model {
 	public void parse(String command) throws CommandNameNotFoundException{
 		try {
 			CommandRoot hello = myParser.parse(command);
-			System.out.println(hello.getSize());
 			hello.execute(myState);
-			System.out.println("Executed");
 		} catch (BadArgumentException e) {
 			e.printStackTrace();
 		}
