@@ -1,11 +1,13 @@
 package parser.commands;
 
+import java.util.Stack;
+
 import parser.nodes.SyntaxNode;
 import Exceptions.BadArgumentException;
 import model.State;
 
 public class ShowQuery extends SyntaxNode{
-	public ShowQuery(){
+	public ShowQuery(Stack<SyntaxNode> input){
 	}
 
 	@Override

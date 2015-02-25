@@ -1,12 +1,14 @@
 package parser.commands;
 
+import java.util.Stack;
+
 import Exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
 
 public class Heading extends SyntaxNode{
 	
-	public Heading(){
+	public Heading(Stack<SyntaxNode> input){
 	}
 
 	@Override
