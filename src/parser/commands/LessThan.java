@@ -7,15 +7,15 @@ import Exceptions.BadArgumentException;
 import parser.nodes.BinaryNode;
 import parser.nodes.SyntaxNode;
 
-public class Greater extends BinaryNode{
+public class LessThan extends BinaryNode{
 
-	public Greater(Stack<SyntaxNode> input) throws BadArgumentException {
+	public LessThan(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 	}
 
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		return nodeOne.execute(myState) > nodeTwo.execute(myState) ? 1 : 0;
+		return nodeOne.execute(myState) < nodeTwo.execute(myState) ? 1 : 0;
 	}
 
 }

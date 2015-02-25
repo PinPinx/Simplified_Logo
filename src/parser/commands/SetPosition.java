@@ -7,9 +7,9 @@ import model.State;
 import model.Turtle;
 import Exceptions.BadArgumentException;
 
-public class SetXY extends BinaryTurtleCommand {
+public class SetPosition extends BinaryTurtleCommand {
 
-	public SetXY(Stack<SyntaxNode> input) throws BadArgumentException{
+	public SetPosition(Stack<SyntaxNode> input) throws BadArgumentException{
 		super(input);
 	}
 	

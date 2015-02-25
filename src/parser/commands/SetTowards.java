@@ -8,9 +8,9 @@ import model.Turtle;
 import parser.nodes.SyntaxNode;
 import Exceptions.BadArgumentException;
 
-public class Towards extends BinaryTurtleCommand {
+public class SetTowards extends BinaryTurtleCommand {
 
-	public Towards(Stack<SyntaxNode> input) throws BadArgumentException{
+	public SetTowards(Stack<SyntaxNode> input) throws BadArgumentException{
 		super(input);
 	}
 

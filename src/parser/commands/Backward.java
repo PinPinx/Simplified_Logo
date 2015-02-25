@@ -7,9 +7,9 @@ import model.Coordinates;
 import model.State;
 import Exceptions.BadArgumentException;
 
-public class Back extends SimpleTurtleCommand {
+public class Backward extends SimpleTurtleCommand {
 
-	public Back(Stack<SyntaxNode> input) throws BadArgumentException {
+	public Backward(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 	}
 	

@@ -11,37 +11,37 @@ import parser.nodes.ListNode;
 import parser.nodes.SyntaxNode;
 import parser.nodes.VariableNode;
 
-public class DoTimes extends BinaryNode {
+public class For extends BinaryNode {
 
 	private VariableNode variable;
+	private ListNode listReference;
 	
-	public DoTimes(Stack<SyntaxNode> input) throws BadArgumentException {
+	public For(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 		if (!(nodeOne instanceof ListNode) || !(nodeTwo instanceof ListNode))
 			throw new BadArgumentException();
-		if (((ListNode) nodeOne).getSize()!=2)
+		listReference = (ListNode) nodeOne;
+		if (listReference.getSize()!=4)
 			throw new BadArgumentException();
-		variable = (VariableNode) ((ListNode) nodeOne).getNode(0);
+		variable = (VariableNode) listReference.getNode(0);
 	}
 
+	//TODO: Duplicate code with DoTimes
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		int limit;
-		limit = (int) ((ListNode) nodeOne).getNode(1).execute(myState);
-		try {
-			myState.getVariablesCollection().addVariable(variable.getName(), "1");
-		} catch (VariableCreationException
-				| VariableCreationInvalidValueException e) {
-			throw new BadArgumentException();
+		int start = (int) listReference.getNode(1).execute(myState);
+		int end = (int) listReference.getNode(2).execute(myState);
+		int increment = (int) listReference.getNode(3).execute(myState);
+		int count = start;
+		while(count<end-increment+1){
+			runCode(myState, count);
+			count+=increment;
 		}
-		for (int i = 1; i<limit; i++){
-			runCode(myState, i);
-		}
-		return runCode(myState, limit);
+		return runCode(myState, count);
 	}
 	
 	private double runCode(State myState, int i) throws BadArgumentException{
-		//TODO: Refactor into method. This sets the varaible to the desired value
+		//TODO: Refactor into method. This sets the variable to the desired value
 		try {
 			myState.getVariablesCollection().addVariable(variable.getName(), Integer.toString(i));
 		} catch (VariableCreationException

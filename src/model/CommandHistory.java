@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import parser.commands.MakeUserInstruction;
 import parser.nodes.CommandRoot;
 import view.Observer;
 
 public class CommandHistory implements Observable {
 	private List<CommandRoot> myCommandList;
-	private List<CommandRoot> myUDCommands;
+	private List<MakeUserInstruction> myUDCommands;
 	private List<Observer> myObserverList;
 
 	public CommandHistory() {
@@ -23,8 +24,8 @@ public class CommandHistory implements Observable {
 		notifyObservers();
 	}
 	
-	public void addUDCommand(To udCommand){
-		myUDCommands.add()
+	public void addUDCommand(MakeUserInstruction udCommand){
+		myUDCommands.add(udCommand);
 	}
 
 	private List<String> getCommandList() {

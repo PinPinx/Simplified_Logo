@@ -15,7 +15,7 @@ public class If extends BinaryNode {
 
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		if(nodeOne.execute(myState)!=1){
+		if(nodeOne.execute(myState)!=0){
 			return nodeTwo.execute(myState);
 		}
 		return 0;

@@ -6,9 +6,9 @@ import Exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
 
-public class PenQuery extends SyntaxNode{
+public class IsPenDown extends SyntaxNode{
 	
-	public PenQuery(Stack<SyntaxNode> input){
+	public IsPenDown(Stack<SyntaxNode> input){
 	}
 
 	@Override

@@ -6,8 +6,8 @@ import parser.nodes.SyntaxNode;
 import Exceptions.BadArgumentException;
 import model.State;
 
-public class ShowQuery extends SyntaxNode{
-	public ShowQuery(Stack<SyntaxNode> input){
+public class IsShowing extends SyntaxNode{
+	public IsShowing(Stack<SyntaxNode> input){
 	}
 
 	@Override

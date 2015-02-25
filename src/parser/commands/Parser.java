@@ -55,9 +55,11 @@ public class Parser {
 				break;
 			case LISTEND:
 				inputStack.push(new Stack<SyntaxNode>());
+				break;
 			case LISTSTART:
 				Stack<SyntaxNode> listStack = inputStack.pop();
 				inputStack.peek().push(new ListNode(listStack));
+				break;
 			case OTHER: default:
 				break; //TODO throw something
 			}
