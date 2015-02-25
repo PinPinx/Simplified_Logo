@@ -10,25 +10,29 @@ import model.VariablesCollection;
 
 import org.junit.Test;
 
+import Exceptions.BadArgumentException;
+import Exceptions.CommandNameNotFoundException;
+import parser.nodes.CommandRoot;
+
 public class ParserTest {	
 	@Test
-	public void testParse() {
+	public void testParse() throws BadArgumentException, CommandNameNotFoundException {
 		State myState = new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory());
 		Parser myParser = new Parser(myState);
 		CommandRoot root = myParser.parse("blah blah blah");
-		root.execute(new State());
+		root.execute(myState);
 		Coordinates result = myState.getTurtle().getCoordinates();
 		Coordinates desired = new Coordinates(50,0);
 		assertTrue(result.equals(desired));
 		
 		root = myParser.parse("hi");
-		root.execute(new State());
+		root.execute(myState);
 		Angle result2 = myState.getTurtle().getAngle();
 		Angle desired2 = new Angle(90);
 		assertTrue(result2.equals(desired2));
 		
 		root = myParser.parse("blah blah blah");
-		root.execute(new State());
+		root.execute(myState);
 		result = myState.getTurtle().getCoordinates();
 		desired = new Coordinates(50,50);
 		assertTrue(result.equals(desired));
