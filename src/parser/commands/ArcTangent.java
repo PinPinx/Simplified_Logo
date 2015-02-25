@@ -7,9 +7,9 @@ import Exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 import parser.nodes.UnaryNode;
 
-public class Arctan extends UnaryNode{
+public class ArcTangent extends UnaryNode{
 
-	public Arctan(Stack<SyntaxNode> input) throws BadArgumentException {
+	public ArcTangent(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 	}
 	

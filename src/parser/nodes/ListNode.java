@@ -17,8 +17,8 @@ public class ListNode extends SyntaxNode {
 		}
 	}
 
-	public List<SyntaxNode> getList(){
-			return myList;
+	public SyntaxNode getNode(int index){
+			return myList.get(index);
 	}
 	
 	@Override

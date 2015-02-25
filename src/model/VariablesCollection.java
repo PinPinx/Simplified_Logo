@@ -20,7 +20,7 @@ public class VariablesCollection implements Observable {
 		this.myObserverList = new ArrayList<>();
 	}
 	
-	public Object getVariableValue(String varName) {
+	public Object getVariableValue(String varName){
 		for(Variable v : myVariableList){
 			if(v.getNameProperty().get().equals(varName)){
 				return v.getValue();

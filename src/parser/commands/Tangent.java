@@ -7,14 +7,14 @@ import Exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 import parser.nodes.UnaryNode;
 
-public class Log extends UnaryNode{
+public class Tangent extends UnaryNode{
 
-	public Log(Stack<SyntaxNode> input) throws BadArgumentException {
+	public Tangent(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 	}
 	
 	public double execute(State myState) throws BadArgumentException{
-		return Math.log(referenceNode.execute(myState));
+		return Math.tan(referenceNode.execute(myState));
 	}
 
 }
