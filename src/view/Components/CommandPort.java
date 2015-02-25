@@ -57,4 +57,10 @@ public class CommandPort extends ScrollPane implements ViewComponent {
 		
 	}
 
+	@Override
+	public void update(Object updateObject1, Object updateObject2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -38,21 +38,6 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 	
 
-	public void update(TurtleUpdate tu) {
-		TurtleImage ti = myTurtles.get(0);
-		ti.setRotate(tu.getTurtleAngle().getAngleValue());
-		ti.moveTo(tu.getTurtleNewCoordinates().getX(), tu
-				.getTurtleNewCoordinates().getY());
-		ti.hide(tu.isTurtleHidden());
-
-		if (tu.isTurtlePenUp()) {
-			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX(),
-					tu.getTurtleOldCoordinates().getY(), ti.getTranslateX(),
-					ti.getTranslateY());
-
-		}
-	}
-
 	public void addTurtle() {
 		addTurtle(myWidth/2, myHeight/2);
 	}
@@ -90,13 +75,32 @@ public class TurtleWindow extends Group implements ViewComponent {
 	
 	@Override
 	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
+		TurtleUpdate tu = (TurtleUpdate) updateObject;
+		TurtleImage ti = myTurtles.get(0);
+		ti.setRotate(tu.getTurtleAngle().getAngleValue());
+		ti.moveTo(tu.getTurtleNewCoordinates().getX(), tu
+				.getTurtleNewCoordinates().getY());
+		ti.hide(tu.isTurtleHidden());
+
+		if (tu.isTurtlePenUp()) {
+			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX(),
+					tu.getTurtleOldCoordinates().getY(), ti.getTranslateX(),
+					ti.getTranslateY());
+
+		}
 	}
 
 	@Override
 	public void UIEvent() {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public void update(Object updateObject1, Object updateObject2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

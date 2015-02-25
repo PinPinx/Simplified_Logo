@@ -83,7 +83,7 @@ public class VariablesCollection implements Observable {
 			variableNameProperties.add(v.getNameProperty());
 		}
 		for(Observer o : myObserverList){
-			o.update(variableDisplayProperties);
+			o.update(variableNameProperties, variableDisplayProperties);
 		}
 	}
 	
