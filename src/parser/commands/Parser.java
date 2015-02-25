@@ -8,6 +8,7 @@ import java.util.Stack;
 import parser.nodes.*;
 import Exceptions.BadArgumentException;
 import Exceptions.CommandNameNotFoundException;
+import Exceptions.SyntaxErrorWrongFormat;
 import model.State;
 
 public class Parser {
@@ -18,7 +19,7 @@ public class Parser {
 		this.myState = s;
 	}
 	
-	public CommandRoot parse(String command) throws CommandNameNotFoundException {
+	public CommandRoot parse(String command) throws CommandNameNotFoundException, SyntaxErrorWrongFormat {
 		String[] commandStream = command.split("\\p{Space}");
 		Stack<Stack<SyntaxNode>> inputStack = new Stack<Stack<SyntaxNode>>();
 		inputStack.push(new Stack<>());
@@ -61,7 +62,7 @@ public class Parser {
 				inputStack.peek().push(new ListNode(listStack));
 				break;
 			case OTHER: default:
-				break; //TODO throw something
+				throw new SyntaxErrorWrongFormat();
 			}
 		}
 		return new CommandRoot(command, inputStack.peek());
