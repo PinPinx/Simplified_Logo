@@ -24,7 +24,7 @@ public class VariableInt extends Variable {
 
 	@Override
 	public Variable clone() {
-		return new VariableInt(this.getName(),this.myProperty.get());
+		return new VariableInt(this.getNameProperty().getValue(),this.myProperty.get());
 	}
 
 	@Override

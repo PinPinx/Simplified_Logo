@@ -35,6 +35,12 @@ public class Regex {
 		return instance;
 	}
 	
+	public void changeLanguage(String filePath){
+		languageFileString = filePath;
+		commandPatterns.clear();
+		commandPatterns.addAll(makePatterns(languageFileString));
+	}
+	
 	private boolean match (String input, Pattern regex) {
 		return regex.matcher(input).matches();
 	}

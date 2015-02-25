@@ -22,7 +22,7 @@ public class VariablesCollection implements Observable {
 	
 	public Object getVariableValue(String varName) {
 		for(Variable v : myVariableList){
-			if(v.getName().equals(varName)){
+			if(v.getNameProperty().get().equals(varName)){
 				return v.getValue();
 			}
 		}
@@ -38,7 +38,7 @@ public class VariablesCollection implements Observable {
 	
 	public void addVariable(String varName, String varValue) throws DuplicateVariableException, VariableCreationException, VariableCreationInvalidValueException{
 		for(Variable var : myVariableList){
-			if(var.getName().equals(varName)){
+			if(var.getNameProperty().get().equals(varName)){
 				try {
 					var.setValue(varValue);
 					return;
@@ -56,7 +56,7 @@ public class VariablesCollection implements Observable {
 	
 	public void deleteVariable(String varName) throws VariableNotFoundException{
 		for(Variable v : myVariableList){
-			if(v.getName().equals(varName)){
+			if(v.getNameProperty().get().equals(varName)){
 				myVariableList.remove(v);
 				return;
 			}
@@ -76,9 +76,11 @@ public class VariablesCollection implements Observable {
 
 	@Override
 	public void notifyObservers() {
-		ArrayList<StringProperty> variableDisplayProperties = new ArrayList<>();
+		List<StringProperty> variableDisplayProperties = new ArrayList<>();
+		List<StringProperty> variableNameProperties = new ArrayList<>();
 		for(Variable v : myVariableList){
 			variableDisplayProperties.add(v.getStringProperty());
+			variableNameProperties.add(v.getNameProperty());
 		}
 		for(Observer o : myObserverList){
 			o.update(variableDisplayProperties);

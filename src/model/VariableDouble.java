@@ -24,7 +24,7 @@ public class VariableDouble extends Variable {
 
 	@Override
 	public Variable clone() {
-		return new VariableDouble(this.getName(), this.myProperty.get());
+		return new VariableDouble(this.getNameProperty().getValue(), this.myProperty.get());
 	}
 
 	@Override
