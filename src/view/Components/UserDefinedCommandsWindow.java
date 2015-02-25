@@ -1,27 +1,18 @@
 package view.Components;
 
-public class UserDefinedCommandsWindow extends ListWindow {
+import java.util.List;
+
+public class UserDefinedCommandsWindow extends ListWindow implements CommandsObserver{
 
 	public UserDefinedCommandsWindow(int w, int h) {
 		super(w, h, "User Defined Commands");
 	}
 
 	@Override
-	public void UIEvent() {
+	public void update(List<String> commandList) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void update(Object updateObject) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

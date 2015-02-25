@@ -12,7 +12,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class TurtleWindow extends Group implements ViewComponent {
+public class TurtleWindow extends Group implements TurtleObserver{
 
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
@@ -41,7 +41,7 @@ public class TurtleWindow extends Group implements ViewComponent {
 
 	public void addTurtle(double xPos, double yPos) {
 		TurtleImage turtle = new TurtleImage();
-		turtle.moveTo(xPos, yPos);
+		turtle.moveTo(xPos+myWidth/2, yPos+myHeight/2);
 		myTurtles.put(myTurtles.size(), turtle);
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
@@ -56,7 +56,7 @@ public class TurtleWindow extends Group implements ViewComponent {
 
 	public void changePenColor(Color c, int turtleID) {
 		gc.get(turtleID).setStroke(c);
-
+		
 	}
 
 	public void changeTurtleImage(File file, int turtleID) {
@@ -71,8 +71,7 @@ public class TurtleWindow extends Group implements ViewComponent {
 	}
 	
 	@Override
-	public void update(Object updateObject) {
-		TurtleUpdate tu = (TurtleUpdate) updateObject;
+	public void update(TurtleUpdate tu) {
 		TurtleImage ti = myTurtles.get(0);
 		ti.setRotate(tu.getTurtleAngle().getAngleValue());
 		ti.moveTo(tu.getTurtleNewCoordinates().getX()+myWidth/2, tu
@@ -86,17 +85,5 @@ public class TurtleWindow extends Group implements ViewComponent {
 		}
 	}
 
-	@Override
-	public void UIEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

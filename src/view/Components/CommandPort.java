@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 
-public class CommandPort extends ScrollPane implements ViewComponent {
+public class CommandPort extends ScrollPane{
 	private TextField myTextField;
 	private Button myRunButton;
 	
@@ -46,21 +46,6 @@ public class CommandPort extends ScrollPane implements ViewComponent {
     	}
 	}
 
-	@Override
-	public void update(Object updateObject) {
-	}
 
-	@Override
-	public void UIEvent() {
-		// TODO Auto-generated method stub
-		
-		
-	}
-
-	@Override
-	public void update(Object updateObject1, Object updateObject2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

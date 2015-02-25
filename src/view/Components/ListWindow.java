@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
  * @author lien
  *
  */
-public abstract class ListWindow extends Group implements ViewComponent {
+public abstract class ListWindow extends Group{
 	
 	protected BorderPane myPane;
 	protected Label myLabel;
