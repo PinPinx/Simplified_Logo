@@ -1,8 +1,8 @@
 package model;
 
+import exceptions.VariableCreationException;
+import exceptions.VariableCreationInvalidValueException;
 import parser.commands.Regex;
-import Exceptions.VariableCreationException;
-import Exceptions.VariableCreationInvalidValueException;
 
 public class VariableFactory {
 	public static Variable createVariable(String varName, String varValue) throws VariableCreationException, VariableCreationInvalidValueException{

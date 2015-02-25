@@ -2,9 +2,9 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
-import Exceptions.BadArgumentException;
 
 public class SetHeading extends SimpleTurtleCommand{
 

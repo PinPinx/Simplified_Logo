@@ -2,10 +2,10 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 import model.State;
 import model.Turtle;
-import Exceptions.BadArgumentException;
 
 public class SetPosition extends BinaryTurtleCommand {
 

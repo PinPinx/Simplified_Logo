@@ -2,10 +2,10 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import model.Coordinates;
 import model.State;
 import model.Turtle;
-import Exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 
 public class Home extends SyntaxNode {
@@ -20,9 +20,9 @@ public class Home extends SyntaxNode {
 		return moveToPosition(0, 0, turtle);
 	}
 	
-	protected double moveToPosition(double x, double y, Turtle turtle){
-		double xDiff = turtle.getCoordinates().getX() - x;
-		double yDiff = turtle.getCoordinates().getY() - y;
+	private double moveToPosition(double x, double y, Turtle turtle){
+		double xDiff = x - turtle.getCoordinates().getX();
+		double yDiff = y - turtle.getCoordinates().getY();
 		double distance = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
 		turtle.addCoordinates(new Coordinates(xDiff, yDiff));
 		return distance;

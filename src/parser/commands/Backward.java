@@ -2,10 +2,10 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
 import model.Coordinates;
 import model.State;
-import Exceptions.BadArgumentException;
 
 public class Backward extends SimpleTurtleCommand {
 
@@ -17,7 +17,7 @@ public class Backward extends SimpleTurtleCommand {
 	@Override
 	public double execute(State myState) throws BadArgumentException{
 		double distance = (double) referenceNode.execute(myState);
-		Coordinates displacement = angleToCoordinates(myState.getTurtle().getAngle(), distance);
+		Coordinates displacement = angleToCoordinates(myState.getTurtle().getAngle(), -1*distance);
 		myState.getTurtle().addCoordinates(displacement);
 		return distance;
 	}

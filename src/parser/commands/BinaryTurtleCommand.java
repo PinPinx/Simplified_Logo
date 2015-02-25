@@ -2,7 +2,7 @@ package parser.commands;
 
 import java.util.Stack;
 
-import Exceptions.BadArgumentException;
+import exceptions.BadArgumentException;
 import model.Coordinates;
 import model.Turtle;
 import parser.nodes.BinaryNode;

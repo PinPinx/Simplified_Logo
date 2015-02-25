@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import model.State;
-import Exceptions.BadArgumentException;
 
 public class ListNode extends SyntaxNode {
 

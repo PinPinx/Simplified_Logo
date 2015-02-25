@@ -1,7 +1,7 @@
 package view.Components;
 
-import Exceptions.CommandNameNotFoundException;
-import Exceptions.SyntaxErrorWrongFormat;
+import exceptions.CommandNameNotFoundException;
+import exceptions.SyntaxErrorWrongFormat;
 import model.Model;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;

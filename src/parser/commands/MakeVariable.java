@@ -2,10 +2,10 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
+import exceptions.VariableCreationException;
+import exceptions.VariableCreationInvalidValueException;
 import model.State;
-import Exceptions.BadArgumentException;
-import Exceptions.VariableCreationException;
-import Exceptions.VariableCreationInvalidValueException;
 import parser.nodes.BinaryNode;
 import parser.nodes.SyntaxNode;
 import parser.nodes.VariableNode;

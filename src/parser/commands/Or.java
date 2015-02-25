@@ -2,8 +2,8 @@ package parser.commands;
 
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
 import model.State;
-import Exceptions.BadArgumentException;
 import parser.nodes.BinaryNode;
 import parser.nodes.SyntaxNode;
 

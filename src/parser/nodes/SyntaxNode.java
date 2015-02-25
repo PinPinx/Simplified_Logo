@@ -1,7 +1,7 @@
 package parser.nodes;
 
+import exceptions.BadArgumentException;
 import model.State;
-import Exceptions.BadArgumentException;
 
 public abstract class SyntaxNode {
 
