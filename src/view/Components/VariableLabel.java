@@ -21,6 +21,7 @@ public class VariableLabel extends HBox{
 		myVarLabel = new Label(myName.getValue()+" = ");
 		myValueLabel = new Label(myValue.getValue());
 		myValueLabel.setOnMouseClicked(e->takeEdit());
+		this.myValue = myValue;
         this.getChildren().addAll(myVarLabel, myValueLabel);
 	}
 	
