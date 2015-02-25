@@ -80,8 +80,8 @@ public class TurtleWindow extends Group implements ViewComponent {
 
 		if (!tu.isTurtlePenUp()) {
 			gc.get(0).strokeLine(tu.getTurtleOldCoordinates().getX()+myWidth/2,
-					tu.getTurtleOldCoordinates().getY()+myHeight/2, ti.getTranslateX()+myWidth/2,
-					ti.getTranslateY()+myHeight/2);
+					tu.getTurtleOldCoordinates().getY()+myHeight/2, ti.getTranslateX(),
+					ti.getTranslateY());
 		}
 	}
 
