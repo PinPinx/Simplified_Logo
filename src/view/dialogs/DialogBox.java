@@ -21,34 +21,31 @@ public class DialogBox {
 	protected Scene myScene;
 	protected BorderPane myPane;
 	protected String myTitle;
-	
-	private static final String OKAY = "OK";
 
+	private static final String OKAY = "OK";
 
 	public DialogBox() {
 		myPane = new BorderPane();
 		addOKButton();
 		initStage();
 	}
-	
-	
+
 	/**
 	 * Initialize the stage to display the dialog.
 	 */
 	private void initStage() {
-	
+
 		myStage = new Stage();
 		myStage.initModality(Modality.WINDOW_MODAL);
 		myScene = new Scene(myPane);
 		myStage.setScene(myScene);
 	}
-	
 
 	protected void setTitle(String title) {
 		myTitle = title;
 		myStage.setTitle(myTitle);
 	}
-	
+
 	private void addOKButton() {
 		Button okButton = new Button(OKAY);
 		okButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -60,7 +57,7 @@ public class DialogBox {
 		myPane.setBottom(okButton);
 		BorderPane.setAlignment(okButton, Pos.CENTER);
 	}
-	
+
 	public void show() {
 		myStage.show();
 	}

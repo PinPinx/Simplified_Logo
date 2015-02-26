@@ -17,13 +17,14 @@ public class BackgroundColorToolbarItem extends ToolbarItem {
 
 	@Override
 	protected Node createNode() {
-		
+
 		ColorPicker bgColorPicker = new ColorPicker();
 		bgColorPicker.setStyle("-fx-color-label-visible: false ;");
 		bgColorPicker.setOnAction(event -> {
-			myToolbar.getTurtleWindow().changeBackground(bgColorPicker.getValue());
+			myToolbar.getTurtleWindow().changeBackground(
+					bgColorPicker.getValue());
 		});
-		
+
 		return bgColorPicker;
 	}
 

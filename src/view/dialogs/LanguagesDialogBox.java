@@ -10,47 +10,46 @@ import javafx.scene.control.ChoiceBox;
 import view.Components.LanguageController;
 
 public class LanguagesDialogBox extends InputDialogBox {
-	
+
 	private ChoiceBox<String> langChoiceBox;
 	private List<String> availableLanguages;
 	private LanguageController myLanguageController;
-	
-	
+
 	public LanguagesDialogBox(LanguageController lc) {
 		super("Please choose your language");
 		myLanguageController = lc;
-		availableLanguages = new ArrayList<String>(myLanguageController.getAvailableLanguages());
+		availableLanguages = new ArrayList<String>(
+				myLanguageController.getAvailableLanguages());
 		populateChoiceBox();
 	}
-	
-
 
 	@Override
 	protected void addInputField() {
 		langChoiceBox = new ChoiceBox<String>();
-		
-		langChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new
-				ChangeListener<Number>() {
-			
+
+		langChoiceBox.getSelectionModel().selectedIndexProperty()
+				.addListener(new ChangeListener<Number>() {
+
 					@Override
 					public void changed(
 							ObservableValue<? extends Number> observable,
 							Number oldValue, Number newValue) {
 						userInput = availableLanguages.get((int) newValue);
-						
+
 					}
-		});
-		
+				});
+
 		myPane.setCenter(langChoiceBox);
-		
-	}
-	
-	private void populateChoiceBox() {
-		langChoiceBox.setItems(FXCollections.observableArrayList(availableLanguages));
+
 	}
 
+	private void populateChoiceBox() {
+		langChoiceBox.setItems(FXCollections
+				.observableArrayList(availableLanguages));
+	}
 
 	@Override
-	protected void updateUserInput() {};
+	protected void updateUserInput() {
+	};
 
 }

@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 
-public class CommandPort extends ScrollPane{
+public class CommandPort extends ScrollPane {
 	private TextField myTextField;
 	private Button myRunButton;
 	private static final String default_text = "Enter your command Here";
@@ -46,13 +46,11 @@ public class CommandPort extends ScrollPane{
 			runCommand();
 		}
 	}
-	
-	private void clearField(TextField tf){
-		if (tf.getText().equals(default_text)){
+
+	private void clearField(TextField tf) {
+		if (tf.getText().equals(default_text)) {
 			tf.clear();
 		}
 	}
-
-
 
 }

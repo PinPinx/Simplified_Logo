@@ -1,7 +1,8 @@
 package view.toolbar;
 
 import javafx.scene.Node;
-import javafx.scene.control.ColorPicker;import javafx.scene.paint.Color;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.paint.Color;
 
 /**
  * Toolbar Item to change pen color.
@@ -10,9 +11,9 @@ import javafx.scene.control.ColorPicker;import javafx.scene.paint.Color;
  *
  */
 public class TurtlePenColorToolbarItem extends TurtleSpecificToolbarItem {
-	
+
 	private Color color;
-	
+
 	protected TurtlePenColorToolbarItem(String label, Toolbar tb) {
 		super(label, tb);
 	}
@@ -20,7 +21,7 @@ public class TurtlePenColorToolbarItem extends TurtleSpecificToolbarItem {
 	@Override
 	public void changeTurtleProperties(int turtleID) {
 		myToolbar.getTurtleWindow().changePenColor(color, turtleID);
-		
+
 	}
 
 	@Override

@@ -34,11 +34,12 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		addTurtle();
 
 	}
-	
-	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {		
-		return new Point2D(myWidth/2 + mathCoords.getX(), myHeight/2 - mathCoords.getY());
+
+	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
+		return new Point2D(myWidth / 2 + mathCoords.getX(), myHeight / 2
+				- mathCoords.getY());
 	}
-	
+
 	public void addTurtle() {
 
 		addTurtle(0, 0);
@@ -79,20 +80,21 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	@Override
 	public void update(TurtleUpdate tu) {
 		TurtleImage ti = myTurtles.get(0);
-		
-		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(
-				tu.getTurtleOldCoordinates().getX(), 
-				tu.getTurtleOldCoordinates().getY()));
-		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(
-				tu.getTurtleNewCoordinates().getX(), 
-				tu.getTurtleNewCoordinates().getY()));
-		
+
+		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
+				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
+				.getY()));
+		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(tu
+				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
+				.getY()));
+
 		ti.setRotate(-tu.getTurtleAngle().getAngleValue());
 		ti.moveTo(newPos.getX(), newPos.getY());
 		ti.hide(tu.isTurtleHidden());
 
 		if (!tu.isTurtlePenUp()) {
-			gc.get(0).strokeLine(oldPos.getX(), oldPos.getY(), newPos.getX(), newPos.getY());
+			gc.get(0).strokeLine(oldPos.getX(), oldPos.getY(), newPos.getX(),
+					newPos.getY());
 		}
 	}
 
