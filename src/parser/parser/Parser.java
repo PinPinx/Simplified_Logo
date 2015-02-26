@@ -32,7 +32,12 @@ public class Parser {
 				try {
 					String str = "parser.commands." + className;
 					cls = Class.forName(str);
-				} catch (ClassNotFoundException e) {throw new CommandNameNotFoundException();} //TODO never happens?
+				} catch (ClassNotFoundException e) {
+//					if(i>0 && Regex.getInstance().getCommandType(commandStream[i-1]).equalsIgnoreCase("To")){
+//						inputStack.peek().push(new CommandRoot(commandStream[i], inputStack.peek()));
+//						i--;
+//					}
+					throw new CommandNameNotFoundException();} //TODO never happens?
 				
 				try {
 					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack.peek()));

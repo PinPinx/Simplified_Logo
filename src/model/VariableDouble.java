@@ -14,7 +14,19 @@ public class VariableDouble extends Variable {
 		super(name);
 		this.myProperty = new SimpleDoubleProperty(value);
 		this.myDisplayProperty = new SimpleStringProperty();
-		myDisplayProperty.bindBidirectional(myProperty, new NumberStringConverter());
+		NumberStringConverter converter = new NumberStringConverter(){
+			@Override
+			public Number fromString(String value){
+				try{
+					Integer.parseInt(value);
+				} catch(NumberFormatException e){
+					value = "50";
+				}
+				return super.fromString(value);
+			}
+		};
+		
+		myDisplayProperty.bindBidirectional(myProperty, converter);
 	}
 
 	@Override
