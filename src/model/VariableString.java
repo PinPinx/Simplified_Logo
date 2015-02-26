@@ -1,5 +1,8 @@
 package model;
 
+import parser.parser.GeneralType;
+import parser.parser.Regex;
+import view.View;
 import exceptions.VariableWrongTypeException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -26,11 +29,10 @@ public class VariableString extends Variable {
 	}
 
 	@Override
-	public void setValue(String edit) throws VariableWrongTypeException {
-		try{
-			myProperty.set(edit);
-		} catch (NumberFormatException e){
-			throw new VariableWrongTypeException();
+	public void setValue(String edit) throws VariableWrongTypeException {	
+		if(Regex.getInstance().getType(edit) == GeneralType.CONSTANT){
+			View.getInstance().showDialog("The edited value looks like a variable, but since this is a String variable, the edit will be interpreted as a string. Use the command line to change types.");
 		}
+		myProperty.set(edit);
 	}
 }

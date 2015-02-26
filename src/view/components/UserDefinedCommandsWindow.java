@@ -2,8 +2,10 @@ package view.components;
 
 import java.util.List;
 
+import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
+import view.View;
 import view.dialogs.TextInputDialogBox;
 import javafx.scene.control.Button;
 import model.CommandHistoryUpdate;
@@ -21,6 +23,7 @@ public class UserDefinedCommandsWindow extends ListWindow implements
 		myParamPromptBox = new TextInputDialogBox(PARAM_PROMPT);
 	}
 
+	// TODO: refactor. lots of duplicate codes with CommandHistWindow
 	@Override
 	public void update(CommandHistoryUpdate chu) {
 		myList.getChildren().clear();
@@ -44,9 +47,9 @@ public class UserDefinedCommandsWindow extends ListWindow implements
 	public void parseCommand(String command) {
 		try {
 			Model.getInstance().parse(command);
-		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat | BadArgumentException e) {
+			// TODO DUPLICATED CODE
+			View.getInstance().showDialog(e.getMessage());
 		}
 	}
 

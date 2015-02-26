@@ -10,7 +10,7 @@ public abstract class UnaryNode extends SyntaxNode {
 	
 	public UnaryNode(Stack<SyntaxNode> input) throws BadArgumentException{
 		if (input.empty()){
-			throw new BadArgumentException();
+			throw new BadArgumentException("Command takes one argument, not none.");
 		}
 		referenceNode = input.pop();
 	}

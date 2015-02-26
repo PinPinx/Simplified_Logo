@@ -16,7 +16,6 @@ import model.State;
 
 public class Parser {
 	private State myState;
-	private Regex myRegex;
 	
 	public Parser(State s){
 		this.myState = s;
@@ -46,7 +45,7 @@ public class Parser {
 							inputStack.peek().push(new ToInstance(data, inputStack.peek()));
 							continue;
 						} catch (UDCommandNotFoundException e1){
-							throw new CommandNameNotFoundException();
+							throw new CommandNameNotFoundException("Command "+commandStream[i]+" is neither a valid preset command nor user defined command.");
 						}
 				}
 				
@@ -55,8 +54,7 @@ public class Parser {
 				} catch (InstantiationException | IllegalAccessException
 						| IllegalArgumentException
 						| InvocationTargetException | SecurityException e) {
-					System.out.println("We fail at: " + commandStream[i]);
-					throw new CommandNameNotFoundException();
+					throw new CommandNameNotFoundException("Command "+commandStream[i]+" has broken our program. Anarchy!");
 				}			
 				
 			case COMMENT:
@@ -79,7 +77,7 @@ public class Parser {
 				inputStack.peek().push(new ListNode(listStack));
 				break;
 			case OTHER: default:
-				throw new SyntaxErrorWrongFormat();
+				throw new SyntaxErrorWrongFormat("Input "+commandStream[i]+" is not valid according to our syntax.");
 			}
 		}
 		return new CommandRoot(command, inputStack.peek());

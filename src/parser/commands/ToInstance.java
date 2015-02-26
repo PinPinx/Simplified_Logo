@@ -37,7 +37,7 @@ public class ToInstance extends SyntaxNode{
 				variables.addVariable(currentVar.getName(), newValue);
 			} catch (VariableCreationException
 					| VariableCreationInvalidValueException e) {
-				throw new BadArgumentException();
+				throw new BadArgumentException("Problem with variable factory.");
 			}
 		}
 		return commandList.execute(myState);

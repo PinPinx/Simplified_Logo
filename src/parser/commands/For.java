@@ -19,10 +19,10 @@ public class For extends BinaryNode {
 	public For(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 		if (!(nodeOne instanceof ListNode) || !(nodeTwo instanceof ListNode))
-			throw new BadArgumentException();
+			throw new BadArgumentException("A for loop must be followed by two bracketed lists.");
 		listReference = (ListNode) nodeOne;
 		if (listReference.getSize()!=4)
-			throw new BadArgumentException();
+			throw new BadArgumentException("A for loop's first following bracketed list must have 4 entries.");
 		variable = (VariableNode) listReference.getNode(0);
 	}
 
@@ -46,7 +46,7 @@ public class For extends BinaryNode {
 			myState.getVariablesCollection().addVariable(variable.getName(), Integer.toString(i));
 		} catch (VariableCreationException
 				| VariableCreationInvalidValueException e) {
-			throw new BadArgumentException();
+			throw new BadArgumentException("");
 		}
 		return nodeTwo.execute(myState);
 	}

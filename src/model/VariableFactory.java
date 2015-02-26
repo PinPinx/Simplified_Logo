@@ -18,11 +18,11 @@ public class VariableFactory {
 					double d = Double.parseDouble(varValue);
 					return new VariableDouble(varName, d);
 				} catch(Exception e2){
-					throw new VariableCreationException();
+					throw new VariableCreationException("Constant "+varValue+"cannot be cast to an int or double.");
 				}
 			}
 		case GROUPEND: case GROUPSTART: case LISTEND: case LISTSTART: default:
-			throw new VariableCreationInvalidValueException();
+			throw new VariableCreationInvalidValueException("A variable cannot be one of our reserved expressions, like "+varValue);
 		
 		}
 	}

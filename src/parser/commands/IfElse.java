@@ -9,7 +9,7 @@ import parser.nodes.TrinaryNode;
 
 public class IfElse extends TrinaryNode {
 
-	public IfElse(Stack<SyntaxNode> input) {
+	public IfElse(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 	}
 

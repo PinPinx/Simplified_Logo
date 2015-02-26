@@ -61,7 +61,7 @@ public class Regex {
 				return p.getKey();
 			}
 		}
-		throw new CommandNameNotFoundException();
+		throw new CommandNameNotFoundException("This command "+s+" is not a preset command.");
 	}
 
 	private void testMatches (String[] tests, List<Entry<String, Pattern>> patterns) {

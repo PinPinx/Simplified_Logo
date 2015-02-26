@@ -15,7 +15,7 @@ public class MakeVariable extends BinaryNode{
 	public MakeVariable(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 		if(!(nodeOne instanceof VariableNode))
-			throw new BadArgumentException();
+			throw new BadArgumentException("A variable must follow the make/set declaration.");
 	}
 
 	public double execute(State myState) throws BadArgumentException{

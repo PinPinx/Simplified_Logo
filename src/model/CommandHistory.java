@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import exceptions.UDCommandNotFoundException;
 import parser.commands.ToData;
 import parser.nodes.CommandRoot;
 import view.components.CommandsObserver;
+import parser.nodes.VariableNode;
 
 public class CommandHistory implements ObservableCommand {
 	private List<CommandRoot> myCommandList;
@@ -33,7 +33,7 @@ public class CommandHistory implements ObservableCommand {
 				return datum;
 			}
 		}
-		throw new UDCommandNotFoundException();
+		throw new UDCommandNotFoundException("UDCommand "+name+" doesn't exist.");
 	}
 	public boolean addUDCommand(ToData udCommand){
 		for(ToData datum : myUDCommands){
@@ -56,7 +56,13 @@ public class CommandHistory implements ObservableCommand {
 	public List<String> getUDCommandList(){
 		List<String> ret = new ArrayList<>();
 		for (ToData datum : myUDCommands) {
-			ret.add(datum.getName());
+			StringBuilder b = new StringBuilder();
+			b.append(datum.getName());
+			for(int i = 0; i < datum.getVarList().getSize(); i++){
+				b.append(" ");
+				b.append(((VariableNode)datum.getVarList().getNode(i)).getName());
+			}
+			ret.add(b.toString());
 		}
 		return ret;
 	}
