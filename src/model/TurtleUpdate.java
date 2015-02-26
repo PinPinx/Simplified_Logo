@@ -6,7 +6,7 @@ package model;
 public class TurtleUpdate {
 	private Angle turtleAngle;
 	private Coordinates turtleOldCoordinates, turtleNewCoordinates;
-	private boolean turtleHidden, turtleActive, turtlePenUp;
+	private boolean turtleHidden, turtleActive, turtlePenUp, turtleClear;
 	
 	public TurtleUpdate(Turtle t){
 		this.turtleAngle = t.getAngle();
@@ -15,6 +15,7 @@ public class TurtleUpdate {
 		this.turtleHidden = t.getHidden();
 		this.turtleActive = t.getActive();
 		this.turtlePenUp = t.getPenUp();
+		this.turtleClear = t.getClear();
 	}
 	
 

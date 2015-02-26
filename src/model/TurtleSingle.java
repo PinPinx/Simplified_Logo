@@ -9,7 +9,7 @@ import view.Components.TurtleObserver;
 public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
-	private boolean isPenUp, isHidden, isActive;
+	private boolean isPenUp, isHidden, isActive, isClear;
 	private List<TurtleObserver> myObservers;
 	
 	public TurtleSingle(){
@@ -99,6 +99,19 @@ public class TurtleSingle implements Turtle {
 		for(TurtleObserver o : myObservers){
 			o.update(createTurtleUpdate());
 		}
+	}
+
+	@Override
+	public void setClear(boolean b) {
+		isClear = b;
+	}
+
+	@Override
+	public boolean getClear() {
+		// TODO Auto-generated method stub
+		boolean ret = isClear;
+		isClear = false;
+		return ret;
 	}
 
 	
