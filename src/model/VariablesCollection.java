@@ -9,7 +9,7 @@ import exceptions.VariableCreationInvalidValueException;
 import exceptions.VariableNotFoundException;
 import exceptions.VariableWrongTypeException;
 import javafx.beans.property.StringProperty;
-import view.Components.VariablesObserver;
+import view.components.VariablesObserver;
 
 public class VariablesCollection implements ObservableVariables {
 	private List<Variable> myVariableList;

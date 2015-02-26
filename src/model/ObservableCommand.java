@@ -1,6 +1,6 @@
 package model;
 
-import view.Components.CommandsObserver;
+import view.components.CommandsObserver;
 
 
 public interface ObservableCommand {

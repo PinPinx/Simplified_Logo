@@ -1,4 +1,4 @@
-package view.Components;
+package view.components;
 
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;

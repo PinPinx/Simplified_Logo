@@ -3,8 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import view.Components.TurtleObserver;
+import view.components.TurtleObserver;
 
 public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;

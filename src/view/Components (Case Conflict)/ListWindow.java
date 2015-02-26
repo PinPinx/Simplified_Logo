@@ -1,4 +1,4 @@
-package view.Components;
+package view.components;
 
 import javafx.scene.Group;
 import javafx.scene.control.Label;

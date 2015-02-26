@@ -1,13 +1,13 @@
 package view;
 
 import parser.parser.Regex;
-import view.Components.CommandHistoryWindow;
-import view.Components.CommandPort;
-import view.Components.LanguageController;
-import view.Components.SLogoMenuBar;
-import view.Components.TurtleWindow;
-import view.Components.UserDefinedCommandsWindow;
-import view.Components.VariablesWindow;
+import view.components.CommandHistoryWindow;
+import view.components.CommandPort;
+import view.components.LanguageController;
+import view.components.SLogoMenuBar;
+import view.components.TurtleWindow;
+import view.components.UserDefinedCommandsWindow;
+import view.components.VariablesWindow;
 import view.dialogs.DialogBox;
 import view.dialogs.HelpDialogBox;
 import view.dialogs.LanguagesDialogBox;

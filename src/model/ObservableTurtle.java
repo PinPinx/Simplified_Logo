@@ -1,6 +1,6 @@
 package model;
 
-import view.Components.TurtleObserver;
+import view.components.TurtleObserver;
 
 public interface ObservableTurtle {
 

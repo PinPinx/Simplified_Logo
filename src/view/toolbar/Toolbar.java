@@ -1,6 +1,6 @@
 package view.toolbar;
 
-import view.Components.TurtleWindow;
+import view.components.TurtleWindow;
 import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 

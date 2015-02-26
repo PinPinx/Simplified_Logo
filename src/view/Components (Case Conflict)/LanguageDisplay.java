@@ -1,4 +1,4 @@
-package view.Components;
+package view.components;
 
 /**
  * Interface for any class that involves displaying language

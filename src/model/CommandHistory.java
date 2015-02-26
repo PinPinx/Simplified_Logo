@@ -8,7 +8,7 @@ import java.util.List;
 import exceptions.UDCommandNotFoundException;
 import parser.commands.ToData;
 import parser.nodes.CommandRoot;
-import view.Components.CommandsObserver;
+import view.components.CommandsObserver;
 
 public class CommandHistory implements ObservableCommand {
 	private List<CommandRoot> myCommandList;

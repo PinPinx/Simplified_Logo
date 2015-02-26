@@ -1,4 +1,4 @@
-package view.Components;
+package view.components;
 
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;

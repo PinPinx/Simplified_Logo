@@ -1,7 +1,7 @@
 package model;
 
 
-import view.Components.VariablesObserver;
+import view.components.VariablesObserver;
 
 public interface ObservableVariables {
 	
