@@ -36,7 +36,7 @@ public class SLogoMenuBar extends MenuBar {
 
 	// items under Settings
 	public static final String SETTINGS = "Settings";
-	public static final String LANGUAGE = "Language";
+	public static final String LANGUAGE = "Change language";
 
 	// items under HELP
 	public static final String HELP = "Help";

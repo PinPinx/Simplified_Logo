@@ -1,4 +1,4 @@
-package view.Components;
+package view.dialogs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ChoiceBox;
-import view.InputDialogBox;
+import view.Components.LanguageController;
 
 public class LanguagesDialogBox extends InputDialogBox {
 	
