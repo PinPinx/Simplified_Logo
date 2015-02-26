@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import parser.commands.MakeUserInstruction;
 import parser.commands.ToData;
 import parser.nodes.CommandRoot;
 import view.Components.CommandsObserver;

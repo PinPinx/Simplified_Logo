@@ -1,5 +1,6 @@
 package view;
 
+import parser.parser.Regex;
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
 import view.Components.LanguageController;
@@ -35,8 +36,6 @@ public class View {
 	private Stage myStage;
 	private Scene myScene;
 	private BorderPane myBorderPane;
-	private LanguageController myLanguageController = LanguageController
-			.getInstance();
 
 	private SLogoMenuBar myMenuBar;
 	private Toolbar myToolbar;
@@ -133,7 +132,7 @@ public class View {
 
 	private void generateProgramDialogs() {
 		myHelpBox = new HelpDialogBox();
-		myLanguagesBox = new LanguagesDialogBox(myLanguageController);
+		myLanguagesBox = new LanguagesDialogBox();
 
 	}
 
@@ -141,8 +140,10 @@ public class View {
 		myHelpBox.show();
 	}
 
-	public String showLanguages() {
-		return (String) myLanguagesBox.showInputDialog();
+	public void showAndChangeLanguage() {
+		String newLanguage = (String) myLanguagesBox.showInputDialog();
+		Regex.getInstance().changeLanguage(
+				LanguageController.getCommandLanguagesFilePath(newLanguage));
 	}
 
 	public void showDialog(String message) {

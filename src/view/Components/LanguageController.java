@@ -25,16 +25,14 @@ public class LanguageController {
 				"Portuguese", "Russian", "Spanish"));
 	}
 
-	private static final String RESOURCES_FOLDER_PATH = "/resources/languages/";
-	private static final String RESOURCES_FILE_EXTENSION = ".properties";
+	private static final String RESOURCES_FOLDER_PATH = "resources/languages/";
 
-	public String getCommandLanguagesFilePath(String language) {
-		String filePath = RESOURCES_FOLDER_PATH + language
-				+ RESOURCES_FILE_EXTENSION;
+	public static String getCommandLanguagesFilePath(String language) {
+		String filePath = RESOURCES_FOLDER_PATH + language;
 		return filePath;
 	}
 
-	public Collection<String> getAvailableLanguages() {
+	public static Collection<String> getAvailableLanguages() {
 		return Collections.unmodifiableCollection(AVAILABLE_LANGUAGES);
 	}
 
