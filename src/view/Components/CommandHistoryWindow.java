@@ -14,8 +14,6 @@ public class CommandHistoryWindow extends ListWindow implements CommandsObserver
 
 	public CommandHistoryWindow(int w, int h) {
 		super(w, h, "Command History.");
-		// test
-
 	}
 
 
