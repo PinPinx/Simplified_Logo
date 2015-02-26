@@ -11,7 +11,7 @@ public abstract class BinaryNode extends SyntaxNode{
 
 	public BinaryNode(Stack<SyntaxNode> input) throws BadArgumentException{
 		if(input.size()<2){
-			throw new BadArgumentException();
+			throw new BadArgumentException("Command requires two arguments.");
 		}
 		nodeOne = input.pop();
 		nodeTwo = input.pop();

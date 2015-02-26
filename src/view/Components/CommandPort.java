@@ -1,5 +1,7 @@
 package view.Components;
 
+import view.View;
+import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
 import model.Model;
@@ -34,9 +36,9 @@ public class CommandPort extends ScrollPane {
 		String command = myTextField.getText();
 		try {
 			Model.getInstance().parse(command);
-		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat e) {
+		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat | BadArgumentException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			View.getInstance().showDialog(e.getMessage());
 		}
 		myTextField.clear();
 	}

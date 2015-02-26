@@ -65,7 +65,7 @@ public class VariablesCollection implements ObservableVariables {
 				return;
 			}
 		}
-		throw new VariableNotFoundException();
+		throw new VariableNotFoundException("Variable "+varName+" does not exist. As such, it cannot be deleted.");
 	}
 	
 
@@ -85,13 +85,11 @@ public class VariablesCollection implements ObservableVariables {
 
 	@Override
 	public void addObserver(VariablesObserver o) {
-		// TODO Auto-generated method stub
 		myObserverList.add(o);
 	}
 
 	@Override
 	public void removeObserver(VariablesObserver o) {
-		// TODO Auto-generated method stub
 		myObserverList.remove(o);
 	}
 	

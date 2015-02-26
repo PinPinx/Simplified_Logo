@@ -34,7 +34,7 @@ public class CommandHistory implements ObservableCommand {
 				return datum;
 			}
 		}
-		throw new UDCommandNotFoundException();
+		throw new UDCommandNotFoundException("UDCommand "+name+" doesn't exist.");
 	}
 	public boolean addUDCommand(ToData udCommand){
 		for(ToData datum : myUDCommands){

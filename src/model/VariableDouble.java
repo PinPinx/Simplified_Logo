@@ -45,7 +45,7 @@ public class VariableDouble extends Variable {
 			double d = Double.parseDouble(edit);
 			this.myProperty.set(d);
 		} catch (NumberFormatException e){
-			throw new VariableWrongTypeException();
+			throw new VariableWrongTypeException("Edit: "+edit+"not allowed. This is a double variable. To change it's type, do so at the command line.");
 		}
 	}
 }

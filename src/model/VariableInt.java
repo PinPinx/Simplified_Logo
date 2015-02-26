@@ -33,7 +33,7 @@ public class VariableInt extends Variable {
 			int i = Integer.parseInt(edit);
 			this.myProperty.set(i);
 		} catch (NumberFormatException e){
-			throw new VariableWrongTypeException();
+			throw new VariableWrongTypeException("Edit: "+edit+"not allowed. This is a integer variable. To change it's type, do so at the command line.");
 		}
 	}
 	

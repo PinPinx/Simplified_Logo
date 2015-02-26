@@ -2,6 +2,8 @@ package view.Components;
 
 import java.util.List;
 
+import view.View;
+import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
 import model.CommandHistoryUpdate;
@@ -30,9 +32,9 @@ public class CommandHistoryWindow extends ListWindow implements
 	public void parseCommand(String command) {
 		try {
 			Model.getInstance().parse(command);
-		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat | BadArgumentException e) {
+			// TODO DUPLICATED CODE
+			View.getInstance().showDialog(e.getMessage());
 		}
 	}
 

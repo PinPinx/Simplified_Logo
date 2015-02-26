@@ -18,9 +18,9 @@ public class DoTimes extends BinaryNode {
 	public DoTimes(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 		if (!(nodeOne instanceof ListNode) || !(nodeTwo instanceof ListNode))
-			throw new BadArgumentException();
+			throw new BadArgumentException("Do times loop must be followed by two bracketed lists.");
 		if (((ListNode) nodeOne).getSize()!=2)
-			throw new BadArgumentException();
+			throw new BadArgumentException("The first bracketed list following a do times loop must only have two entries.");
 		variable = (VariableNode) ((ListNode) nodeOne).getNode(0);
 	}
 
@@ -32,7 +32,7 @@ public class DoTimes extends BinaryNode {
 			myState.getVariablesCollection().addVariable(variable.getName(), "1");
 		} catch (VariableCreationException
 				| VariableCreationInvalidValueException e) {
-			throw new BadArgumentException();
+			throw new BadArgumentException("This should not happen. There is problem with the variable factory.");
 		}
 		for (int i = 1; i<limit; i++){
 			runCode(myState, i);
@@ -46,7 +46,7 @@ public class DoTimes extends BinaryNode {
 			myState.getVariablesCollection().addVariable(variable.getName(), Integer.toString(i));
 		} catch (VariableCreationException
 				| VariableCreationInvalidValueException e) {
-			throw new BadArgumentException();
+			throw new BadArgumentException("This should not happen. There is a problem with the variable factory.");
 		}
 		return nodeTwo.execute(myState);
 	}
