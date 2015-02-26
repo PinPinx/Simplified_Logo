@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import view.components.LanguageController;
 import exceptions.CommandNameNotFoundException;
 import model.Model;
 
@@ -35,8 +36,8 @@ public class Regex {
 		return instance;
 	}
 	
-	public void changeLanguage(String filePath){
-		languageFileString = filePath;
+	public void changeLanguage(String language){
+		languageFileString = LanguageController.getCommandLanguagesFilePath(language);
 		commandPatterns.clear();
 		commandPatterns.addAll(makePatterns(languageFileString));
 	}

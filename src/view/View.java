@@ -3,7 +3,6 @@ package view;
 import parser.parser.Regex;
 import view.components.CommandHistoryWindow;
 import view.components.CommandPort;
-import view.components.LanguageController;
 import view.components.SLogoMenuBar;
 import view.components.TurtleWindow;
 import view.components.UserDefinedCommandsWindow;
@@ -133,7 +132,6 @@ public class View {
 	private void generateProgramDialogs() {
 		myHelpBox = new HelpDialogBox();
 		myLanguagesBox = new LanguagesDialogBox();
-
 	}
 
 	public void showHelp() {
@@ -142,8 +140,7 @@ public class View {
 
 	public void showAndChangeLanguage() {
 		String newLanguage = (String) myLanguagesBox.showInputDialog();
-		Regex.getInstance().changeLanguage(
-				LanguageController.getCommandLanguagesFilePath(newLanguage));
+		Regex.getInstance().changeLanguage(newLanguage);
 	}
 
 	public void showDialog(String message) {
