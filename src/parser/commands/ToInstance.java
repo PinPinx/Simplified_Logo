@@ -22,8 +22,6 @@ public class ToInstance extends SyntaxNode{
 		varList = commandData.getVarList();
 		commandList = commandData.getCommandList();
 		paramList = new ArrayList<SyntaxNode>();
-		System.out.println(varList.getSize());
-		System.out.println(input.size());
 		for (int i = 0; i < varList.getSize(); i++){
 			paramList.add(input.pop());
 		}
