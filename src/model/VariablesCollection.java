@@ -46,8 +46,9 @@ public class VariablesCollection implements ObservableVariables {
 				} catch (VariableWrongTypeException e) {
 					try {
 						deleteVariable(varName);
+						break;
 					} catch (VariableNotFoundException e1) {} //never happens TODO
-					addVariable(varName, varValue);
+					//addVariable(varName, varValue);
 				}
 			}
 		}
