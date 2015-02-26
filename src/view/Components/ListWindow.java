@@ -13,15 +13,15 @@ import javafx.scene.layout.VBox;
  * @author lien
  *
  */
-public abstract class ListWindow extends Group{
-	
+public abstract class ListWindow extends Group {
+
 	protected BorderPane myPane;
 	protected Label myLabel;
 	protected VBox myList;
 	protected ScrollPane myScrollPane;
 	protected int width;
 	protected int height;
-	
+
 	public ListWindow(int w, int h, String label) {
 		width = w;
 		height = h;
@@ -31,20 +31,17 @@ public abstract class ListWindow extends Group{
 		addLabel(label);
 		initScrollList();
 	}
-	
-	
+
 	private void addLabel(String label) {
 		myLabel = new Label(label);
-		myPane.setTop(myLabel);		
+		myPane.setTop(myLabel);
 	}
 
-	
 	private void initScrollList() {
 		myList = new VBox();
 		myScrollPane = new ScrollPane(myList);
 		myScrollPane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
 		myPane.setCenter(myScrollPane);
 	}
-	
 
 }

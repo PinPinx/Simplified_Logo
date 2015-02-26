@@ -23,8 +23,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * Singleton class responsible for setting up the GUI,
- * and handling user interactions.
+ * Singleton class responsible for setting up the GUI, and handling user
+ * interactions.
  * 
  * @author lien
  *
@@ -35,11 +35,12 @@ public class View {
 	private Stage myStage;
 	private Scene myScene;
 	private BorderPane myBorderPane;
-	private LanguageController myLanguageController = LanguageController.getInstance();
-	
+	private LanguageController myLanguageController = LanguageController
+			.getInstance();
+
 	private SLogoMenuBar myMenuBar;
 	private Toolbar myToolbar;
-	
+
 	private TurtleWindow myTurtleWindow;
 	private CommandPort myCommandPort;
 
@@ -51,50 +52,47 @@ public class View {
 
 	private HelpDialogBox myHelpBox;
 	private LanguagesDialogBox myLanguagesBox;
-	
+
 	private static final String TITLE = "SLOGO";
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
 
-
 	public View(Stage stage) {
-		
-		// set up the main border pane and stage	
+
+		// set up the main border pane and stage
 		myBorderPane = new BorderPane();
-		myBorderPane.setBackground(new Background(new BackgroundFill(BACKGROUND_COLOR, null, null)));
+		myBorderPane.setBackground(new Background(new BackgroundFill(
+				BACKGROUND_COLOR, null, null)));
 		myScene = new Scene(myBorderPane, Main.SIZE.width, Main.SIZE.height);
-		
+
 		myStage = stage;
 		myStage.setTitle(TITLE);
 		myStage.setScene(myScene);
-		
+
 		// place window items in their place
 		addTopBars();
 		addTurtleWindow();
 		addListWindows();
 		addCommandPortWindow();
 		generateProgramDialogs();
-		
+
 		myToolbar.setTurtleWindow(myTurtleWindow);
-		
+
 		instance = this;
-		
+
 	}
 
-
-
 	private void addTurtleWindow() {
-		//TODO: Dimensions hard coded for now
-		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4/5, Main.SIZE.height * 4/5);
+		// TODO: Dimensions hard coded for now
+		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4 / 5,
+				Main.SIZE.height * 4 / 5);
 		myBorderPane.setLeft(myTurtleWindow);
 		BorderPane.setMargin(myTurtleWindow, new Insets(5));
 	}
-	
-	
-	
+
 	/**
 	 * Constructs a menu bar and a tool bar to be placed at the top
 	 */
-	
+
 	private void addTopBars() {
 		VBox top = new VBox();
 		myMenuBar = new SLogoMenuBar(this);
@@ -102,31 +100,32 @@ public class View {
 		top.getChildren().addAll(myMenuBar, myToolbar);
 		myBorderPane.setTop(top);
 	}
-	
-	
+
 	private void addListWindows() {
 		initLists();
 
 		myUDListWindows = new HBox();
-		myUDListWindows.getChildren().addAll(myVariablesWindow, myUDCommandsWindow);
+		myUDListWindows.getChildren().addAll(myVariablesWindow,
+				myUDCommandsWindow);
 
 		myListWindows = new VBox();
-		myListWindows.getChildren().addAll(myUDListWindows, myCommandHistWindow);
+		myListWindows.getChildren()
+				.addAll(myUDListWindows, myCommandHistWindow);
 		myBorderPane.setCenter(myListWindows);
 
 	}
-	
 
-	
 	private void initLists() {
-		myCommandHistWindow = new CommandHistoryWindow(Main.SIZE.width * 2/5, Main.SIZE.height * 2/5);
-		myUDCommandsWindow = new UserDefinedCommandsWindow(Main.SIZE.width * 1/5, Main.SIZE.height * 2/5);
-		myVariablesWindow = new VariablesWindow(Main.SIZE.width * 1/5, Main.SIZE.height * 2/5);		
+		myCommandHistWindow = new CommandHistoryWindow(Main.SIZE.width * 2 / 5,
+				Main.SIZE.height * 2 / 5);
+		myUDCommandsWindow = new UserDefinedCommandsWindow(
+				Main.SIZE.width * 1 / 5, Main.SIZE.height * 2 / 5);
+		myVariablesWindow = new VariablesWindow(Main.SIZE.width * 1 / 5,
+				Main.SIZE.height * 2 / 5);
 	}
-	
-		
+
 	private void addCommandPortWindow() {
-		//TODO: Dimensions hard coded for now
+		// TODO: Dimensions hard coded for now
 		myCommandPort = new CommandPort(500, 50);
 		myBorderPane.setBottom(myCommandPort);
 		BorderPane.setMargin(myCommandPort, new Insets(5));
@@ -135,49 +134,44 @@ public class View {
 	private void generateProgramDialogs() {
 		myHelpBox = new HelpDialogBox();
 		myLanguagesBox = new LanguagesDialogBox(myLanguageController);
-		
+
 	}
-	
+
 	public void showHelp() {
 		myHelpBox.show();
 	}
-	
+
 	public void showLanguages() {
 		myLanguagesBox.showInputDialog();
 	}
-	
+
 	public void showDialog(String message) {
 		DialogBox dialog = new MessageDialogBox(message);
 		dialog.show();
 	}
-	 
 
 	public void showView() {
 		myStage.show();
 	}
 
-
 	public TurtleWindow getTurtleWindow() {
 		return myTurtleWindow;
 	}
-	
-	
+
 	public VariablesWindow getVariablesWindow() {
 		return myVariablesWindow;
 	}
-	
-	
+
 	public CommandHistoryWindow getCommandHistoryWindow() {
 		return myCommandHistWindow;
 	}
-	
-	public UserDefinedCommandsWindow getUDCommandsWindow(){
+
+	public UserDefinedCommandsWindow getUDCommandsWindow() {
 		return myUDCommandsWindow;
 	}
-	
-	
-	public static View getInstance(){
-		if(instance == null){
+
+	public static View getInstance() {
+		if (instance == null) {
 			throw new RuntimeException("View accessed before instantiation");
 		}
 		return instance;
