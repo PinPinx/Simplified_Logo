@@ -2,13 +2,15 @@ package view;
 
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
-import view.Components.HelpDialogBox;
 import view.Components.LanguageController;
-import view.Components.LanguagesDialogBox;
 import view.Components.SLogoMenuBar;
 import view.Components.TurtleWindow;
 import view.Components.UserDefinedCommandsWindow;
 import view.Components.VariablesWindow;
+import view.dialogs.DialogBox;
+import view.dialogs.HelpDialogBox;
+import view.dialogs.LanguagesDialogBox;
+import view.dialogs.MessageDialogBox;
 import view.toolbar.Toolbar;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -167,6 +169,10 @@ public class View {
 	
 	public CommandHistoryWindow getCommandHistoryWindow() {
 		return myCommandHistWindow;
+	}
+	
+	public UserDefinedCommandsWindow getUDCommandsWindow(){
+		return myUDCommandsWindow;
 	}
 	
 	

@@ -3,8 +3,8 @@ package view.toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.InputDialogBox;
-import view.TextInputDialogBox;
+import view.dialogs.InputDialogBox;
+import view.dialogs.TextInputDialogBox;
 
 
 /**
