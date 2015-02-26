@@ -22,6 +22,9 @@ public class SetTowards extends BinaryTurtleCommand {
 		Point2D dir = new Point2D(nodeOne.execute(myState),nodeTwo.execute(myState));
 		Point2D curr = new Point2D(turtle.getCoordinates().getX(),turtle.getCoordinates().getY());
 		Point2D diff = dir.subtract(curr);
+		if(diff.magnitude() == 0){
+			return 0;
+		}
 		double d = diff.dotProduct(1, 0)/diff.magnitude();
 		int mult = diff.getY() <= 0 ? -1 : 1;
 		double endAngleValue = mult*Math.acos(d)*360.0/2.0/Math.PI;
