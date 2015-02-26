@@ -28,6 +28,7 @@ public class Model {
 		try {
 			CommandRoot hello = myParser.parse(command);
 			hello.execute(myState);
+			myState.getCommandHistory().addCommand(hello);
 		} catch (BadArgumentException e) {
 			e.printStackTrace();
 		}

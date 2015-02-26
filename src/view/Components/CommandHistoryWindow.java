@@ -23,7 +23,6 @@ public class CommandHistoryWindow extends ListWindow implements CommandsObserver
 		// TODO Auto-generated method stub
 		myList.getChildren().clear();
 		List<String> myHistory = chu.getCommandHistory();
-		System.out.println("udpate requested");
 		for (String command : myHistory){
 			Button commandButton = new Button(command);
 			commandButton.setOnAction(e->parseCommand(command));
