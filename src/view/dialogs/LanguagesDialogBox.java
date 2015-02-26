@@ -16,7 +16,7 @@ public class LanguagesDialogBox extends InputDialogBox {
 	private LanguageController myLanguageController;
 
 	public LanguagesDialogBox(LanguageController lc) {
-		super("Please choose your language");
+		super("Please choose your language:");
 		myLanguageController = lc;
 		availableLanguages = new ArrayList<String>(
 				myLanguageController.getAvailableLanguages());

@@ -1,6 +1,5 @@
 package view.toolbar;
 
-import view.Components.LabelledComponent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -17,7 +16,7 @@ import javafx.scene.paint.Color;
  * @author lien
  *
  */
-public abstract class ToolbarItem extends HBox implements LabelledComponent {
+public abstract class ToolbarItem extends HBox {
 
 	protected Toolbar myToolbar; // where the item is held
 	protected Node myNode;
@@ -41,10 +40,6 @@ public abstract class ToolbarItem extends HBox implements LabelledComponent {
 
 		Label myLabel = new Label(label);
 		this.getChildren().addAll(myLabel, myNode);
-	}
-
-	public void changeLanguage(String language) {
-		// myLabel.setText(value);
 	}
 
 	protected abstract Node createNode();

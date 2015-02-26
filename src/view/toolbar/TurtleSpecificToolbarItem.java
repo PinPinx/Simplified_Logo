@@ -18,7 +18,7 @@ public abstract class TurtleSpecificToolbarItem extends ToolbarItem {
 	List<Integer> selectedTurtles;
 
 	// TODO: Hard coded to English
-	protected static final String PROMPT = "Please enter turtle ID(s) separated by spaces,\n"
+	protected static final String TURTLE_PROMPT = "Please enter turtle ID(s) separated by spaces,\n"
 			+ "or 'all' for all turtles.\n" + "Available IDs: ";
 
 	protected TurtleSpecificToolbarItem(String label, Toolbar tb) {
@@ -44,7 +44,7 @@ public abstract class TurtleSpecificToolbarItem extends ToolbarItem {
 	 */
 	private void getUserInput() {
 		selectedTurtles = new ArrayList<Integer>();
-		InputDialogBox dialog = new TextInputDialogBox(PROMPT
+		InputDialogBox dialog = new TextInputDialogBox(TURTLE_PROMPT
 				+ getAvailableTurtles());
 		String userInput = ((String) dialog.showInputDialog()).trim();
 

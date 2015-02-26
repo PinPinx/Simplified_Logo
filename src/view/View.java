@@ -141,8 +141,8 @@ public class View {
 		myHelpBox.show();
 	}
 
-	public void showLanguages() {
-		myLanguagesBox.showInputDialog();
+	public String showLanguages() {
+		return (String) myLanguagesBox.showInputDialog();
 	}
 
 	public void showDialog(String message) {
