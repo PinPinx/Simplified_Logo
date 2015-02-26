@@ -93,7 +93,7 @@ public class SLogoMenuBar extends MenuBar {
 		Menu settings = new Menu(SETTINGS);
 
 		MenuItem language = makeMenuItem(LANGUAGE, event -> {
-			myView.showHelp();
+			myView.showLanguages();
 		});
 
 		settings.getItems().addAll(language);

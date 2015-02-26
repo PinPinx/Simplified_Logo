@@ -11,10 +11,9 @@ import javafx.scene.layout.BorderPane;
  * @author lien
  *
  */
-public class InputDialogBox extends MessageDialogBox {
+public abstract class InputDialogBox extends MessageDialogBox {
 	
-	private TextField myTextField;
-	private static final int PADDING= 10;
+	protected Object userInput;
 	
 	public InputDialogBox(String prompt) {
 		
@@ -22,17 +21,13 @@ public class InputDialogBox extends MessageDialogBox {
 		addInputField();
 	}
 	
-	public String showInputDialog() {
-		myStage.showAndWait();		
-		return myTextField.getText();
+	public Object showInputDialog() {
+		myStage.showAndWait();
+		updateUserInput();
+		return userInput;
 	}
-
 	
-	private void addInputField() {
-		myTextField = new TextField();
-		myPane.setCenter(myTextField);
-		BorderPane.setMargin(myTextField, new Insets(PADDING));
-		BorderPane.setAlignment(myTextField, Pos.CENTER);
-	}
+	protected abstract void addInputField();
+	protected abstract void updateUserInput();
 	
 }

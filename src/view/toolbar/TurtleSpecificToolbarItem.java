@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import view.InputDialogBox;
+import view.TextInputDialogBox;
 
 
 /**
@@ -46,8 +47,8 @@ public abstract class TurtleSpecificToolbarItem extends ToolbarItem {
 	 */
 	private void getUserInput() {
 		selectedTurtles = new ArrayList<Integer>();
-		InputDialogBox dialog = new InputDialogBox(PROMPT + getAvailableTurtles());
-		String userInput = (dialog.showInputDialog()).trim();
+		InputDialogBox dialog = new TextInputDialogBox(PROMPT + getAvailableTurtles());
+		String userInput = ((String) dialog.showInputDialog()).trim();
 		
 		//TODO: input checking
 		if (userInput.equals("all")) {

@@ -1,9 +1,10 @@
 package view;
 
-
 import view.Components.CommandHistoryWindow;
 import view.Components.CommandPort;
 import view.Components.HelpDialogBox;
+import view.Components.LanguageController;
+import view.Components.LanguagesDialogBox;
 import view.Components.SLogoMenuBar;
 import view.Components.TurtleWindow;
 import view.Components.UserDefinedCommandsWindow;
@@ -20,7 +21,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * Singleton class which 
+ * Singleton class responsible for setting up the GUI,
+ * and handling user interactions.
  * 
  * @author lien
  *
@@ -31,6 +33,7 @@ public class View {
 	private Stage myStage;
 	private Scene myScene;
 	private BorderPane myBorderPane;
+	private LanguageController myLanguageController = LanguageController.getInstance();
 	
 	private SLogoMenuBar myMenuBar;
 	private Toolbar myToolbar;
@@ -45,6 +48,7 @@ public class View {
 	private HBox myUDListWindows;
 
 	private HelpDialogBox myHelpBox;
+	private LanguagesDialogBox myLanguagesBox;
 	
 	private static final String TITLE = "SLOGO";
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
@@ -66,7 +70,7 @@ public class View {
 		addTurtleWindow();
 		addListWindows();
 		addCommandPortWindow();
-		generateHelpPage();
+		generateProgramDialogs();
 		
 		myToolbar.setTurtleWindow(myTurtleWindow);
 		
@@ -126,13 +130,18 @@ public class View {
 		BorderPane.setMargin(myCommandPort, new Insets(5));
 	}
 
-	private void generateHelpPage() {
+	private void generateProgramDialogs() {
 		myHelpBox = new HelpDialogBox();
+		myLanguagesBox = new LanguagesDialogBox(myLanguageController);
 		
 	}
 	
 	public void showHelp() {
 		myHelpBox.show();
+	}
+	
+	public void showLanguages() {
+		myLanguagesBox.showInputDialog();
 	}
 	
 	public void showDialog(String message) {
