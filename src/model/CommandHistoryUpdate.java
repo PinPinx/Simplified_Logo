@@ -6,8 +6,9 @@ public class CommandHistoryUpdate {
 	private List<String> myCommands;
 	private List<String> myUDCommands;
 	
-	public CommandHistoryUpdate(List<String> commands){
-		this.myCommands = commands;
+	public CommandHistoryUpdate(CommandHistory ch){
+		this.myCommands = ch.getCommandList();
+		this.myUDCommands = ch.getUDCommandList();
 	}
 	
 	public List<String> getCommandHistory(){
