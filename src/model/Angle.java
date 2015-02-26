@@ -5,6 +5,7 @@ public class Angle {
 	
 	public Angle(double parameter){
 		this.myValue = parameter;
+		modAngleValue();
 	}
 	public Angle(Angle a){
 		this.myValue = a.getAngleValue();
