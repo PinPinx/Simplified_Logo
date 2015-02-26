@@ -6,6 +6,7 @@ public interface Turtle extends ObservableTurtle {
 	public Coordinates getOldCoordinates();
 	public void addDegree(Double d);
 	public void addCoordinates(Coordinates p);
+	public double moveToPosition(double x, double y);
 	public void setHidden(boolean b);
 	public void setActive(boolean b);
 	public void setPenUp(boolean b);

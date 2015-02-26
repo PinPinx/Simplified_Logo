@@ -17,15 +17,6 @@ public class Home extends SyntaxNode {
 	@Override
 	public double execute(State myState) throws BadArgumentException {
 		Turtle turtle = myState.getTurtle();
-		return moveToPosition(0, 0, turtle);
+		return turtle.moveToPosition(0, 0);
 	}
-	
-	private double moveToPosition(double x, double y, Turtle turtle){
-		double xDiff = x - turtle.getCoordinates().getX();
-		double yDiff = y - turtle.getCoordinates().getY();
-		double distance = Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2));
-		turtle.addCoordinates(new Coordinates(xDiff, yDiff));
-		return distance;
-	}
-
 }

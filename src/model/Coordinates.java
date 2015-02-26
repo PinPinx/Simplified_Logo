@@ -31,7 +31,7 @@ public class Coordinates {
 				this.getY() == c.getY();
 	}
 	public double distance(Coordinates c){
-		return Math.pow(this.getX() - c.getX(),2) 
-				+ Math.pow(this.getY() - c.getY(),2); 
+		return Math.sqrt(Math.pow(this.getX() - c.getX(),2) 
+				+ Math.pow(this.getY() - c.getY(),2)); 
 	}
 }

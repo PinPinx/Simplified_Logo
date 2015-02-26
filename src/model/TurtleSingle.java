@@ -112,7 +112,13 @@ public class TurtleSingle implements Turtle {
 		isClear = false;
 		return ret;
 	}
-
+	
+	@Override
+	public double moveToPosition(double x, double y){
+		Coordinates delta = new Coordinates(x - myCoordinates.getX(), y - myCoordinates.getY());
+		addCoordinates(delta);
+		return delta.distance(getCoordinates());
+	}
 	
 	
 }
