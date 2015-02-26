@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,6 +27,11 @@ public class DialogBox {
 
 	public DialogBox() {
 		myPane = new BorderPane();
+		myPane.setOnKeyPressed(e->{
+			if (e.getCode() == KeyCode.ENTER) {
+				myStage.close();
+			}
+		});
 		addOKButton();
 		initStage();
 	}
