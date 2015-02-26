@@ -13,7 +13,10 @@ public class VariableNode extends SyntaxNode{
 	
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-			return (double) myState.getVariablesCollection().getVariableValue(myName);
+		Object varValue = myState.getVariablesCollection().getVariableValue(myName);
+		if (varValue instanceof Integer)
+			return (double) ((Integer) varValue).intValue();
+		return (double) myState.getVariablesCollection().getVariableValue(myName);
 	}
 	
 	public String getName(){
