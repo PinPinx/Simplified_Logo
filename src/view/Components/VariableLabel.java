@@ -18,7 +18,7 @@ public class VariableLabel extends HBox{
 	TextField myTextField;
 	
 	public VariableLabel(StringProperty myName, StringProperty myValue){
-		myVarLabel = new Label(myName.getValue()+" = ");
+		myVarLabel = new Label(myName.getValue().substring(1)+" = ");
 		myValueLabel = new Label(myValue.getValue());
 		myValueLabel.setOnMouseClicked(e->takeEdit());
 		this.myValue = myValue;
