@@ -6,13 +6,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import parser.commands.MakeUserInstruction;
+import parser.commands.ToData;
 import parser.nodes.CommandRoot;
 import view.Components.CommandsObserver;
 
 public class CommandHistory implements ObservableCommand {
 	private List<CommandRoot> myCommandList;
 	private List<CommandsObserver> myObserverList;
-	private List<MakeUserInstruction> myUDCommands;
+	private List<ToData> myUDCommands;
 
 	public CommandHistory() {
 		this.myCommandList = new LinkedList<>();
@@ -25,8 +26,13 @@ public class CommandHistory implements ObservableCommand {
 		notifyObservers();
 	}
 	
-	public void addUDCommand(MakeUserInstruction udCommand){
-		myUDCommands.add(udCommand);
+	public boolean addUDCommand(ToData udCommand){
+		for(ToData datum : myUDCommands){
+			if(datum.getName().equalsIgnoreCase(udCommand.getName())){
+				return false;
+			}
+		}
+		return myUDCommands.add(udCommand);
 	}
 
 	private CommandHistoryUpdate getCommandUpdate() {
