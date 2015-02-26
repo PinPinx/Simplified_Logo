@@ -34,7 +34,7 @@ public class CommandHistory implements ObservableCommand {
 		for (CommandRoot cr : myCommandList) {
 			ret.add(cr.toString());
 		}
-		return new CommandHistoryUpdate((List<String>) Collections.unmodifiableCollection(ret));
+		return new CommandHistoryUpdate(ret);
 	}
 
 	@Override
