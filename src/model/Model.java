@@ -3,8 +3,8 @@ package model;
 import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
-import parser.commands.Parser;
 import parser.nodes.CommandRoot;
+import parser.parser.Parser;
 
 public class Model {
 	private Parser myParser;
@@ -28,6 +28,7 @@ public class Model {
 		try {
 			CommandRoot hello = myParser.parse(command);
 			hello.execute(myState);
+			myState.getCommandHistory().addCommand(hello);
 		} catch (BadArgumentException e) {
 			e.printStackTrace();
 		}

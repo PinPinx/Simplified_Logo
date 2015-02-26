@@ -1,4 +1,4 @@
-package parser.commands;
+package parser.parser;
 
 public enum GeneralType {
 	COMMENT, CONSTANT, COMMAND, VARIABLE, LISTSTART, LISTEND, GROUPSTART, GROUPEND, OTHER;

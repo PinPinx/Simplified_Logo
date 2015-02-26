@@ -18,21 +18,27 @@ public class VariableLabel extends HBox{
 	TextField myTextField;
 	
 	public VariableLabel(StringProperty myName, StringProperty myValue){
-		myVarLabel = new Label(myName.getValue()+" = ");
+		myVarLabel = new Label(myName.getValue().substring(1)+" = ");
 		myValueLabel = new Label(myValue.getValue());
-		myValueLabel.setOnMouseClicked(e->takeEdit());
+		myValueLabel.setOnMouseEntered(e->startEdit());
 		this.myValue = myValue;
         this.getChildren().addAll(myVarLabel, myValueLabel);
 	}
 	
-    public void takeEdit(){
+    public void startEdit(){
     	myTextField = new TextField();
-    	myTextField.setOnKeyPressed(e->processInput(e));
+    	myTextField.setOnMouseExited(e->exitEdit());
+    	myTextField.setOnKeyPressed(e->processEdit(e));
     	this.getChildren().remove(myValueLabel);
     	this.getChildren().add(myTextField);
     }
+    
+    public void exitEdit(){
+		this.getChildren().remove(myTextField);
+		this.getChildren().add(myValueLabel);
+    }
 	
-    public void processInput(KeyEvent e){
+    public void processEdit(KeyEvent e){
     	if (e.getCode()==KeyCode.ENTER){
     		//myValueLabel.setText(myTextField.getText());
     		
@@ -41,11 +47,8 @@ public class VariableLabel extends HBox{
     		
     		myValue.setValue(value);
     		myValueLabel.setText(myValue.getValue());
-    		
-    		System.out.println("changed to "+myValue.getValue());
-    		
-    		this.getChildren().remove(myTextField);
-    		this.getChildren().add(myValueLabel);
+
+    		exitEdit();
     		
     		
     	}

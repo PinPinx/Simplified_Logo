@@ -6,7 +6,7 @@ import model.State;
 
 public class ConstantNode extends SyntaxNode {
 
-	private int myValue;
+	private double myValue;
 	
 	public ConstantNode(int input){
 		myValue=input;
@@ -14,7 +14,7 @@ public class ConstantNode extends SyntaxNode {
 	
 	public ConstantNode(String input){
 		try{
-			myValue= Integer.parseInt(input);
+			myValue= Double.parseDouble(input);
 		}
 		catch(NumberFormatException e){
 			throw e;
