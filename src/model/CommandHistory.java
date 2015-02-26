@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import parser.commands.MakeUserInstruction;
+import exceptions.UDCommandNotFoundException;
 import parser.commands.ToData;
 import parser.nodes.CommandRoot;
 import view.Components.CommandsObserver;
@@ -27,13 +27,13 @@ public class CommandHistory implements ObservableCommand {
 	}
 	
 	//TODO: Duplicated code
-	public ToData getUDCommand(String name){
+	public ToData getUDCommand(String name) throws UDCommandNotFoundException{
 		for(ToData datum : myUDCommands){
 			if(datum.getName().equalsIgnoreCase(name)){
 				return datum;
 			}
 		}
-		return null;
+		throw new UDCommandNotFoundException();
 	}
 	public boolean addUDCommand(ToData udCommand){
 		for(ToData datum : myUDCommands){

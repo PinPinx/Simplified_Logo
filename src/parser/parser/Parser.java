@@ -8,6 +8,7 @@ import java.util.Stack;
 import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
+import exceptions.UDCommandNotFoundException;
 import parser.commands.ToData;
 import parser.commands.ToInstance;
 import parser.nodes.*;
@@ -40,14 +41,14 @@ public class Parser {
 							i--;
 							continue;
 						}
-						else if(myState.getCommandHistory().getUDCommand(commandStream[i])!=null){
+						try{
 							ToData data = myState.getCommandHistory().getUDCommand(commandStream[i]);
 							inputStack.peek().push(new ToInstance(data, inputStack.peek()));
 							continue;
-						}
-						else 
+						} catch (UDCommandNotFoundException e1){
 							throw new CommandNameNotFoundException();
-				} //TODO never happens?
+						}
+				}
 				
 				try {
 					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack.peek()));
