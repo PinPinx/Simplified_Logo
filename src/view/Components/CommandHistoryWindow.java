@@ -23,9 +23,11 @@ public class CommandHistoryWindow extends ListWindow implements CommandsObserver
 		// TODO Auto-generated method stub
 		myList.getChildren().clear();
 		List<String> myHistory = chu.getCommandHistory();
-		for (String command : myHistory){
+		for (int i = myHistory.size()-1; i >=0; i--){
+			String command = myHistory.get(i);
 			Button commandButton = new Button(command);
 			commandButton.setOnAction(e->parseCommand(command));
+			commandButton.setPrefWidth(this.width);
 			myList.getChildren().add(commandButton);
 		}
 	}
