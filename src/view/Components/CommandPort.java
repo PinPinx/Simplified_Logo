@@ -11,18 +11,21 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 
 public class CommandPort extends ScrollPane {
+
+	private static final String COMMAND_PROMPT = "Enter your command here";
+	private static final String RUN = "Run";
+
 	private TextField myTextField;
 	private Button myRunButton;
-	private static final String default_text = "Enter your command Here";
 
 	public CommandPort(double width, double height) {
 		HBox hb = new HBox(5);
-		myRunButton = new Button("Run");
+		myRunButton = new Button(RUN);
 		myRunButton.setOnAction(e -> runCommand());
 		myTextField = new TextField();
 		myTextField.setPrefHeight(height);
 		myTextField.setPrefWidth(width);
-		myTextField.setText(default_text);
+		myTextField.setText(COMMAND_PROMPT);
 		myTextField.setOnKeyPressed(e -> runCommand(e));
 		myTextField.setOnMouseClicked(e -> clearField(myTextField));
 		hb.getChildren().addAll(myTextField, myRunButton);
@@ -48,7 +51,7 @@ public class CommandPort extends ScrollPane {
 	}
 
 	private void clearField(TextField tf) {
-		if (tf.getText().equals(default_text)) {
+		if (tf.getText().equals(COMMAND_PROMPT)) {
 			tf.clear();
 		}
 	}

@@ -50,8 +50,7 @@ public class SLogoMenuBar extends MenuBar {
 
 		super();
 		myView = view;
-		this.setBackground(new Background(new BackgroundFill(BAR_COLOR, null,
-				null)));
+		this.setBackground(new Background(new BackgroundFill(BAR_COLOR, null, null)));
 		this.setHover(true);
 
 		makeFileMenu();

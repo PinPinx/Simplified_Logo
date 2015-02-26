@@ -10,9 +10,11 @@ import javafx.scene.control.Button;
 
 public class CommandHistoryWindow extends ListWindow implements
 		CommandsObserver {
-
+	
+	private static final String COMMAND_HISTORY = "Command History";
+	
 	public CommandHistoryWindow(int w, int h) {
-		super(w, h, "Command History.");
+		super(w, h, COMMAND_HISTORY);
 	}
 
 	public void update(CommandHistoryUpdate chu) {

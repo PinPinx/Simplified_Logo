@@ -7,19 +7,19 @@ import javafx.scene.image.ImageView;
 
 public class TurtleImage extends ImageView {
 	private Image myImage;
-	private final static double default_xPosition = 0.0;
-	private final static double default_yPosition = 0.0;
+	private final static double DEFAULT_XPOS = 0.0;
+	private final static double DEFAULT_YPOS = 0.0;
 	private static double myWidth = 30.0;
 	private static double myHeight = 30.0;
 	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
 
 	public TurtleImage() {
-		this(DEFAULT_IMAGEPATH, default_xPosition, default_yPosition, myWidth,
+		this(DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, myWidth,
 				myHeight);
 	}
 
 	public TurtleImage(String imagePath) {
-		this(imagePath, default_xPosition, default_yPosition, myWidth, myHeight);
+		this(imagePath, DEFAULT_XPOS, DEFAULT_YPOS, myWidth, myHeight);
 	}
 
 	public TurtleImage(String imagePath, double xPos, double yPos) {

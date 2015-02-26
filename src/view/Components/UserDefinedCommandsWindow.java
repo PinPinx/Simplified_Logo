@@ -7,9 +7,11 @@ import model.CommandHistoryUpdate;
 
 public class UserDefinedCommandsWindow extends ListWindow implements
 		CommandsObserver {
-
+	
+	private static final String UD_COMMANDS = "User Defined Commands";
+	
 	public UserDefinedCommandsWindow(int w, int h) {
-		super(w, h, "User Defined Commands");
+		super(w, h, UD_COMMANDS);
 	}
 
 	@Override
