@@ -12,9 +12,9 @@ import javafx.scene.control.Button;
 
 public class CommandHistoryWindow extends ListWindow implements
 		CommandsObserver {
-	
+
 	private static final String COMMAND_HISTORY = "Command History";
-	
+
 	public CommandHistoryWindow(int w, int h) {
 		super(w, h, COMMAND_HISTORY);
 	}
@@ -34,7 +34,8 @@ public class CommandHistoryWindow extends ListWindow implements
 	public void parseCommand(String command) {
 		try {
 			Model.getInstance().parse(command);
-		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat | BadArgumentException e) {
+		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat
+				| BadArgumentException e) {
 			// TODO DUPLICATED CODE
 			View.getInstance().showDialog(e.getMessage());
 		}

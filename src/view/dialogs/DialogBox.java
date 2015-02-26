@@ -42,7 +42,7 @@ public class DialogBox {
 	private void initStage() {
 
 		myStage = new Stage();
-		myStage.initModality(Modality.WINDOW_MODAL);
+		myStage.initModality(Modality.APPLICATION_MODAL);
 		myScene = new Scene(myPane);
 		myStage.setScene(myScene);
 	}
