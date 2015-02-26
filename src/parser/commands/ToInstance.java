@@ -1,5 +1,6 @@
 package parser.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -12,7 +13,7 @@ import parser.nodes.ListNode;
 import parser.nodes.SyntaxNode;
 import parser.nodes.VariableNode;
 
-public class ToInstance {
+public class ToInstance extends SyntaxNode{
 	private List<SyntaxNode> paramList;
 	private ListNode varList;
 	private ListNode commandList;
@@ -20,11 +21,15 @@ public class ToInstance {
 	public ToInstance(ToData commandData, Stack<SyntaxNode> input){
 		varList = commandData.getVarList();
 		commandList = commandData.getCommandList();
+		paramList = new ArrayList<SyntaxNode>();
+		System.out.println(varList.getSize());
+		System.out.println(input.size());
 		for (int i = 0; i < varList.getSize(); i++){
 			paramList.add(input.pop());
 		}
 	}
 	
+	@Override
 	public double execute(State myState) throws BadArgumentException{
 		VariablesCollection variables = myState.getVariablesCollection();
 		for (int i=0; i < varList.getSize(); i++){

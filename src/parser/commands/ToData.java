@@ -15,12 +15,12 @@ public class ToData extends SyntaxNode{
 	//TODO: A little duplicated from For
 	public ToData(String name, Stack<SyntaxNode> input){
 		myName = name;
-		commandList = (ListNode) input.pop();
 		varList = (ListNode) input.pop();
+		commandList = (ListNode) input.pop();
 	}
 	
 	public double execute(State myState){
-		return myState.getCommandHistory().addCommand(this);
+		return myState.getCommandHistory().addUDCommand(this) ? 1:0;
 	}
 	
 	public String getName(){

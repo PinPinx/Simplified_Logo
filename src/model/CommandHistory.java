@@ -26,6 +26,15 @@ public class CommandHistory implements ObservableCommand {
 		notifyObservers();
 	}
 	
+	//TODO: Duplicated code
+	public ToData getUDCommand(String name){
+		for(ToData datum : myUDCommands){
+			if(datum.getName().equalsIgnoreCase(name)){
+				return datum;
+			}
+		}
+		return null;
+	}
 	public boolean addUDCommand(ToData udCommand){
 		for(ToData datum : myUDCommands){
 			if(datum.getName().equalsIgnoreCase(udCommand.getName())){

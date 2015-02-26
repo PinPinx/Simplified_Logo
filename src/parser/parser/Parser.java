@@ -8,6 +8,8 @@ import java.util.Stack;
 import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
+import parser.commands.ToData;
+import parser.commands.ToInstance;
 import parser.nodes.*;
 import model.State;
 
@@ -27,23 +29,32 @@ public class Parser {
 			switch(Regex.getInstance().getType(commandStream[i])){
 			case COMMAND:
 				String className;
-				className = Regex.getInstance().getCommandType(commandStream[i]);
 				Class<?> cls;
 				try {
+					className = Regex.getInstance().getCommandType(commandStream[i]);
 					String str = "parser.commands." + className;
 					cls = Class.forName(str);
-				} catch (ClassNotFoundException e) {
-//					if(i>0 && Regex.getInstance().getCommandType(commandStream[i-1]).equalsIgnoreCase("To")){
-//						inputStack.peek().push(new CommandRoot(commandStream[i], inputStack.peek()));
-//						i--;
-//					}
-					throw new CommandNameNotFoundException();} //TODO never happens?
+				} catch (ClassNotFoundException | CommandNameNotFoundException e) {
+						if(i>0 && commandStream[i-1].equalsIgnoreCase("to")){
+							inputStack.peek().push(new ToData(commandStream[i], inputStack.peek()));
+							i--;
+							continue;
+						}
+						else if(myState.getCommandHistory().getUDCommand(commandStream[i])!=null){
+							ToData data = myState.getCommandHistory().getUDCommand(commandStream[i]);
+							inputStack.peek().push(new ToInstance(data, inputStack.peek()));
+							continue;
+						}
+						else 
+							throw new CommandNameNotFoundException();
+				} //TODO never happens?
 				
 				try {
 					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack.peek()));
 				} catch (InstantiationException | IllegalAccessException
 						| IllegalArgumentException
 						| InvocationTargetException | SecurityException e) {
+					System.out.println("We fail at: " + commandStream[i]);
 					throw new CommandNameNotFoundException();
 				}			
 				
