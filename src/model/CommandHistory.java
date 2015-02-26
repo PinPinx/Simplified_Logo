@@ -44,14 +44,23 @@ public class CommandHistory implements ObservableCommand {
 		return myUDCommands.add(udCommand);
 	}
 
-	private CommandHistoryUpdate getCommandUpdate() {
-		ArrayList<String> ret = new ArrayList<>();
+
+	public List<String> getCommandList(){
+		List<String> ret = new ArrayList<>();
 		for (CommandRoot cr : myCommandList) {
 			ret.add(cr.toString());
 		}
-		return new CommandHistoryUpdate(ret);
+		return ret;
 	}
-
+	
+	public List<String> getUDCommandList(){
+		List<String> ret = new ArrayList<>();
+		for (ToData datum : myUDCommands) {
+			ret.add(datum.getName());
+		}
+		return ret;
+	}
+	
 	@Override
 	public void addObserver(CommandsObserver o) {
 		myObserverList.add(o);
@@ -65,7 +74,7 @@ public class CommandHistory implements ObservableCommand {
 	@Override
 	public void notifyObservers() {
 		for (CommandsObserver o : myObserverList) {
-			o.update(getCommandUpdate());
+			o.update(new CommandHistoryUpdate(this));
 		}
 	}
 }
