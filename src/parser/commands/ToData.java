@@ -20,7 +20,7 @@ public class ToData extends SyntaxNode{
 	}
 	
 	public double execute(State myState){
-		return 0;
+		return myState.getCommandHistory().addCommand(this);
 	}
 	
 	public String getName(){
