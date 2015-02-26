@@ -20,6 +20,6 @@ public class VariableNode extends SyntaxNode{
 	}
 	
 	public String getName(){
-		return myName;
+		return new String(myName);
 	}
 }
