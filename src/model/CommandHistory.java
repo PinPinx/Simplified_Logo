@@ -8,6 +8,7 @@ import java.util.List;
 import exceptions.UDCommandNotFoundException;
 import parser.commands.ToData;
 import parser.nodes.CommandRoot;
+import parser.nodes.VariableNode;
 import view.Components.CommandsObserver;
 
 public class CommandHistory implements ObservableCommand {
@@ -56,7 +57,13 @@ public class CommandHistory implements ObservableCommand {
 	public List<String> getUDCommandList(){
 		List<String> ret = new ArrayList<>();
 		for (ToData datum : myUDCommands) {
-			ret.add(datum.getName());
+			StringBuilder b = new StringBuilder();
+			b.append(datum.getName());
+			for(int i = 0; i < datum.getVarList().getSize(); i++){
+				b.append(" ");
+				b.append(((VariableNode)datum.getVarList().getNode(i)).getName());
+			}
+			ret.add(b.toString());
 		}
 		return ret;
 	}
