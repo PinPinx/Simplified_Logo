@@ -14,6 +14,7 @@ public class State {
 		myTurtle.addObserver(View.getInstance().getTurtleWindow());
 		myVariablesCollection.addObserver(View.getInstance().getVariablesWindow());
 		myCommandHistory.addObserver(View.getInstance().getCommandHistoryWindow());
+		myCommandHistory.addObserver(View.getInstance().getUDCommandsWindow());
 	}
 	
 	public Turtle getTurtle() {

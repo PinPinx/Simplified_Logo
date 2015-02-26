@@ -171,6 +171,10 @@ public class View {
 		return myCommandHistWindow;
 	}
 	
+	public UserDefinedCommandsWindow getUDCommandsWindow(){
+		return myUDCommandsWindow;
+	}
+	
 	
 	public static View getInstance(){
 		if(instance == null){
