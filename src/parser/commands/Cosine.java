@@ -14,7 +14,7 @@ public class Cosine extends UnaryNode{
 	}
 	
 	public double execute(State myState) throws BadArgumentException{
-		return Math.cos(referenceNode.execute(myState));
+		return Math.cos(referenceNode.execute(myState)/360.0*2.0*Math.PI);
 	}
 
 }
