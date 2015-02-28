@@ -54,7 +54,7 @@ public class Parser {
 				} catch (InstantiationException | IllegalAccessException
 						| IllegalArgumentException
 						| InvocationTargetException | SecurityException e) {
-						throw new CommandNameNotFoundException(e.toString());
+						throw new CommandNameNotFoundException(e.getMessage()+" message");
 //					throw new CommandNameNotFoundException("Command "+commandStream[i]+" has broken our program. Anarchy!");
 				}			
 				
