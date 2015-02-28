@@ -1,9 +1,22 @@
 package view.components;
 
+import java.beans.EventHandler;
 import java.io.File;
 
+
+
+
+
+
+
+import sun.applet.Main;
+import view.View;
+import javafx.event.ActionEvent;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class TurtleImage extends ImageView {
 	private Image myImage;
@@ -12,6 +25,15 @@ public class TurtleImage extends ImageView {
 	private static double myWidth = 30.0;
 	private static double myHeight = 30.0;
 	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
+	private boolean visible = true;
+	
+	private MenuItem changeImage;
+	private MenuItem toggle;
+	private MenuItem penColor;
+	private MenuItem lineStyle;
+	private MenuItem penUpDown;
+	private ContextMenu contextMenu;
+	
 
 	public TurtleImage() {
 		this(DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, myWidth,
@@ -34,15 +56,21 @@ public class TurtleImage extends ImageView {
 		this.setTranslateY(yPos - myHeight / 2);
 		this.setFitWidth(width);
 		this.setFitHeight(height);
-		this.setOnMouseClicked(e->hide(true));
+		
+		initializeMenuItems();
+		
+		this.setOnMouseClicked(e->popMyMenu());
+		
 	}
 
 	public void hide(boolean hidden) {
 		if (hidden) {
 			this.setImage(null);
+			visible = !hidden;
 			return;
 		}
 		this.setImage(myImage);
+		visible = !hidden;
 	}
 
 	public void changeImage(String imagePath) {
@@ -64,5 +92,21 @@ public class TurtleImage extends ImageView {
 		myHeight = height;
 		this.setFitWidth(width);
 		this.setFitHeight(height);
+	}
+	
+	private void popMyMenu(){
+		contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
+		
+	}
+	
+	private void initializeMenuItems(){
+		changeImage = new MenuItem("Change Turtle Image");
+		toggle = new MenuItem("Toggle Off");
+		penColor = new MenuItem("Choose Turtle Pen Color");
+		lineStyle = new MenuItem("Choose Turtle Line Style");
+		penUpDown = new MenuItem("Pen Up");
+		
+		contextMenu = new ContextMenu(changeImage, toggle, penColor, lineStyle, penUpDown);
+		
 	}
 }
