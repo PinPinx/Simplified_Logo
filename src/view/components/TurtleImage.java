@@ -4,11 +4,17 @@ package view.components;
 import java.io.File;
 
 
+
+
+
 import javax.swing.JFileChooser;
 
+import model.TurtleUpdate;
 import sun.applet.Main;
 import view.View;
 import javafx.event.ActionEvent;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -17,12 +23,14 @@ import javafx.scene.input.MouseEvent;
 
 public class TurtleImage extends ImageView {
 	private Image myImage;
+	private GraphicsContext gc;
 	private final static double DEFAULT_XPOS = 0.0;
 	private final static double DEFAULT_YPOS = 0.0;
 	private static double myWidth = 30.0;
 	private static double myHeight = 30.0;
 	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
 	private boolean visible = true;
+	private boolean penUp = false;
 	
 	private MenuItem changeImage;
 	private MenuItem toggle;
@@ -32,27 +40,29 @@ public class TurtleImage extends ImageView {
 	private ContextMenu contextMenu;
 	
 
-	public TurtleImage() {
-		this(DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, myWidth,
+	public TurtleImage(GraphicsContext gcon) {
+		this(gcon, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, myWidth,
 				myHeight);
 	}
 
-	public TurtleImage(String imagePath) {
-		this(imagePath, DEFAULT_XPOS, DEFAULT_YPOS, myWidth, myHeight);
+	public TurtleImage(GraphicsContext gcon, String imagePath) {
+		this(gcon, imagePath, DEFAULT_XPOS, DEFAULT_YPOS, myWidth, myHeight);
 	}
 
-	public TurtleImage(String imagePath, double xPos, double yPos) {
-		this(imagePath, xPos, yPos, myWidth, myHeight);
+	public TurtleImage(GraphicsContext gcon, String imagePath, double xPos, double yPos) {
+		this(gcon, imagePath, xPos, yPos, myWidth, myHeight);
 	}
 
-	public TurtleImage(String imagePath, double xPos, double yPos,
+	public TurtleImage(GraphicsContext gcon, String imagePath, double xPos, double yPos,
 			double width, double height) {
 		myImage = new Image(getClass().getResourceAsStream(imagePath));
+		gc = gcon;
 		this.setImage(myImage);
 		this.setTranslateX(xPos - myWidth / 2);
 		this.setTranslateY(yPos - myHeight / 2);
 		this.setFitWidth(width);
 		this.setFitHeight(height);
+		
 		
 		initializeMenuItems();
 		
@@ -91,6 +101,31 @@ public class TurtleImage extends ImageView {
 		this.setFitHeight(height);
 	}
 	
+	public void update(TurtleUpdate tu){
+		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
+				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
+				.getY()));
+		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(tu
+				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
+				.getY()));
+
+		this.setRotate(-tu.getTurtleAngle().getAngleValue());
+		this.moveTo(newPos.getX(), newPos.getY());
+		this.hide(tu.isTurtleHidden());
+		
+		//need to bind penUp to the back end, 
+		//penUp = tu.isTurtlePenUp();
+
+		if (!penUp) {
+			gc.strokeLine(oldPos.getX(), oldPos.getY(), newPos.getX(),
+					newPos.getY());
+		}
+
+		if(tu.isTurtleClear()){
+			gc.clearRect(0, 0, myWidth, myHeight);
+		}
+	}
+	
 	private void popMyMenu(){
 		contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
 		
@@ -109,10 +144,17 @@ public class TurtleImage extends ImageView {
 			selectImageFile();
 		});
 		
+		toggle.setOnAction(e-> {
+			toggleTurtle();
+		});
+		
+		penUpDown.setOnAction(e-> {
+			setPenUpDown();
+		});
 		
 	}
 	
-	public void selectImageFile() {
+	private void selectImageFile() {
 		JFileChooser imageChooser = new JFileChooser(System.getProperties().getProperty("user.dir")+"/src/resources/images");
 		imageChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		int retval = imageChooser.showOpenDialog(null);
@@ -122,4 +164,33 @@ public class TurtleImage extends ImageView {
         changeImage(imageChooser.getSelectedFile());
         return;
 	}
+	
+	private void toggleTurtle(){
+		if (visible){
+			toggle.setText("Toggle On");
+			visible = false;
+			hide(true);
+			return;
+		}
+		toggle.setText("Toggle Off");
+		visible = true;
+		hide(false);
+	}
+	
+	private void setPenUpDown(){
+		if (penUp){
+			penUpDown.setText("Pen Up");
+			penUp = false;
+			return;
+		}
+		penUpDown.setText("Pen Down");
+		penUp = true;
+		return;
+	}
+	
+	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
+		return new Point2D(gc.getCanvas().getWidth() / 2 + mathCoords.getX(), gc.getCanvas().getHeight() / 2
+				- mathCoords.getY());
+	}
+	
 }

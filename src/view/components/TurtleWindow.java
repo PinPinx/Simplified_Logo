@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.TurtleUpdate;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
@@ -41,7 +39,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		addTurtle();
 
 	}
-
+	
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
 		return new Point2D(myWidth / 2 + mathCoords.getX(), myHeight / 2
 				- mathCoords.getY());
@@ -53,13 +51,15 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	}
 
 	public void addTurtle(double xPos, double yPos) {
-		TurtleImage turtle = new TurtleImage();
-		Point2D pos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
-		turtle.moveTo(pos.getX(), pos.getY());
-		myTurtles.put(myTurtles.size(), turtle);
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
 		gc.put(gc.size(), layerGC);
+		
+		TurtleImage turtle = new TurtleImage(layerGC);
+		Point2D pos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
+		turtle.moveTo(pos.getX(), pos.getY());
+		myTurtles.put(myTurtles.size(), turtle);
+		
 		
 		myLayers.getChildren().add(layer);
 		myTImages.getChildren().add(turtle);
@@ -89,8 +89,12 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 	@Override
 	public void update(TurtleUpdate tu) {
+		
+		
+		myTurtles.get(0).update(tu);;
+		
+		/*
 		TurtleImage ti = myTurtles.get(0);
-
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
 				.getY()));
@@ -110,6 +114,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		if(tu.isTurtleClear()){
 			gc.get(0).clearRect(0, 0, myWidth, myHeight);
 		}
+		*/
 	}
 
 }
