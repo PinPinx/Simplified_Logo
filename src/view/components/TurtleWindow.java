@@ -11,7 +11,9 @@ import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class TurtleWindow extends Group implements TurtleObserver {
 	
@@ -34,9 +36,10 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		this.getChildren().add(mainCanvas);
 		this.getChildren().addAll(myLayers, myTImages);
 		
-	
 
 		addTurtle();
+		
+		
 
 	}
 	

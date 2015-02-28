@@ -4,31 +4,24 @@ package view.components;
 import java.io.File;
 
 
-
-
-
-
-
-
 import javax.swing.JFileChooser;
 
-
-
-
 import model.TurtleUpdate;
-import sun.applet.Main;
-import view.View;
-import javafx.event.ActionEvent;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Point2D;
+import javafx.geometry.Point3D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 
 public class TurtleImage extends ImageView {
 	private Image myImage;
@@ -38,8 +31,8 @@ public class TurtleImage extends ImageView {
 	private static double myWidth = 30.0;
 	private static double myHeight = 30.0;
 	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
-	private boolean visible = true;
-	private boolean penUp = false;
+	private Boolean visible = true;
+	private Boolean penUp = false;
 	
 	private MenuItem changeImage;
 	private MenuItem toggle;
@@ -73,10 +66,10 @@ public class TurtleImage extends ImageView {
 		this.setFitWidth(width);
 		this.setFitHeight(height);
 		
-		
 		initializeMenuItems();
 		
 		this.setOnMouseClicked(e->popMyMenu());
+		this.setOnMouseEntered(e->installStateTooltip());
 		
 	}
 
@@ -165,9 +158,26 @@ public class TurtleImage extends ImageView {
 		penUpDown.setOnAction(e-> {
 			setPenUpDown();
 		});
+	
+		penColor.setOnAction(e-> {
+			
+		});
 		
 	}
 	
+	private void installStateTooltip(){
+		StringBuilder turtleInfo = new StringBuilder();
+		turtleInfo.append("Turtle Info: \n");
+		Point2D Pos = canvasCoordsToMathCoords(new Point2D(this.getTranslateX(),
+				this.getTranslateY()));
+		turtleInfo.append("X position: "+Pos.getX()+"\n");
+		turtleInfo.append("Y position: "+Pos.getY()+"\n");
+		turtleInfo.append("Heading: "+this.getRotate()+"\n");
+		turtleInfo.append("Pen Up: "+penUp.toString()+"\n");
+		turtleInfo.append("Visiblity: "+visible.toString()+"\n");
+		Tooltip t = new Tooltip(turtleInfo.toString());
+		Tooltip.install(this, t);
+	}
 	private void selectImageFile() {
 		JFileChooser imageChooser = new JFileChooser(System.getProperties().getProperty("user.dir")+"/src/resources/images");
 		imageChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -216,15 +226,15 @@ public class TurtleImage extends ImageView {
 		style2.setToggleGroup(styleGroup);
 		
 		def_style.setOnAction(chooseLineStyle->{
-			System.out.println("set thick line here");
+			//System.out.println("set thick line here");
 		});
 		
 		style1.setOnAction(chooseLineStyle->{
-			System.out.println("set dashed line here");
+			//System.out.println("set dashed line here");
 		});
 		
 		style2.setOnAction(chooseLineStyle->{
-			System.out.println("set dotted line here");
+			//System.out.println("set dotted line here");
 		});
 		
 	}
@@ -243,8 +253,13 @@ public class TurtleImage extends ImageView {
 	}
 	
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
-		return new Point2D(gc.getCanvas().getWidth() / 2 + mathCoords.getX(), gc.getCanvas().getHeight() / 2
+		return new Point2D((gc.getCanvas().getWidth() / 2 - myWidth/2) + mathCoords.getX(), (gc.getCanvas().getHeight() / 2 - myHeight/2)
 				- mathCoords.getY());
+	}
+	
+	private Point2D canvasCoordsToMathCoords(Point2D canvasCoords) {
+		return new Point2D(canvasCoords.getX() - (gc.getCanvas().getWidth() / 2 - myWidth/2), (gc.getCanvas().getHeight() / 2 - myHeight/2)
+				- canvasCoords.getY());
 	}
 	
 }
