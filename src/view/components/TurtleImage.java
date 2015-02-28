@@ -1,13 +1,10 @@
 package view.components;
 
-import java.beans.EventHandler;
+
 import java.io.File;
 
 
-
-
-
-
+import javax.swing.JFileChooser;
 
 import sun.applet.Main;
 import view.View;
@@ -108,5 +105,21 @@ public class TurtleImage extends ImageView {
 		
 		contextMenu = new ContextMenu(changeImage, toggle, penColor, lineStyle, penUpDown);
 		
+		changeImage.setOnAction(e-> {
+			selectImageFile();
+		});
+		
+		
+	}
+	
+	public void selectImageFile() {
+		JFileChooser imageChooser = new JFileChooser(System.getProperties().getProperty("user.dir")+"/src/resources/images");
+		imageChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		int retval = imageChooser.showOpenDialog(null);
+        if (retval != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+        changeImage(imageChooser.getSelectedFile());
+        return;
 	}
 }
