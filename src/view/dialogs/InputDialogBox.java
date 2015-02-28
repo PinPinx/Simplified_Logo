@@ -1,7 +1,5 @@
 package view.dialogs;
 
-import javafx.scene.input.KeyCode;
-
 /**
  * DialogBox that includes a TextField to retrieve user input.
  * 

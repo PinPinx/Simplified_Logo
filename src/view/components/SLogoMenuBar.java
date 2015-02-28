@@ -26,8 +26,9 @@ public class SLogoMenuBar extends MenuBar {
 
 	// items under File
 	public static final String FILE = "File";
-	public static final String SAVE_WORKSPACE = "Save workspace";
+	public static final String NEW_WORKSPACE = "New workspace";
 	public static final String LOAD_WORKSPACE = "Load workspace";
+	public static final String SAVE_WORKSPACE = "Save workspace";
 
 	// items under Edit
 	public static final String EDIT = "Edit";
@@ -70,10 +71,13 @@ public class SLogoMenuBar extends MenuBar {
 		Menu file = new Menu(FILE);
 
 		// TODO: add action
-		MenuItem save = makeMenuItem(SAVE_WORKSPACE, null);
+		MenuItem create = makeMenuItem(NEW_WORKSPACE, e->{
+			myView.addNewTab();
+		});
 		MenuItem load = makeMenuItem(LOAD_WORKSPACE, null);
+		MenuItem save = makeMenuItem(SAVE_WORKSPACE, null);
 
-		file.getItems().addAll(save, load);
+		file.getItems().addAll(create, load, save);
 		this.getMenus().add(file);
 	}
 
