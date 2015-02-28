@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.TurtleUpdate;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
@@ -14,13 +16,15 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class TurtleWindow extends Group implements TurtleObserver {
-
+	
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
 	private double myWidth;
 	private double myHeight;
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
+	private Group myLayers = new Group();
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
+	private Group myTImages =  new Group();
 
 	public TurtleWindow(double width, double height) {
 
@@ -30,6 +34,9 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		mainGC = mainCanvas.getGraphicsContext2D();
 
 		this.getChildren().add(mainCanvas);
+		this.getChildren().addAll(myLayers, myTImages);
+		
+	
 
 		addTurtle();
 
@@ -53,7 +60,10 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
 		gc.put(gc.size(), layerGC);
-		this.getChildren().addAll(turtle, layer);
+		
+		myLayers.getChildren().add(layer);
+		myTImages.getChildren().add(turtle);
+		
 	}
 
 	public void changeBackground(Color c) {
@@ -95,6 +105,10 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		if (!tu.isTurtlePenUp()) {
 			gc.get(0).strokeLine(oldPos.getX(), oldPos.getY(), newPos.getX(),
 					newPos.getY());
+		}
+
+		if(tu.isTurtleClear()){
+			gc.get(0).clearRect(0, 0, myWidth, myHeight);
 		}
 	}
 

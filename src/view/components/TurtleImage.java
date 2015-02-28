@@ -34,6 +34,7 @@ public class TurtleImage extends ImageView {
 		this.setTranslateY(yPos - myHeight / 2);
 		this.setFitWidth(width);
 		this.setFitHeight(height);
+		this.setOnMouseClicked(e->hide(true));
 	}
 
 	public void hide(boolean hidden) {

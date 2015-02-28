@@ -38,5 +38,8 @@ public class TurtleUpdate {
 		return turtlePenUp;
 	}
 	
+	public boolean isTurtleClear() {
+		return turtleClear;
+	}
 	
 }
