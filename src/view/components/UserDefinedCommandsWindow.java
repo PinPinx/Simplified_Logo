@@ -28,7 +28,7 @@ public class UserDefinedCommandsWindow extends ListWindow implements
 	public void update(CommandHistoryUpdate chu) {
 		myList.getChildren().clear();
 		
-		List<String> myHistory = chu.getCommandHistory();
+		List<String> myHistory = chu.getUDCommand();
 		for (String command: myHistory) {
 			Button commandButton = new Button(command);
 			commandButton.setOnAction(e -> {
