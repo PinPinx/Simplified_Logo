@@ -122,7 +122,7 @@ public class TurtleImage extends ImageView {
 		}
 
 		if(tu.isTurtleClear()){
-			gc.clearRect(0, 0, myWidth, myHeight);
+			gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 		}
 	}
 	
@@ -150,6 +150,10 @@ public class TurtleImage extends ImageView {
 		
 		penUpDown.setOnAction(e-> {
 			setPenUpDown();
+		});
+		
+		lineStyle.setOnAction(e-> {
+			
 		});
 		
 	}
