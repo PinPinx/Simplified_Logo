@@ -1,5 +1,6 @@
 package parser.commands;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 import exceptions.BadArgumentException;
@@ -10,7 +11,7 @@ import model.State;
 
 public class Forward extends SimpleTurtleCommand{
 	
-	public Forward(Stack<SyntaxNode> input) throws BadArgumentException {
+	public Forward(Stack<SyntaxNode> input) throws BadArgumentException, InvocationTargetException {
 		super(input);
 	}
 
