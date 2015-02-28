@@ -7,7 +7,13 @@ import java.io.File;
 
 
 
+
+
+
 import javax.swing.JFileChooser;
+
+
+
 
 import model.TurtleUpdate;
 import sun.applet.Main;
@@ -16,7 +22,10 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,7 +44,8 @@ public class TurtleImage extends ImageView {
 	private MenuItem changeImage;
 	private MenuItem toggle;
 	private MenuItem penColor;
-	private MenuItem lineStyle;
+	private Menu lineStyle;
+	private Menu lineWidth;
 	private MenuItem penUpDown;
 	private ContextMenu contextMenu;
 	
@@ -135,10 +145,14 @@ public class TurtleImage extends ImageView {
 		changeImage = new MenuItem("Change Turtle Image");
 		toggle = new MenuItem("Toggle Off");
 		penColor = new MenuItem("Choose Turtle Pen Color");
-		lineStyle = new MenuItem("Choose Turtle Line Style");
+		lineStyle = new Menu("Choose Turtle Line Style");
+		setLineStyleMenu();
+		lineWidth = new Menu("Choose Turtle Line Width");
+		setLineWidthMenu();
+		
 		penUpDown = new MenuItem("Pen Up");
 		
-		contextMenu = new ContextMenu(changeImage, toggle, penColor, lineStyle, penUpDown);
+		contextMenu = new ContextMenu(changeImage, toggle, penColor, lineWidth, lineStyle, penUpDown);
 		
 		changeImage.setOnAction(e-> {
 			selectImageFile();
@@ -150,10 +164,6 @@ public class TurtleImage extends ImageView {
 		
 		penUpDown.setOnAction(e-> {
 			setPenUpDown();
-		});
-		
-		lineStyle.setOnAction(e-> {
-			
 		});
 		
 	}
@@ -190,6 +200,46 @@ public class TurtleImage extends ImageView {
 		penUpDown.setText("Pen Down");
 		penUp = true;
 		return;
+	}
+	
+	private void setLineStyleMenu(){
+		RadioMenuItem def_style = new RadioMenuItem("Thick line");
+		RadioMenuItem style1 = new RadioMenuItem("Dashed line");
+		RadioMenuItem style2 = new RadioMenuItem("Dotted line");
+		
+		lineStyle.getItems().addAll(def_style, style1, style2);
+		
+		ToggleGroup styleGroup = new ToggleGroup();
+		
+		def_style.setToggleGroup(styleGroup);
+		style1.setToggleGroup(styleGroup);
+		style2.setToggleGroup(styleGroup);
+		
+		def_style.setOnAction(chooseLineStyle->{
+			System.out.println("set thick line here");
+		});
+		
+		style1.setOnAction(chooseLineStyle->{
+			System.out.println("set dashed line here");
+		});
+		
+		style2.setOnAction(chooseLineStyle->{
+			System.out.println("set dotted line here");
+		});
+		
+	}
+	
+	private void setLineWidthMenu(){
+		ToggleGroup widthGroup = new ToggleGroup();
+		for (Integer i=1; i<=10; i++){
+			final int j = i;
+			RadioMenuItem sizeChoice = new RadioMenuItem(i.toString());
+			sizeChoice.setToggleGroup(widthGroup);
+			sizeChoice.setOnAction(chooseWidth->{
+				gc.setLineWidth(j);
+			});
+			lineWidth.getItems().add(sizeChoice);
+		}
 	}
 	
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
