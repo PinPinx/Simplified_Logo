@@ -51,7 +51,6 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		TurtleImage turtle = new TurtleImage(layerGC, xPos, yPos);
 		myTurtles.put(myTurtles.size(), turtle);
 		
-		
 		myLayers.getChildren().add(layer);
 		myTImages.getChildren().add(turtle);
 		
@@ -91,5 +90,11 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		myTurtles.get(0).update(tu);
 		
 	}
-
+	
+	public void updateAnimationSpeed(double speed) {
+		for (int turtleID: myTurtles.keySet()) {
+			myTurtles.get(turtleID).setAnimationSpeed(speed);
+		}
+	}
+	
 }

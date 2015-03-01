@@ -1,6 +1,8 @@
 package view.toolbar;
 
 import view.components.TurtleWindow;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Group;
 import javafx.scene.layout.HBox;
 
@@ -26,6 +28,7 @@ public class Toolbar extends Group {
 	public static final String TOGGLE_ACTIVE = "Toggle active/inactive";
 	public static final String PEN_COLOR = "Pen color";
 	public static final String BACKGROUND_COLOR = "Background color";
+	public static final String ANIMATION_SPEED = "Animation speed";
 
 	public Toolbar() {
 		myToolbar = new HBox(2);
@@ -38,8 +41,16 @@ public class Toolbar extends Group {
 				PEN_COLOR, this);
 		TurtleImageToolbarItem turtleimg = new TurtleImageToolbarItem(
 				TURTLE_IMAGE, this);
-
-		myToolbar.getChildren().addAll(bgcolor, pencolor, turtleimg);
+		SpeedSliderToolbarItem speedSlider = new SpeedSliderToolbarItem(
+				ANIMATION_SPEED, this);
+		speedSlider.addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+                    Number old_val, Number new_val) {
+                        myTurtleWindow.updateAnimationSpeed((double) new_val);
+                }
+            });
+		
+		myToolbar.getChildren().addAll(bgcolor, pencolor, turtleimg, speedSlider);
 
 	}
 

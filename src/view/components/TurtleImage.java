@@ -275,5 +275,9 @@ public class TurtleImage extends ImageView {
 		return new Point2D(canvasCoords.getX() - (gc.getCanvas().getWidth() / 2 - myWidth / 2),
 				          -canvasCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
 	}
+	
+	public void setAnimationSpeed(double speed) {
+		animationSpeed = speed;
+	}
 
 }
