@@ -57,7 +57,6 @@ public class TurtleImage extends ImageView {
 		gc = gcon;
 		
 		Point2D startingPos = mathCoordsToCanvasCoords(new Point2D(xPos,yPos));
-		System.out.printf("%f %f /n", startingPos.getX(), startingPos.getY());
 		this.setImage(myImage);
 		this.setTranslateX(startingPos.getX());
 		this.setTranslateY(startingPos.getY());
@@ -104,7 +103,6 @@ public class TurtleImage extends ImageView {
 		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
 				.getY()));
-
 		animatedRotate(-tu.getTurtleAngle().getAngleValue(), animationSpeed);
 		animatedTranslate(newPos, animationSpeed);
 
@@ -114,8 +112,8 @@ public class TurtleImage extends ImageView {
 		// penUp = tu.isTurtlePenUp();
 
 		if (!penUp) {
-			gc.strokeLine(oldPos.getX(), oldPos.getY(), newPos.getX(),
-					newPos.getY());
+			gc.strokeLine(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2 , 
+					newPos.getX() + myWidth /2 , newPos.getY() + myHeight / 2);
 		}
 
 		if (tu.isTurtleClear()) {
@@ -270,12 +268,12 @@ public class TurtleImage extends ImageView {
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
 		
 		return new Point2D(mathCoords.getX() + (gc.getCanvas().getWidth() / 2 - myWidth / 2),
-				          -mathCoords.getY() + (gc.getCanvas().getHeight() / 2 + myHeight / 2));
+				          -mathCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
 	}
 
 	private Point2D canvasCoordsToMathCoords(Point2D canvasCoords) {
 		return new Point2D(canvasCoords.getX() - (gc.getCanvas().getWidth() / 2 - myWidth / 2),
-				          -canvasCoords.getY() + (gc.getCanvas().getHeight() / 2 + myHeight / 2));
+				          -canvasCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
 	}
 
 }

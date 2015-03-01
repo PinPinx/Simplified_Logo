@@ -88,32 +88,8 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 	@Override
 	public void update(TurtleUpdate tu) {
+		myTurtles.get(0).update(tu);
 		
-		
-		myTurtles.get(0).update(tu);;
-		
-		/*
-		TurtleImage ti = myTurtles.get(0);
-		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
-				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
-				.getY()));
-		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(tu
-				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
-				.getY()));
-
-		ti.setRotate(-tu.getTurtleAngle().getAngleValue());
-		ti.moveTo(newPos.getX(), newPos.getY());
-		ti.hide(tu.isTurtleHidden());
-
-		if (!tu.isTurtlePenUp()) {
-			gc.get(0).strokeLine(oldPos.getX(), oldPos.getY(), newPos.getX(),
-					newPos.getY());
-		}
-
-		if(tu.isTurtleClear()){
-			gc.get(0).clearRect(0, 0, myWidth, myHeight);
-		}
-		*/
 	}
 
 }
