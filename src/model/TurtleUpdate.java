@@ -13,7 +13,7 @@ public class TurtleUpdate {
 		this.turtleOldCoordinates = t.getOldCoordinates();
 		this.turtleNewCoordinates = t.getCoordinates();
 		this.turtleHidden = t.getHidden();
-		this.turtleActive = t.getActive();
+		this.turtleActive = t.getInactive();
 		this.turtlePenUp = t.getPenUp();
 		this.turtleClear = t.getClear();
 	}
@@ -31,7 +31,7 @@ public class TurtleUpdate {
 	public boolean isTurtleHidden() {
 		return turtleHidden;
 	}
-	public boolean isTurtleActive() {
+	public boolean isTurtleInactive() {
 		return turtleActive;
 	}
 	public boolean isTurtlePenUp() {
