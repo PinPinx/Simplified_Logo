@@ -7,13 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.TurtleUpdate;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class TurtleWindow extends Group implements TurtleObserver {
 	
@@ -30,7 +27,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 		myWidth = width;
 		myHeight = height;
-		mainCanvas = new Canvas(width, height);
+		mainCanvas = new Canvas(myWidth, myHeight);
 		mainGC = mainCanvas.getGraphicsContext2D();
 
 		this.getChildren().add(mainCanvas);
@@ -39,18 +36,11 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 		addTurtle();
 		
-		
+	}
 
-	}
-	
-	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
-		return new Point2D(myWidth / 2 + mathCoords.getX(), myHeight / 2
-				- mathCoords.getY());
-	}
 
 	public void addTurtle() {
-
-		addTurtle(0, 0);
+		addTurtle(0.0, 0.0);
 	}
 
 	public void addTurtle(double xPos, double yPos) {
@@ -58,9 +48,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
 		gc.put(gc.size(), layerGC);
 		
-		TurtleImage turtle = new TurtleImage(layerGC);
-		Point2D pos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
-		turtle.moveTo(pos.getX(), pos.getY());
+		TurtleImage turtle = new TurtleImage(layerGC, xPos, yPos);
 		myTurtles.put(myTurtles.size(), turtle);
 		
 		
