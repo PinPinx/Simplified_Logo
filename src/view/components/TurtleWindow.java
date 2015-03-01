@@ -73,6 +73,10 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		mainGC.setFill(c);
 		mainGC.fillRect(0, 0, mainCanvas.getWidth(), mainCanvas.getHeight());
 	}
+	
+	public Color getBackgroundColor(){
+		return (Color) mainGC.getFill();
+	}
 
 	public void changePenColor(Color c, int turtleID) {
 		gc.get(turtleID).setStroke(c);
@@ -88,6 +92,10 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		List<Integer> turtleIDs = new ArrayList<Integer>(myTurtles.keySet());
 		Collections.sort(turtleIDs);
 		return turtleIDs;
+	}
+	
+	public int getNumOfTurtles(){
+		return myTurtles.size();
 	}
 
 	@Override
