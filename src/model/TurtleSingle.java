@@ -8,7 +8,7 @@ import view.components.TurtleObserver;
 public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
-	private boolean isPenUp, isHidden, isActive, isClear;
+	private boolean isPenUp, isHidden, isInactive, isClear;
 	private List<TurtleObserver> myObservers;
 	
 	public TurtleSingle(){
@@ -54,7 +54,7 @@ public class TurtleSingle implements Turtle {
 
 	@Override
 	public void setActive(boolean b) {
-		isActive = b;
+		isInactive = b;
 		notifyObservers();
 	}
 
@@ -70,17 +70,13 @@ public class TurtleSingle implements Turtle {
 	}
 
 	@Override
-	public boolean getActive() {
-		return isActive;
+	public boolean getInactive() {
+		return isInactive;
 	}
 
 	@Override
 	public boolean getPenUp() {
 		return isPenUp;
-	}
-
-	private TurtleUpdate createTurtleUpdate(){
-		return new TurtleUpdate(this);
 	}
 	
 	@Override
@@ -96,13 +92,14 @@ public class TurtleSingle implements Turtle {
 	@Override
 	public void notifyObservers() {
 		for(TurtleObserver o : myObservers){
-			o.update(createTurtleUpdate());
+			o.update(new TurtleUpdate(this));
 		}
 	}
 
 	@Override
 	public void setClear(boolean b) {
 		isClear = b;
+		notifyObservers();
 	}
 
 	@Override
