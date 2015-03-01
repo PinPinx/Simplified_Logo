@@ -49,9 +49,7 @@ public class Model {
 		}
 		else if(workspaceID == myStates.size()){
 			myActiveState = new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory());
-		}
-		else{
-			myActiveState = myStates.get(0);
+			myStates.add(myActiveState);
 		}
 		myParser.setActiveState(myActiveState);
 	}

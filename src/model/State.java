@@ -6,6 +6,7 @@ public class State {
 	private Turtle myTurtle;
 	private VariablesCollection myVariablesCollection;
 	private CommandHistory myCommandHistory;
+	private ViewOptions myViewOptions;
 	
 	public State(Turtle t, VariablesCollection v, CommandHistory c){
 		this.myTurtle = t;
@@ -18,13 +19,16 @@ public class State {
 	}
 	
 	public Turtle getTurtle() {
-		return this.myTurtle;
+		return myTurtle;
 	}
 	public VariablesCollection getVariablesCollection(){
-		return this.myVariablesCollection;
+		return myVariablesCollection;
 	}
 	public CommandHistory getCommandHistory(){
-		return this.myCommandHistory;
+		return myCommandHistory;
+	}
+	public ViewOptions getViewOptions(){
+		return myViewOptions;
 	}
 
 	

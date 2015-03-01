@@ -53,7 +53,7 @@ public class TurtleSingle implements Turtle {
 	}
 
 	@Override
-	public void setActive(boolean b) {
+	public void setInactive(boolean b) {
 		isInactive = b;
 		notifyObservers();
 	}
