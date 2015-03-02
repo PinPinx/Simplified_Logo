@@ -6,16 +6,22 @@ import java.util.List;
 import view.components.TurtleObserver;
 
 public class TurtleSingle implements Turtle {
+	private int ID;
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isInactive, isClear;
 	private List<TurtleObserver> myObservers;
 	
-	public TurtleSingle(){
+	public TurtleSingle(int id){
 		myCoordinates = new Coordinates(0,0);
 		myOldCoordinates = new Coordinates(myCoordinates);
 		myAngle = new Angle(0);
 		myObservers = new ArrayList<>();
+		ID = id;
+	}
+	
+	public int getID(){
+		return ID;
 	}
 	
 	@Override

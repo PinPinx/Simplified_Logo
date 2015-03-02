@@ -18,7 +18,7 @@ public class State {
 		myCommandHistory.addObserver(View.getInstance().getUDCommandsWindow());
 	}
 	
-	public Turtle getTurtle() {
+	public TurtleMultiple getTurtle() {
 		return myTurtleMultiple;
 	}
 	public VariablesCollection getVariablesCollection(){
