@@ -20,14 +20,15 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class TurtleImage extends ImageView {
+	
 	private Image myImage;
 	private GraphicsContext gc;
-	private double[] dashLengthArray = SOLID;
-	private final static double DEFAULT_XPOS = 0.0;
-	private final static double DEFAULT_YPOS = 0.0;
-	private static double myWidth = 30.0;
-	private static double myHeight = 30.0;
-	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
+	private TurtlePen myPen;
+	
+	private double myWidth;
+	private double myHeight;
+	private double mySpeed = 0.6;
+	
 	private Boolean visible = true;
 	private Boolean penUp = false;
 
@@ -39,20 +40,18 @@ public class TurtleImage extends ImageView {
 	private MenuItem penUpDown;
 	private ContextMenu contextMenu;
 	
-	private static final double[] SOLID = {1, 0};
-	private static final double[] DASHED = {7, 4};
-	private static final double[] DOTTED = {1.5, 7.5};
-	private static final double[] DASHDOT = {7, 3, 1.5, 3};
+	private final static double DEFAULT_XPOS = 0;
+	private final static double DEFAULT_YPOS = 0;
+	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
+	private final static double DEFAULT_WIDTH = 30;
+	private final static double DEFAULT_HEIGHT = 30;
 	
-	private double animationSpeed = 0.6;
-
 	public TurtleImage(GraphicsContext gcon) {
-		this(gcon, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, myWidth,
-				myHeight);
+		this(gcon, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 
 	public TurtleImage(GraphicsContext gcon, double xPos, double yPos) {
-		this(gcon, DEFAULT_IMAGEPATH, xPos, yPos, myWidth, myHeight);
+		this(gcon, DEFAULT_IMAGEPATH, xPos, yPos, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 
 	public TurtleImage(GraphicsContext gcon, String imagePath, double xPos,
@@ -60,21 +59,22 @@ public class TurtleImage extends ImageView {
 
 		myImage = new Image(getClass().getResourceAsStream(imagePath));
 		gc = gcon;
-
-		Point2D startingPos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
+		myPen = new TurtlePen(gc);
+		
 		this.setImage(myImage);
+		resize(width, height);
+		
+		Point2D startingPos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
 		this.setTranslateX(startingPos.getX());
 		this.setTranslateY(startingPos.getY());
-		this.setFitWidth(width);
-		this.setFitHeight(height);
 
 		initializeMenuItems();
 
 		this.setOnMouseClicked(e -> popMyMenu());
 		this.setOnMouseEntered(e -> installStateTooltip());
-
 	}
 
+	
 	public void hide(boolean hidden) {
 		if (hidden) {
 			this.setImage(null);
@@ -85,6 +85,7 @@ public class TurtleImage extends ImageView {
 		visible = !hidden;
 	}
 
+	
 	public void changeImage(String imagePath) {
 		myImage = new Image(imagePath);
 	}
@@ -117,9 +118,8 @@ public class TurtleImage extends ImageView {
 		// penUp = tu.isTurtlePenUp();
 
 		if (!penUp & !oldPos.equals(newPos)) {
-			drawGappedLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
-						   new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
-					 
+			myPen.drawGappedLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
+						   		 new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
 		}
 
 		if (tu.isTurtleClear()) {
@@ -168,84 +168,20 @@ public class TurtleImage extends ImageView {
 
 	private void animatedRotate(double destination) {
 		double distance = Math.abs(this.getRotate() - destination);
-		RotateTransition rt = new RotateTransition(Duration.millis(distance
-				/ animationSpeed), this);
+		RotateTransition rt = new RotateTransition(Duration.millis(distance / mySpeed), this);
 		rt.setToAngle(destination);
 		rt.play();
 	}
 
 	private void animatedMove(Point2D destination) {
 		double distance = destination.distance(this.getX(), this.getY());
-		TranslateTransition tt = new TranslateTransition(
-				Duration.millis(distance / animationSpeed), this);
+		TranslateTransition tt = new TranslateTransition(Duration.millis(distance / mySpeed), this);
 		tt.setToX(destination.getX());
 		tt.setToY(destination.getY());
 		tt.play();
-		
 	}
 
-	
-	private void drawGappedLine(Point2D start, Point2D end) {
-		if (dashLengthArray == SOLID) {
-			gc.strokeLine(start.getX(), start.getY(), end.getX(), end.getY());
-		} 
-		
-		else {
-			Point2D lineVector = new Point2D(end.getX() - start.getX(), end.getY() - start.getY());
-			Point2D[] dashVectorArray = generateDashVectorArray(lineVector);
-			
-			boolean on = true;
-			Point2D curr = start;
-			int currDash = 0;
-			
-			gc.moveTo(start.getX(), start.getY());
-			
-			while (((end.getX() - (curr.getX() + dashVectorArray[currDash].getX())) * (end.getX() - start.getX()) >= 0) && 
-				   ((end.getY() - (curr.getY() + dashVectorArray[currDash].getY())) * (end.getY() - start.getY()) >= 0)) {
-				Point2D next = new Point2D(curr.getX() + dashVectorArray[currDash].getX(), 
-						  				   curr.getY() + dashVectorArray[currDash].getY());
-				
-				if (on) {
-					gc.strokeLine(curr.getX(), curr.getY(), next.getX(), next.getY());
-				} else {
-					gc.moveTo(next.getX(), next.getY());
-				}
-				
-				curr = next;
-				on = !on;
-				currDash = (currDash == dashVectorArray.length-1) ? 0 : (currDash + 1);
-			}
-			
-			//edge case
-			if (on) {
-				gc.strokeLine(curr.getX(), curr.getY(), end.getX(), end.getY());
-			}
-			
-		}	
-	}
-	
-	private Point2D[] generateDashVectorArray(Point2D directionVector) {
-		Point2D unitVector = getUnitVector(directionVector);
-		Point2D[] dashVectorArray = new Point2D[dashLengthArray.length];
-		
-		for (int i=0; i<dashLengthArray.length; i++) {
-			dashVectorArray[i] = new Point2D(
-					(dashLengthArray[i] * gc.getLineWidth() * unitVector.getX()), 
-					(dashLengthArray[i] * gc.getLineWidth() * unitVector.getY()));
-			
-		}
 
-		return dashVectorArray;
-		
-	}
-	
-
-	private Point2D getUnitVector(Point2D vector) {
-		double length = Math.sqrt(vector.getX()*vector.getX() + 
-								  vector.getY()*vector.getY());
-		return new Point2D(vector.getX()/length, vector.getY()/length);
-	}
-	
 	
 	private void installStateTooltip() {
 		StringBuilder turtleInfo = new StringBuilder();
@@ -261,6 +197,7 @@ public class TurtleImage extends ImageView {
 		Tooltip.install(this, t);
 	}
 
+	
 	private void selectImageFile() {
 		JFileChooser imageChooser = new JFileChooser(System.getProperties()
 				.getProperty("user.dir") + "/src/resources/images");
@@ -312,19 +249,19 @@ public class TurtleImage extends ImageView {
 		dashdot.setToggleGroup(styleGroup);
 		
 		solid.setOnAction(chooseLineStyle -> {
-			dashLengthArray = SOLID;
+			myPen.setSolid();
 		});
 		
 		dashed.setOnAction(chooseLineStyle -> {
-			dashLengthArray = DASHED;
+			myPen.setDashed();
 		});
 
 		dotted.setOnAction(chooseLineStyle -> {
-			dashLengthArray = DOTTED;
+			myPen.setDotted();
 		});
 		
 		dashdot.setOnAction(chooseLineStyle -> {
-			dashLengthArray = DASHDOT;
+			myPen.setDashDot();
 		});
 		
 
@@ -358,7 +295,7 @@ public class TurtleImage extends ImageView {
 	}
 
 	public void setAnimationSpeed(double speed) {
-		animationSpeed = speed;
+		mySpeed = speed;
 	}
 
 }

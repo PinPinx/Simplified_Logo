@@ -40,7 +40,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 
 	public void addTurtle() {
-		addTurtle(0.0, 0.0);
+		addTurtle(0, 0);
 	}
 
 	public void addTurtle(double xPos, double yPos) {
