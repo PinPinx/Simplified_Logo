@@ -7,8 +7,8 @@ import javafx.scene.control.Slider;
 public class SpeedSliderToolbarItem extends ToolbarItem {
 	
 	private static final double MIN_VALUE = 0.05;
-	private static final double MAX_VALUE = 0.5;
-	private static final double DEFAULT_VALUE = .3;
+	private static final double MAX_VALUE = 1.5;
+	private static final double DEFAULT_VALUE = 0.6;
 
 	protected SpeedSliderToolbarItem(String label, Toolbar container) {
 		super(label, container);

@@ -22,6 +22,7 @@ import javafx.util.Duration;
 public class TurtleImage extends ImageView {
 	private Image myImage;
 	private GraphicsContext gc;
+	private double[] dashLengthArray = SOLID;
 	private final static double DEFAULT_XPOS = 0.0;
 	private final static double DEFAULT_YPOS = 0.0;
 	private static double myWidth = 30.0;
@@ -37,8 +38,13 @@ public class TurtleImage extends ImageView {
 	private Menu lineWidth;
 	private MenuItem penUpDown;
 	private ContextMenu contextMenu;
-
-	private double animationSpeed = 0.3;
+	
+	private static final double[] SOLID = {1, 0};
+	private static final double[] DASHED = {7, 4};
+	private static final double[] DOTTED = {1.5, 7.5};
+	private static final double[] DASHDOT = {7, 3, 1.5, 3};
+	
+	private double animationSpeed = 0.6;
 
 	public TurtleImage(GraphicsContext gcon) {
 		this(gcon, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, myWidth,
@@ -51,12 +57,11 @@ public class TurtleImage extends ImageView {
 
 	public TurtleImage(GraphicsContext gcon, String imagePath, double xPos,
 			double yPos, double width, double height) {
-		
-		
+
 		myImage = new Image(getClass().getResourceAsStream(imagePath));
 		gc = gcon;
-		
-		Point2D startingPos = mathCoordsToCanvasCoords(new Point2D(xPos,yPos));
+
+		Point2D startingPos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
 		this.setImage(myImage);
 		this.setTranslateX(startingPos.getX());
 		this.setTranslateY(startingPos.getY());
@@ -103,17 +108,18 @@ public class TurtleImage extends ImageView {
 		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
 				.getY()));
-		animatedRotate(-tu.getTurtleAngle().getAngleValue(), animationSpeed);
-		animatedTranslate(newPos, animationSpeed);
-
+		animatedRotate(-tu.getTurtleAngle().getAngleValue());
+		animatedMove(newPos);
+		
 		this.hide(tu.isTurtleHidden());
 
 		// need to bind penUp to the back end,
 		// penUp = tu.isTurtlePenUp();
 
-		if (!penUp) {
-			gc.strokeLine(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2 , 
-					newPos.getX() + myWidth /2 , newPos.getY() + myHeight / 2);
+		if (!penUp & !oldPos.equals(newPos)) {
+			drawGappedLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
+						   new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
+					 
 		}
 
 		if (tu.isTurtleClear()) {
@@ -152,30 +158,95 @@ public class TurtleImage extends ImageView {
 		penUpDown.setOnAction(e -> {
 			setPenUpDown();
 		});
-
+		
+		// TODO
 		penColor.setOnAction(e -> {
 
 		});
 
 	}
 
-	private void animatedRotate(double destination, double speed) {
+	private void animatedRotate(double destination) {
 		double distance = Math.abs(this.getRotate() - destination);
-		RotateTransition tt = new RotateTransition(Duration.millis(distance
-				/ speed), this);
-		tt.setToAngle(destination);
-		tt.play();
+		RotateTransition rt = new RotateTransition(Duration.millis(distance
+				/ animationSpeed), this);
+		rt.setToAngle(destination);
+		rt.play();
 	}
 
-	private void animatedTranslate(Point2D destination, double speed) {
+	private void animatedMove(Point2D destination) {
 		double distance = destination.distance(this.getX(), this.getY());
 		TranslateTransition tt = new TranslateTransition(
-				Duration.millis(distance / speed), this);
+				Duration.millis(distance / animationSpeed), this);
 		tt.setToX(destination.getX());
 		tt.setToY(destination.getY());
 		tt.play();
+		
 	}
 
+	
+	private void drawGappedLine(Point2D start, Point2D end) {
+		if (dashLengthArray == SOLID) {
+			gc.strokeLine(start.getX(), start.getY(), end.getX(), end.getY());
+		} 
+		
+		else {
+			Point2D lineVector = new Point2D(end.getX() - start.getX(), end.getY() - start.getY());
+			Point2D[] dashVectorArray = generateDashVectorArray(lineVector);
+			
+			boolean on = true;
+			Point2D curr = start;
+			int currDash = 0;
+			
+			gc.moveTo(start.getX(), start.getY());
+			
+			while (((end.getX() - (curr.getX() + dashVectorArray[currDash].getX())) * (end.getX() - start.getX()) >= 0) && 
+				   ((end.getY() - (curr.getY() + dashVectorArray[currDash].getY())) * (end.getY() - start.getY()) >= 0)) {
+				Point2D next = new Point2D(curr.getX() + dashVectorArray[currDash].getX(), 
+						  				   curr.getY() + dashVectorArray[currDash].getY());
+				
+				if (on) {
+					gc.strokeLine(curr.getX(), curr.getY(), next.getX(), next.getY());
+				} else {
+					gc.moveTo(next.getX(), next.getY());
+				}
+				
+				curr = next;
+				on = !on;
+				currDash = (currDash == dashVectorArray.length-1) ? 0 : (currDash + 1);
+			}
+			
+			//edge case
+			if (on) {
+				gc.strokeLine(curr.getX(), curr.getY(), end.getX(), end.getY());
+			}
+			
+		}	
+	}
+	
+	private Point2D[] generateDashVectorArray(Point2D directionVector) {
+		Point2D unitVector = getUnitVector(directionVector);
+		Point2D[] dashVectorArray = new Point2D[dashLengthArray.length];
+		
+		for (int i=0; i<dashLengthArray.length; i++) {
+			dashVectorArray[i] = new Point2D(
+					(dashLengthArray[i] * gc.getLineWidth() * unitVector.getX()), 
+					(dashLengthArray[i] * gc.getLineWidth() * unitVector.getY()));
+			
+		}
+
+		return dashVectorArray;
+		
+	}
+	
+
+	private Point2D getUnitVector(Point2D vector) {
+		double length = Math.sqrt(vector.getX()*vector.getX() + 
+								  vector.getY()*vector.getY());
+		return new Point2D(vector.getX()/length, vector.getY()/length);
+	}
+	
+	
 	private void installStateTooltip() {
 		StringBuilder turtleInfo = new StringBuilder();
 		turtleInfo.append("Turtle Info: \n");
@@ -226,34 +297,42 @@ public class TurtleImage extends ImageView {
 	}
 
 	private void setLineStyleMenu() {
-		RadioMenuItem def_style = new RadioMenuItem("Thick line");
-		RadioMenuItem style1 = new RadioMenuItem("Dashed line");
-		RadioMenuItem style2 = new RadioMenuItem("Dotted line");
+		RadioMenuItem solid = new RadioMenuItem("Solid line");
+		RadioMenuItem dashed = new RadioMenuItem("Dashed line");
+		RadioMenuItem dotted = new RadioMenuItem("Dotted line");
+		RadioMenuItem dashdot = new RadioMenuItem("Dash-dot line");
 
-		lineStyle.getItems().addAll(def_style, style1, style2);
+		lineStyle.getItems().addAll(solid, dashed, dotted, dashdot);
 
 		ToggleGroup styleGroup = new ToggleGroup();
 
-		def_style.setToggleGroup(styleGroup);
-		style1.setToggleGroup(styleGroup);
-		style2.setToggleGroup(styleGroup);
-
-		def_style.setOnAction(chooseLineStyle -> {
-			// System.out.println("set thick line here");
-			});
-
-		style1.setOnAction(chooseLineStyle -> {
-			// System.out.println("set dashed line here");
+		solid.setToggleGroup(styleGroup);
+		dashed.setToggleGroup(styleGroup);
+		dotted.setToggleGroup(styleGroup);
+		dashdot.setToggleGroup(styleGroup);
+		
+		solid.setOnAction(chooseLineStyle -> {
+			dashLengthArray = SOLID;
+		});
+		
+		dashed.setOnAction(chooseLineStyle -> {
+			dashLengthArray = DASHED;
 		});
 
-		style2.setOnAction(chooseLineStyle -> {
-			// System.out.println("set dotted line here");
+		dotted.setOnAction(chooseLineStyle -> {
+			dashLengthArray = DOTTED;
 		});
+		
+		dashdot.setOnAction(chooseLineStyle -> {
+			dashLengthArray = DASHDOT;
+		});
+		
 
 	}
 
 	private void setLineWidthMenu() {
 		ToggleGroup widthGroup = new ToggleGroup();
+		
 		for (Integer i = 1; i <= 10; i++) {
 			final int j = i;
 			RadioMenuItem sizeChoice = new RadioMenuItem(i.toString());
@@ -263,10 +342,12 @@ public class TurtleImage extends ImageView {
 			});
 			lineWidth.getItems().add(sizeChoice);
 		}
+		
 	}
 
+	
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
-		
+
 		return new Point2D(mathCoords.getX() + (gc.getCanvas().getWidth() / 2 - myWidth / 2),
 				          -mathCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
 	}
@@ -275,7 +356,7 @@ public class TurtleImage extends ImageView {
 		return new Point2D(canvasCoords.getX() - (gc.getCanvas().getWidth() / 2 - myWidth / 2),
 				          -canvasCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
 	}
-	
+
 	public void setAnimationSpeed(double speed) {
 		animationSpeed = speed;
 	}
