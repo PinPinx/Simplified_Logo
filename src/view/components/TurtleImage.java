@@ -117,9 +117,9 @@ public class TurtleImage extends ImageView {
 		// need to bind penUp to the back end,
 		// penUp = tu.isTurtlePenUp();
 
-		if (!penUp & !oldPos.equals(newPos)) {
-			myPen.drawGappedLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
-						   		 new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
+		if (!penUp) {
+			myPen.drawLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
+						   new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
 		}
 
 		if (tu.isTurtleClear()) {

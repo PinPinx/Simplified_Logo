@@ -25,43 +25,53 @@ public class TurtlePen {
 		gc = graphicsContext;
 	}
 	
-	public void drawGappedLine(Point2D start, Point2D end) {
+	public void drawLine(Point2D start, Point2D end) {
 		if (dashLengthArray == SOLID) {
 			gc.strokeLine(start.getX(), start.getY(), end.getX(), end.getY());
-		} 
+		}
 		
 		else {
-			Point2D lineVector = new Point2D(end.getX() - start.getX(), end.getY() - start.getY());
-			Point2D[] dashVectorArray = generateDashVectorArray(lineVector);
+			drawGappedLine(start, end);
+		}
+	}
+	
+	
+	private void drawGappedLine(Point2D start, Point2D end) {
+		
+		if (start.equals(end)) {
+			return;
+		}
+		
+		Point2D lineVector = new Point2D(end.getX() - start.getX(), end.getY() - start.getY());
+		Point2D[] dashVectorArray = generateDashVectorArray(lineVector);
+		
+		boolean on = true;
+		Point2D curr = start;
+		int currDash = 0;
+		
+		gc.moveTo(start.getX(), start.getY());
+		
+		while (((end.getX() - (curr.getX() + dashVectorArray[currDash].getX())) * (end.getX() - start.getX()) >= 0) && 
+			   ((end.getY() - (curr.getY() + dashVectorArray[currDash].getY())) * (end.getY() - start.getY()) >= 0)) {
+			Point2D next = new Point2D(curr.getX() + dashVectorArray[currDash].getX(), 
+					  				   curr.getY() + dashVectorArray[currDash].getY());
 			
-			boolean on = true;
-			Point2D curr = start;
-			int currDash = 0;
-			
-			gc.moveTo(start.getX(), start.getY());
-			
-			while (((end.getX() - (curr.getX() + dashVectorArray[currDash].getX())) * (end.getX() - start.getX()) >= 0) && 
-				   ((end.getY() - (curr.getY() + dashVectorArray[currDash].getY())) * (end.getY() - start.getY()) >= 0)) {
-				Point2D next = new Point2D(curr.getX() + dashVectorArray[currDash].getX(), 
-						  				   curr.getY() + dashVectorArray[currDash].getY());
-				
-				if (on) {
-					gc.strokeLine(curr.getX(), curr.getY(), next.getX(), next.getY());
-				} else {
-					gc.moveTo(next.getX(), next.getY());
-				}
-				
-				curr = next;
-				on = !on;
-				currDash = (currDash == dashVectorArray.length-1) ? 0 : (currDash + 1);
-			}
-			
-			//edge case
 			if (on) {
-				gc.strokeLine(curr.getX(), curr.getY(), end.getX(), end.getY());
+				gc.strokeLine(curr.getX(), curr.getY(), next.getX(), next.getY());
+			} else {
+				gc.moveTo(next.getX(), next.getY());
 			}
 			
-		}	
+			curr = next;
+			on = !on;
+			currDash = (currDash == dashVectorArray.length-1) ? 0 : (currDash + 1);
+		}
+		
+		//edge case
+		if (on) {
+			gc.strokeLine(curr.getX(), curr.getY(), end.getX(), end.getY());
+		}
+		
 	}
 	
 	private Point2D[] generateDashVectorArray(Point2D directionVector) {
