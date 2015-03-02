@@ -18,9 +18,9 @@ public class Model {
 	private Model(){
 		//TODO hide creation logic for the three following parameters of state
 		this.myStates = new ArrayList<>();
-		this.myStates.add(new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory()));
-		this.myActiveState = myStates.get(0);
 		this.myParser = new Parser();
+		setState(0);
+		this.myActiveState = myStates.get(0);
 		this.myParser.setActiveState(myActiveState);
 	}
 	
@@ -44,11 +44,11 @@ public class Model {
 	 * else, rather than throw an error, set active state to 0th state. 
 	 */
 	public void setState(int workspaceID){
-		if(workspaceID < myStates.size()){
+		if(workspaceID <= myStates.size() - 1){
 			myActiveState = myStates.get(workspaceID);
 		}
 		else if(workspaceID == myStates.size()){
-			myActiveState = new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory());
+			myActiveState = new State(new TurtleMultiple(), new VariablesCollection(), new CommandHistory());
 			myStates.add(myActiveState);
 		}
 		myParser.setActiveState(myActiveState);
