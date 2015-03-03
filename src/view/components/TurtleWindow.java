@@ -88,6 +88,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		myTurtles.get(tu.getTurtleID()).update(tu);
 	}
 	
+	
 	public void updateAnimationSpeed(double speed) {
 		for (int turtleID: myTurtles.keySet()) {
 			myTurtles.get(turtleID).setAnimationSpeed(speed);
