@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import view.turtle.TurtleImage;
 import model.TurtleUpdate;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
@@ -39,18 +40,15 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	}
 
 
-	public void addTurtle() {
-		addTurtle(0, 0);
-	}
 
-	public void addTurtle(double xPos, double yPos) {
+	public void addTurtle() {
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
 		gc.put(gc.size(), layerGC);
 		
-		TurtleImage turtle = new TurtleImage(layerGC, xPos, yPos);
-		myTurtles.put(myTurtles.size(), turtle);
+		TurtleImage turtle = new TurtleImage(layerGC, myTurtles.size());
 		
+		myTurtles.put(myTurtles.size(), turtle);
 		myLayers.getChildren().add(layer);
 		myTImages.getChildren().add(turtle);
 		
@@ -87,8 +85,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 	@Override
 	public void update(TurtleUpdate tu) {
-		myTurtles.get(0).update(tu);
-		
+		myTurtles.get(tu.getTurtleID()).update(tu);
 	}
 	
 	public void updateAnimationSpeed(double speed) {

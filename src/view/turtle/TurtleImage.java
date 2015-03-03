@@ -1,4 +1,4 @@
-package view.components;
+package view.turtle;
 
 import java.io.File;
 
@@ -6,7 +6,10 @@ import javax.swing.JFileChooser;
 
 import model.TurtleUpdate;
 import javafx.animation.RotateTransition;
+import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ContextMenu;
@@ -25,9 +28,11 @@ public class TurtleImage extends ImageView {
 	private GraphicsContext gc;
 	private TurtlePen myPen;
 	
+	private int myID;
 	private double myWidth;
 	private double myHeight;
 	private double mySpeed = 0.6;
+	private boolean moving = false;
 	
 	private Boolean visible = true;
 	private Boolean penUp = false;
@@ -46,19 +51,16 @@ public class TurtleImage extends ImageView {
 	private final static double DEFAULT_WIDTH = 30;
 	private final static double DEFAULT_HEIGHT = 30;
 	
-	public TurtleImage(GraphicsContext gcon) {
-		this(gcon, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	public TurtleImage(GraphicsContext gcon, int id) {
+		this(gcon, id, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	}
 
-	public TurtleImage(GraphicsContext gcon, double xPos, double yPos) {
-		this(gcon, DEFAULT_IMAGEPATH, xPos, yPos, DEFAULT_WIDTH, DEFAULT_HEIGHT);
-	}
-
-	public TurtleImage(GraphicsContext gcon, String imagePath, double xPos,
+	public TurtleImage(GraphicsContext gcon, int id, String imagePath, double xPos,
 			double yPos, double width, double height) {
 
 		myImage = new Image(getClass().getResourceAsStream(imagePath));
 		gc = gcon;
+		myID = id;
 		myPen = new TurtlePen(gc);
 		
 		this.setImage(myImage);
@@ -109,13 +111,11 @@ public class TurtleImage extends ImageView {
 		Point2D newPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
 				.getY()));
-		animatedRotate(-tu.getTurtleAngle().getAngleValue());
-		animatedMove(newPos);
+		
+		this.animatedMove(createTranslateTransition(newPos));
+		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()));
 		
 		this.hide(tu.isTurtleHidden());
-
-		// need to bind penUp to the back end,
-		// penUp = tu.isTurtlePenUp();
 
 		if (!penUp) {
 			myPen.drawLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
@@ -130,64 +130,76 @@ public class TurtleImage extends ImageView {
 
 	private void popMyMenu() {
 		contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
-
 	}
-
+	
+	private MenuItem makeMenuItem(String label, EventHandler<ActionEvent> event) {
+		MenuItem item = new MenuItem(label);
+		item.setOnAction(event);
+		return item;
+	}
+	
 	private void initializeMenuItems() {
-		changeImage = new MenuItem("Change Turtle Image");
-		toggle = new MenuItem("Toggle Off");
-		penColor = new MenuItem("Choose Turtle Pen Color");
+		changeImage = makeMenuItem("Change Turtle Image", e -> {
+			selectImageFile();
+		});
+		
+		toggle = makeMenuItem("Toggle Off", e -> {
+			toggleTurtle();
+		});
+		
+		penUpDown = makeMenuItem("Pen Up", e -> {
+			setPenUpDown();
+		});
+		
 		lineStyle = new Menu("Choose Turtle Line Style");
 		setLineStyleMenu();
 		lineWidth = new Menu("Choose Turtle Line Width");
 		setLineWidthMenu();
-
-		penUpDown = new MenuItem("Pen Up");
-
-		contextMenu = new ContextMenu(changeImage, toggle, penColor, lineWidth,
-				lineStyle, penUpDown);
-
-		changeImage.setOnAction(e -> {
-			selectImageFile();
-		});
-
-		toggle.setOnAction(e -> {
-			toggleTurtle();
-		});
-
-		penUpDown.setOnAction(e -> {
-			setPenUpDown();
+		
+		// TODO:
+		MenuItem penColor = makeMenuItem("Choose Turtle Pen Color", e -> {
+			
 		});
 		
-		// TODO
-		penColor.setOnAction(e -> {
-
-		});
+		contextMenu = new ContextMenu(changeImage, toggle, penUpDown, lineWidth,
+				lineStyle, penColor);
 
 	}
-
-	private void animatedRotate(double destination) {
+	
+	private void animatedMove(Transition transition) {
+		while (moving) {
+			//busy-wait
+		}
+		transition.play();
+		transition.setOnFinished(finished -> {
+			moving = false;
+		});
+	}
+	
+	private Transition createRotateTransition(double destination) {
 		double distance = Math.abs(this.getRotate() - destination);
 		RotateTransition rt = new RotateTransition(Duration.millis(distance / mySpeed), this);
 		rt.setToAngle(destination);
-		rt.play();
+		return rt;
 	}
-
-	private void animatedMove(Point2D destination) {
+	
+	
+	private Transition createTranslateTransition(Point2D destination) {
+		
 		double distance = destination.distance(this.getX(), this.getY());
 		TranslateTransition tt = new TranslateTransition(Duration.millis(distance / mySpeed), this);
 		tt.setToX(destination.getX());
-		tt.setToY(destination.getY());
-		tt.play();
+		tt.setToY(destination.getY());	
+		return tt;
 	}
 
 
 	
 	private void installStateTooltip() {
 		StringBuilder turtleInfo = new StringBuilder();
-		turtleInfo.append("Turtle Info: \n");
 		Point2D Pos = canvasCoordsToMathCoords(new Point2D(
 				this.getTranslateX(), this.getTranslateY()));
+		turtleInfo.append("ID: " + myID + "\n");
 		turtleInfo.append("X position: " + Pos.getX() + "\n");
 		turtleInfo.append("Y position: " + Pos.getY() + "\n");
 		turtleInfo.append("Heading: " + this.getRotate() + "\n");
@@ -234,19 +246,19 @@ public class TurtleImage extends ImageView {
 	}
 
 	private void setLineStyleMenu() {
+		
 		RadioMenuItem solid = new RadioMenuItem("Solid line");
 		RadioMenuItem dashed = new RadioMenuItem("Dashed line");
 		RadioMenuItem dotted = new RadioMenuItem("Dotted line");
 		RadioMenuItem dashdot = new RadioMenuItem("Dash-dot line");
-
+	
+		ToggleGroup styleGroup = new ToggleGroup();
+		
 		lineStyle.getItems().addAll(solid, dashed, dotted, dashdot);
 
-		ToggleGroup styleGroup = new ToggleGroup();
-
-		solid.setToggleGroup(styleGroup);
-		dashed.setToggleGroup(styleGroup);
-		dotted.setToggleGroup(styleGroup);
-		dashdot.setToggleGroup(styleGroup);
+		for (MenuItem item: lineStyle.getItems()) {
+			((RadioMenuItem) item).setToggleGroup(styleGroup);
+		}
 		
 		solid.setOnAction(chooseLineStyle -> {
 			myPen.setSolid();
@@ -263,7 +275,6 @@ public class TurtleImage extends ImageView {
 		dashdot.setOnAction(chooseLineStyle -> {
 			myPen.setDashDot();
 		});
-		
 
 	}
 
