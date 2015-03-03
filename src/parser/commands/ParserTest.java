@@ -5,6 +5,7 @@ import model.Angle;
 import model.CommandHistory;
 import model.Coordinates;
 import model.State;
+import model.TurtleMultiple;
 import model.TurtleSingle;
 import model.VariablesCollection;
 
@@ -19,7 +20,7 @@ import parser.parser.Parser;
 public class ParserTest {	
 	@Test
 	public void testParse() throws BadArgumentException, CommandNameNotFoundException, SyntaxErrorWrongFormat {
-		State myState = new State(new TurtleSingle(), new VariablesCollection(), new CommandHistory());
+		State myState = new State(new TurtleMultiple(), new VariablesCollection(), new CommandHistory());
 		Parser myParser = new Parser();
 		myParser.setActiveState(myState);
 		CommandRoot root = myParser.parse("fd 50");

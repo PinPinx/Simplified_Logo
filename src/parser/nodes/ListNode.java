@@ -12,6 +12,9 @@ public class ListNode extends SyntaxNode {
 	protected List<SyntaxNode> myList= new ArrayList<SyntaxNode>();
 	
 	public ListNode(Stack<SyntaxNode> input){
+		if (input.empty()){
+			myList.add(new ConstantNode(0));
+		}
 		while (!input.empty()){
 			myList.add(input.pop());
 		}

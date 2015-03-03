@@ -23,6 +23,8 @@ public class For extends BinaryNode {
 		listReference = (ListNode) nodeOne;
 		if (listReference.getSize()!=4)
 			throw new BadArgumentException("A for loop's first following bracketed list must have 4 entries.");
+		if (!(listReference.getNode(0) instanceof VariableNode))
+			throw new BadArgumentException("The first argument given in the for loop was not a variable.");
 		variable = (VariableNode) listReference.getNode(0);
 	}
 

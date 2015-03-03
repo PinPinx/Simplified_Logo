@@ -67,8 +67,11 @@ public class Parser {
 				inputStack.peek().push(new VariableNode(commandStream[i]));
 				break;
 			case GROUPEND: //TODO
+				inputStack.push(new Stack<SyntaxNode>());
 				break;
 			case GROUPSTART: //TODO
+				Stack<SyntaxNode> groupStack = inputStack.pop();
+				inputStack.peek().push(new GroupNode(groupStack));
 				break;
 			case LISTEND:
 				inputStack.push(new Stack<SyntaxNode>());
