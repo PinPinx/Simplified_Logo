@@ -4,7 +4,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * 
+ * Constructs lines according to set styles.
  * 
  * @author lien
  *

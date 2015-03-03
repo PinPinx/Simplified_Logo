@@ -36,15 +36,17 @@ public class TurtleImage extends ImageView {
 	
 	private Boolean visible = true;
 	private Boolean penUp = false;
-
+	
+	// items in the pop-up context menu
+	private ContextMenu contextMenu;
 	private MenuItem changeImage;
 	private MenuItem toggle;
 	private MenuItem penColor;
 	private Menu lineStyle;
 	private Menu lineWidth;
-	private MenuItem penUpDown;
-	private ContextMenu contextMenu;
+	private MenuItem penUpDown;	
 	
+	// default parameters for the constructor
 	private final static double DEFAULT_XPOS = 0;
 	private final static double DEFAULT_YPOS = 0;
 	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
@@ -69,11 +71,10 @@ public class TurtleImage extends ImageView {
 		Point2D startingPos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
 		this.setTranslateX(startingPos.getX());
 		this.setTranslateY(startingPos.getY());
-
-		initializeMenuItems();
-
-		this.setOnMouseClicked(e -> popMyMenu());
+		
 		this.setOnMouseEntered(e -> installStateTooltip());
+		initializeMenu();
+		
 	}
 
 	
@@ -83,6 +84,7 @@ public class TurtleImage extends ImageView {
 			visible = !hidden;
 			return;
 		}
+		
 		this.setImage(myImage);
 		visible = !hidden;
 	}
@@ -128,17 +130,8 @@ public class TurtleImage extends ImageView {
 		}
 	}
 
-	private void popMyMenu() {
-		contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
-	}
 	
-	private MenuItem makeMenuItem(String label, EventHandler<ActionEvent> event) {
-		MenuItem item = new MenuItem(label);
-		item.setOnAction(event);
-		return item;
-	}
-	
-	private void initializeMenuItems() {
+	private void initializeMenu() {
 		changeImage = makeMenuItem("Change Turtle Image", e -> {
 			selectImageFile();
 		});
@@ -150,20 +143,31 @@ public class TurtleImage extends ImageView {
 		penUpDown = makeMenuItem("Pen Up", e -> {
 			setPenUpDown();
 		});
+
+		// TODO:
+		penColor = makeMenuItem("Choose Turtle Pen Color", e -> {
+			
+		});
 		
 		lineStyle = new Menu("Choose Turtle Line Style");
 		setLineStyleMenu();
 		lineWidth = new Menu("Choose Turtle Line Width");
 		setLineWidthMenu();
 		
-		// TODO:
-		MenuItem penColor = makeMenuItem("Choose Turtle Pen Color", e -> {
-			
-		});
-		
 		contextMenu = new ContextMenu(changeImage, toggle, penUpDown, lineWidth,
 				lineStyle, penColor);
-
+		
+		this.setOnMouseClicked(clicked -> popMyMenu());
+	}
+	
+	private void popMyMenu() {
+		contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
+	}
+	
+	private MenuItem makeMenuItem(String label, EventHandler<ActionEvent> event) {
+		MenuItem item = new MenuItem(label);
+		item.setOnAction(event);
+		return item;
 	}
 	
 	private void animatedMove(Transition transition) {
@@ -202,7 +206,7 @@ public class TurtleImage extends ImageView {
 		turtleInfo.append("ID: " + myID + "\n");
 		turtleInfo.append("X position: " + Pos.getX() + "\n");
 		turtleInfo.append("Y position: " + Pos.getY() + "\n");
-		turtleInfo.append("Heading: " + this.getRotate() + "\n");
+		turtleInfo.append("Heading: " + (-this.getRotate()) + "\n");
 		turtleInfo.append("Pen Up: " + penUp.toString() + "\n");
 		turtleInfo.append("Visiblity: " + visible.toString() + "\n");
 		Tooltip t = new Tooltip(turtleInfo.toString());
@@ -245,6 +249,9 @@ public class TurtleImage extends ImageView {
 		return;
 	}
 
+	/**
+	 * Generates a toggle group for line styles (solid, dashed, dotted, dash-dot)
+	 */
 	private void setLineStyleMenu() {
 		
 		RadioMenuItem solid = new RadioMenuItem("Solid line");
@@ -277,7 +284,10 @@ public class TurtleImage extends ImageView {
 		});
 
 	}
-
+	
+	/**
+	 * Generates a toggle group for line width from 1-10
+	 */
 	private void setLineWidthMenu() {
 		ToggleGroup widthGroup = new ToggleGroup();
 		
@@ -293,6 +303,9 @@ public class TurtleImage extends ImageView {
 		
 	}
 
+	public void setAnimationSpeed(double speed) {
+		mySpeed = speed;
+	}
 	
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
 
@@ -303,10 +316,6 @@ public class TurtleImage extends ImageView {
 	private Point2D canvasCoordsToMathCoords(Point2D canvasCoords) {
 		return new Point2D(canvasCoords.getX() - (gc.getCanvas().getWidth() / 2 - myWidth / 2),
 				          -canvasCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
-	}
-
-	public void setAnimationSpeed(double speed) {
-		mySpeed = speed;
 	}
 
 }

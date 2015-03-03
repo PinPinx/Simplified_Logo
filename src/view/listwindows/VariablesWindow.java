@@ -1,13 +1,14 @@
-package view.components;
+package view.listwindows;
 
 import java.util.List;
 
+import view.components.VariablesObserver;
 import javafx.beans.property.StringProperty;
 import model.VariablesCollectionUpdate;
 
 public class VariablesWindow extends ListWindow implements VariablesObserver {
 	
-	private static final String UD_VARIABLES = "User Defined Commands";
+	private static final String UD_VARIABLES = "User Defined Variables";
 	
 	public VariablesWindow(int w, int h) {
 		super(w, h, UD_VARIABLES);

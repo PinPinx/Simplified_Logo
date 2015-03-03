@@ -21,8 +21,8 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	private double myHeight;
 	private int numTurtles;
 	
-	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
 	private Group myLayers = new Group();
+	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
 	private Group myTImages =  new Group();
 
@@ -64,14 +64,33 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		
 	}
 
+	
+	@Override
+	public void update(TurtleUpdate tu) {
+		int id = tu.getTurtleID();
+		if (!myTurtles.keySet().contains(id)) {
+			addTurtle(id);
+		}
+		myTurtles.get(id).update(tu);
+	}
+	
+	
+	public void updateAnimationSpeed(double speed) {
+		for (int turtleID: myTurtles.keySet()) {
+			myTurtles.get(turtleID).setAnimationSpeed(speed);
+		}
+	}
+	
+	
 	public void changeBackground(Color c) {
 		mainGC.setFill(c);
 		mainGC.fillRect(0, 0, mainCanvas.getWidth(), mainCanvas.getHeight());
 	}
 	
-	public Color getBackgroundColor(){
+	public Color getBackgroundColor() {
 		return (Color) mainGC.getFill();
 	}
+	
 
 	public void changePenColor(Color c, int turtleID) {
 		gc.get(turtleID).setStroke(c);
@@ -90,23 +109,8 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	}
 	
 	public int getNumOfTurtles(){
-		return myTurtles.size();
+		return numTurtles;
 	}
 
-	@Override
-	public void update(TurtleUpdate tu) {
-		System.out.println(tu.getTurtleID());
-		if (!myTurtles.keySet().contains(tu.getTurtleID())) {
-			addTurtle(tu.getTurtleID());
-		}
-		myTurtles.get(tu.getTurtleID()).update(tu);
-	}
-	
-	
-	public void updateAnimationSpeed(double speed) {
-		for (int turtleID: myTurtles.keySet()) {
-			myTurtles.get(turtleID).setAnimationSpeed(speed);
-		}
-	}
 	
 }

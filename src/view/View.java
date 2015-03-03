@@ -1,16 +1,16 @@
 package view;
 
 import parser.parser.Regex;
-import view.components.CommandHistoryWindow;
 import view.components.CommandPort;
 import view.components.SLogoMenuBar;
 import view.components.TurtleWindow;
-import view.components.UserDefinedCommandsWindow;
-import view.components.VariablesWindow;
 import view.dialogs.DialogBox;
 import view.dialogs.HelpDialogBox;
 import view.dialogs.LanguagesDialogBox;
 import view.dialogs.MessageDialogBox;
+import view.listwindows.CommandsHistoryWindow;
+import view.listwindows.UserDefinedCommandsWindow;
+import view.listwindows.VariablesWindow;
 import view.toolbar.Toolbar;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -44,7 +44,7 @@ public class View {
 
 	private UserDefinedCommandsWindow myUDCommandsWindow;
 	private VariablesWindow myVariablesWindow;
-	private CommandHistoryWindow myCommandHistWindow;
+	private CommandsHistoryWindow myCommandHistWindow;
 	private VBox myListWindows;
 	private HBox myUDListWindows;
 
@@ -114,7 +114,7 @@ public class View {
 	}
 
 	private void initLists() {
-		myCommandHistWindow = new CommandHistoryWindow(Main.SIZE.width * 2 / 5,
+		myCommandHistWindow = new CommandsHistoryWindow(Main.SIZE.width * 2 / 5,
 				Main.SIZE.height * 2 / 5);
 		myUDCommandsWindow = new UserDefinedCommandsWindow(
 				Main.SIZE.width * 1 / 5, Main.SIZE.height * 2 / 5);
@@ -160,7 +160,7 @@ public class View {
 		return myVariablesWindow;
 	}
 
-	public CommandHistoryWindow getCommandHistoryWindow() {
+	public CommandsHistoryWindow getCommandHistoryWindow() {
 		return myCommandHistWindow;
 	}
 
