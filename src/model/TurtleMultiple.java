@@ -22,6 +22,7 @@ public class TurtleMultiple implements Turtle {
 		myTurtleMap.put(turtleID,newTurtle);
 		setLastTurtle(newTurtle);
 		newTurtle.addObserver(View.getInstance().getTurtleWindow());
+		newTurtle.notifyObservers();
 	}
 
 	public int numTurtles(){
