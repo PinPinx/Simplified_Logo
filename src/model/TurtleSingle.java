@@ -41,7 +41,8 @@ public class TurtleSingle implements Turtle {
 
 	@Override
 	public void addDegree(Double d) {
-		myAngle.addAngleValue(d);;
+		myAngle.addAngleValue(d);
+		myOldCoordinates = new Coordinates(myCoordinates);
 		notifyObservers();
 	}
 
@@ -110,7 +111,6 @@ public class TurtleSingle implements Turtle {
 
 	@Override
 	public boolean getClear() {
-		// TODO Auto-generated method stub
 		boolean ret = isClear;
 		isClear = false;
 		return ret;

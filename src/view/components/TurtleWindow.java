@@ -19,6 +19,8 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	private GraphicsContext mainGC;
 	private double myWidth;
 	private double myHeight;
+	private int numTurtles;
+	
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
 	private Group myLayers = new Group();
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
@@ -28,27 +30,35 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 		myWidth = width;
 		myHeight = height;
+		numTurtles = 0;
 		mainCanvas = new Canvas(myWidth, myHeight);
 		mainGC = mainCanvas.getGraphicsContext2D();
 
 		this.getChildren().add(mainCanvas);
 		this.getChildren().addAll(myLayers, myTImages);
 		
-
 		addTurtle();
 		
 	}
 
-
-
 	public void addTurtle() {
+		int i=0;
+		while (myTurtles.keySet().contains(i)) {
+			i++;
+		}
+		addTurtle(i);
+	}
+	
+
+	public void addTurtle(int id) {
+		numTurtles++;
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
-		gc.put(gc.size(), layerGC);
+		gc.put(id, layerGC);
 		
-		TurtleImage turtle = new TurtleImage(layerGC, myTurtles.size());
+		TurtleImage turtle = new TurtleImage(layerGC, id);
 		
-		myTurtles.put(myTurtles.size(), turtle);
+		myTurtles.put(id, turtle);
 		myLayers.getChildren().add(layer);
 		myTImages.getChildren().add(turtle);
 		
@@ -85,6 +95,10 @@ public class TurtleWindow extends Group implements TurtleObserver {
 
 	@Override
 	public void update(TurtleUpdate tu) {
+		System.out.println(tu.getTurtleID());
+		if (!myTurtles.keySet().contains(tu.getTurtleID())) {
+			addTurtle(tu.getTurtleID());
+		}
 		myTurtles.get(tu.getTurtleID()).update(tu);
 	}
 	
