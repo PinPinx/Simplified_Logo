@@ -53,7 +53,30 @@ public class TurtleSingle implements Turtle {
 		myCoordinates.addCoordinates(change);
 		notifyObservers();
 	}
-
+	
+	@Override
+	public double setHeading(double degrees){
+		double ret = Math.abs(myAngle.getAngleValue() - degrees);
+		myAngle.setAngleValue(degrees);
+		notifyObservers();
+		return ret;
+	}
+//TODO: Clean this.
+	@Override
+	public double setTowards(double x, double y){
+		double yDiff = myCoordinates.getY() - y;
+		double xDiff = myCoordinates.getX() - x;
+		if (xDiff == 0 && yDiff == 0)
+			return 0;
+		if (xDiff == 0)
+			return setHeading(Math.toDegrees((yDiff > 0 ? 1 : -1)*Math.PI/2));
+		double finalAngle = Math.atan(yDiff/xDiff);
+		if (xDiff > 0)
+			finalAngle += Math.PI;
+		notifyObservers();
+		return setHeading(Math.toDegrees(finalAngle));
+	}
+	
 	@Override
 	public void setHidden(boolean b) {
 		isHidden = b;
@@ -112,6 +135,7 @@ public class TurtleSingle implements Turtle {
 		//TODO: Following two lines may need to be put into a helper
 		myOldCoordinates = new Coordinates(myCoordinates);
 		myCoordinates.addCoordinates(delta);
+		notifyObservers();
 		return delta.distance(getCoordinates());
 	}
 	

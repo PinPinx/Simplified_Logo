@@ -4,8 +4,10 @@ public interface Turtle extends Observable {
 	public Angle getAngle(); 
 	public Coordinates getCoordinates();
 	public Coordinates getOldCoordinates();
-	public void addDegree(Double d);
-	public void moveDistance(double d);
+	public void addDegree(Double degrees);
+	public void moveDistance(double distance);
+	public double setHeading(double degrees);
+	public double setTowards(double x, double y);
 	public double moveToPosition(double x, double y);
 	public void setHidden(boolean b);
 	public void setInactive(boolean b);
