@@ -1,6 +1,6 @@
 package model;
 
-public interface Turtle extends ObservableTurtle {
+public interface Turtle extends Observable {
 	public Angle getAngle(); 
 	public Coordinates getCoordinates();
 	public Coordinates getOldCoordinates();
@@ -10,10 +10,8 @@ public interface Turtle extends ObservableTurtle {
 	public void setHidden(boolean b);
 	public void setInactive(boolean b);
 	public void setPenUp(boolean b);
-	public void setClear(boolean b);
 	public boolean getHidden();
 	public boolean getInactive();
 	public boolean getPenUp();
-	public boolean getClear();
 }
 

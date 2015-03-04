@@ -17,7 +17,6 @@ public class TurtleUpdate {
 		this.turtleHidden = t.getHidden();
 		this.turtleActive = t.getInactive();
 		this.turtlePenUp = t.getPenUp();
-		this.turtleClear = t.getClear();
 	}
 	
 	public int getTurtleID(){
