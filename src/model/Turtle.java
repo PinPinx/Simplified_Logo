@@ -19,6 +19,6 @@ public interface Turtle extends Observable {
 	public boolean getInactive();
 	public boolean getPenUp();
 	public int getID();
-	public ViewOptions getViewOptions();
+	public void changeViewOptions(ViewChanger vc);
 }
 

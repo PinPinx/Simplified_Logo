@@ -202,17 +202,11 @@ public class TurtleMultiple implements Turtle {
 	private void setLastTurtle(TurtleSingle t){
 		lastActingTurtle = t;
 	}
-
-	@Override
-	public ViewOptions getViewOptions() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public void changeViewOptions(ViewChanger vc) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				vc.change(t.getViewOptions());
+				t.changeViewOptions(vc);
 				setLastTurtle(t);
 			}
 		}	

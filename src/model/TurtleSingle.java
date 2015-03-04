@@ -160,9 +160,8 @@ public class TurtleSingle implements Turtle {
 		returner.scale(distance);
 		return returner;
 	}
-
-	@Override
-	public ViewOptions getViewOptions() {
-		return myViewOptions;
+	
+	public void changeViewOptions(ViewChanger vc){
+		vc.change(myViewOptions);
 	}
 }
