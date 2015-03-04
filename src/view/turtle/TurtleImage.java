@@ -92,10 +92,16 @@ public class TurtleImage extends ImageView {
 	
 	public void changeImage(String imagePath) {
 		myImage = new Image(imagePath);
+		this.setImage(myImage);
 	}
 
 	public void changeImage(File file) {
 		myImage = new Image(file.toURI().toString());
+		this.setImage(myImage);
+	}
+	
+	public void changeImage(Image img){
+		myImage = img;
 		this.setImage(myImage);
 	}
 
