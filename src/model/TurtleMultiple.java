@@ -87,23 +87,27 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void addDegree(double degree){
+	public double addDegree(double degree){
+		double ret = 0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
 				setLastTurtle(t);
-				t.addDegree(degree);
+				ret = t.addDegree(degree);
 			}
 		}
+		return ret;
 	}
 
 	@Override
-	public void moveDistance(double distance){
+	public double moveDistance(double distance){
+		double ret = 0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
 				setLastTurtle(t);
-				t.moveDistance(distance);
+				ret = t.moveDistance(distance);
 			}
 		}
+		return ret;
 	}
 
 	@Override

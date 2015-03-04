@@ -42,20 +42,22 @@ public class TurtleSingle implements Turtle {
 	}
 
 	@Override
-	public void addDegree(double degrees) {
+	public double addDegree(double degrees) {
 		double param = degrees;
 		myAngle.addAngleValue(param);
 		myOldCoordinates = new Coordinates(myCoordinates);
 		notifyObservers();
+		return param;
 	}
 
 	@Override
-	public void moveDistance(double distance) {
+	public double moveDistance(double distance) {
 		double param = distance;
 		myOldCoordinates = new Coordinates(myCoordinates);
 		Coordinates change = distanceToCoordinates(param);
 		myCoordinates.addCoordinates(change);
 		notifyObservers();
+		return param;
 	}
 	
 	@Override
