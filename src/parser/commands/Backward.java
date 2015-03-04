@@ -16,6 +16,6 @@ public class Backward extends SimpleTurtleCommand {
 	//TODO: This is duplicated code from Forward
 	@Override
 	public double execute(State myState) throws BadArgumentException{
-		return myState.getTurtle().moveDistance(referenceNode.execute(myState));
+		return myState.getTurtle().moveDistance(-referenceNode.execute(myState));
 	}
 }

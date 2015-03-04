@@ -31,7 +31,7 @@ public class Tell extends UnaryNode{
 		for(int i = 0; i < listReference.getSize(); i++){
 			turtleID = (int) listReference.getNode(i).execute(myState);
 			try{
-				myState.getTurtle().getTurtleSingle(turtleID).setInactive(false);;
+				myState.getTurtle().getTurtleSingle(turtleID).setInactive(false);
 			} catch (TurtleNotFoundException e){
 				myState.getTurtle().addNewTurtle(turtleID);
 			}

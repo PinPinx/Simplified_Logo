@@ -48,12 +48,12 @@ public class TurtleMultiple implements Turtle {
 		}
 		return t;
 	}
-
+/*
 	public void toggleTurtleActive(int turtleID, boolean inactive){
 		Turtle t = myTurtleMap.get(turtleID);
 		t.setInactive(inactive);
 	}
-
+*/
 	@Override
 	public void addObserver(Observer o) {
 		for(TurtleSingle t : myTurtleMap.values()){
