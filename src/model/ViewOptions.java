@@ -39,13 +39,17 @@ public class ViewOptions implements ViewUpdate, Observable{
 		return shapeID;
 	}
 	public boolean isClear() {
-		return isClear;
-	}
+		boolean b = isClear;
+		isClear = false;
+		return b;	}
 	public boolean isClearStamps() {
-		return isClearStamps;
-	}
+		boolean b = isClearStamps;
+		isClearStamps = false;
+		return b;	}
 	public boolean isStamp() {
-		return isStamp;
+		boolean b = isStamp;
+		isStamp = false;
+		return b;
 	}
 	public void setBackgroundID(int backgroundID) {
 		this.backgroundID = backgroundID;
