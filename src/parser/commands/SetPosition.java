@@ -19,7 +19,6 @@ public class SetPosition extends BinaryTurtleCommand {
 		Turtle turtle = myState.getTurtle();
 		double newX = nodeOne.execute(myState);
 		double newY = nodeTwo.execute(myState);
-		System.out.println(newX + " " + newY);
 		return turtle.moveToPosition(newX, newY);
 	}
 

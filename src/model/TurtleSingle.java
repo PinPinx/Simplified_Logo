@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.BadArgumentException;
+import parser.nodes.SyntaxNode;
 import view.components.Observer;
 
 public class TurtleSingle implements Turtle {
@@ -40,16 +42,18 @@ public class TurtleSingle implements Turtle {
 	}
 
 	@Override
-	public void addDegree(Double d) {
-		myAngle.addAngleValue(d);
+	public void addDegree(double degrees) {
+		double param = degrees;
+		myAngle.addAngleValue(param);
 		myOldCoordinates = new Coordinates(myCoordinates);
 		notifyObservers();
 	}
 
 	@Override
 	public void moveDistance(double distance) {
+		double param = distance;
 		myOldCoordinates = new Coordinates(myCoordinates);
-		Coordinates change = distanceToCoordinates(distance);
+		Coordinates change = distanceToCoordinates(param);
 		myCoordinates.addCoordinates(change);
 		notifyObservers();
 	}
