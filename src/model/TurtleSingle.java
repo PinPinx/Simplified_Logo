@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.BadArgumentException;
+import parser.nodes.SyntaxNode;
 import view.components.Observer;
 
 public class TurtleSingle implements Turtle {
@@ -40,18 +42,22 @@ public class TurtleSingle implements Turtle {
 	}
 
 	@Override
-	public void addDegree(Double d) {
-		myAngle.addAngleValue(d);
+	public double addDegree(boolean direction, SyntaxNode turnNode, State myState) throws BadArgumentException {
+		double param = turnNode.execute(myState);
+		myAngle.addAngleValue((direction ? 1:-1)*param);
 		myOldCoordinates = new Coordinates(myCoordinates);
 		notifyObservers();
+		return param;
 	}
 
 	@Override
-	public void moveDistance(double distance) {
+	public double moveDistance(boolean direction, SyntaxNode distance, State myState) throws BadArgumentException {
+		double param = distance.execute(myState);
 		myOldCoordinates = new Coordinates(myCoordinates);
-		Coordinates change = distanceToCoordinates(distance);
+		Coordinates change = distanceToCoordinates((direction ? 1:-1)*param);
 		myCoordinates.addCoordinates(change);
 		notifyObservers();
+		return param;
 	}
 
 	@Override
@@ -107,7 +113,7 @@ public class TurtleSingle implements Turtle {
 
 	//TODO: Check over this Kaighn?
 	@Override
-	public double moveToPosition(double x, double y){
+	public double moveToPosition(SyntaxNode x, SyntaxNode y, State myState){
 		Coordinates delta = new Coordinates(x - myCoordinates.getX(), y - myCoordinates.getY());
 		//TODO: Following two lines may need to be put into a helper
 		myOldCoordinates = new Coordinates(myCoordinates);

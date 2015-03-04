@@ -1,12 +1,15 @@
 package model;
 
+import exceptions.BadArgumentException;
+import parser.nodes.SyntaxNode;
+
 public interface Turtle extends Observable {
 	public Angle getAngle(); 
 	public Coordinates getCoordinates();
 	public Coordinates getOldCoordinates();
-	public void addDegree(Double d);
-	public void moveDistance(double d);
-	public double moveToPosition(double x, double y);
+	public double addDegree(boolean direction, SyntaxNode node, State myState) throws BadArgumentException;
+	public double moveDistance(boolean direction, SyntaxNode node, State myState) throws BadArgumentException;
+	public double moveToPosition(SyntaxNode x, SyntaxNode y, State myState);
 	public void setHidden(boolean b);
 	public void setInactive(boolean b);
 	public void setPenUp(boolean b);

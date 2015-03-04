@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import parser.nodes.SyntaxNode;
+import exceptions.BadArgumentException;
 import exceptions.TurtleNotFoundException;
 import view.View;
 import view.components.Observer;
@@ -85,31 +87,35 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void addDegree(Double d) {
+	public double addDegree(boolean direction, SyntaxNode turnNode, State myState) throws BadArgumentException {
+		double ret=0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.addDegree(d);
 				setLastTurtle(t);
+				ret = t.addDegree(direction, turnNode, myState);
 			}
 		}
+		return ret;
 	}
 
 	@Override
-	public void moveDistance(double distance) {
+	public double moveDistance(boolean direction, SyntaxNode distanceNode, State myState) throws BadArgumentException {
+		double ret=0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.moveDistance(distance);
 				setLastTurtle(t);
+				ret = t.moveDistance(direction, distanceNode, myState);
 			}
 		}
+		return ret;
 	}
 
 	@Override
-	public double moveToPosition(double x, double y) {
+	public double moveToPosition(SyntaxNode x, SyntaxNode y, State myState) {
 		double d = 0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				d = t.moveToPosition(x, y);
+				d = t.moveToPosition(x, y, null);
 				setLastTurtle(t);
 			}
 		}

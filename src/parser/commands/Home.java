@@ -17,6 +17,6 @@ public class Home extends SyntaxNode {
 	@Override
 	public double execute(State myState) throws BadArgumentException {
 		Turtle turtle = myState.getTurtle();
-		return turtle.moveToPosition(0, 0);
+		return turtle.moveToPosition(0, 0, null);
 	}
 }
