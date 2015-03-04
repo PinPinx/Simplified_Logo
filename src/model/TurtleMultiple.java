@@ -1,11 +1,15 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import parser.nodes.SyntaxNode;
+import exceptions.BadArgumentException;
 import exceptions.TurtleNotFoundException;
 import view.View;
-import view.components.TurtleObserver;
+import view.components.Observer;
 
 public class TurtleMultiple implements Turtle {
 	private Map<Integer,TurtleSingle> myTurtleMap;
@@ -44,21 +48,21 @@ public class TurtleMultiple implements Turtle {
 		}
 		return t;
 	}
-
+/*
 	public void toggleTurtleActive(int turtleID, boolean inactive){
 		Turtle t = myTurtleMap.get(turtleID);
 		t.setInactive(inactive);
 	}
-
+*/
 	@Override
-	public void addObserver(TurtleObserver o) {
+	public void addObserver(Observer o) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			t.addObserver(o);
 		}
 	}
 
 	@Override
-	public void removeObserver(TurtleObserver o) {
+	public void removeObserver(Observer o) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			t.removeObserver(o);
 		}
@@ -83,25 +87,53 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void addDegree(Double d) {
+	public double addDegree(double degree){
+		double ret = 0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.addDegree(d);
 				setLastTurtle(t);
+				ret = t.addDegree(degree);
 			}
 		}
+		return ret;
 	}
 
 	@Override
-	public void addCoordinates(Coordinates p) {
+	public double moveDistance(double distance){
+		double ret = 0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.addCoordinates(p);
+				setLastTurtle(t);
+				ret = t.moveDistance(distance);
+			}
+		}
+		return ret;
+	}
+
+	@Override
+	public double setHeading(double degrees){
+		double ret = 0;
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				ret = t.setHeading(degrees);
 				setLastTurtle(t);
 			}
 		}
+		return ret;
 	}
-
+	
+	@Override
+	public double setTowards(double x, double y){
+		double ret = 0;
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				ret = t.setTowards(x, y);
+				setLastTurtle(t);
+			}
+		}
+		return ret;
+	}
+	
 	@Override
 	public double moveToPosition(double x, double y) {
 		double d = 0;
@@ -143,16 +175,6 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void setClear(boolean b) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.setClear(b);
-				setLastTurtle(t);
-			}
-		}
-	}
-
-	@Override
 	public boolean getHidden() {
 		return lastActingTurtle.getHidden();
 	}
@@ -167,11 +189,21 @@ public class TurtleMultiple implements Turtle {
 		return lastActingTurtle.getPenUp();
 	}
 
-	@Override
-	public boolean getClear() {
-		return lastActingTurtle.getClear();
+	//TODO: Kaighn, tell me if you're unhappy with these additions
+	public List<Integer> activeTurtleIDs(){
+		ArrayList<Integer> returner = new ArrayList<Integer>();
+		for(TurtleSingle t : myTurtleMap.values()){
+			if (!t.getInactive()){
+				returner.add(t.getID());
+			}
+		}
+		return returner;
 	}
-
+	
+	public int getID(){
+		return lastActingTurtle.getID();
+	}
+	
 	private void setLastTurtle(TurtleSingle t){
 		lastActingTurtle = t;
 	}

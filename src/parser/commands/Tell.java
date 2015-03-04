@@ -18,7 +18,7 @@ public class Tell extends UnaryNode{
 	public Tell(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 		if (!(referenceNode instanceof ListNode))
-			throw new BadArgumentException("A for loop must be followed by two bracketed lists.");
+			throw new BadArgumentException("A non-list input to tell");
 		listReference = (ListNode) referenceNode;
 	}
 
@@ -27,17 +27,15 @@ public class Tell extends UnaryNode{
 	public double execute(State myState) throws BadArgumentException {
 		TurtleMultiple t = myState.getTurtle();
 		t.deactiveAll();
-		
 		int turtleID = 0;
 		for(int i = 0; i < listReference.getSize(); i++){
 			turtleID = (int) listReference.getNode(i).execute(myState);
 			try{
-				myState.getTurtle().getTurtleSingle(turtleID).setInactive(false);;
+				myState.getTurtle().getTurtleSingle(turtleID).setInactive(false);
 			} catch (TurtleNotFoundException e){
 				myState.getTurtle().addNewTurtle(turtleID);
 			}
 		}
-		return turtleID;
-				
+		return turtleID;			
 	}
 }
