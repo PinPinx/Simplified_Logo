@@ -164,4 +164,8 @@ public class TurtleSingle implements Turtle {
 	public void changeViewOptions(ViewChanger vc){
 		vc.change(myViewOptions);
 	}
+	
+	public void change(TurtleSingleChanger tsc){
+		tsc.change(this);
+	}
 }

@@ -211,5 +211,14 @@ public class TurtleMultiple implements Turtle {
 			}
 		}	
 	}
+	
+	public void change(TurtleSingleChanger tsc){
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				t.change(tsc);
+				setLastTurtle(t);
+			}
+		}
+	}
 
 }
