@@ -47,9 +47,10 @@ public class TurtleSingle implements Turtle {
 	}
 
 	@Override
-	public void addCoordinates(Coordinates c) {
+	public void moveDistance(double distance) {
 		myOldCoordinates = new Coordinates(myCoordinates);
-		myCoordinates.addCoordinates(c);
+		Coordinates change = distanceToCoordinates(distance);
+		myCoordinates.addCoordinates(change);
 		notifyObservers();
 	}
 
@@ -115,13 +116,23 @@ public class TurtleSingle implements Turtle {
 		isClear = false;
 		return ret;
 	}
-	
+	//TODO: Check over this Kaighn?
 	@Override
 	public double moveToPosition(double x, double y){
 		Coordinates delta = new Coordinates(x - myCoordinates.getX(), y - myCoordinates.getY());
-		addCoordinates(delta);
+		//TODO: Following two lines may need to be put into a helper
+		myOldCoordinates = new Coordinates(myCoordinates);
+		myCoordinates.addCoordinates(delta);
 		return delta.distance(getCoordinates());
 	}
 	
-	
+	protected Coordinates distanceToCoordinates(double distance){
+		double param = myAngle.getAngleValueInRadians();
+		double deltaX, deltaY;
+		deltaX = Math.cos(param);
+		deltaY = Math.sin(param);
+		Coordinates returner = new Coordinates(deltaX, deltaY);
+		returner.scale(distance);
+		return returner;
+	}
 }

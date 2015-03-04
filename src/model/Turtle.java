@@ -5,7 +5,7 @@ public interface Turtle extends ObservableTurtle {
 	public Coordinates getCoordinates();
 	public Coordinates getOldCoordinates();
 	public void addDegree(Double d);
-	public void addCoordinates(Coordinates p);
+	public void moveDistance(double d);
 	public double moveToPosition(double x, double y);
 	public void setHidden(boolean b);
 	public void setInactive(boolean b);
@@ -15,5 +15,6 @@ public interface Turtle extends ObservableTurtle {
 	public boolean getInactive();
 	public boolean getPenUp();
 	public boolean getClear();
+	public int getID();
 }
 

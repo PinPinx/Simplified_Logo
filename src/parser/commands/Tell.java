@@ -27,7 +27,6 @@ public class Tell extends UnaryNode{
 	public double execute(State myState) throws BadArgumentException {
 		TurtleMultiple t = myState.getTurtle();
 		t.deactiveAll();
-		
 		int turtleID = 0;
 		for(int i = 0; i < listReference.getSize(); i++){
 			turtleID = (int) listReference.getNode(i).execute(myState);
@@ -37,7 +36,6 @@ public class Tell extends UnaryNode{
 				myState.getTurtle().addNewTurtle(turtleID);
 			}
 		}
-		return turtleID;
-				
+		return turtleID;			
 	}
 }
