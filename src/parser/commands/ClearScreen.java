@@ -15,7 +15,7 @@ public class ClearScreen extends SyntaxNode {
 	public double execute(State myState) throws BadArgumentException {
 		double ret = myState.getTurtle().moveToPosition(0, 0);
 		myState.getViewOptions().setClear(true);
-		myState.getTurtle().addCoordinates(new Coordinates(0,0));
+		myState.getTurtle().moveDistance(0);
 		return ret;
 	}
 }

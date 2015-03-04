@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import exceptions.TurtleNotFoundException;
@@ -93,10 +95,10 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void addCoordinates(Coordinates p) {
+	public void moveDistance(double distance) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.addCoordinates(p);
+				t.moveDistance(distance);
 				setLastTurtle(t);
 			}
 		}
@@ -157,6 +159,21 @@ public class TurtleMultiple implements Turtle {
 		return lastActingTurtle.getPenUp();
 	}
 
+	//TODO: Kaighn, tell me if you're happy with these additions
+	public List<Integer> activeTurtleIDs(){
+		ArrayList<Integer> returner = new ArrayList<Integer>();
+		for(TurtleSingle t : myTurtleMap.values()){
+			if (!t.getInactive()){
+				returner.add(t.getID());
+			}
+		}
+		return returner;
+	}
+	
+	public int getID(){
+		return lastActingTurtle.getID();
+	}
+	
 	private void setLastTurtle(TurtleSingle t){
 		lastActingTurtle = t;
 	}
