@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import parser.nodes.SyntaxNode;
+import exceptions.BadArgumentException;
 import exceptions.TurtleNotFoundException;
 import view.View;
 import view.components.Observer;
@@ -46,12 +48,12 @@ public class TurtleMultiple implements Turtle {
 		}
 		return t;
 	}
-
+/*
 	public void toggleTurtleActive(int turtleID, boolean inactive){
 		Turtle t = myTurtleMap.get(turtleID);
 		t.setInactive(inactive);
 	}
-
+*/
 	@Override
 	public void addObserver(Observer o) {
 		for(TurtleSingle t : myTurtleMap.values()){
@@ -85,25 +87,53 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void addDegree(Double d) {
+	public double addDegree(double degree){
+		double ret = 0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.addDegree(d);
 				setLastTurtle(t);
+				ret = t.addDegree(degree);
 			}
 		}
+		return ret;
 	}
 
 	@Override
-	public void moveDistance(double distance) {
+	public double moveDistance(double distance){
+		double ret = 0;
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.moveDistance(distance);
+				setLastTurtle(t);
+				ret = t.moveDistance(distance);
+			}
+		}
+		return ret;
+	}
+
+	@Override
+	public double setHeading(double degrees){
+		double ret = 0;
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				ret = t.setHeading(degrees);
 				setLastTurtle(t);
 			}
 		}
+		return ret;
 	}
-
+	
+	@Override
+	public double setTowards(double x, double y){
+		double ret = 0;
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				ret = t.setTowards(x, y);
+				setLastTurtle(t);
+			}
+		}
+		return ret;
+	}
+	
 	@Override
 	public double moveToPosition(double x, double y) {
 		double d = 0;
@@ -159,7 +189,7 @@ public class TurtleMultiple implements Turtle {
 		return lastActingTurtle.getPenUp();
 	}
 
-	//TODO: Kaighn, tell me if you're happy with these additions
+	//TODO: Kaighn, tell me if you're unhappy with these additions
 	public List<Integer> activeTurtleIDs(){
 		ArrayList<Integer> returner = new ArrayList<Integer>();
 		for(TurtleSingle t : myTurtleMap.values()){
