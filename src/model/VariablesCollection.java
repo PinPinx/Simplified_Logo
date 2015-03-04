@@ -9,11 +9,11 @@ import exceptions.VariableCreationInvalidValueException;
 import exceptions.VariableNotFoundException;
 import exceptions.VariableWrongTypeException;
 import javafx.beans.property.StringProperty;
-import view.components.VariablesObserver;
+import view.components.Observer;
 
-public class VariablesCollection implements ObservableVariables {
+public class VariablesCollection implements Observable {
 	private List<Variable> myVariableList;
-	private List<VariablesObserver> myObserverList;
+	private List<Observer> myObserverList;
 	
 	public VariablesCollection(){
 		this.myVariableList = new ArrayList<>();
@@ -78,18 +78,18 @@ public class VariablesCollection implements ObservableVariables {
 			variableNameProperties.add(v.getNameProperty());
 		}
 		VariablesCollectionUpdate vcu = new VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
-		for(VariablesObserver o : myObserverList){
+		for(Observer o : myObserverList){
 			o.update(vcu);
 		}
 	}
 
 	@Override
-	public void addObserver(VariablesObserver o) {
+	public void addObserver(Observer o) {
 		myObserverList.add(o);
 	}
 
 	@Override
-	public void removeObserver(VariablesObserver o) {
+	public void removeObserver(Observer o) {
 		myObserverList.remove(o);
 	}
 	

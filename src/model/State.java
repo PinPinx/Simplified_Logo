@@ -8,11 +8,13 @@ public class State {
 	private CommandHistory myCommandHistory;
 	private ViewOptions myViewOptions;
 	
-	public State(TurtleMultiple t, VariablesCollection v, CommandHistory c){
-		this.myTurtleMultiple = t;
-		this.myVariablesCollection = v;
-		this.myCommandHistory = c;
+	public State(){
+		this.myTurtleMultiple = new TurtleMultiple();
+		this.myVariablesCollection = new VariablesCollection();
+		this.myCommandHistory = new CommandHistory();
+		this.myViewOptions = new ViewOptions();
 		myTurtleMultiple.addObserver(View.getInstance().getTurtleWindow());
+		myViewOptions.addObserver(View.getInstance().getTurtleWindow()); //TODO
 		myVariablesCollection.addObserver(View.getInstance().getVariablesWindow());
 		myCommandHistory.addObserver(View.getInstance().getCommandHistoryWindow());
 		myCommandHistory.addObserver(View.getInstance().getUDCommandsWindow());

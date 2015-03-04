@@ -7,12 +7,12 @@ import java.util.List;
 import exceptions.UDCommandNotFoundException;
 import parser.commands.ToData;
 import parser.nodes.CommandRoot;
-import view.components.CommandsObserver;
+import view.components.Observer;
 import parser.nodes.VariableNode;
 
-public class CommandHistory implements ObservableCommand {
+public class CommandHistory implements Observable {
 	private List<CommandRoot> myCommandList;
-	private List<CommandsObserver> myObserverList;
+	private List<Observer> myObserverList;
 	private List<ToData> myUDCommands;
 
 	public CommandHistory() {
@@ -68,18 +68,18 @@ public class CommandHistory implements ObservableCommand {
 	}
 	
 	@Override
-	public void addObserver(CommandsObserver o) {
+	public void addObserver(Observer o) {
 		myObserverList.add(o);
 	}
 
 	@Override
-	public void removeObserver(CommandsObserver o) {
+	public void removeObserver(Observer o) {
 		myObserverList.remove(o);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for (CommandsObserver o : myObserverList) {
+		for (Observer o : myObserverList) {
 			o.update(new CommandHistoryUpdate(this));
 		}
 	}

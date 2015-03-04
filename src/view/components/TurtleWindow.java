@@ -8,12 +8,13 @@ import java.util.List;
 
 import view.turtle.TurtleImage;
 import model.TurtleUpdate;
+import model.ViewUpdate;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class TurtleWindow extends Group implements TurtleObserver {
+public class TurtleWindow extends Group implements Observer {
 	
 	private Canvas mainCanvas;
 	private GraphicsContext mainGC;
@@ -63,16 +64,6 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		myTImages.getChildren().add(turtle);
 		
 	}
-
-	
-	@Override
-	public void update(TurtleUpdate tu) {
-		int id = tu.getTurtleID();
-		if (!myTurtles.keySet().contains(id)) {
-			addTurtle(id);
-		}
-		myTurtles.get(id).update(tu);
-	}
 	
 	
 	public void updateAnimationSpeed(double speed) {
@@ -110,6 +101,22 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	
 	public int getNumOfTurtles(){
 		return numTurtles;
+	}
+
+	@Override
+	public void update(Object update) {
+		if(update instanceof TurtleUpdate){
+			TurtleUpdate tu = (TurtleUpdate) update;
+			int id = tu.getTurtleID();
+			if (!myTurtles.keySet().contains(id)) {
+				addTurtle(id);
+			}
+			myTurtles.get(id).update(tu);
+		}
+		if(update instanceof ViewUpdate){
+			//TODO front end peeps
+		}
+		
 	}
 
 	

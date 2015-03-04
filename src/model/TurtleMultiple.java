@@ -7,7 +7,7 @@ import java.util.Map;
 
 import exceptions.TurtleNotFoundException;
 import view.View;
-import view.components.TurtleObserver;
+import view.components.Observer;
 
 public class TurtleMultiple implements Turtle {
 	private Map<Integer,TurtleSingle> myTurtleMap;
@@ -53,14 +53,14 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void addObserver(TurtleObserver o) {
+	public void addObserver(Observer o) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			t.addObserver(o);
 		}
 	}
 
 	@Override
-	public void removeObserver(TurtleObserver o) {
+	public void removeObserver(Observer o) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			t.removeObserver(o);
 		}
@@ -145,16 +145,6 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
-	public void setClear(boolean b) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.setClear(b);
-				setLastTurtle(t);
-			}
-		}
-	}
-
-	@Override
 	public boolean getHidden() {
 		return lastActingTurtle.getHidden();
 	}
@@ -169,10 +159,6 @@ public class TurtleMultiple implements Turtle {
 		return lastActingTurtle.getPenUp();
 	}
 
-	@Override
-	public boolean getClear() {
-		return lastActingTurtle.getClear();
-	}
 	//TODO: Kaighn, tell me if you're happy with these additions
 	public List<Integer> activeTurtleIDs(){
 		ArrayList<Integer> returner = new ArrayList<Integer>();

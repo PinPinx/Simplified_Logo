@@ -3,14 +3,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.components.TurtleObserver;
+import view.components.Observer;
 
 public class TurtleSingle implements Turtle {
 	private int ID;
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
-	private boolean isPenUp, isHidden, isInactive, isClear;
-	private List<TurtleObserver> myObservers;
+	private boolean isPenUp, isHidden, isInactive;
+	private List<Observer> myObservers;
 	
 	public TurtleSingle(int id){
 		myCoordinates = new Coordinates(0,0);
@@ -88,34 +88,23 @@ public class TurtleSingle implements Turtle {
 	}
 	
 	@Override
-	public void addObserver(TurtleObserver o) {
+	public void addObserver(Observer o) {
 		myObservers.add(o);
 	}
 
 	@Override
-	public void removeObserver(TurtleObserver o) {
+	public void removeObserver(Observer o) {
 		myObservers.remove(o);
 	}
 
 	@Override
 	public void notifyObservers() {
-		for(TurtleObserver o : myObservers){
+		for(Observer o : myObservers){
 			o.update(new TurtleUpdate(this));
 		}
 	}
 
-	@Override
-	public void setClear(boolean b) {
-		isClear = b;
-		notifyObservers();
-	}
 
-	@Override
-	public boolean getClear() {
-		boolean ret = isClear;
-		isClear = false;
-		return ret;
-	}
 	//TODO: Check over this Kaighn?
 	@Override
 	public double moveToPosition(double x, double y){
