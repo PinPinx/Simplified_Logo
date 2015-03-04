@@ -38,10 +38,15 @@ public abstract class ToolbarItem extends HBox {
 				new CornerRadii(CORNER_RADIUS), null)));
 		this.setSpacing(SPACING);
 
-		Label myLabel = new Label(label);
+		myLabel = new Label(label);
 		this.getChildren().addAll(myLabel, myNode);
 	}
-
+	
+	protected void setLabel(String label) {
+		myLabel.setText(label);
+	}
+	
 	protected abstract Node createNode();
+	
 
 }

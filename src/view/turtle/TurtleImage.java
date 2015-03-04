@@ -34,8 +34,9 @@ public class TurtleImage extends ImageView {
 	private double mySpeed = 0.6;
 	private boolean moving = false;
 	
-	private Boolean visible = true;
-	private Boolean penUp = false;
+	private Boolean active;
+	private Boolean visible;
+	private Boolean penUp;
 	
 	// items in the pop-up context menu
 	private ContextMenu contextMenu;
@@ -64,6 +65,10 @@ public class TurtleImage extends ImageView {
 		gc = gcon;
 		myID = id;
 		myPen = new TurtlePen(gc);
+		
+		active = false;
+		visible = true;
+		penUp = false;
 		
 		this.setImage(myImage);
 		resize(width, height);
@@ -207,6 +212,7 @@ public class TurtleImage extends ImageView {
 		turtleInfo.append("X position: " + Pos.getX() + "\n");
 		turtleInfo.append("Y position: " + Pos.getY() + "\n");
 		turtleInfo.append("Heading: " + (-this.getRotate()) + "\n");
+		turtleInfo.append("Active: " + active.toString() + "\n");
 		turtleInfo.append("Pen Up: " + penUp.toString() + "\n");
 		turtleInfo.append("Visiblity: " + visible.toString() + "\n");
 		Tooltip t = new Tooltip(turtleInfo.toString());
@@ -305,6 +311,12 @@ public class TurtleImage extends ImageView {
 
 	public void setAnimationSpeed(double speed) {
 		mySpeed = speed;
+	}
+	
+	public void toggleShowHidden() {
+		if (!active) return;
+	
+		
 	}
 	
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {

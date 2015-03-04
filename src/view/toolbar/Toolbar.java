@@ -38,12 +38,9 @@ public class Toolbar extends Group {
 				BACKGROUND_COLOR, this);
 		ToolbarItem speedSlider = new SpeedSliderToolbarItem(
 				ANIMATION_SPEED, this);
+		ToolbarItem showTurtles = new ShowTurtlesToolbarItem(this);
 		ToolbarItem addTurtle = new AddTurtleToolbarItem(
 				ADD_TURTLE, this);
-		ToolbarItem pencolor = new TurtlePenColorToolbarItem(
-				PEN_COLOR, this);
-		ToolbarItem turtleimg = new TurtleImageToolbarItem(
-				TURTLE_IMAGE, this);
 		
 		((SpeedSliderToolbarItem) speedSlider).addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov,
@@ -52,7 +49,7 @@ public class Toolbar extends Group {
                 }
             });
 		
-		myToolbar.getChildren().addAll(bgcolor, speedSlider, addTurtle, pencolor, turtleimg);
+		myToolbar.getChildren().addAll(bgcolor, speedSlider, showTurtles, addTurtle);
 
 	}
 

@@ -20,6 +20,7 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	private double myWidth;
 	private double myHeight;
 	private int numTurtles;
+	private boolean showInactiveTurtles;
 	
 	private Group myLayers = new Group();
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
@@ -31,9 +32,11 @@ public class TurtleWindow extends Group implements TurtleObserver {
 		myWidth = width;
 		myHeight = height;
 		numTurtles = 0;
+		
 		mainCanvas = new Canvas(myWidth, myHeight);
 		mainGC = mainCanvas.getGraphicsContext2D();
-
+		showInactiveTurtles = true;
+		
 		this.getChildren().add(mainCanvas);
 		this.getChildren().addAll(myLayers, myTImages);
 		
@@ -110,6 +113,17 @@ public class TurtleWindow extends Group implements TurtleObserver {
 	
 	public int getNumOfTurtles(){
 		return numTurtles;
+	}
+	
+	public void toggleInactiveTurtles(boolean show) {
+		showInactiveTurtles = show;
+		for (int id: myTurtles.keySet()) {
+			myTurtles.get(id).toggleShowHidden();
+		}
+	}
+	
+	public boolean showInactiveTurtles() {
+		return showInactiveTurtles;
 	}
 
 	
