@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.InvalidViewSettingException;
 import view.components.Observer;
 
 public class ViewOptions implements ViewUpdate, Observable{
@@ -58,16 +59,13 @@ public class ViewOptions implements ViewUpdate, Observable{
 		this.isClearStamps = isClearStamps;
 		notifyObservers();
 	}
-	public void setPaletteB(int paletteB) {
-		this.paletteB = paletteB;
-		notifyObservers();
-	}
-	public void setPaletteG(int paletteG) {
-		this.paletteG = paletteG;
-		notifyObservers();
-	}
-	public void setPaletteR(int paletteR) {
-		this.paletteR = paletteR;
+	public void setPaletteB(int r, int g, int b) throws InvalidViewSettingException {
+		if(!((r>=0&&r<256)&&(b>=0&&b<256)&&(g>=0&&g<256))){
+			throw new InvalidViewSettingException("RGB values must be between 0 and 255 inclusive.");
+		}
+		this.paletteB = b;
+		this.paletteG = g;
+		this.paletteR = r;
 		notifyObservers();
 	}
 	public void setPenColorID(int penColorID) {
