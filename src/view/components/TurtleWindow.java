@@ -8,6 +8,7 @@ import java.util.List;
 
 import view.turtle.TurtleImage;
 import model.TurtleUpdate;
+import model.ViewUpdate;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -111,6 +112,9 @@ public class TurtleWindow extends Group implements Observer {
 				addTurtle(id);
 			}
 			myTurtles.get(id).update(tu);
+		}
+		if(update instanceof ViewUpdate){
+			//TODO front end peeps
 		}
 		
 	}

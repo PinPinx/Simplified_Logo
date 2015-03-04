@@ -20,7 +20,7 @@ import parser.parser.Parser;
 public class ParserTest {	
 	@Test
 	public void testParse() throws BadArgumentException, CommandNameNotFoundException, SyntaxErrorWrongFormat {
-		State myState = new State(new TurtleMultiple(), new VariablesCollection(), new CommandHistory());
+		State myState = new State();
 		Parser myParser = new Parser();
 		myParser.setActiveState(myState);
 		CommandRoot root = myParser.parse("fd 50");
