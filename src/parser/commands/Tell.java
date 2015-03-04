@@ -18,7 +18,7 @@ public class Tell extends UnaryNode{
 	public Tell(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
 		if (!(referenceNode instanceof ListNode))
-			throw new BadArgumentException("A for loop must be followed by two bracketed lists.");
+			throw new BadArgumentException("A non-list input to tell");
 		listReference = (ListNode) referenceNode;
 	}
 

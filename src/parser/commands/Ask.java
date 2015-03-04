@@ -15,9 +15,11 @@ public class Ask extends BinaryNode {
 
 	public Ask(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
-		if (!(nodeOne instanceof ListNode && nodeTwo instanceof ListNode))
+		if (!(nodeOne instanceof ListNode && nodeTwo instanceof ListNode)){
 			throw new BadArgumentException("You need listnodes with the ask command");
+		}
 	}
+	
 	//TODO: CLEAN THIS SHIT UP YO
 	@Override
 	public double execute(State myState) throws BadArgumentException {
@@ -29,15 +31,22 @@ public class Ask extends BinaryNode {
 		for (Integer i : oldActiveList){
 			oldActiveStack.push(new ConstantNode(i));
 		}
-		for (int i =0; i < ((ListNode) nodeOne).getSize(); i++){
-			newActiveStack.push(new ConstantNode(i));
+		ListNode referenceNode = (ListNode) nodeOne;
+		for (int i =0; i < referenceNode.getSize(); i++){
+			newActiveStack.push(new ConstantNode(referenceNode.getNode(i).execute(myState)));
 		}
-		Tell activate = new Tell(newActiveStack);
-		Tell returnState = new Tell(oldActiveStack);
+		Tell activate = tellMaker(newActiveStack);
+		Tell returnState = tellMaker(oldActiveStack);
 		activate.execute(myState);
 		double retNumber = nodeTwo.execute(myState);
 		returnState.execute(myState);
 		return retNumber;
 	}
-
+	
+	private Tell tellMaker(Stack<SyntaxNode> constantList) throws BadArgumentException{
+		ListNode node = new ListNode(constantList);
+		Stack<SyntaxNode> inputStack = new Stack<SyntaxNode>();
+		inputStack.push(node);
+		return new Tell(inputStack);
+	}
 }
