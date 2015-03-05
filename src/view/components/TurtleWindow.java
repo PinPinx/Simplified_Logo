@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
@@ -36,8 +37,7 @@ public class TurtleWindow extends Group implements Observer {
 	private Group myLayers = new Group();
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
-	private ArrayList<ImageIndex> myImagePalettes = new ArrayList<>();
-	private ArrayList<ColorIndex> myColorPalettes = new ArrayList<>();
+	private Palette myPalette = new Palette();
 	private Group myTImages =  new Group();
 	
 	
@@ -89,23 +89,20 @@ public class TurtleWindow extends Group implements Observer {
 		ImageIndex def_1 = new ImageIndex(0, "Turtle", (new Image(getClass().getResourceAsStream("/resources/images/turtle.gif"))));
 		ImageIndex def_2 = new ImageIndex(1, "Traingle", (new Image(getClass().getResourceAsStream("/resources/images/triangular.jpg"))));
 		ImageIndex def_3 = new ImageIndex(2, "Star", (new Image(getClass().getResourceAsStream("/resources/images/star.png"))));
-		myImagePalettes.add(def_1);
-		myImagePalettes.add(def_2);
-		myImagePalettes.add(def_3);
+		myPalette.addImage(def_1, def_2, def_3);
 	}
 	
 	private void setDefaultColorPalette(){
 		ColorIndex def_1 = new ColorIndex(0, "Red", Color.RED);
 		ColorIndex def_2 = new ColorIndex(1, "Blue", Color.BLUE);
 		ColorIndex def_3 = new ColorIndex(2, "Green", Color.GREEN);
-		myColorPalettes.add(def_1);
-		myColorPalettes.add(def_2);
-		myColorPalettes.add(def_3);
+		myPalette.addColor(def_1, def_2, def_3);
 	}
 	
 	private void setImagePaletteMenu(){
 		imagePalettes = new Menu("Image Palettes List");
-		for (ImageIndex imgx : myImagePalettes) {
+		ArrayList<ImageIndex> currentImageList = myPalette.getImageList();
+		for (ImageIndex imgx : currentImageList) {
 			RadioMenuItem imgChoice = new RadioMenuItem(imgx.getIndex()+" "+imgx.getName());
 			imgChoice.setToggleGroup(imagePaletteGroup);
 			imgChoice.setOnAction(changeImage -> {
@@ -117,15 +114,15 @@ public class TurtleWindow extends Group implements Observer {
 		RadioMenuItem imgChoice = new RadioMenuItem("Add new index... ");
 		imgChoice.setToggleGroup(imagePaletteGroup);
 		imgChoice.setOnAction(changeImage -> {
-			myImagePalettes.add(null);
-			modifyImagePaletteMenu(myImagePalettes.size()-1);
+			modifyImagePaletteMenu(myPalette.imageListSize());
 		});
 		imagePalettes.getItems().add(imgChoice);
 	}
 	
 	private void setColorPaletteMenu(){
 		colorPalettes = new Menu("Color Palettes List");
-		for (ColorIndex colx : myColorPalettes){
+		ArrayList<ColorIndex> currentColorList = myPalette.getColorList();
+		for (ColorIndex colx : currentColorList){
 			RadioMenuItem colorChoice = new RadioMenuItem(colx.getIndex()+" "+colx.getName());
 			colorChoice.setToggleGroup(colorPaletteGroup);
 			colorChoice.setOnAction(e->{
@@ -137,8 +134,7 @@ public class TurtleWindow extends Group implements Observer {
 		RadioMenuItem colorChoice = new RadioMenuItem("Add new index... ");
 		colorChoice.setToggleGroup(colorPaletteGroup);
 		colorChoice.setOnAction(changeColor->{
-			myColorPalettes.add(null);
-			modifyColorPaletteMenu(myColorPalettes.size()-1);
+			modifyColorPaletteMenu(myPalette.colorListSize());
 		});
 		colorPalettes.getItems().add(colorChoice);
 	}
@@ -154,7 +150,7 @@ public class TurtleWindow extends Group implements Observer {
 		InputDialogBox dialog = new TextInputDialogBox("Type in a name for your image or shape");
 		String indexName = ((String) dialog.showInputDialog()).trim();
 		ImageIndex imgx = new ImageIndex(index, indexName, new Image(imageChooser.getSelectedFile().toURI().toString()));
-		myImagePalettes.set(index, imgx);
+		myPalette.updateImage(index, imgx);
 		return;
 	}
 	
@@ -163,10 +159,9 @@ public class TurtleWindow extends Group implements Observer {
 		InputDialogBox dialog = new TextInputDialogBox("Type in a name for your color");
 		String indexName = ((String) dialog.showInputDialog()).trim();
 		ColorIndex colx = new ColorIndex(index, indexName, color);
-		myColorPalettes.set(index, colx);
+		myPalette.updateColor(index, colx);
 		return;
 	}
-	
 
 	public void addTurtle() {
 		int i=0;
@@ -229,6 +224,8 @@ public class TurtleWindow extends Group implements Observer {
 		return numTurtles;
 	}
 
+	
+	
 	@Override
 	public void update(Object update) {
 		if(update instanceof TurtleUpdate){
@@ -241,7 +238,11 @@ public class TurtleWindow extends Group implements Observer {
 		}
 		if(update instanceof ViewUpdate){
 			//TODO front end peeps
-			
+			ViewUpdate vu =  (ViewUpdate) update;
+			changeBackground(myPalette.getColor(vu.getBackgroundID()));
+			for (Map.Entry<Integer, TurtleImage> ti : myTurtles.entrySet()){
+				ti.getValue().update(vu, myPalette);
+			}
 		}
 		
 	}

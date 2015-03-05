@@ -5,6 +5,8 @@ import java.io.File;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
+import view.components.Palette;
+import view.components.TurtleWindow;
 import model.TurtleUpdate;
 import model.ViewUpdate;
 import javafx.animation.RotateTransition;
@@ -116,9 +118,16 @@ public class TurtleImage extends ImageView {
 		this.setFitHeight(height);
 	}
 	
-	public void update(ViewUpdate vu){
+	public void update(ViewUpdate vu, Palette p){
 		if (active){
 			
+			gc.setLineWidth(vu.getPenSize());
+			gc.setStroke(p.getColor(vu.getPenColorID()));
+			changeImage(p.getImage(vu.getShapeID()));
+			
+			if (vu.isClear()){
+				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+			}
 			
 		}
 	}
