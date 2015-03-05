@@ -48,12 +48,7 @@ public class TurtleMultiple implements Turtle {
 		}
 		return t;
 	}
-/*
-	public void toggleTurtleActive(int turtleID, boolean inactive){
-		Turtle t = myTurtleMap.get(turtleID);
-		t.setInactive(inactive);
-	}
-*/
+
 	@Override
 	public void addObserver(Observer o) {
 		for(TurtleSingle t : myTurtleMap.values()){
@@ -206,6 +201,24 @@ public class TurtleMultiple implements Turtle {
 	
 	private void setLastTurtle(TurtleSingle t){
 		lastActingTurtle = t;
+	}
+	
+	public void changeViewOptions(ViewChanger vc) {
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				t.changeViewOptions(vc);
+				setLastTurtle(t);
+			}
+		}	
+	}
+	
+	public void change(TurtleSingleChanger tsc){
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				t.change(tsc);
+				setLastTurtle(t);
+			}
+		}
 	}
 
 }
