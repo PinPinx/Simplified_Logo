@@ -18,11 +18,14 @@ public class For extends BinaryNode {
 	
 	public For(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);
-		if (!(nodeOne instanceof ListNode) || !(nodeTwo instanceof ListNode))
+		if (!(nodeOne instanceof ListNode) || !(nodeTwo instanceof ListNode)){
 			throw new BadArgumentException("A for loop must be followed by two bracketed lists.");
+		}
 		listReference = (ListNode) nodeOne;
 		if (listReference.getSize()!=4)
 			throw new BadArgumentException("A for loop's first following bracketed list must have 4 entries.");
+		if (!(listReference.getNode(0) instanceof VariableNode))
+			throw new BadArgumentException("The first argument given in the for loop was not a variable.");
 		variable = (VariableNode) listReference.getNode(0);
 	}
 

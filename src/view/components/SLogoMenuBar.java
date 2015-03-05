@@ -1,5 +1,9 @@
 package view.components;
 
+import java.io.IOException;
+
+
+
 import view.View;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -75,7 +79,32 @@ public class SLogoMenuBar extends MenuBar {
 			myView.addNewTab();
 		});
 		MenuItem load = makeMenuItem(LOAD_WORKSPACE, null);
+
 		MenuItem save = makeMenuItem(SAVE_WORKSPACE, null);
+		
+		save.setOnAction(e->{
+			WorkspaceFile myWorkspace = new WorkspaceFile(myView.getTurtleWindow().getBackgroundColor(), myView.getTurtleWindow().getNumOfTurtles());
+			try {
+				WorkspaceLoader loader = new WorkspaceLoader();
+				loader.saveWorkspace(myWorkspace);
+			} catch (IOException exc) {
+				// TODO Auto-generated catch block
+				exc.printStackTrace();
+				System.out.println("Couldn't save Workspace");
+			}
+		});
+		
+		load.setOnAction(e->{
+			WorkspaceLoader loader = new WorkspaceLoader();
+	        try {
+				loader.loadWorkspace();
+				WorkspaceFile myWorkspace = loader.getWorkspace();
+		        myView.getTurtleWindow().changeBackground(myWorkspace.getColor());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 
 		file.getItems().addAll(create, load, save);
 		this.getMenus().add(file);

@@ -4,10 +4,10 @@ import java.util.Stack;
 
 import exceptions.BadArgumentException;
 import model.State;
-import parser.nodes.BinaryNode;
 import parser.nodes.SyntaxNode;
+import parser.nodes.UnlimitedNode;
 
-public class And extends BinaryNode{
+public class And extends UnlimitedNode{
 
 	public And(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);

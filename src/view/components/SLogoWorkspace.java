@@ -1,6 +1,9 @@
 package view.components;
 
 import view.Main;
+import view.listwindows.CommandsHistoryWindow;
+import view.listwindows.UserDefinedCommandsWindow;
+import view.listwindows.VariablesWindow;
 import view.toolbar.Toolbar;
 import javafx.geometry.Insets;
 import javafx.scene.control.Tab;
@@ -21,17 +24,18 @@ public class SLogoWorkspace extends Tab {
 	
 	private UserDefinedCommandsWindow myUDCommandsWindow;
 	private VariablesWindow myVariablesWindow;
-	private CommandHistoryWindow myCommandHistWindow;
+	private CommandsHistoryWindow myCommandHistWindow;
 	private VBox myListWindows;
 	private HBox myUDListWindows;
 	
+	private int myID;
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
 	
-	public SLogoWorkspace() {
-		this("Untitled Workspace");
+	public SLogoWorkspace(int id) {
+		this("Untitled Workspace " + Integer.toString(id), id);
 	}
 	
-	public SLogoWorkspace(String title) {
+	public SLogoWorkspace(String title, int id) {
 		
 		super(title);
 		
@@ -43,6 +47,8 @@ public class SLogoWorkspace extends Tab {
 		addToolbar();
 		addListWindows();
 		addCommandPortWindow();
+		
+		myID = id;
 		
 		this.setContent(myBorderPane);
 			
@@ -57,7 +63,7 @@ public class SLogoWorkspace extends Tab {
 
 	private void addTurtleWindow() {
 		myTurtleWindow = new TurtleWindow(Main.SIZE.height * 4 / 5,
-				Main.SIZE.height * 4 / 5);
+				Main.SIZE.height * 3 / 5 );
 		myBorderPane.setLeft(myTurtleWindow);
 		BorderPane.setMargin(myTurtleWindow, new Insets(5));
 	}
@@ -78,7 +84,7 @@ public class SLogoWorkspace extends Tab {
 	}
 
 	private void initLists() {
-		myCommandHistWindow = new CommandHistoryWindow(Main.SIZE.width * 2 / 5,
+		myCommandHistWindow = new CommandsHistoryWindow(Main.SIZE.width * 2 / 5,
 				Main.SIZE.height * 2 / 5);
 		myUDCommandsWindow = new UserDefinedCommandsWindow(
 				Main.SIZE.width * 1 / 5, Main.SIZE.height * 2 / 5);
@@ -92,5 +98,24 @@ public class SLogoWorkspace extends Tab {
 		myBorderPane.setBottom(myCommandPort);
 		BorderPane.setMargin(myCommandPort, new Insets(5));
 	}
+	
+	public int getWorkspaceID() {
+		return myID;
+	}
+	
+	public TurtleWindow getTurtleWindow() {
+		return myTurtleWindow;
+	}
 
+	public VariablesWindow getVariablesWindow() {
+		return myVariablesWindow;
+	}
+
+	public CommandsHistoryWindow getCommandHistoryWindow() {
+		return myCommandHistWindow;
+	}
+
+	public UserDefinedCommandsWindow getUDCommandsWindow() {
+		return myUDCommandsWindow;
+	}
 }

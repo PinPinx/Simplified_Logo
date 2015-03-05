@@ -1,4 +1,4 @@
-package view.components;
+package view.listwindows;
 
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;

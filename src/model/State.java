@@ -3,28 +3,28 @@ package model;
 import view.View;
 
 public class State {
-	private Turtle myTurtle;
+	private TurtleMultiple myTurtleMultiple;
 	private VariablesCollection myVariablesCollection;
 	private CommandHistory myCommandHistory;
 	
-	public State(Turtle t, VariablesCollection v, CommandHistory c){
-		this.myTurtle = t;
-		this.myVariablesCollection = v;
-		this.myCommandHistory = c;
-		myTurtle.addObserver(View.getInstance().getTurtleWindow());
+	public State(){
+		this.myTurtleMultiple = new TurtleMultiple();
+		this.myVariablesCollection = new VariablesCollection();
+		this.myCommandHistory = new CommandHistory();
+		myTurtleMultiple.addObserver(View.getInstance().getTurtleWindow());
 		myVariablesCollection.addObserver(View.getInstance().getVariablesWindow());
 		myCommandHistory.addObserver(View.getInstance().getCommandHistoryWindow());
 		myCommandHistory.addObserver(View.getInstance().getUDCommandsWindow());
 	}
 	
-	public Turtle getTurtle() {
-		return this.myTurtle;
+	public TurtleMultiple getTurtle() {
+		return myTurtleMultiple;
 	}
 	public VariablesCollection getVariablesCollection(){
-		return this.myVariablesCollection;
+		return myVariablesCollection;
 	}
 	public CommandHistory getCommandHistory(){
-		return this.myCommandHistory;
+		return myCommandHistory;
 	}
 
 	

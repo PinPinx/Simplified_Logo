@@ -9,19 +9,10 @@ import parser.nodes.SyntaxNode;
 import parser.nodes.UnaryNode;
 
 public abstract class SimpleTurtleCommand extends UnaryNode {
-	
+	//TODO: Remove this from the hierarchy.
 	public SimpleTurtleCommand(Stack<SyntaxNode> input)
 			throws BadArgumentException {
 		super(input);
 	}
 	
-	protected Coordinates angleToCoordinates(Angle angle, double distance){
-		double param = angle.getAngleValueInRadians();
-		double deltaX, deltaY;
-		deltaX = Math.cos(param);
-		deltaY = Math.sin(param);
-		Coordinates returner = new Coordinates(deltaX, deltaY);
-		returner.scale(distance);
-		return returner;
-	}
 }

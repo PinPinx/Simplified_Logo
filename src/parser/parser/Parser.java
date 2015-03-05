@@ -15,10 +15,10 @@ import parser.nodes.*;
 import model.State;
 
 public class Parser {
-	private State myState;
+	private State myActiveState;
 	
-	public Parser(State s){
-		this.myState = s;
+	public void setActiveState(State s){
+		myActiveState = s;
 	}
 	
 	public CommandRoot parse(String command) throws CommandNameNotFoundException, SyntaxErrorWrongFormat {
@@ -41,7 +41,7 @@ public class Parser {
 							continue;
 						}
 						try{
-							ToData data = myState.getCommandHistory().getUDCommand(commandStream[i]);
+							ToData data = myActiveState.getCommandHistory().getUDCommand(commandStream[i]);
 							inputStack.peek().push(new ToInstance(data, inputStack.peek()));
 							continue;
 						} catch (UDCommandNotFoundException e1){
@@ -67,8 +67,11 @@ public class Parser {
 				inputStack.peek().push(new VariableNode(commandStream[i]));
 				break;
 			case GROUPEND: //TODO
+				inputStack.push(new Stack<SyntaxNode>());
 				break;
 			case GROUPSTART: //TODO
+				Stack<SyntaxNode> groupStack = inputStack.pop();
+				inputStack.peek().push(new GroupNode(groupStack));
 				break;
 			case LISTEND:
 				inputStack.push(new Stack<SyntaxNode>());

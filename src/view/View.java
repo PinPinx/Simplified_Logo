@@ -1,14 +1,22 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Model;
 import parser.parser.Regex;
 import view.components.SLogoMenuBar;
 import view.components.SLogoWorkspace;
+import view.components.TurtleWindow;
 import view.dialogs.DialogBox;
 import view.dialogs.HelpDialogBox;
 import view.dialogs.LanguagesDialogBox;
 import view.dialogs.MessageDialogBox;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import view.listwindows.CommandsHistoryWindow;
+import view.listwindows.UserDefinedCommandsWindow;
+import view.listwindows.VariablesWindow;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Background;
@@ -34,8 +42,10 @@ public class View {
 
 	private SLogoMenuBar myMenuBar;
 	private TabPane myTabPane;
+	
 	private int myActiveTab;
-
+	private List<Integer> tabIDs = new ArrayList<Integer>(); 
+	
 	private HelpDialogBox myHelpBox;
 	private LanguagesDialogBox myLanguagesBox;
 
@@ -74,7 +84,8 @@ public class View {
 		myTabPane.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 		    @Override
 		    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-		        myActiveTab = (int) newValue;
+		        myActiveTab = ((SLogoWorkspace) myTabPane.getTabs().get((int) newValue)).getWorkspaceID();
+		        Model.getInstance().setState(myActiveTab);
 		    }
 		}); 
 		
@@ -102,34 +113,35 @@ public class View {
 	}
 	
 	public void addNewTab() {
-		myTabPane.getTabs().add(new SLogoWorkspace());
-	}
+		int i = 0;
+		while (tabIDs.contains(i)) {
+			i++;
+		}
+		tabIDs.add(i);
+		myTabPane.getTabs().add(new SLogoWorkspace(i));
+	} 
 	
 	
 	public void showView() {
 		myStage.show();
 	}
 	
-	
-	
-
-	/*
 	public TurtleWindow getTurtleWindow() {
-		return myTurtleWindow;
+		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getTurtleWindow();
 	}
 
 	public VariablesWindow getVariablesWindow() {
-		return myVariablesWindow;
+		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getVariablesWindow();
 	}
 
-	public CommandHistoryWindow getCommandHistoryWindow() {
-		return myCommandHistWindow;
+	public CommandsHistoryWindow getCommandHistoryWindow() {
+		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getCommandHistoryWindow();
 	}
 
 	public UserDefinedCommandsWindow getUDCommandsWindow() {
-		return myUDCommandsWindow;
+		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getUDCommandsWindow();
 	}
-	*/
+	
 	
 	public static View getInstance() {
 		if (instance == null) {

@@ -4,10 +4,10 @@ import java.util.Stack;
 
 import exceptions.BadArgumentException;
 import model.State;
-import parser.nodes.BinaryNode;
 import parser.nodes.SyntaxNode;
+import parser.nodes.UnlimitedNode;
 
-public class Sum extends BinaryNode{
+public class Sum extends UnlimitedNode{
 	public Sum(Stack<SyntaxNode> input) throws BadArgumentException{
 		super(input);
 	}

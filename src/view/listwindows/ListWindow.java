@@ -1,4 +1,4 @@
-package view.components;
+package view.listwindows;
 
 import javafx.scene.Group;
 import javafx.scene.control.Label;

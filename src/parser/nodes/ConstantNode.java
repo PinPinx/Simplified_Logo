@@ -21,6 +21,9 @@ public class ConstantNode extends SyntaxNode {
 		}
 	}
 	
+	public ConstantNode(double input){
+		myValue=input;
+	}
 	/*public ConstantNode(Stack<SyntaxNode> input){
 		myValue= input.pop().interpret();
 	}*/
