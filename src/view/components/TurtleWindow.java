@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
 import view.dialogs.InputDialogBox;
@@ -36,12 +37,15 @@ public class TurtleWindow extends Group implements Observer {
 	private HashMap<Integer, GraphicsContext> gc = new HashMap<>();
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
 	private ArrayList<ImageIndex> myImagePalettes = new ArrayList<>();
+	private ArrayList<ColorIndex> myColorPalettes = new ArrayList<>();
 	private Group myTImages =  new Group();
 	
 	
 	private ContextMenu contextMenu;
 	private Menu imagePalettes;
+	private Menu colorPalettes;
 	private ToggleGroup imagePaletteGroup = new ToggleGroup();
+	private ToggleGroup colorPaletteGroup = new ToggleGroup();
 
 	public TurtleWindow(double width, double height) {
 
@@ -51,8 +55,6 @@ public class TurtleWindow extends Group implements Observer {
 		mainCanvas = new Canvas(myWidth, myHeight);
 		mainGC = mainCanvas.getGraphicsContext2D();
 		initializeMenu();
-		
-
 
 		this.getChildren().addAll(myLayers, mainCanvas, myTImages);
 		
@@ -64,12 +66,15 @@ public class TurtleWindow extends Group implements Observer {
 		setDefaultImagePalette();
 		setImagePaletteMenu();
 		
+		setDefaultColorPalette();
+		setColorPaletteMenu();
 		
-		contextMenu = new ContextMenu(imagePalettes);
+		contextMenu = new ContextMenu(imagePalettes, colorPalettes);
 		
 		mainCanvas.setOnMouseClicked(e->{
 			setImagePaletteMenu();
-			contextMenu = new ContextMenu(imagePalettes);
+			setColorPaletteMenu();
+			contextMenu = new ContextMenu(imagePalettes, colorPalettes);
 			popMyMenu(e);
 			
 		});
@@ -89,11 +94,19 @@ public class TurtleWindow extends Group implements Observer {
 		myImagePalettes.add(def_3);
 	}
 	
+	private void setDefaultColorPalette(){
+		ColorIndex def_1 = new ColorIndex(0, "Red", Color.RED);
+		ColorIndex def_2 = new ColorIndex(1, "Blue", Color.BLUE);
+		ColorIndex def_3 = new ColorIndex(2, "Green", Color.GREEN);
+		myColorPalettes.add(def_1);
+		myColorPalettes.add(def_2);
+		myColorPalettes.add(def_3);
+	}
+	
 	private void setImagePaletteMenu(){
 		imagePalettes = new Menu("Image Palettes List");
 		for (ImageIndex imgx : myImagePalettes) {
 			RadioMenuItem imgChoice = new RadioMenuItem(imgx.getIndex()+" "+imgx.getName());
-			System.out.println(imgx.getName());
 			imgChoice.setToggleGroup(imagePaletteGroup);
 			imgChoice.setOnAction(changeImage -> {
 				modifyImagePaletteMenu(imgx.getIndex());
@@ -110,6 +123,26 @@ public class TurtleWindow extends Group implements Observer {
 		imagePalettes.getItems().add(imgChoice);
 	}
 	
+	private void setColorPaletteMenu(){
+		colorPalettes = new Menu("Color Palettes List");
+		for (ColorIndex colx : myColorPalettes){
+			RadioMenuItem colorChoice = new RadioMenuItem(colx.getIndex()+" "+colx.getName());
+			colorChoice.setToggleGroup(colorPaletteGroup);
+			colorChoice.setOnAction(e->{
+				modifyColorPaletteMenu(colx.getIndex());
+			});
+			colorPalettes.getItems().add(colorChoice);
+		}
+		
+		RadioMenuItem colorChoice = new RadioMenuItem("Add new index... ");
+		colorChoice.setToggleGroup(colorPaletteGroup);
+		colorChoice.setOnAction(changeColor->{
+			myColorPalettes.add(null);
+			modifyColorPaletteMenu(myColorPalettes.size()-1);
+		});
+		colorPalettes.getItems().add(colorChoice);
+	}
+	
 	private void modifyImagePaletteMenu(int index){
 		JFileChooser imageChooser = new JFileChooser(System.getProperties()
 				.getProperty("user.dir") + "/src/resources/images");
@@ -118,10 +151,19 @@ public class TurtleWindow extends Group implements Observer {
 		if (retval != JFileChooser.APPROVE_OPTION) {
 			return;
 		}
-		InputDialogBox dialog = new TextInputDialogBox("Type in a name for your image index");
+		InputDialogBox dialog = new TextInputDialogBox("Type in a name for your image or shape");
 		String indexName = ((String) dialog.showInputDialog()).trim();
 		ImageIndex imgx = new ImageIndex(index, indexName, new Image(imageChooser.getSelectedFile().toURI().toString()));
 		myImagePalettes.set(index, imgx);
+		return;
+	}
+	
+	private void modifyColorPaletteMenu(int index){
+		java.awt.Color color = JColorChooser.showDialog(null, "Choose color to add to palette", null);
+		InputDialogBox dialog = new TextInputDialogBox("Type in a name for your color");
+		String indexName = ((String) dialog.showInputDialog()).trim();
+		ColorIndex colx = new ColorIndex(index, indexName, color);
+		myColorPalettes.set(index, colx);
 		return;
 	}
 	
@@ -199,6 +241,7 @@ public class TurtleWindow extends Group implements Observer {
 		}
 		if(update instanceof ViewUpdate){
 			//TODO front end peeps
+			
 		}
 		
 	}

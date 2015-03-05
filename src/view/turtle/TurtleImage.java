@@ -2,9 +2,11 @@ package view.turtle;
 
 import java.io.File;
 
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
 import model.TurtleUpdate;
+import model.ViewUpdate;
 import javafx.animation.RotateTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
@@ -20,6 +22,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class TurtleImage extends ImageView {
@@ -36,6 +39,7 @@ public class TurtleImage extends ImageView {
 	
 	private Boolean visible = true;
 	private Boolean penUp = false;
+	private Boolean active = true;
 	
 	// items in the pop-up context menu
 	private ContextMenu contextMenu;
@@ -111,8 +115,16 @@ public class TurtleImage extends ImageView {
 		this.setFitWidth(width);
 		this.setFitHeight(height);
 	}
+	
+	public void update(ViewUpdate vu){
+		if (active){
+			
+			
+		}
+	}
 
 	public void update(TurtleUpdate tu) {
+		active = !tu.isTurtleInactive();
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
 				.getY()));
@@ -152,7 +164,7 @@ public class TurtleImage extends ImageView {
 
 		// TODO:
 		penColor = makeMenuItem("Choose Turtle Pen Color", e -> {
-			
+			selectPenColor();
 		});
 		
 		lineStyle = new Menu("Choose Turtle Line Style");
@@ -217,6 +229,12 @@ public class TurtleImage extends ImageView {
 		turtleInfo.append("Visiblity: " + visible.toString() + "\n");
 		Tooltip t = new Tooltip(turtleInfo.toString());
 		Tooltip.install(this, t);
+	}
+	
+	private void selectPenColor(){
+		java.awt.Color awtColor = JColorChooser.showDialog(null, "Choose color to add to palette", null);
+		Color fxColor = Color.rgb(awtColor.getRed(), awtColor.getGreen(), awtColor.getBlue());
+		gc.setStroke(fxColor);
 	}
 
 	
