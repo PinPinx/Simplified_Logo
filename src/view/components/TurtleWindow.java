@@ -32,7 +32,10 @@ public class TurtleWindow extends Group implements Observer {
 	private GraphicsContext mainGC;
 	private double myWidth;
 	private double myHeight;
+	
 	private int numTurtles;
+	private int activeTurtleID;
+	
 	private boolean showInactiveTurtles;
 	
 	private Group myLayers = new Group();
@@ -40,7 +43,6 @@ public class TurtleWindow extends Group implements Observer {
 	private HashMap<Integer, TurtleImage> myTurtles = new HashMap<>();
 	private Palette myPalette = new Palette();
 	private Group myTImages =  new Group();
-	
 	
 	private ContextMenu contextMenu;
 	private Menu imagePalettes;
@@ -64,6 +66,9 @@ public class TurtleWindow extends Group implements Observer {
 		this.getChildren().addAll(myLayers, mainCanvas, myTImages);
 		
 		addTurtle();
+		
+		// TODO:
+		activeTurtleID = 0;
 		
 	}
 	
@@ -169,11 +174,14 @@ public class TurtleWindow extends Group implements Observer {
 	}
 
 	public void addTurtle() {
-		int i=0;
+		int i = 0;
+		
 		while (myTurtles.keySet().contains(i)) {
 			i++;
 		}
+		
 		addTurtle(i);
+		myTurtles.get(i).hide(!showInactiveTurtles);
 	}
 	
 
@@ -229,31 +237,39 @@ public class TurtleWindow extends Group implements Observer {
 		return numTurtles;
 	}
 	
+	
 	public void toggleInactiveTurtles(boolean show) {
 		showInactiveTurtles = show;
+		
 		for (int id: myTurtles.keySet()) {
-			myTurtles.get(id).toggleShowHidden();
+			if (id != activeTurtleID) {
+				myTurtles.get(id).hide(!show);
+			}
 		}
+		
 	}
-	
-	public boolean showInactiveTurtles() {
-		return showInactiveTurtles;
-	}
-
-	
+		
 	
 	@Override
 	public void update(Object update) {
 		if(update instanceof TurtleUpdate){
 			TurtleUpdate tu = (TurtleUpdate) update;
 			int id = tu.getTurtleID();
+			
 			if (!myTurtles.keySet().contains(id)) {
 				addTurtle(id);
 			}
+			
+			if (id != activeTurtleID) {
+				myTurtles.get(activeTurtleID).hide(!showInactiveTurtles);
+				activeTurtleID = id;
+				myTurtles.get(id).hide(false);
+			}
+			
 			myTurtles.get(id).update(tu);
 		}
+		
 		if(update instanceof ViewUpdate){
-			//TODO front end peeps
 			ViewUpdate vu =  (ViewUpdate) update;
 			changeBackground(myPalette.getColor(vu.getBackgroundID()));
 			for (Map.Entry<Integer, TurtleImage> ti : myTurtles.entrySet()){

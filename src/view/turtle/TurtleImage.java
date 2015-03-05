@@ -39,15 +39,9 @@ public class TurtleImage extends ImageView {
 	private double mySpeed = 0.6;
 	private boolean moving = false;
 	
-<<<<<<< HEAD
 	private Boolean active;
 	private Boolean visible;
 	private Boolean penUp;
-=======
-	private Boolean visible = true;
-	private Boolean penUp = false;
-	private Boolean active = true;
->>>>>>> c72b7ae26b7a7a2717bd6e40514564498e550d77
 	
 	// items in the pop-up context menu
 	private ContextMenu contextMenu;
@@ -349,12 +343,6 @@ public class TurtleImage extends ImageView {
 
 	public void setAnimationSpeed(double speed) {
 		mySpeed = speed;
-	}
-	
-	public void toggleShowHidden() {
-		if (!active) return;
-	
-		
 	}
 	
 	private Point2D mathCoordsToCanvasCoords(Point2D mathCoords) {
