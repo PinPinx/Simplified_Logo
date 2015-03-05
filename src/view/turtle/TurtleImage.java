@@ -2,9 +2,13 @@ package view.turtle;
 
 import java.io.File;
 
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
+import view.components.Palette;
+import view.components.TurtleWindow;
 import model.TurtleUpdate;
+import model.ViewUpdate;
 import javafx.animation.RotateTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
@@ -20,6 +24,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class TurtleImage extends ImageView {
@@ -34,9 +39,15 @@ public class TurtleImage extends ImageView {
 	private double mySpeed = 0.6;
 	private boolean moving = false;
 	
+<<<<<<< HEAD
 	private Boolean active;
 	private Boolean visible;
 	private Boolean penUp;
+=======
+	private Boolean visible = true;
+	private Boolean penUp = false;
+	private Boolean active = true;
+>>>>>>> c72b7ae26b7a7a2717bd6e40514564498e550d77
 	
 	// items in the pop-up context menu
 	private ContextMenu contextMenu;
@@ -116,8 +127,23 @@ public class TurtleImage extends ImageView {
 		this.setFitWidth(width);
 		this.setFitHeight(height);
 	}
+	
+	public void update(ViewUpdate vu, Palette p){
+		if (active){
+			
+			gc.setLineWidth(vu.getPenSize());
+			gc.setStroke(p.getColor(vu.getPenColorID()));
+			changeImage(p.getImage(vu.getShapeID()));
+			
+			if (vu.isClear()){
+				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+			}
+			
+		}
+	}
 
 	public void update(TurtleUpdate tu) {
+		active = !tu.isTurtleInactive();
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
 				.getY()));
@@ -157,7 +183,7 @@ public class TurtleImage extends ImageView {
 
 		// TODO:
 		penColor = makeMenuItem("Choose Turtle Pen Color", e -> {
-			
+			selectPenColor();
 		});
 		
 		lineStyle = new Menu("Choose Turtle Line Style");
@@ -223,6 +249,12 @@ public class TurtleImage extends ImageView {
 		turtleInfo.append("Visiblity: " + visible.toString() + "\n");
 		Tooltip t = new Tooltip(turtleInfo.toString());
 		Tooltip.install(this, t);
+	}
+	
+	private void selectPenColor(){
+		java.awt.Color awtColor = JColorChooser.showDialog(null, "Choose color to add to palette", null);
+		Color fxColor = Color.rgb(awtColor.getRed(), awtColor.getGreen(), awtColor.getBlue());
+		gc.setStroke(fxColor);
 	}
 
 	
