@@ -13,7 +13,6 @@ public class State {
 		this.myVariablesCollection = new VariablesCollection();
 		this.myCommandHistory = new CommandHistory();
 		this.myViewOptions = new ViewOptions();
-		myTurtleMultiple.addObserver(View.getInstance().getTurtleWindow());
 		myVariablesCollection.addObserver(View.getInstance().getVariablesWindow());
 		myCommandHistory.addObserver(View.getInstance().getCommandHistoryWindow());
 		myCommandHistory.addObserver(View.getInstance().getUDCommandsWindow());

@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import exceptions.BadArgumentException;
-import parser.nodes.SyntaxNode;
 import view.components.Observer;
 
 public class TurtleSingle implements Turtle {
@@ -25,7 +23,6 @@ public class TurtleSingle implements Turtle {
 		myObservers = new ArrayList<>();
 		ID = id;
 		myPen = new Pen();
-		notifyObservers((PenUpdate)myPen);
 	}
 	
 	public int getID(){

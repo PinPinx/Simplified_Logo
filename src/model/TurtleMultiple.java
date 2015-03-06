@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import parser.nodes.SyntaxNode;
-import exceptions.BadArgumentException;
 import exceptions.TurtleNotFoundException;
 import view.View;
 import view.components.Observer;
@@ -17,8 +15,7 @@ public class TurtleMultiple implements Turtle {
 
 	public TurtleMultiple(){
 		myTurtleMap = new HashMap<>();
-		myTurtleMap.put(0,new TurtleSingle(0));
-		lastActingTurtle = myTurtleMap.get(0);
+		addNewTurtle(0);
 	}
 
 	public void addNewTurtle(int turtleID){

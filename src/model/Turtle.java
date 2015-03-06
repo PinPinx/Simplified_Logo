@@ -1,8 +1,5 @@
 package model;
 
-import exceptions.BadArgumentException;
-import parser.nodes.SyntaxNode;
-
 public interface Turtle extends Observable {
 	public Angle getAngle(); 
 	public Coordinates getCoordinates();
