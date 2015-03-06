@@ -197,4 +197,9 @@ public class TurtleSingle implements Turtle {
 		isStamp = b;
 		notifyObservers();
 	}
+
+	@Override
+	public int getPenColor() {
+		return myPen.getPenColorIDProperty().get();
+	}
 }

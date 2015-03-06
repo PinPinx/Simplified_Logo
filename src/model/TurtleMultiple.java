@@ -251,4 +251,9 @@ public class TurtleMultiple implements Turtle {
 		}			
 	}
 
+	@Override
+	public int getPenColor() {
+		return lastActingTurtle.getPenColor();
+	}
+
 }

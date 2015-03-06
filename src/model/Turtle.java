@@ -21,5 +21,6 @@ public interface Turtle extends Observable {
 	public void changePen(PenChanger vc);
 	public void setShapeID(int ID);
 	public int getShapeID();
+	public int getPenColor();
 }
 
