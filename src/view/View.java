@@ -1,8 +1,5 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import model.Model;
 import parser.parser.Regex;
 import view.components.SLogoMenuBar;
@@ -43,8 +40,8 @@ public class View {
 	private SLogoMenuBar myMenuBar;
 	private TabPane myTabPane;
 	
-	private int myActiveTab;
-	private List<Integer> tabIDs = new ArrayList<Integer>(); 
+	private int myActiveTab;	//index of the currently active tab
+	private int numTabs;
 	
 	private HelpDialogBox myHelpBox;
 	private LanguagesDialogBox myLanguagesBox;
@@ -53,7 +50,9 @@ public class View {
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
 
 	public View(Stage stage) {
-
+		
+		instance = this;
+		
 		// set up the main border pane and stage
 		myBorderPane = new BorderPane();
 		myBorderPane.setBackground(new Background(new BackgroundFill(
@@ -63,22 +62,21 @@ public class View {
 		myStage = stage;
 		myStage.setTitle(TITLE);
 		myStage.setScene(myScene);
-
+		
+		numTabs = 0;
+		
 		// set up top bars and create dialogs (help, change language)
 		addTopBars();
 		generateProgramDialogs();
-		
-		
-		instance = this;
 		
 		// add a default tab
 		addNewTab();
 	}
 
+	
 	/**
 	 * Constructs a menu bar and a tabpane to be placed at the top
 	 */
-
 	private void addTopBars() {
 		VBox top = new VBox();
 		
@@ -87,8 +85,8 @@ public class View {
 		myTabPane.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 		    @Override
 		    public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-		        myActiveTab = ((SLogoWorkspace) myTabPane.getTabs().get((int) newValue)).getWorkspaceID();
-		        Model.getInstance().setState(myActiveTab);
+		        myActiveTab = (int) newValue;
+		        tabChangeUpdate();
 		    }
 		}); 
 		
@@ -107,6 +105,7 @@ public class View {
 
 	public void showAndChangeLanguage() {
 		String newLanguage = (String) myLanguagesBox.showInputDialog();
+		((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).setLanguage(newLanguage);
 		Regex.getInstance().changeLanguage(newLanguage);
 	}
 
@@ -116,13 +115,19 @@ public class View {
 	}
 	
 	public void addNewTab() {
-		int i = 0;
-		while (tabIDs.contains(i)) {
-			i++;
-		}
-		tabIDs.add(i);
-		myTabPane.getTabs().add(new SLogoWorkspace(i));
-	} 
+		SLogoWorkspace newTab = new SLogoWorkspace(numTabs);
+		newTab.setOnClosed(closed->{
+			tabChangeUpdate();
+		});
+		
+		myTabPane.getTabs().add(newTab);
+		numTabs++;
+	}
+	
+	private void tabChangeUpdate() {
+		Regex.getInstance().changeLanguage(((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getLanguage());
+        Model.getInstance().setState(((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getWorkspaceID());
+	}
 	
 	
 	public void showView() {

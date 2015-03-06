@@ -29,8 +29,11 @@ public class SLogoWorkspace extends Tab {
 	private HBox myUDListWindows;
 	
 	private String myTitle;
+	private String myLanguage;
 	
 	private int myID;
+	
+	private static final String DEFAULT_LANGUAGE = "English";
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
 	
 	public SLogoWorkspace(int id) {
@@ -52,6 +55,7 @@ public class SLogoWorkspace extends Tab {
 		addCommandPortWindow();
 		
 		myID = id;
+		myLanguage = DEFAULT_LANGUAGE;
 		
 		this.setContent(myBorderPane);
 			
@@ -96,7 +100,6 @@ public class SLogoWorkspace extends Tab {
 	}
 
 	private void addCommandPortWindow() {
-		// TODO: Dimensions hard coded for now
 		myCommandPort = new CommandPort(500, 50);
 		myBorderPane.setBottom(myCommandPort);
 		BorderPane.setMargin(myCommandPort, new Insets(5));
@@ -113,6 +116,14 @@ public class SLogoWorkspace extends Tab {
 	
 	public int getWorkspaceID() {
 		return myID;
+	}
+	
+	public void setLanguage(String language) {
+		myLanguage = language;
+	}
+	
+	public String getLanguage() {
+		return myLanguage;
 	}
 	
 	public TurtleWindow getTurtleWindow() {
