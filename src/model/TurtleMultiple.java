@@ -233,4 +233,24 @@ public class TurtleMultiple implements Turtle {
 		}
 	}
 
+	@Override
+	public void setStamp(boolean b) {
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				t.setStamp(b);
+				setLastTurtle(t);
+
+			}
+		}	
+	}
+
+	@Override
+	public void setShapeID(int ID) {
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				t.setShapeID(ID);
+			}
+		}			
+	}
+
 }

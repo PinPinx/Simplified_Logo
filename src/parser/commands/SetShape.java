@@ -16,7 +16,7 @@ public class SetShape extends UnaryNode {
 	@Override
 	public double execute(State myState) throws BadArgumentException{
 		int ret = (int)referenceNode.execute(myState);
-		myState.getTurtle().changePen(vo -> vo.setShapeID(ret));
+		myState.getTurtle().setShapeID(ret);
 		return ret;
 	}
 

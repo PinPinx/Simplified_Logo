@@ -171,6 +171,7 @@ public class TurtleSingle implements Turtle {
 	
 	public void changePen(PenChanger vc){
 		vc.change(myPen);
+		notifyObservers();
 	}
 	
 	public void change(TurtleSingleChanger tsc){
@@ -184,5 +185,15 @@ public class TurtleSingle implements Turtle {
 		boolean b = isStamp;
 		isStamp = false;
 		return b;
+	}
+	public void setShapeID(int ID){
+		shapeID = ID;
+		notifyObservers();
+	}
+
+	@Override
+	public void setStamp(boolean b) {
+		isStamp = b;
+		notifyObservers();
 	}
 }
