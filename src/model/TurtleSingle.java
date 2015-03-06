@@ -22,7 +22,11 @@ public class TurtleSingle implements Turtle {
 		myAngle = new Angle(0);
 		myObservers = new ArrayList<>();
 		ID = id;
+	}
+	
+	public void createPen(){
 		myPen = new Pen();
+		notifyObservers((PenUpdate)myPen);
 	}
 	
 	public int getID(){
