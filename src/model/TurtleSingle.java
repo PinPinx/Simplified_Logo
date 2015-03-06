@@ -13,6 +13,7 @@ public class TurtleSingle implements Turtle {
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isInactive;
 	private ViewOptions myViewOptions;
+	private Pen myPen;
 
 	private List<Observer> myObservers;
 	
@@ -23,6 +24,7 @@ public class TurtleSingle implements Turtle {
 		myObservers = new ArrayList<>();
 		ID = id;
 		myViewOptions = new ViewOptions();
+		notifyObservers((PenUpdate)myPen);
 	}
 	
 	public int getID(){
@@ -136,6 +138,12 @@ public class TurtleSingle implements Turtle {
 	public void notifyObservers() {
 		for(Observer o : myObservers){
 			o.update(new TurtleUpdate(this));
+		}
+	}
+	
+	public void notifyObservers(Object obj) {
+		for(Observer o : myObservers){
+			o.update(obj);
 		}
 	}
 

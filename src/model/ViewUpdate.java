@@ -5,8 +5,6 @@ public interface ViewUpdate{
 	public int getPaletteB();
 	public int getPaletteG();
 	public int getPaletteR();
-	public int getPenColorID();
-	public double getPenSize();
 	public int getShapeID();
 	public boolean isClear();
 	public boolean isClearStamps();
