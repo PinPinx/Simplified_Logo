@@ -3,7 +3,6 @@ package view.dialogs;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 
 public class TextInputDialogBox extends InputDialogBox {
