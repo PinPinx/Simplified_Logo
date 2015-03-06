@@ -1,5 +1,5 @@
 package model;
 
-public interface ViewChanger {
-	public void change(ViewOptions t);
+public interface PenChanger {
+	public void change(Pen t);
 }

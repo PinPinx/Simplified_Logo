@@ -12,7 +12,6 @@ public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isInactive;
-	private ViewOptions myViewOptions;
 	private Pen myPen;
 
 	private List<Observer> myObservers;
@@ -23,7 +22,7 @@ public class TurtleSingle implements Turtle {
 		myAngle = new Angle(0);
 		myObservers = new ArrayList<>();
 		ID = id;
-		myViewOptions = new ViewOptions();
+		myPen = new Pen();
 		notifyObservers((PenUpdate)myPen);
 	}
 	
@@ -126,7 +125,6 @@ public class TurtleSingle implements Turtle {
 	@Override
 	public void addObserver(Observer o) {
 		myObservers.add(o);
-		myViewOptions.addObserver(o);
 	}
 
 	@Override
@@ -169,8 +167,8 @@ public class TurtleSingle implements Turtle {
 		return returner;
 	}
 	
-	public void changeViewOptions(ViewChanger vc){
-		vc.change(myViewOptions);
+	public void changePen(PenChanger vc){
+		vc.change(myPen);
 	}
 	
 	public void change(TurtleSingleChanger tsc){

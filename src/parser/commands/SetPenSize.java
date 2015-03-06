@@ -16,7 +16,7 @@ public class SetPenSize extends UnaryNode {
 	@Override
 	public double execute(State myState) throws BadArgumentException{
 		double ret = referenceNode.execute(myState);
-		myState.getTurtle().changeViewOptions(vo -> vo.setPenSize(ret));
+		myState.getTurtle().changePen(vo -> vo.setPenSize(ret));
 		return ret;
 	}
 

@@ -32,7 +32,7 @@ public class SetPalette extends SyntaxNode {
 		int green = (int)nodeThree.execute(myState);
 		int blue = (int)nodeFour.execute(myState);
 
-		myState.getTurtle().changeViewOptions(vo -> {try {
+		myState.getTurtle().changePen(vo -> {try {
 			vo.setPaletteB(red, green, blue);
 		} catch (InvalidViewSettingException e) {
 			View.getInstance().showDialog(e.getMessage());

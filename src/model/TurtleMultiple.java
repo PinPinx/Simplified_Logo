@@ -203,10 +203,10 @@ public class TurtleMultiple implements Turtle {
 		lastActingTurtle = t;
 	}
 	
-	public void changeViewOptions(ViewChanger vc) {
+	public void changePen(PenChanger pc) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.changeViewOptions(vc);
+				t.changePen(pc);
 				setLastTurtle(t);
 			}
 		}	
