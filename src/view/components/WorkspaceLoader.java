@@ -21,10 +21,10 @@ public class WorkspaceLoader {
 		myWorkspace = wsp;
 	}
 	
-	public void saveWorkspace(WorkspaceFile wsp) throws IOException{
+	public void saveWorkspace(WorkspaceFile wsp, String title) throws IOException{
 		myWorkspace = wsp;
 		JFrame parentFrame = new JFrame();
-        File myFile = new File("newWorkSpaceFile.wsp");
+        File myFile = new File(title+".wsp");
         JFileChooser fileChooser = new JFileChooser(System.getProperties().getProperty("user.dir")+"/src/workspace");
         fileChooser.setDialogTitle("Specify a file to save");
         fileChooser.setSelectedFile(myFile);
@@ -49,6 +49,7 @@ public class WorkspaceLoader {
 		FileInputStream fin = new FileInputStream(imageChooser.getSelectedFile());
         ObjectInputStream ois = new ObjectInputStream(fin);
         myWorkspace = (WorkspaceFile) ois.readObject();
+        myWorkspace.setTitle(imageChooser.getSelectedFile().getName());
         return;
 	}
 	

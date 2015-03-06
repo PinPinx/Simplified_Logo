@@ -86,7 +86,7 @@ public class SLogoMenuBar extends MenuBar {
 			WorkspaceFile myWorkspace = new WorkspaceFile(myView.getTurtleWindow().getBackgroundColor(), myView.getTurtleWindow().getNumOfTurtles());
 			try {
 				WorkspaceLoader loader = new WorkspaceLoader();
-				loader.saveWorkspace(myWorkspace);
+				loader.saveWorkspace(myWorkspace, myView.getTabTitle());
 			} catch (IOException exc) {
 				// TODO Auto-generated catch block
 				exc.printStackTrace();
@@ -100,6 +100,7 @@ public class SLogoMenuBar extends MenuBar {
 				loader.loadWorkspace();
 				WorkspaceFile myWorkspace = loader.getWorkspace();
 		        myView.getTurtleWindow().changeBackground(myWorkspace.getColor());
+		        myView.setTabTitle(myWorkspace.getTitle());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

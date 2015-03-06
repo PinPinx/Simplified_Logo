@@ -67,9 +67,12 @@ public class View {
 		// set up top bars and create dialogs (help, change language)
 		addTopBars();
 		generateProgramDialogs();
-
+		
+		
 		instance = this;
-
+		
+		// add a default tab
+		addNewTab();
 	}
 
 	/**
@@ -142,6 +145,14 @@ public class View {
 		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getUDCommandsWindow();
 	}
 	
+	public String getTabTitle(){
+		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getTitle();
+	}
+	
+	public void setTabTitle(String title){
+		SLogoWorkspace myActivePane = (SLogoWorkspace) myTabPane.getTabs().get(myActiveTab);
+		myActivePane.setTitle(title);
+	}
 	
 	public static View getInstance() {
 		if (instance == null) {

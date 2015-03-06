@@ -9,11 +9,13 @@ public class WorkspaceFile implements Serializable{
 	private String myBgColor;
 	private Integer myTurtles;
 	private File myLanguage;
+	private String myTitle;
 	
 	public WorkspaceFile(){
 		myBgColor = null;
 		myTurtles = 0;
 		myLanguage = null;
+		myTitle = new String();
 	}
 	
 	public WorkspaceFile(Color c){
@@ -49,6 +51,14 @@ public class WorkspaceFile implements Serializable{
 	public Color getColor(){
 		Color c = Color.web(myBgColor);
 		return c;
+	}
+	
+	public void setTitle(String title){
+		myTitle = title;
+	}
+	
+	public String getTitle(){
+		return myTitle;
 	}
 	
 	public int getTurtles(){

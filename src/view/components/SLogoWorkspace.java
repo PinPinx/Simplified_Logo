@@ -28,11 +28,14 @@ public class SLogoWorkspace extends Tab {
 	private VBox myListWindows;
 	private HBox myUDListWindows;
 	
+	private String myTitle;
+	
 	private int myID;
 	private static final Color BACKGROUND_COLOR = Color.LIGHTGREY;
 	
 	public SLogoWorkspace(int id) {
 		this("Untitled Workspace " + Integer.toString(id), id);
+		myTitle = new String("Untitled Workspace " + Integer.toString(id));
 	}
 	
 	public SLogoWorkspace(String title, int id) {
@@ -97,6 +100,15 @@ public class SLogoWorkspace extends Tab {
 		myCommandPort = new CommandPort(500, 50);
 		myBorderPane.setBottom(myCommandPort);
 		BorderPane.setMargin(myCommandPort, new Insets(5));
+	}
+	
+	public void setTitle(String title){
+		myTitle = title;
+		this.setText(myTitle);
+	}
+	
+	public String getTitle(){
+		return myTitle;
 	}
 	
 	public int getWorkspaceID() {
