@@ -13,6 +13,8 @@ public class TurtleSingle implements Turtle {
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isInactive;
 	private Pen myPen;
+	private int shapeID; private boolean isStamp;
+
 
 	private List<Observer> myObservers;
 	
@@ -51,7 +53,6 @@ public class TurtleSingle implements Turtle {
 	public double addDegree(double degrees) {
 		double param = degrees;
 		myAngle.addAngleValue(param);
-		myOldCoordinates = new Coordinates(myCoordinates);
 		notifyObservers();
 		return param;
 	}
@@ -137,6 +138,7 @@ public class TurtleSingle implements Turtle {
 		for(Observer o : myObservers){
 			o.update(new TurtleUpdate(this));
 		}
+		myOldCoordinates = new Coordinates(myCoordinates);
 	}
 	
 	public void notifyObservers(Object obj) {
@@ -173,5 +175,14 @@ public class TurtleSingle implements Turtle {
 	
 	public void change(TurtleSingleChanger tsc){
 		tsc.change(this);
+	}
+	
+	public int getShapeID() {
+		return shapeID;
+	}
+	public boolean getStamp() {
+		boolean b = isStamp;
+		isStamp = false;
+		return b;
 	}
 }

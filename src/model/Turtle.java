@@ -20,5 +20,7 @@ public interface Turtle extends Observable {
 	public boolean getPenUp();
 	public int getID();
 	public void changePen(PenChanger vc);
+	public int getShapeID();
+	public boolean getStamp();
 }
 

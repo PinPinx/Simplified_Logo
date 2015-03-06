@@ -80,6 +80,8 @@ public class TurtleMultiple implements Turtle {
 	public Coordinates getOldCoordinates() {
 		return lastActingTurtle.getOldCoordinates();
 	}
+	
+	
 
 	@Override
 	public double addDegree(double degree){
@@ -182,6 +184,16 @@ public class TurtleMultiple implements Turtle {
 	@Override
 	public boolean getPenUp() {
 		return lastActingTurtle.getPenUp();
+	}
+	
+	@Override
+	public int getShapeID() {
+		return lastActingTurtle.getShapeID();
+	}
+
+	@Override
+	public boolean getStamp() {
+		return lastActingTurtle.getStamp();
 	}
 
 	//TODO: Kaighn, tell me if you're unhappy with these additions

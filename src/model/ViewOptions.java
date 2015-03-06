@@ -11,21 +11,7 @@ public class ViewOptions implements ViewUpdate, Observable{
 		paletteR, paletteG, paletteB;
 	private boolean isClear, isClearStamps;
 	private List<Observer> myObservers;
-	private int shapeID; private boolean isStamp;
-	public int getShapeID() {
-		return shapeID;
-	}
-	public boolean isStamp() {
-		return isStamp;
-	}
-	public void setShapeID(int shapeID) {
-		this.shapeID = shapeID;
-		notifyObservers();
-	}
-	public void setStamp(boolean isStamp) {
-		this.isStamp = isStamp;
-		notifyObservers();
-	}
+
 	public ViewOptions(){
 		this.myObservers = new ArrayList<>();
 	}
@@ -44,7 +30,9 @@ public class ViewOptions implements ViewUpdate, Observable{
 	}
 
 	public boolean isClear() {
-		return isClear;
+		boolean b = isClear;
+		isClear = false;
+		return b;
 	}
 	public boolean isClearStamps() {
 		return isClearStamps;
