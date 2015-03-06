@@ -32,11 +32,11 @@ public class SetPalette extends SyntaxNode {
 		int green = (int)nodeThree.execute(myState);
 		int blue = (int)nodeFour.execute(myState);
 
-		myState.getTurtle().changePen(vo -> {try {
-			vo.setPaletteB(red, green, blue);
+		try {
+			myState.getViewOptions().setPaletteB(red, green, blue);
 		} catch (InvalidViewSettingException e) {
-			View.getInstance().showDialog(e.getMessage());
-		}});
+			throw new BadArgumentException("Color palette values must be between 0 and 255 inclusive!");
+		}
 		return index;
 	}
 
