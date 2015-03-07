@@ -24,7 +24,7 @@ public class TurtleMultiple implements Turtle {
 		TurtleSingle newTurtle = new TurtleSingle(turtleID);
 		myTurtleMap.put(turtleID,newTurtle);
 		setLastTurtle(newTurtle);
-//		newTurtle.addObserver(View.getInstance().getTurtleWindow());
+		newTurtle.addObserver(View.getInstance().getTurtleWindow());
 		newTurtle.createPen();
 		newTurtle.notifyObservers();
 	}
