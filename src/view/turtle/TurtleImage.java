@@ -9,6 +9,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
 import view.components.Palette;
+import model.PenUpdate;
 import model.TurtleUpdate;
 import model.ViewUpdate;
 import javafx.animation.RotateTransition;
@@ -45,6 +46,7 @@ public class TurtleImage extends ImageView {
 	private boolean rotating = false;
 	private boolean busy;
 	private PriorityQueue<TurtleUpdate> pendingUpdates;
+	private Palette myPalette;
 	
 	private Boolean active;
 	private Boolean visible;
@@ -135,14 +137,15 @@ public class TurtleImage extends ImageView {
 		this.setFitHeight(height);
 	}
 	
-	public void update(ViewUpdate vu, Palette p){
-		if (active){
-			
-			if (vu.isClear()){
-				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-			}
-			
-		}
+
+	
+	public void setPenProperties(PenUpdate pu){
+		myPen.setProperties(pu.getPenColorIDProperty(),pu.getPenSizeProperty());
+		myPen.updatePen(myPalette.getColor(myPen.getColorIndex()));
+	}
+	
+	public void updatePalatte(Palette p){
+		myPalette = p;
 	}
 	
 	
@@ -169,6 +172,8 @@ public class TurtleImage extends ImageView {
 	public void processUpdate(TurtleUpdate tu) {
 		busy = true;
 		active = !tu.isTurtleInactive();
+		
+		myPen.updatePen(myPalette.getColor(myPen.getColorIndex()));
 		
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
@@ -285,6 +290,7 @@ public class TurtleImage extends ImageView {
 	private void selectPenColor(){
 		java.awt.Color awtColor = JColorChooser.showDialog(null, "Choose color to add to palette", null);
 		Color fxColor = Color.rgb(awtColor.getRed(), awtColor.getGreen(), awtColor.getBlue());
+		//TODO - replace this menu with a palette
 		gc.setStroke(fxColor);
 	}
 

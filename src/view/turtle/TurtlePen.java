@@ -1,7 +1,10 @@
 package view.turtle;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  * Constructs lines according to set styles.
@@ -11,6 +14,9 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public class TurtlePen {
 	private GraphicsContext gc;
+	
+	private IntegerProperty penColorIndex;
+	private DoubleProperty penSize;
 	
 	// dash length arrays for the different line styles
 	private static final double[] SOLID = {1, 0};
@@ -110,5 +116,21 @@ public class TurtlePen {
 	public void setDashDot() {
 		dashLengthArray = DASHDOT;
 	}
+	
+	public void updatePen(Color color){
+		if (penSize!=null){
+			gc.setLineWidth(penSize.getValue());
+			gc.setStroke(color);
+		}
+	}
+	
+	public int getColorIndex(){
+		return penColorIndex.getValue();
+	}
+	public void setProperties(IntegerProperty colorIndex, DoubleProperty size){
+		penColorIndex = colorIndex;
+		penSize = size;
+	}
+	
 	
 }
