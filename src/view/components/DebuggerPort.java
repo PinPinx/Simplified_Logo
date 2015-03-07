@@ -25,6 +25,7 @@ public class DebuggerPort extends ScrollPane{
 		exitDebug.setOnAction(e->{
 			exitDebugMode();
 		});
+		
 		vb.getChildren().addAll(stepCommand, currentCommand, exitDebug);
 		this.setContent(vb);
 	}
