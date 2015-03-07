@@ -1,15 +1,13 @@
 package parser.commands;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 import exceptions.BadArgumentException;
-import parser.nodes.ConstantNode;
 import parser.nodes.SyntaxNode;
-import model.Coordinates;
+import parser.nodes.UnaryNode;
 import model.State;
 
-public class Forward extends SimpleTurtleCommand{
+public class Forward extends UnaryNode{
 	
 	public Forward(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);

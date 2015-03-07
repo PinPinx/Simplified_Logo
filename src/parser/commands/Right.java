@@ -3,11 +3,11 @@ package parser.commands;
 import java.util.Stack;
 
 import exceptions.BadArgumentException;
-import model.Angle;
 import model.State;
 import parser.nodes.SyntaxNode;
+import parser.nodes.UnaryNode;
 
-public class Right extends SimpleTurtleCommand {
+public class Right extends UnaryNode {
 
 	public Right(Stack<SyntaxNode> input) throws BadArgumentException{
 		super(input);

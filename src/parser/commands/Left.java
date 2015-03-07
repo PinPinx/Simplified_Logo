@@ -4,9 +4,10 @@ import java.util.Stack;
 
 import exceptions.BadArgumentException;
 import parser.nodes.SyntaxNode;
+import parser.nodes.UnaryNode;
 import model.State;
 
-public class Left extends SimpleTurtleCommand{
+public class Left extends UnaryNode{
 	
 	public Left(Stack<SyntaxNode> input) throws BadArgumentException {
 		super(input);

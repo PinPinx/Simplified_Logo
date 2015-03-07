@@ -16,12 +16,7 @@ public abstract class UnlimitedNode extends SyntaxNode{
 			GroupNode myGroup = (GroupNode) input.pop();
 			Stack<SyntaxNode> groupStack = new Stack<SyntaxNode>();
 			while (myGroup.getSize()>0){
-				//TODO: CHOOSE BETWEEN THESE TWO WAYS OF DOING THINGS
-				groupStack.push(myGroup.backPop());
-				if (groupStack.peek() instanceof GroupNode){
-					//convertAndPush(groupStack);
-					groupStack.push((ListNode) groupStack.pop());
-				}
+				pushAsList(groupStack, myGroup);
 			}
 			while(groupStack.size()>2){
 				convertAndPush(groupStack);
@@ -32,6 +27,13 @@ public abstract class UnlimitedNode extends SyntaxNode{
 		else {
 			nodeOne = input.pop();
 			nodeTwo = input.pop();
+		}
+	}
+	
+	private void pushAsList(Stack<SyntaxNode> groupStack, GroupNode myGroup){
+		groupStack.push(myGroup.backPop());
+		if (groupStack.peek() instanceof GroupNode){
+			groupStack.push((ListNode) groupStack.pop());
 		}
 	}
 	

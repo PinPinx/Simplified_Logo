@@ -5,8 +5,9 @@ import java.util.Stack;
 import exceptions.BadArgumentException;
 import model.State;
 import parser.nodes.SyntaxNode;
+import parser.nodes.UnaryNode;
 
-public class SetHeading extends SimpleTurtleCommand{	
+public class SetHeading extends UnaryNode{	
 	public SetHeading(Stack<SyntaxNode> input)
 			throws BadArgumentException {
 		super(input);
