@@ -173,7 +173,8 @@ public class TurtleImage extends ImageView {
 	public void processUpdate(TurtleUpdate tu) {
 		busy = true;
 		active = !tu.isTurtleInactive();
-
+		penUp = tu.isTurtlePenUp();
+		
 		if (tu.isStamp()) {
 			leaveStamp();
 		}
