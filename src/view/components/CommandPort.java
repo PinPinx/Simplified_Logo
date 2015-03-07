@@ -16,21 +16,25 @@ public class CommandPort extends ScrollPane {
 
 	private static final String COMMAND_PROMPT = "Enter your command here";
 	private static final String RUN = "Run";
+	private static final String DEBUG = "DEBUG";
 
 	private TextField myTextField;
 	private Button myRunButton;
+	private Button myDebugButton;
 
 	public CommandPort(double width, double height) {
 		HBox hb = new HBox(5);
 		myRunButton = new Button(RUN);
 		myRunButton.setOnAction(e -> runCommand());
+		myDebugButton = new Button(DEBUG);
+		myDebugButton.setOnAction(e-> enterDebugMode());
 		myTextField = new TextField();
 		myTextField.setPrefHeight(height);
 		myTextField.setPrefWidth(width);
 		myTextField.setText(COMMAND_PROMPT);
 		myTextField.setOnKeyPressed(e -> runCommand(e));
 		myTextField.setOnMouseClicked(e -> clearField(myTextField));
-		hb.getChildren().addAll(myTextField, myRunButton);
+		hb.getChildren().addAll(myTextField, myRunButton, myDebugButton);
 		this.setContent(hb);
 	}
 
@@ -46,6 +50,9 @@ public class CommandPort extends ScrollPane {
 		myTextField.clear();
 	}
 
+	private void enterDebugMode() {
+		View.getInstance().addDebuger();
+	}
 	private void runCommand(KeyEvent e) {
 		if (e.getCode() == KeyCode.ENTER) {
 			runCommand();

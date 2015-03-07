@@ -44,6 +44,7 @@ public class TurtleImage extends ImageView {
 	private double myHeight;
 	private double mySpeed;
 	private boolean busy;
+	private boolean debugMode;
 	private PriorityQueue<TurtleUpdate> pendingUpdates;
 	private Palette myPalette;
 	
@@ -88,6 +89,7 @@ public class TurtleImage extends ImageView {
 		visible = true;
 		penUp = false;
 		busy = false;
+		debugMode = false;
 		
 		pendingUpdates = new PriorityQueue<TurtleUpdate>();
 		
@@ -129,6 +131,14 @@ public class TurtleImage extends ImageView {
 		myHeight = height;
 		this.setFitWidth(width);
 		this.setFitHeight(height);
+	}
+	
+	public void setDebugMode(){
+		debugMode = true;
+	}
+	
+	public void setRunMode(){
+		debugMode = false;
 	}
 	
 
@@ -203,7 +213,9 @@ public class TurtleImage extends ImageView {
 		sequentialTransition.play();
 		
 		sequentialTransition.setOnFinished(moved->{
-			popUpdate();
+			if(!debugMode){
+				popUpdate();
+			}
 		});
 	}
 

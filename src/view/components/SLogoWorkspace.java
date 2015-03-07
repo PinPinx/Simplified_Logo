@@ -21,6 +21,7 @@ public class SLogoWorkspace extends Tab {
 	private Toolbar myToolbar;
 	private TurtleWindow myTurtleWindow;
 	private CommandPort myCommandPort;
+	private DebuggerPort myDebugPort;
 	
 	private UserDefinedCommandsWindow myUDCommandsWindow;
 	private VariablesWindow myVariablesWindow;
@@ -103,6 +104,22 @@ public class SLogoWorkspace extends Tab {
 		myCommandPort = new CommandPort(500, 50);
 		myBorderPane.setBottom(myCommandPort);
 		BorderPane.setMargin(myCommandPort, new Insets(5));
+	}
+	
+	public void startDebugger(){
+		myDebugPort = new DebuggerPort();
+		myBorderPane.setCenter(myDebugPort);
+		myTurtleWindow.enterDebugMode();
+	}
+	
+	public void stopDebugger(){
+		myBorderPane.getChildren().remove(myDebugPort);
+		myBorderPane.setCenter(myListWindows);
+		myTurtleWindow.exitDebugMode();
+	}
+	
+	public void runDebugger(){
+		myTurtleWindow.stepDebug();
 	}
 	
 	public void setTitle(String title){

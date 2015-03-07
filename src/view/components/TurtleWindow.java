@@ -259,6 +259,23 @@ public class TurtleWindow extends Group implements Observer {
 		}
 		
 	}
+	
+	public void enterDebugMode(){
+		for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
+			turtle.getValue().setDebugMode();
+		}
+	}
+	
+	public void exitDebugMode(){
+		for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
+			turtle.getValue().setRunMode();
+		}
+	}
+	public void stepDebug(){
+		for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
+			turtle.getValue().popUpdate();
+		}
+	}
 		
 	
 	@Override
@@ -290,7 +307,7 @@ public class TurtleWindow extends Group implements Observer {
 			myPalette.updateColor(vu.getPaletteIndex(), vu.getPaletteR(), vu.getPaletteG(), vu.getPaletteB());
 			
 			for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
-				turtle.getValue().updatePalatte(myPalette);
+				turtle.getValue().updatePalette(myPalette);
 			}
 			if (vu.isClearStamps()) {
 				for (int id: myTurtles.keySet()) {

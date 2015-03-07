@@ -214,6 +214,20 @@ public class View {
 	
 	
 	
+	public void addDebuger(){
+		SLogoWorkspace myActivePane = (SLogoWorkspace) (myTabPane.getTabs().get(myActiveTab));
+		myActivePane.startDebugger();
+	}
+	
+	public void removeDebuger(){
+		SLogoWorkspace myActivePane = (SLogoWorkspace) (myTabPane.getTabs().get(myActiveTab));
+		myActivePane.stopDebugger();
+	}
+	
+	public void runDebugger(){
+		SLogoWorkspace myActivePane = (SLogoWorkspace) (myTabPane.getTabs().get(myActiveTab));
+		myActivePane.runDebugger();
+	}
 	
 	public TurtleWindow getTurtleWindow() {
 		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getTurtleWindow();
