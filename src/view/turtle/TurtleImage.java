@@ -70,6 +70,7 @@ public class TurtleImage extends ImageView {
 	private final static double DEFAULT_WIDTH = 30;
 	private final static double DEFAULT_HEIGHT = 30;
 	private final static double DEFAULT_SPEED = 0.6;
+	private final static double ANIMATION_THRESHOLD = 1.5;
 	
 	public TurtleImage(GraphicsContext gcon, int id) {
 		this(gcon, id, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -203,13 +204,20 @@ public class TurtleImage extends ImageView {
 						   new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
 		}
 		
-		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()), createTranslateTransition(newPos));
+		if (mySpeed >= ANIMATION_THRESHOLD) {
+			this.unanimatedMove(-tu.getTurtleAngle().getAngleValue(), newPos);
+		} else {
+			animatedMove(-tu.getTurtleAngle().getAngleValue(), newPos);
+		}
 		
 	}
 	
-	private void animatedMove(Transition rotationTransition, Transition translationTransition){
+	private void animatedMove(double toAngle, Point2D toLocation){
 		
-		SequentialTransition sequentialTransition = new SequentialTransition(this, rotationTransition, translationTransition);
+		RotateTransition rotateTransition = (RotateTransition) createRotateTransition(toAngle);
+		TranslateTransition translateTransition = (TranslateTransition) createTranslateTransition(toLocation);
+		
+		SequentialTransition sequentialTransition = new SequentialTransition(this, rotateTransition, translateTransition);
 		sequentialTransition.play();
 		
 		sequentialTransition.setOnFinished(moved->{
@@ -217,6 +225,13 @@ public class TurtleImage extends ImageView {
 				popUpdate();
 			}
 		});
+	}
+	
+	private void unanimatedMove(double toAngle, Point2D toLocation){
+		this.setTranslateX(toLocation.getX());
+		this.setTranslateY(toLocation.getY());
+		this.setRotate(toAngle);
+		popUpdate();
 	}
 
 	

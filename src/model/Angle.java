@@ -16,7 +16,7 @@ public class Angle {
 	}
 	
 	public double getAngleValueInRadians(){
-		return this.myValue/360.0*2*Math.PI;
+		return Math.toRadians(this.myValue);
 	}
 	
 	public void addAngle(Angle a){

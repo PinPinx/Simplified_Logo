@@ -20,7 +20,7 @@ public class TurtlePen {
 	private IntegerProperty penColorIndex;
 	private DoubleProperty penSize;
 	private Integer initialColorIndex = 1;
-	private Double initialPenSize = 3.0;
+	private Double initialPenSize = 1.5;
 	
 	// dash length arrays for the different line styles
 	private static final double[] SOLID = {1, 0};
@@ -38,6 +38,11 @@ public class TurtlePen {
 	}
 	
 	public void drawLine(Point2D start, Point2D end) {
+		
+		if (start.equals(end)) {
+			return;
+		}
+		
 		if (dashLengthArray == SOLID) {
 			gc.strokeLine(start.getX(), start.getY(), end.getX(), end.getY());
 		}
@@ -49,10 +54,6 @@ public class TurtlePen {
 	
 	
 	private void drawGappedLine(Point2D start, Point2D end) {
-		
-		if (start.equals(end)) {
-			return;
-		}
 		
 		Point2D lineVector = new Point2D(end.getX() - start.getX(), end.getY() - start.getY());
 		Point2D[] dashVectorArray = generateDashVectorArray(lineVector);

@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public class WorkspaceFile implements Serializable{
 	private String myBgColor;
 	private Integer myTurtles;
-	private File myLanguage;
+	private String myLanguage;
 	private String myTitle;
 	
 	public WorkspaceFile(){
@@ -30,19 +30,12 @@ public class WorkspaceFile implements Serializable{
 		myLanguage = null;
 	}
 	
-	public WorkspaceFile(Color c, int turtles, File lang){
+	public WorkspaceFile(Color c, int turtles, String lang){
 		myBgColor = String.valueOf(c.toString());
 		myTurtles = turtles;
 		myLanguage = lang;
 	}
 	
-	public void setLanguage(File lang){
-		myLanguage = lang;
-	}
-	
-	public File getLanguage(){
-		return myLanguage;
-	}
 	
 	public void setColor(Color c){
 		myBgColor = String.valueOf(c.toString());
