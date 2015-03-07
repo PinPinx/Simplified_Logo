@@ -7,8 +7,8 @@ import java.util.Stack;
 import exceptions.BadArgumentException;
 import exceptions.VariableCreationException;
 import exceptions.VariableCreationInvalidValueException;
+import model.IVariablesCollection;
 import model.State;
-import model.VariablesCollection;
 import parser.nodes.ListNode;
 import parser.nodes.SyntaxNode;
 import parser.nodes.VariableNode;
@@ -29,7 +29,7 @@ public class ToInstance extends SyntaxNode{
 	
 	@Override
 	public double execute(State myState) throws BadArgumentException{
-		VariablesCollection variables = myState.getVariablesCollection();
+		IVariablesCollection variables = myState.getVariablesCollection();
 		for (int i=0; i < varList.getSize(); i++){
 			VariableNode currentVar = ((VariableNode) varList.getNode(i));
 			String newValue = Double.toString(paramList.get(i).execute(myState));

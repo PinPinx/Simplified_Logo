@@ -13,7 +13,7 @@ import parser.nodes.VariableNode;
 
 public class For extends BinaryNode {
 
-	private VariableNode variable;
+	private String variableName;
 	private ListNode listReference;
 	
 	public For(Stack<SyntaxNode> input) throws BadArgumentException {
@@ -26,7 +26,7 @@ public class For extends BinaryNode {
 			throw new BadArgumentException("A for loop's first following bracketed list must have 4 entries.");
 		if (!(listReference.getNode(0) instanceof VariableNode))
 			throw new BadArgumentException("The first argument given in the for loop was not a variable.");
-		variable = (VariableNode) listReference.getNode(0);
+		variableName = ((VariableNode) listReference.getNode(0)).getName();
 	}
 
 	//TODO: Duplicate code with DoTimes
@@ -46,7 +46,7 @@ public class For extends BinaryNode {
 	private double runCode(State myState, int i) throws BadArgumentException{
 		//TODO: Refactor into method. This sets the variable to the desired value
 		try {
-			myState.getVariablesCollection().addVariable(variable.getName(), Integer.toString(i));
+			myState.getVariablesCollection().addVariable(variableName, Integer.toString(i));
 		} catch (VariableCreationException
 				| VariableCreationInvalidValueException e) {
 			throw new BadArgumentException("");

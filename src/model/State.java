@@ -20,7 +20,7 @@ public class State {
 	public TurtleMultiple getTurtle() {
 		return myTurtleMultiple;
 	}
-	public VariablesCollection getVariablesCollection(){
+	public IVariablesCollection getVariablesCollection(){
 		return myVariablesCollection;
 	}
 	public CommandHistory getCommandHistory(){
