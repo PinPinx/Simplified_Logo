@@ -4,6 +4,9 @@ import java.util.List;
 
 import javafx.beans.property.StringProperty;
 
+/**
+ * Gives binded copies of the variable properties to the front end.
+ */
 public class VariablesCollectionUpdate {
 	private List<StringProperty> myDisplayProperties;
 	private List<StringProperty> myNameProperties;

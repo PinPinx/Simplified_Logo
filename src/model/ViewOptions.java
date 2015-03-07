@@ -8,6 +8,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import exceptions.InvalidViewSettingException;
 import view.components.Observer;
 
+/**
+ * Container class for information that is not particular to any one turtle.
+ */
 public class ViewOptions implements ViewUpdate, ViewInitializer, Observable{
 	private IntegerProperty backgroundIDProperty;
 	private int paletteR, paletteG, paletteB, paletteIndex;
