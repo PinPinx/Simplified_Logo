@@ -20,21 +20,35 @@ public class Ask extends BinaryNode {
 		}
 	}
 	
-	//TODO: CLEAN THIS SHIT UP YO, also may be able to do without tell.
 	@Override
 	public double execute(State myState) throws BadArgumentException {
 		TurtleMultiple turtle = myState.getTurtle();
-		ArrayList<Integer> oldActiveList = new ArrayList<Integer>(turtle.activeTurtleIDs());
-		turtle.deactiveAll();
-		Stack<SyntaxNode> oldActiveStack = new Stack<SyntaxNode>();
-		Stack<SyntaxNode> newActiveStack = new Stack<SyntaxNode>();
-		for (Integer i : oldActiveList){
-			oldActiveStack.push(new ConstantNode(i));
-		}
+		Stack<SyntaxNode> oldActiveStack = createOldActiveStack(turtle);
+		Stack<SyntaxNode> newActiveStack = createNewActiveStack(myState);
+		return runCode(newActiveStack, oldActiveStack, myState);
+	}
+	
+	protected Stack<SyntaxNode> createNewActiveStack(State myState) throws BadArgumentException{
 		ListNode referenceNode = (ListNode) nodeOne;
+		Stack<SyntaxNode> newActiveStack = new Stack<SyntaxNode>();
 		for (int i =0; i < referenceNode.getSize(); i++){
 			newActiveStack.push(new ConstantNode(referenceNode.getNode(i).execute(myState)));
 		}
+		return newActiveStack;
+	}
+	
+	protected Stack<SyntaxNode> createOldActiveStack(TurtleMultiple turtle){
+		ArrayList<Integer> oldActiveList = new ArrayList<Integer>(turtle.activeTurtleIDs());
+		Stack<SyntaxNode> oldActiveStack = new Stack<SyntaxNode>();
+		for (Integer i : oldActiveList){
+			oldActiveStack.push(new ConstantNode(i));
+		}
+		return oldActiveStack;
+	}
+	
+	protected double runCode(Stack<SyntaxNode> newActiveStack, 
+			Stack<SyntaxNode> oldActiveStack, State myState) throws BadArgumentException{
+		myState.getTurtle().deactiveAll();
 		Tell activate = tellMaker(newActiveStack);
 		Tell returnState = tellMaker(oldActiveStack);
 		activate.execute(myState);
