@@ -53,5 +53,9 @@ public class Model {
 		}
 		myParser.setActiveState(myActiveState);
 	}
+	
+	public void saveUDCommands(int workspaceID){
+		List<String> udCommandDeclarations = myStates.get(workspaceID).getCommandHistory().saveUDCommands();
+	}
 
 }

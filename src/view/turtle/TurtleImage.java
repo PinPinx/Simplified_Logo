@@ -1,6 +1,7 @@
 package view.turtle;
 
 import java.io.File;
+import java.util.PriorityQueue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,9 @@ public class TurtleImage extends ImageView {
 	private double myHeight;
 	private double mySpeed = 0.6;
 	private boolean moving = false;
+	private boolean rotating = false;
+	private boolean busy;
+	private PriorityQueue<TurtleUpdate> pendingUpdates;
 	
 	private Boolean active;
 	private Boolean visible;
@@ -80,6 +84,9 @@ public class TurtleImage extends ImageView {
 		active = false;
 		visible = true;
 		penUp = false;
+		busy = false;
+		
+		pendingUpdates = new PriorityQueue<TurtleUpdate>();
 		
 		this.setImage(myImage);
 		resize(width, height);
@@ -131,18 +138,36 @@ public class TurtleImage extends ImageView {
 	public void update(ViewUpdate vu, Palette p){
 		if (active){
 			
-			gc.setLineWidth(vu.getPenSize());
-			gc.setStroke(p.getColor(vu.getPenColorID()));
-			changeImage(p.getImage(vu.getShapeID()));
-			
 			if (vu.isClear()){
 				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 			}
 			
 		}
 	}
+	
+	
+	public void addUpdate(TurtleUpdate tu){
+		pendingUpdates.add(tu);
+		
+		if (!busy){
+			popUpdate();
+		}
+		
+	}
+	
+	public void popUpdate(){
+		if (pendingUpdates.size()==0){
+			busy = false;
+		}
+		if (pendingUpdates.size()>0){
+			processUpdate(pendingUpdates.poll());
+		}
+	}
+	
+	
 
-	public void update(TurtleUpdate tu) {
+	public void processUpdate(TurtleUpdate tu) {
+		busy = true;
 		active = !tu.isTurtleInactive();
 		
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
@@ -152,8 +177,6 @@ public class TurtleImage extends ImageView {
 				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
 				.getY()));
 		
-		this.animatedMove(createTranslateTransition(newPos));
-		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()));
 		
 		this.hide(tu.isTurtleHidden());
 
@@ -161,11 +184,27 @@ public class TurtleImage extends ImageView {
 			myPen.drawLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
 						   new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
 		}
-
+		
+		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()), createTranslateTransition(newPos));
+		
 		if (tu.isTurtleClear()) {
 			gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas()
 					.getHeight());
 		}
+		
+		//TODO
+	}
+	
+	private void animatedMove(Transition rotationTransition, Transition translationTransition){
+		while (moving){
+			//busy-wait
+		}
+		rotationTransition.play();
+		translationTransition.play();
+		translationTransition.setOnFinished(moved->{
+			moving = false;
+			popUpdate();
+		});
 	}
 
 	
@@ -207,20 +246,11 @@ public class TurtleImage extends ImageView {
 		return item;
 	}
 	
-	private void animatedMove(Transition transition) {
-		while (moving) {
-			//busy-wait
-		}
-		transition.play();
-		transition.setOnFinished(finished -> {
-			moving = false;
-		});
-	}
-	
+
 	
 	private Transition createRotateTransition(double destination) {
 		double distance = Math.abs(this.getRotate() - destination);
-		RotateTransition rt = new RotateTransition(Duration.millis(distance / mySpeed), this);
+		RotateTransition rt = new RotateTransition(Duration.millis(distance / (2*mySpeed)), this);
 		rt.setToAngle(destination);
 		return rt;
 	}

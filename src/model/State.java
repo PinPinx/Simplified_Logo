@@ -1,5 +1,9 @@
 package model;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import view.View;
 
 public class State {
@@ -32,6 +36,4 @@ public class State {
 		return myViewOptions;
 	}
 
-	
-	
 }
