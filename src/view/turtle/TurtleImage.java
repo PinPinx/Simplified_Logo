@@ -13,6 +13,7 @@ import model.PenUpdate;
 import model.TurtleUpdate;
 import model.ViewUpdate;
 import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -42,8 +43,6 @@ public class TurtleImage extends ImageView {
 	private double myWidth;
 	private double myHeight;
 	private double mySpeed = 0.6;
-	private boolean moving = false;
-	private boolean rotating = false;
 	private boolean busy;
 	private PriorityQueue<TurtleUpdate> pendingUpdates;
 	private Palette myPalette;
@@ -158,6 +157,7 @@ public class TurtleImage extends ImageView {
 		
 	}
 	
+	
 	public void popUpdate(){
 		if (pendingUpdates.size()==0){
 			busy = false;
@@ -168,10 +168,18 @@ public class TurtleImage extends ImageView {
 	}
 	
 	
-
 	public void processUpdate(TurtleUpdate tu) {
 		busy = true;
 		active = !tu.isTurtleInactive();
+		
+		if (tu.isStamp()) {
+			leaveStamp();
+		}
+		
+		if (tu.isTurtleClear()) {
+			gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas()
+					.getHeight());
+		}
 		
 		myPen.updatePen(myPalette.getColor(myPen.getColorIndex()));
 		
@@ -192,22 +200,14 @@ public class TurtleImage extends ImageView {
 		
 		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()), createTranslateTransition(newPos));
 		
-		if (tu.isTurtleClear()) {
-			gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas()
-					.getHeight());
-		}
-		
-		//TODO
 	}
 	
 	private void animatedMove(Transition rotationTransition, Transition translationTransition){
-		while (moving){
-			//busy-wait
-		}
-		rotationTransition.play();
-		translationTransition.play();
-		translationTransition.setOnFinished(moved->{
-			moving = false;
+		
+		SequentialTransition sequentialTransition = new SequentialTransition(this, rotationTransition, translationTransition);
+		sequentialTransition.play();
+		
+		sequentialTransition.setOnFinished(moved->{
 			popUpdate();
 		});
 	}
@@ -401,14 +401,16 @@ public class TurtleImage extends ImageView {
 	
 	private void leaveStamp() {
 		ImageView stamp = new ImageView(myImage);
+		stamp.setFitWidth(myWidth);
+		stamp.setFitHeight(myHeight);
 		stamp.setRotate(this.getRotate());
 		stamp.setTranslateX(this.getTranslateX());
 		stamp.setTranslateY(this.getTranslateY());
 		myStamps.getChildren().add(stamp);
 	}
 	
-	private void clearStamps() {
-		myStamps.getChildren().removeAll();
+	public void clearStamps() {
+		myStamps.getChildren().remove(0, myStamps.getChildren().size());;
 	}
 	
 	public Node getStamps() {
