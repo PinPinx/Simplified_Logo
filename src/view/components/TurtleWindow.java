@@ -65,6 +65,7 @@ public class TurtleWindow extends Group implements Observer {
 		mainCanvas = new Canvas(myWidth, myHeight);
 		mainGC = mainCanvas.getGraphicsContext2D();
 		bgColorID = new SimpleIntegerProperty(initialColorIndex);
+		changeBackground(Color.GRAY);
 		
 		showInactiveTurtles = true;
 		
@@ -103,7 +104,7 @@ public class TurtleWindow extends Group implements Observer {
 	}
 	
 	private void setDefaultImagePalette(){
-		ImageIndex def_1 = new ImageIndex(0, "Turtle", (new Image(getClass().getResourceAsStream("/resources/images/turtle.gif"))));
+		ImageIndex def_1 = new ImageIndex(0, "Turtle", (new Image(getClass().getResourceAsStream("/resources/images/turtle-top-view.png"))));
 		ImageIndex def_2 = new ImageIndex(1, "Triangle", (new Image(getClass().getResourceAsStream("/resources/images/triangular.jpg"))));
 		ImageIndex def_3 = new ImageIndex(2, "Star", (new Image(getClass().getResourceAsStream("/resources/images/star.png"))));
 		myPalette.addImage(def_1, def_2, def_3);
@@ -319,6 +320,7 @@ public class TurtleWindow extends Group implements Observer {
 		
 		if(update instanceof PenUpdate){
 			PenUpdate pu = (PenUpdate) update;
+			myTurtles.get(pu.getTurtleID()).updatePalette(myPalette);
 			myTurtles.get(pu.getTurtleID()).setPenProperties(pu);
 		}
 		

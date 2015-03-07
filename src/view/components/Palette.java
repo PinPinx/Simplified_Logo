@@ -31,7 +31,7 @@ public class Palette {
 			addImage(imgx);
 			return;
 		}
-		myImagePalettes.set(index, imgx);
+		myImagePalettes.set(myImagePalettes.size()-1, imgx);
 	}
 	
 	public void updateColor(int index, ColorIndex colx){
@@ -39,7 +39,7 @@ public class Palette {
 			addColor(colx);
 			return;
 		}
-		myColorPalettes.set(myColorPalettes.size(), colx);
+		myColorPalettes.set(myColorPalettes.size()-1, colx);
 	}
 	
 	public void updateColor(int index, int r, int g , int b){

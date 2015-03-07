@@ -175,6 +175,8 @@ public class TurtleImage extends ImageView {
 		active = !tu.isTurtleInactive();
 		penUp = tu.isTurtlePenUp();
 		
+		changeImage(myPalette.getImage(tu.getShapeID()));
+		
 		if (tu.isStamp()) {
 			leaveStamp();
 		}
