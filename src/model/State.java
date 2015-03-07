@@ -8,13 +8,13 @@ import view.View;
 
 public class State {
 	private TurtleMultiple myTurtleMultiple;
-	private VariablesCollection myVariablesCollection;
+	private IVariablesCollection myVariablesCollection;
 	private CommandHistory myCommandHistory;
 	private ViewOptions myViewOptions;
 	
 	public State(){
 		this.myTurtleMultiple = new TurtleMultiple();
-		this.myVariablesCollection = new VariablesCollection();
+		this.myVariablesCollection = new ScopedVariablesCollection();
 		this.myCommandHistory = new CommandHistory();
 		this.myViewOptions = new ViewOptions();
 		myVariablesCollection.addObserver(View.getInstance().getVariablesWindow());

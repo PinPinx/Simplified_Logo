@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import exceptions.BadArgumentException;
+import model.State;
+
 public class CommandRoot extends ListNode {
 	private String myString;
 	
@@ -15,4 +18,8 @@ public class CommandRoot extends ListNode {
 		return new String(this.myString);
 	}
 	
+	@Override
+	public double execute(State myState) throws BadArgumentException{
+		return executeNodes(myState);
+	}
 }

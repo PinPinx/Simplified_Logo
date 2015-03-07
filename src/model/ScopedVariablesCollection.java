@@ -15,6 +15,7 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 	private List<Observer> myObserverList;
 	
 	public ScopedVariablesCollection(){
+		myObserverList = new ArrayList<>();
 		collectionStack = new ArrayList<VariablesCollection>();
 		collectionStack.add(new VariablesCollection());
 	}
@@ -26,6 +27,7 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 	public void exitScope(){
 		collectionStack.remove(0);
 		collectionStack.get(0).restoreScope();
+		notifyObservers();
 	}
 	
 	//TODO: Duplicated code with method getVariableValue
@@ -45,6 +47,7 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 		}
 		try {
 			addVariable(varName, "0");
+			notifyObservers();
 		} catch (VariableCreationException
 				| VariableCreationInvalidValueException e) {}
 		return getVariableValue(varName);
@@ -55,6 +58,7 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 			collectionStack.get(i).waitScopeVariable(varName);
 		}
 		collectionStack.get(0).addVariable(varName, varValue);
+		notifyObservers();
 	}
 	
 	//TODO: Duplicated code with variablesCollection
