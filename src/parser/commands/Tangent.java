@@ -14,7 +14,7 @@ public class Tangent extends UnaryNode{
 	}
 	
 	public double execute(State myState) throws BadArgumentException{
-		return Math.tan(referenceNode.execute(myState)/360.0*2.0*Math.PI);
+		return Math.tan(Math.toRadians(referenceNode.execute(myState)));
 	}
 
 }

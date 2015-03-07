@@ -36,6 +36,9 @@ public class Regex {
 		return instance;
 	}
 	
+	/**
+	 * Given file path, will clear the current language patterns and load the new ones from the file.
+	 */
 	public void changeLanguage(String language){
 		languageFileString = LanguageController.getCommandLanguagesFilePath(language);
 		commandPatterns.clear();
@@ -45,7 +48,10 @@ public class Regex {
 	private boolean match (String input, Pattern regex) {
 		return regex.matcher(input).matches();
 	}
-
+	
+	/**
+	 * Returns the general type of a string, general type being eg. comment, command, variable, etc.
+	 */
 	public GeneralType getType(String s){
 		for (Entry<String, Pattern> p : this.generalPatterns) {
 			if (match(s, p.getValue())) {
@@ -55,6 +61,9 @@ public class Regex {
 		return GeneralType.OTHER;
 	}
 	
+	/**
+	 * For a string that's of generalType.Command, this will return the string class name of the command.
+	 */
 	public String getCommandType(String s) throws CommandNameNotFoundException{
 		for (Entry<String, Pattern> p : this.commandPatterns) {
 			if (match(s, p.getValue())) {
@@ -63,7 +72,11 @@ public class Regex {
 		}
 		throw new CommandNameNotFoundException("This command "+s+" is not a preset command.");
 	}
-
+	
+	/**
+	 * If given the class name of a command, like "MakeVariable", will return a string of
+	 * the current language's command string (eg. "make" if the language is english).
+	 */
 	public String getCommandString(String commandName) throws CommandNameNotFoundException{
 		for (Entry<String, Pattern> p : this.commandPatterns) {
 			if (commandName.equalsIgnoreCase(p.getKey())) {
@@ -85,10 +98,6 @@ public class Regex {
 					Pattern.compile(regex, Pattern.CASE_INSENSITIVE)));
 		}
 		return patterns;
-	}
-	
-	public static void main(String[] args) throws CommandNameNotFoundException{
-		System.out.println(Regex.getInstance().getCommandString("forward"));
 	}
 }
 

@@ -18,6 +18,10 @@ public class CommandRoot extends ListNode {
 		return new String(this.myString);
 	}
 	
+	public List<SyntaxNode> getChildren(){
+		return myList;
+	}
+	
 	@Override
 	public double execute(State myState) throws BadArgumentException{
 		return executeNodes(myState);
