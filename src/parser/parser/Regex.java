@@ -1,19 +1,15 @@
 package parser.parser;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Enumeration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import view.components.LanguageController;
-import exceptions.CommandNameNotFoundException;
-import model.Model;
+import exceptions.CommandNameNotFoundException;;
 
 
 public class Regex {

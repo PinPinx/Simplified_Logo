@@ -2,7 +2,6 @@ package parser.nodes;
 
 import java.util.Stack;
 
-import view.View;
 import exceptions.BadArgumentException;
 
 public abstract class UnaryNode extends SyntaxNode {

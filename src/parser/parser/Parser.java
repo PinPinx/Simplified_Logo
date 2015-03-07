@@ -1,16 +1,10 @@
 package parser.parser;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
 import java.util.Stack;
 
-import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;
 import exceptions.SyntaxErrorWrongFormat;
-import exceptions.UDCommandNotFoundException;
 import parser.commands.ToData;
-import parser.commands.ToInstance;
 import parser.nodes.*;
 import model.State;
 
@@ -28,37 +22,15 @@ public class Parser {
 		for(int i = commandStream.length-1; i >= 0; i--){
 			switch(Regex.getInstance().getType(commandStream[i])){
 			case COMMAND:
-				String className;
-				Class<?> cls;
-				try {
-					className = Regex.getInstance().getCommandType(commandStream[i]);
-					String str = "parser.commands." + className;
-					cls = Class.forName(str);
-				} catch (ClassNotFoundException | CommandNameNotFoundException e) {
-						if(i>0 && commandStream[i-1].equalsIgnoreCase("to")){
-							inputStack.peek().push(new ToData(commandStream[i], isolateToDeclaration(commandStream,i-1), inputStack.peek()));
-							
+			try {
+				inputStack.peek().push(CommandFactory.getInstance().createCommand(commandStream[i], inputStack.peek()));
+			} catch (ClassNotFoundException | CommandNameNotFoundException e) {
+						inputStack.peek().push(ToFactory.getInstance().
+								createTo(commandStream, myActiveState, inputStack.peek(), i));
+						if (inputStack.peek().peek() instanceof ToData)
 							i--;
-							continue;
-						}
-						try{
-							ToData data = myActiveState.getCommandHistory().getUDCommand(commandStream[i]);
-							inputStack.peek().push(new ToInstance(data, inputStack.peek()));
-							continue;
-						} catch (UDCommandNotFoundException e1){
-							throw new CommandNameNotFoundException("Command "+commandStream[i]+" is neither a valid preset command nor user defined command.");
-						}
-				}
-				
-				try {
-					inputStack.peek().push((SyntaxNode) cls.getConstructors()[0].newInstance(inputStack.peek()));
-				} catch (InstantiationException | IllegalAccessException
-						| IllegalArgumentException
-						| InvocationTargetException | SecurityException e) {
-						throw new CommandNameNotFoundException(e.getMessage()+" message");
-//					throw new CommandNameNotFoundException("Command "+commandStream[i]+" has broken our program. Anarchy!");
-				}			
-				
+			}
+			break;
 			case COMMENT:
 				break;
 			case CONSTANT:
@@ -70,7 +42,11 @@ public class Parser {
 			case LISTEND: case GROUPEND:
 				inputStack.push(new Stack<SyntaxNode>());
 				break;
-			case LISTSTART: case GROUPSTART:
+			case GROUPSTART:
+				Stack<SyntaxNode> groupStack = inputStack.pop();
+				inputStack.peek().push(new GroupNode(groupStack));
+				break;
+			case LISTSTART: 
 				Stack<SyntaxNode> listStack = inputStack.pop();
 				inputStack.peek().push(new ListNode(listStack));
 				break;
@@ -80,33 +56,5 @@ public class Parser {
 			}
 		}
 		return new CommandRoot(command, inputStack.peek());
-	}
-	
-	/**
-	 * Kind of a hacky solution to go through the command stream starting at a command "To"
-	 * and recreating the "To name [ variables ] [ commands ]" string.
-	 */
-	private String isolateToDeclaration(String[] commandStream, int toIndex){
-		StringBuilder b = new StringBuilder();
-		int listStartCounter = 0;
-		int numLists = 0;
-		for(int i = toIndex; i < commandStream.length; i++){
-			b.append(commandStream[i]);
-			b.append(" ");
-			
-			GeneralType type = Regex.getInstance().getType(commandStream[i]);
-			if(type == GeneralType.LISTSTART){
-				listStartCounter++;
-			} else if (type == GeneralType.LISTEND){
-				listStartCounter--;
-				if(listStartCounter == 0){
-					numLists++;
-					if(numLists == 2){
-						break;
-					}
-				}
-			}
-		}
-		return b.toString();
 	}
 }
