@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -81,62 +82,32 @@ public class TurtleMultiple implements Turtle {
 
 	@Override
 	public double addDegree(double degree){
-		double ret = 0;
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				setLastTurtle(t);
-				ret = t.addDegree(degree);
-			}
-		}
-		return ret;
+		getStream().filter(s -> s.getID()!=lastActingTurtle.getID()).forEach(s->s.addDegree(degree));
+		return lastActingTurtle.addDegree(degree);
 	}
 
 	@Override
 	public double moveDistance(double distance){
-		double ret = 0;
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				setLastTurtle(t);
-				ret = t.moveDistance(distance);
-			}
-		}
-		return ret;
+		getStream().filter(s -> s.getID()!=lastActingTurtle.getID()).forEach(s->s.moveDistance(distance));
+		return lastActingTurtle.moveDistance(distance);
 	}
 
 	@Override
 	public double setHeading(double degrees){
-		double ret = 0;
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				ret = t.setHeading(degrees);
-				setLastTurtle(t);
-			}
-		}
-		return ret;
+		getStream().filter(s -> s.getID()!=lastActingTurtle.getID()).forEach(s->s.setHeading(degrees));
+		return lastActingTurtle.setHeading(degrees);
 	}
 	
 	@Override
 	public double setTowards(double x, double y){
-		double ret = 0;
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				ret = t.setTowards(x, y);
-				setLastTurtle(t);
-			}
-		}
-		return ret;
+		getStream().filter(s -> s.getID()!=lastActingTurtle.getID()).forEach(s->s.setTowards(x, y));
+		return lastActingTurtle.setTowards(x, y);
 	}
 	
 	@Override
 	public double moveToPosition(double x, double y) {
-		double d = 0;
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				d = t.moveToPosition(x, y);
-				setLastTurtle(t);
-			}
-		}
-		return d;
+		getStream().filter(s -> s.getID()!=lastActingTurtle.getID()).forEach(s->s.moveToPosition(x, y));
+		return lastActingTurtle.moveToPosition(x, y);
 	}
 
 	@Override
@@ -184,13 +155,7 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	public List<Integer> activeTurtleIDs(){
-		ArrayList<Integer> returner = new ArrayList<Integer>();
-		for(TurtleSingle t : myTurtleMap.values()){
-			if (!t.getInactive()){
-				returner.add(t.getID());
-			}
-		}
-		return returner;
+		return getStream().map(s-> s.getID()).collect(Collectors.toList());
 	}
 	
 	public int getID(){

@@ -17,6 +17,9 @@ public class ViewOptions implements ViewUpdate, ViewInitializer, Observable{
 	public ViewOptions(){
 		this.myObservers = new ArrayList<>();
 		backgroundIDProperty = new SimpleIntegerProperty(0);
+	}
+	
+	public void initialize(){
 		notifyObservers((ViewInitializer)this);
 	}
 	

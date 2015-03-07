@@ -21,6 +21,7 @@ public class State {
 		myCommandHistory.addObserver(View.getInstance().getCommandHistoryWindow());
 		myCommandHistory.addObserver(View.getInstance().getUDCommandsWindow());
 		myViewOptions.addObserver(View.getInstance().getTurtleWindow());
+		myViewOptions.initialize();
 	}
 	
 	public TurtleMultiple getTurtle() {
