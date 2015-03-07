@@ -57,7 +57,7 @@ public class Model {
 		myParser.setActiveState(myActiveState);
 	}
 	
-	public String saveLibrary(int workspaceID, File f){
+	public String saveLibrary(int workspaceID){
 		StringBuilder b = new StringBuilder();
 		b.append(myStates.get(workspaceID).getCommandHistory().saveUDCommands());
 		b.append(" \n");
