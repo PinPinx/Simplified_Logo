@@ -265,7 +265,7 @@ public class TurtleWindow extends Group implements Observer {
 				myTurtles.get(id).hide(false);
 			}
 			
-			myTurtles.get(id).update(tu);
+			myTurtles.get(id).addUpdate(tu);
 		}
 		
 		if(update instanceof ViewUpdate){

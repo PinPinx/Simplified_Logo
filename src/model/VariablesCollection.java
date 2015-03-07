@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import exceptions.DuplicateVariableException;
 import exceptions.VariableCreationException;
 import exceptions.VariableCreationInvalidValueException;
 import exceptions.VariableNotFoundException;
@@ -11,78 +10,122 @@ import exceptions.VariableWrongTypeException;
 import javafx.beans.property.StringProperty;
 import view.components.Observer;
 
-public class VariablesCollection implements Observable {
+public class VariablesCollection implements IVariablesCollection{
 	private List<Variable> myVariableList;
+	private List<Variable> waitingVariableList;
 	private List<Observer> myObserverList;
 	
 	public VariablesCollection(){
 		this.myVariableList = new ArrayList<>();
 		this.myObserverList = new ArrayList<>();
+		waitingVariableList = new ArrayList<>();
 	}
 	
+	//TODO: Duplicated code with method getVariableValue
+	public boolean containsVariable(String varName){
+		for(Variable v : myVariableList){
+			if(v.getNameProperty().get().equals(varName)){
+				return true;
+			}
+		}
+		return false;
+	}
+		
+	/* (non-Javadoc)
+	 * @see model.IVariablesCollection#getVariableValue(java.lang.String)
+	 */
+	@Override
 	public Object getVariableValue(String varName){
-		for(Variable v : myVariableList){
-			if(v.getNameProperty().get().equals(varName)){
-				return v.getValue();
-			}
-		}
-		//variable not found
 		try {
-			addVariable(varName, "0");
-		} catch (VariableCreationException
-				| VariableCreationInvalidValueException e) {}//not possible but throw new VariableNotFoundException(); TODO
-		
-		return getVariableValue(varName);
-		
-	}
-	
-	public void addVariable(String varName, String varValue) throws VariableCreationException, VariableCreationInvalidValueException{
-		for(Variable var : myVariableList){
-			if(var.getNameProperty().get().equals(varName)){
-				try {
-					var.setValue(varValue);
-					notifyObservers();
-					return;
-				} catch (VariableWrongTypeException e) {
-					try {
-						deleteVariable(varName);
-						break;
-					} catch (VariableNotFoundException e1) {} //never happens TODO
-					//addVariable(varName, varValue);
-				}
-			}
+			Variable v = findVariable(varName);
+			return v.getValue();
+		} catch (VariableNotFoundException e){
+			try {
+				addVariable(varName, "0");
+			} catch (VariableCreationException
+					| VariableCreationInvalidValueException e1) {}
 		}
-		Variable newVar = VariableFactory.createVariable(varName, varValue);
-		myVariableList.add(newVar);
-		notifyObservers();
+		return getVariableValue(varName);
 	}
 	
-	public void deleteVariable(String varName) throws VariableNotFoundException{
-		for(Variable v : myVariableList){
-			if(v.getNameProperty().get().equals(varName)){
-				myVariableList.remove(v);
+	/* (non-Javadoc)
+	 * @see model.IVariablesCollection#addVariable(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void addVariable(String varName, String varValue) throws VariableCreationException, VariableCreationInvalidValueException{
+			try {
+				Variable var = findVariable(varName);
+				var.setValue(varValue);
 				notifyObservers();
 				return;
+			} catch (VariableNotFoundException e) {
+				Variable newVar = VariableFactory.createVariable(varName, varValue);
+				myVariableList.add(newVar);
+				notifyObservers();
+			} catch (VariableWrongTypeException e) {
+				throw new VariableCreationException("You're adding/setting a variable in the wrong way somehow.");
 			}
-		}
-		throw new VariableNotFoundException("Variable "+varName+" does not exist. As such, it cannot be deleted.");
+			
 	}
 	
-
-	@Override
-	public void notifyObservers() {
+	public void waitScopeVariable(String varName){
+		try{
+			Variable var = findVariable(varName);
+			myVariableList.remove(var);
+			waitingVariableList.add(var);
+		}
+		catch (VariableNotFoundException e){}
+	}
+	
+	public void restoreScope(){
+		for (Variable var: waitingVariableList){
+			myVariableList.add(var);
+		}
+		waitingVariableList.clear();
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.IVariablesCollection#deleteVariable(java.lang.String)
+	 */
+	private void deleteVariable(String varName) throws VariableNotFoundException{
+		Variable var = findVariable(varName);
+		myVariableList.remove(var);
+		notifyObservers();
+		return;
+	}
+	
+	private Variable findVariable(String varName) throws VariableNotFoundException{
+		for (Variable v : myVariableList){
+			if(v.getNameProperty().get().equals(varName))
+				return v;
+		}
+		throw new VariableNotFoundException("Variable " + varName + " does not exist.");
+	}
+	
+	public VariablesCollectionUpdate produceUpdate(){
 		List<StringProperty> variableDisplayProperties = new ArrayList<>();
 		List<StringProperty> variableNameProperties = new ArrayList<>();
 		for(Variable v : myVariableList){
 			variableDisplayProperties.add(v.getStringProperty());
 			variableNameProperties.add(v.getNameProperty());
 		}
-		VariablesCollectionUpdate vcu = new VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
+		return new VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
+	}
+	
+	/* (non-Javadoc)
+	 * @see model.IVariablesCollection#notifyObservers()
+	 */
+	@Override
+	public void notifyObservers() {
+		VariablesCollectionUpdate vcu = produceUpdate();
 		for(Observer o : myObserverList){
 			o.update(vcu);
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IVariablesCollection#addObserver(view.components.Observer)
+	 */
 	@Override
 	public void addObserver(Observer o) {
 		myObserverList.add(o);
