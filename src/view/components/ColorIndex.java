@@ -22,6 +22,12 @@ public class ColorIndex {
 		myName = name;
 		myColor = Color.rgb(awtColor.getRed(), awtColor.getGreen(), awtColor.getBlue());
 	}
+	
+	public ColorIndex(int ind, int r, int g, int b){
+		myIndex = ind;
+		myName = "Palette: "+ind;
+		myColor = Color.rgb(r, g, b);
+	}
 
 	public void rename(String newName){
 		myName = newName;

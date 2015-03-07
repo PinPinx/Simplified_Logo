@@ -42,6 +42,11 @@ public class Palette {
 		myColorPalettes.set(myColorPalettes.size(), colx);
 	}
 	
+	public void updateColor(int index, int r, int g , int b){
+		ColorIndex colx = new ColorIndex(index, r, g, b);
+		updateColor(index, colx);
+	}
+	
 	public Image getImage(int index){
 		if (index > myImagePalettes.size()){
 			return null;
