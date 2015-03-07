@@ -55,7 +55,7 @@ public class Model {
 	}
 	
 	public void saveUDCommands(int workspaceID){
-		myStates.get(workspaceID);
+		List<String> udCommandDeclarations = myStates.get(workspaceID).getCommandHistory().saveUDCommands();
 	}
 
 }

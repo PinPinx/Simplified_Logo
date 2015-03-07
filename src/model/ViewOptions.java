@@ -3,21 +3,26 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import exceptions.InvalidViewSettingException;
 import view.components.Observer;
 
-public class ViewOptions implements ViewUpdate, Observable{
-	private int backgroundID,
-		paletteR, paletteG, paletteB;
+public class ViewOptions implements ViewUpdate, ViewInitializer, Observable{
+	private IntegerProperty backgroundIDProperty;
+	private int paletteR, paletteG, paletteB, paletteIndex;
 	private boolean isClear, isClearStamps;
 	private List<Observer> myObservers;
 
 	public ViewOptions(){
 		this.myObservers = new ArrayList<>();
+		backgroundIDProperty = new SimpleIntegerProperty(0);
 	}
 	
-	public int getBackgroundID() {
-		return backgroundID;
+	public IntegerProperty getBackgroundID() {
+		IntegerProperty copy = new SimpleIntegerProperty(backgroundIDProperty.get());
+		backgroundIDProperty.bindBidirectional(copy);
+		return copy;
 	}
 	public int getPaletteB() {
 		return paletteB;
@@ -39,8 +44,7 @@ public class ViewOptions implements ViewUpdate, Observable{
 	}
 
 	public void setBackgroundID(int backgroundID) {
-		this.backgroundID = backgroundID;
-		notifyObservers();
+		backgroundIDProperty.set(backgroundID);
 	}
 	public void setClear(boolean isClear) {
 		this.isClear = isClear;
@@ -50,13 +54,14 @@ public class ViewOptions implements ViewUpdate, Observable{
 		this.isClearStamps = isClearStamps;
 		notifyObservers();
 	}
-	public void setPaletteB(int r, int g, int b) throws InvalidViewSettingException {
+	public void setPaletteB(int r, int g, int b, int index) throws InvalidViewSettingException {
 		if(!((r>=0&&r<256)&&(b>=0&&b<256)&&(g>=0&&g<256))){
 			throw new InvalidViewSettingException("RGB values must be between 0 and 255 inclusive.");
 		}
 		this.paletteB = b;
 		this.paletteG = g;
 		this.paletteR = r;
+		this.paletteIndex = index;
 		notifyObservers();
 	}
 
@@ -76,6 +81,11 @@ public class ViewOptions implements ViewUpdate, Observable{
 		for(Observer o : myObservers){
 			o.update((ViewUpdate)this);
 		}
+	}
+
+	@Override
+	public int getPaletteIndex() {
+		return paletteIndex;
 	}
 	
 	
