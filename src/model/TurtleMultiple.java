@@ -1,5 +1,6 @@
 package model;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ public class TurtleMultiple implements Turtle {
 		TurtleSingle newTurtle = new TurtleSingle(turtleID);
 		myTurtleMap.put(turtleID,newTurtle);
 		setLastTurtle(newTurtle);
-		newTurtle.addObserver(View.getInstance().getTurtleWindow());
+//		newTurtle.addObserver(View.getInstance().getTurtleWindow());
 		newTurtle.createPen();
 		newTurtle.notifyObservers();
 	}
@@ -238,6 +239,8 @@ public class TurtleMultiple implements Turtle {
 
 	@Override
 	public void setStamp(boolean b) {
+		System.out.println("HELLO");
+
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
 				t.setStamp(b);
@@ -260,5 +263,23 @@ public class TurtleMultiple implements Turtle {
 	public int getPenColor() {
 		return lastActingTurtle.getPenColor();
 	}
-
+	
+	public void apply(String methodName){
+		java.lang.reflect.Method method;
+		 try {
+			method = this.getClass().getMethod(methodName, Object.class);
+		} catch (NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+			return;
+		}
+		 try {
+			method.invoke(this);
+		} catch (IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+		}
+	}
+	public static void main(String[] args){
+		TurtleMultiple t = new TurtleMultiple();
+		t.apply("setStamp");
+	}
 }

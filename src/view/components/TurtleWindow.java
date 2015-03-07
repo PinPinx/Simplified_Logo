@@ -287,6 +287,8 @@ public class TurtleWindow extends Group implements Observer {
 			
 			changeBackground(myPalette.getColor(bgColorID.getValue()));
 			
+			myPalette.updateColor(vu.getPaletteIndex(), vu.getPaletteR(), vu.getPaletteG(), vu.getPaletteB());
+			
 			for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
 				turtle.getValue().updatePalette(myPalette);
 			}

@@ -75,6 +75,7 @@ public class Parser {
 				inputStack.peek().push(new ListNode(listStack));
 				break;
 			case OTHER: default:
+				if(commandStream[i].length()==0){break;}
 				throw new SyntaxErrorWrongFormat("Input "+commandStream[i]+" is not valid according to our syntax.");
 			}
 		}

@@ -16,7 +16,7 @@ public class Right extends SimpleTurtleCommand {
 	//TODO: Duplicated code with left
 	@Override
 	public double execute(State myState) throws BadArgumentException {
-		return myState.getTurtle().addDegree(referenceNode.execute(myState));
+		return myState.getTurtle().addDegree(-1*referenceNode.execute(myState));
 	}
 
 }
