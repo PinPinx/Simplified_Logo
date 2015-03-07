@@ -42,7 +42,7 @@ public class TurtleImage extends ImageView {
 	private int myID;
 	private double myWidth;
 	private double myHeight;
-	private double mySpeed = 0.6;
+	private double mySpeed;
 	private boolean busy;
 	private PriorityQueue<TurtleUpdate> pendingUpdates;
 	private Palette myPalette;
@@ -68,6 +68,7 @@ public class TurtleImage extends ImageView {
 	private final static String DEFAULT_IMAGEPATH = "/resources/images/turtle-top-view.png";
 	private final static double DEFAULT_WIDTH = 30;
 	private final static double DEFAULT_HEIGHT = 30;
+	private final static double DEFAULT_SPEED = 0.6;
 	
 	public TurtleImage(GraphicsContext gcon, int id) {
 		this(gcon, id, DEFAULT_IMAGEPATH, DEFAULT_XPOS, DEFAULT_YPOS, DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -79,6 +80,7 @@ public class TurtleImage extends ImageView {
 		myImage = new Image(getClass().getResourceAsStream(imagePath));
 		gc = gcon;
 		myID = id;
+		mySpeed = DEFAULT_SPEED;
 		myPen = new TurtlePen(gc);
 		myStamps = new Group();
 		
@@ -103,32 +105,25 @@ public class TurtleImage extends ImageView {
 
 	
 	public void hide(boolean hidden) {
-		if (hidden) {
-			this.setImage(null);
-			visible = !hidden;
-			return;
-		}
-		
-		this.setImage(myImage);
 		visible = !hidden;
+		Image next = hidden? null:myImage;
+		this.setImage(next);
 	}
 
-	
-	public void changeImage(String imagePath) {
-		myImage = new Image(imagePath);
-		this.setImage(myImage);
-	}
-
-	public void changeImage(File file) {
-		myImage = new Image(file.toURI().toString());
-		this.setImage(myImage);
-	}
 	
 	public void changeImage(Image img){
 		myImage = img;
 		this.setImage(myImage);
 	}
 
+	public void changeImage(String imagePath) {
+		this.changeImage(new Image(imagePath));
+	}
+	
+	public void changeImage(File file) {
+		this.changeImage(new Image(file.toURI().toString()));
+	}
+	
 	public void resize(double width, double height) {
 		myWidth = width;
 		myHeight = height;
@@ -137,16 +132,14 @@ public class TurtleImage extends ImageView {
 	}
 	
 
-	
 	public void setPenProperties(PenUpdate pu){
 		myPen.setProperties(pu.getPenColorIDProperty(),pu.getPenSizeProperty());
 		myPen.updatePen(myPalette.getColor(myPen.getColorIndex()));
 	}
 	
-	public void updatePalatte(Palette p){
+	public void updatePalette(Palette p){
 		myPalette = p;
 	}
-	
 	
 	public void addUpdate(TurtleUpdate tu){
 		pendingUpdates.add(tu);
@@ -159,10 +152,12 @@ public class TurtleImage extends ImageView {
 	
 	
 	public void popUpdate(){
+		
 		if (pendingUpdates.size()==0){
 			busy = false;
 		}
-		if (pendingUpdates.size()>0){
+		
+		else {
 			processUpdate(pendingUpdates.poll());
 		}
 	}
