@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import parser.parser.Regex;
+import exceptions.CommandNameNotFoundException;
 import exceptions.VariableCreationException;
 import exceptions.VariableCreationInvalidValueException;
 import exceptions.VariableNotFoundException;
@@ -144,6 +146,26 @@ public class VariablesCollection implements IVariablesCollection{
 	@Override
 	public void exitScope() {
 		//Do nothing
+	}
+
+	@Override
+	public String saveState() {
+		StringBuilder b = new StringBuilder();
+		String declare;
+		try {
+			declare = Regex.getInstance().getCommandString("make");
+		} catch (CommandNameNotFoundException e) {
+			return "";
+		}
+		for(Variable v : myVariableList){
+			b.append(declare);
+			b.append(" :");
+			b.append(v.getNameProperty().get());
+			b.append(" ");
+			b.append(v.getValue().toString());
+			b.append("\n");
+		}
+		return b.toString();
 	}
 	
 }

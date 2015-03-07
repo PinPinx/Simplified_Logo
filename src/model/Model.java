@@ -57,8 +57,12 @@ public class Model {
 		myParser.setActiveState(myActiveState);
 	}
 	
-	public void saveUDCommands(int workspaceID, File f){
-		List<String> udCommandDeclarations = myStates.get(workspaceID).getCommandHistory().saveUDCommands();
+	public String saveLibrary(int workspaceID, File f){
+		StringBuilder b = new StringBuilder();
+		b.append(myStates.get(workspaceID).getCommandHistory().saveUDCommands());
+		b.append(" \n");
+		b.append(myStates.get(workspaceID).getVariablesCollection().saveState());
+		return b.toString();
 	}
 	
 	private void writeToFile(File f, String... strs) throws IOException{
@@ -68,7 +72,6 @@ public class Model {
 			fw.append(' ');
 		}
 		fw.close();
-		//fw.write();
 	}
 
 }

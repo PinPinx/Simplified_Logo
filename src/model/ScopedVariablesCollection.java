@@ -87,4 +87,9 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 			observer.update(update);
 		}
 	}
+
+	@Override
+	public String saveState() {
+		return collectionStack.get(0).saveState();
+	}
 }
