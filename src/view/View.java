@@ -1,5 +1,17 @@
 package view;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+import exceptions.BadArgumentException;
+import exceptions.CommandNameNotFoundException;
+import exceptions.SyntaxErrorWrongFormat;
 import model.Model;
 import parser.parser.Regex;
 import view.components.SLogoMenuBar;
@@ -7,8 +19,10 @@ import view.components.SLogoWorkspace;
 import view.components.TurtleWindow;
 import view.dialogs.DialogBox;
 import view.dialogs.HelpDialogBox;
+import view.dialogs.InputDialogBox;
 import view.dialogs.LanguagesDialogBox;
 import view.dialogs.MessageDialogBox;
+import view.dialogs.TextInputDialogBox;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import view.listwindows.CommandsHistoryWindow;
@@ -21,6 +35,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -93,7 +109,7 @@ public class View {
 		top.getChildren().addAll(myMenuBar, myTabPane);
 		myBorderPane.setTop(top);
 	}
-
+	
 	private void generateProgramDialogs() {
 		myHelpBox = new HelpDialogBox();
 		myLanguagesBox = new LanguagesDialogBox();
@@ -133,6 +149,71 @@ public class View {
 	public void showView() {
 		myStage.show();
 	}
+		
+	public void saveCurrentLibrary() {
+		
+		String fullPath = promptFileToSave();
+		
+		BufferedWriter writer = null;
+		try
+		{
+		    writer = new BufferedWriter( new FileWriter(fullPath));
+		    writer.write(Model.getInstance().saveLibrary(((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getWorkspaceID()));
+		}
+		catch ( IOException e)
+		{
+		}
+		
+		finally
+		{
+		    try
+		    {
+		        if ( writer != null)
+		        writer.close();
+		    }
+		    catch ( IOException e)
+		    {
+		    }
+		}
+        
+		showDialog("UD commands saved to " + fullPath);
+	}
+	
+	public void loadLibrary() {
+		FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select library file to load");
+        File selectedFile = fileChooser.showOpenDialog(myStage);
+        
+        byte[] buffer = new byte[(int) selectedFile.length()];
+        BufferedInputStream f = null;
+        try {
+            f = new BufferedInputStream(new FileInputStream(selectedFile.getAbsolutePath()));
+            f.read(buffer);
+            if (f != null) try { f.close(); } catch (IOException ignored) { }
+        } catch (IOException ignored) { System.out.println("File not found or invalid path.");}
+        
+        String read = new String(buffer);
+        try {
+			Model.getInstance().parse(read);
+		} catch (CommandNameNotFoundException | SyntaxErrorWrongFormat
+				| BadArgumentException e) {
+		}
+	}
+	
+	private String promptFileToSave() {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose directory to save library");
+		File selectedDirectory = directoryChooser.showDialog(myStage);
+		
+		InputDialogBox fileNamePrompt = new TextInputDialogBox("Enter file name to save:");
+		String fileName = (String) fileNamePrompt.showInputDialog();
+		
+		String fullPath = selectedDirectory.getAbsolutePath() + "/" + fileName + ".txt";
+		return fullPath;
+	}
+	
+	
+	
 	
 	public TurtleWindow getTurtleWindow() {
 		return ((SLogoWorkspace) myTabPane.getTabs().get(myActiveTab)).getTurtleWindow();

@@ -201,7 +201,7 @@ public class TurtleWindow extends Group implements Observer {
 		gc.put(id, layerGC);
 		
 		TurtleImage turtle = new TurtleImage(layerGC, id);
-		turtle.updatePalatte(myPalette);
+		turtle.updatePalette(myPalette);
 		myTurtles.put(id, turtle);
 		myTurtles.get(id).hide(!showInactiveTurtles);
 		myLayers.getChildren().add(layer);
