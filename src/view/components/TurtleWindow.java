@@ -67,8 +67,7 @@ public class TurtleWindow extends Group implements Observer {
 		
 		addTurtle();
 		
-		// TODO:
-		activeTurtleID = 0;
+		activeTurtleID = Collections.min(myTurtles.keySet());
 		
 	}
 	
@@ -97,7 +96,7 @@ public class TurtleWindow extends Group implements Observer {
 	
 	private void setDefaultImagePalette(){
 		ImageIndex def_1 = new ImageIndex(0, "Turtle", (new Image(getClass().getResourceAsStream("/resources/images/turtle.gif"))));
-		ImageIndex def_2 = new ImageIndex(1, "Traingle", (new Image(getClass().getResourceAsStream("/resources/images/triangular.jpg"))));
+		ImageIndex def_2 = new ImageIndex(1, "Triangle", (new Image(getClass().getResourceAsStream("/resources/images/triangular.jpg"))));
 		ImageIndex def_3 = new ImageIndex(2, "Star", (new Image(getClass().getResourceAsStream("/resources/images/star.png"))));
 		myPalette.addImage(def_1, def_2, def_3);
 	}
@@ -181,7 +180,6 @@ public class TurtleWindow extends Group implements Observer {
 		}
 		
 		addTurtle(i);
-		myTurtles.get(i).hide(!showInactiveTurtles);
 	}
 	
 
@@ -192,11 +190,12 @@ public class TurtleWindow extends Group implements Observer {
 		gc.put(id, layerGC);
 		
 		TurtleImage turtle = new TurtleImage(layerGC, id);
-		
 		myTurtles.put(id, turtle);
+		myTurtles.get(id).hide(!showInactiveTurtles);
 		myLayers.getChildren().add(layer);
 		myTImages.getChildren().add(turtle);
 		
+		this.getChildren().add(turtle.getStamps());
 	}
 	
 	
@@ -266,7 +265,7 @@ public class TurtleWindow extends Group implements Observer {
 				myTurtles.get(id).hide(false);
 			}
 			
-			myTurtles.get(id).update(tu);
+			myTurtles.get(id).addUpdate(tu);
 		}
 		
 		if(update instanceof ViewUpdate){

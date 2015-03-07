@@ -16,7 +16,7 @@ public class SetBackground extends UnaryNode {
 	@Override
 	public double execute(State myState) throws BadArgumentException{
 		int ret = (int)referenceNode.execute(myState);
-		myState.getTurtle().changeViewOptions(vo -> vo.setBackgroundID(ret));
+		myState.getViewOptions().setBackgroundID(ret);
 		return ret;
 	}
 

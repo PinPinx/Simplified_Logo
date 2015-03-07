@@ -18,7 +18,7 @@ public class SetPenColor extends UnaryNode {
 	@Override
 	public double execute(State myState) throws BadArgumentException{
 		int ret = (int)referenceNode.execute(myState);
-		myState.getTurtle().changeViewOptions(vo -> vo.setPenColorID(ret));
+		myState.getTurtle().changePen(vo -> vo.setPenColorID(ret));
 		return ret;
 	}
 

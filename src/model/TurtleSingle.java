@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import exceptions.BadArgumentException;
-import parser.nodes.SyntaxNode;
 import view.components.Observer;
 
 public class TurtleSingle implements Turtle {
@@ -12,7 +10,9 @@ public class TurtleSingle implements Turtle {
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
 	private boolean isPenUp, isHidden, isInactive;
-	private ViewOptions myViewOptions;
+	private Pen myPen;
+	private int shapeID; private boolean isStamp;
+
 
 	private List<Observer> myObservers;
 	
@@ -22,7 +22,11 @@ public class TurtleSingle implements Turtle {
 		myAngle = new Angle(0);
 		myObservers = new ArrayList<>();
 		ID = id;
-		myViewOptions = new ViewOptions();
+	}
+	
+	public void createPen(){
+		myPen = new Pen();
+		notifyObservers((PenUpdate)myPen);
 	}
 	
 	public int getID(){
@@ -50,7 +54,6 @@ public class TurtleSingle implements Turtle {
 	public double addDegree(double degrees) {
 		double param = degrees;
 		myAngle.addAngleValue(param);
-		myOldCoordinates = new Coordinates(myCoordinates);
 		notifyObservers();
 		return param;
 	}
@@ -124,7 +127,6 @@ public class TurtleSingle implements Turtle {
 	@Override
 	public void addObserver(Observer o) {
 		myObservers.add(o);
-		myViewOptions.addObserver(o);
 	}
 
 	@Override
@@ -136,6 +138,13 @@ public class TurtleSingle implements Turtle {
 	public void notifyObservers() {
 		for(Observer o : myObservers){
 			o.update(new TurtleUpdate(this));
+		}
+		myOldCoordinates = new Coordinates(myCoordinates);
+	}
+	
+	public void notifyObservers(Object obj) {
+		for(Observer o : myObservers){
+			o.update(obj);
 		}
 	}
 
@@ -161,11 +170,36 @@ public class TurtleSingle implements Turtle {
 		return returner;
 	}
 	
-	public void changeViewOptions(ViewChanger vc){
-		vc.change(myViewOptions);
+	public void changePen(PenChanger vc){
+		vc.change(myPen);
+		notifyObservers();
 	}
 	
 	public void change(TurtleSingleChanger tsc){
 		tsc.change(this);
+	}
+	
+	public int getShapeID() {
+		return shapeID;
+	}
+	public boolean getStamp() {
+		boolean b = isStamp;
+		isStamp = false;
+		return b;
+	}
+	public void setShapeID(int ID){
+		shapeID = ID;
+		notifyObservers();
+	}
+
+	@Override
+	public void setStamp(boolean b) {
+		isStamp = b;
+		notifyObservers();
+	}
+
+	@Override
+	public int getPenColor() {
+		return myPen.getPenColorIDProperty().get();
 	}
 }

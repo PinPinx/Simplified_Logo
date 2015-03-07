@@ -2,12 +2,13 @@ package view.turtle;
 
 import java.io.File;
 import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
 import view.components.Palette;
-import view.components.TurtleWindow;
 import model.TurtleUpdate;
 import model.ViewUpdate;
 import javafx.animation.RotateTransition;
@@ -16,6 +17,8 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Menu;
@@ -39,12 +42,15 @@ public class TurtleImage extends ImageView {
 	private double myHeight;
 	private double mySpeed = 0.6;
 	private boolean moving = false;
+	private boolean rotating = false;
 	private boolean busy;
 	private PriorityQueue<TurtleUpdate> pendingUpdates;
 	
 	private Boolean active;
 	private Boolean visible;
 	private Boolean penUp;
+	
+	private Group myStamps;
 	
 	// items in the pop-up context menu
 	private ContextMenu contextMenu;
@@ -73,6 +79,7 @@ public class TurtleImage extends ImageView {
 		gc = gcon;
 		myID = id;
 		myPen = new TurtlePen(gc);
+		myStamps = new Group();
 		
 		active = false;
 		visible = true;
@@ -131,10 +138,6 @@ public class TurtleImage extends ImageView {
 	public void update(ViewUpdate vu, Palette p){
 		if (active){
 			
-			gc.setLineWidth(vu.getPenSize());
-			gc.setStroke(p.getColor(vu.getPenColorID()));
-			changeImage(p.getImage(vu.getShapeID()));
-			
 			if (vu.isClear()){
 				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 			}
@@ -142,31 +145,31 @@ public class TurtleImage extends ImageView {
 		}
 	}
 	
-	/*
-	public void update(TurtleUpdate tu){
-		if (busy){
-			pendingUpdates.add(tu);
-			return;
-		}
+	
+	public void addUpdate(TurtleUpdate tu){
 		pendingUpdates.add(tu);
-		update2();
+		
+		if (!busy){
+			popUpdate();
+		}
+		
 	}
 	
-	public void update2(){
-			if (busy==false){
-				update3(pendingUpdates.poll());
-			}
+	public void popUpdate(){
+		if (pendingUpdates.size()==0){
+			busy = false;
+		}
+		if (pendingUpdates.size()>0){
+			processUpdate(pendingUpdates.poll());
+		}
 	}
 	
-	public void debugForward(){
-		busy = false;
-		update2();
-	}
-	*/
+	
 
-	public void update(TurtleUpdate tu) {
+	public void processUpdate(TurtleUpdate tu) {
 		busy = true;
 		active = !tu.isTurtleInactive();
+		
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
 				.getY()));
@@ -174,19 +177,34 @@ public class TurtleImage extends ImageView {
 				.getTurtleNewCoordinates().getX(), tu.getTurtleNewCoordinates()
 				.getY()));
 		
-		this.animatedMove(createTranslateTransition(newPos));
-		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()));
+		
 		this.hide(tu.isTurtleHidden());
 
 		if (!penUp) {
 			myPen.drawLine(new Point2D(oldPos.getX() + myWidth / 2, oldPos.getY() + myHeight / 2),
 						   new Point2D(newPos.getX() + myWidth / 2, newPos.getY() + myHeight / 2));
 		}
-
+		
+		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()), createTranslateTransition(newPos));
+		
 		if (tu.isTurtleClear()) {
 			gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas()
 					.getHeight());
 		}
+		
+		//TODO
+	}
+	
+	private void animatedMove(Transition rotationTransition, Transition translationTransition){
+		while (moving){
+			//busy-wait
+		}
+		rotationTransition.play();
+		translationTransition.play();
+		translationTransition.setOnFinished(moved->{
+			moving = false;
+			popUpdate();
+		});
 	}
 
 	
@@ -203,7 +221,6 @@ public class TurtleImage extends ImageView {
 			setPenUpDown();
 		});
 
-		// TODO:
 		penColor = makeMenuItem("Choose Turtle Pen Color", e -> {
 			selectPenColor();
 		});
@@ -220,7 +237,7 @@ public class TurtleImage extends ImageView {
 	}
 	
 	private void popMyMenu() {
-		//contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
+		contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
 	}
 	
 	private MenuItem makeMenuItem(String label, EventHandler<ActionEvent> event) {
@@ -229,20 +246,11 @@ public class TurtleImage extends ImageView {
 		return item;
 	}
 	
-	private void animatedMove(Transition transition) {
-		while (moving) {
-			//busy-wait
-		}
-		transition.play();
-		transition.setOnFinished(finished -> {
-			moving = false;
-		});
 
-	}
 	
 	private Transition createRotateTransition(double destination) {
 		double distance = Math.abs(this.getRotate() - destination);
-		RotateTransition rt = new RotateTransition(Duration.millis(distance / mySpeed), this);
+		RotateTransition rt = new RotateTransition(Duration.millis(distance / (2*mySpeed)), this);
 		rt.setToAngle(destination);
 		return rt;
 	}
@@ -383,6 +391,22 @@ public class TurtleImage extends ImageView {
 	private Point2D canvasCoordsToMathCoords(Point2D canvasCoords) {
 		return new Point2D(canvasCoords.getX() - (gc.getCanvas().getWidth() / 2 - myWidth / 2),
 				          -canvasCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
+	}
+	
+	private void leaveStamp() {
+		ImageView stamp = new ImageView(myImage);
+		stamp.setRotate(this.getRotate());
+		stamp.setTranslateX(this.getTranslateX());
+		stamp.setTranslateY(this.getTranslateY());
+		myStamps.getChildren().add(stamp);
+	}
+	
+	private void clearStamps() {
+		myStamps.getChildren().removeAll();
+	}
+	
+	public Node getStamps() {
+		return myStamps;
 	}
 
 }

@@ -1,8 +1,5 @@
 package model;
 
-import exceptions.BadArgumentException;
-import parser.nodes.SyntaxNode;
-
 public interface Turtle extends Observable {
 	public Angle getAngle(); 
 	public Coordinates getCoordinates();
@@ -15,10 +12,15 @@ public interface Turtle extends Observable {
 	public void setHidden(boolean b);
 	public void setInactive(boolean b);
 	public void setPenUp(boolean b);
+	public void setStamp(boolean b);
 	public boolean getHidden();
 	public boolean getInactive();
 	public boolean getPenUp();
+	public boolean getStamp();
 	public int getID();
-	public void changeViewOptions(ViewChanger vc);
+	public void changePen(PenChanger vc);
+	public void setShapeID(int ID);
+	public int getShapeID();
+	public int getPenColor();
 }
 
