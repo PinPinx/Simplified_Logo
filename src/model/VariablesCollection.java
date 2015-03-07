@@ -153,13 +153,13 @@ public class VariablesCollection implements IVariablesCollection{
 		StringBuilder b = new StringBuilder();
 		String declare;
 		try {
-			declare = Regex.getInstance().getCommandString("make");
+			declare = Regex.getInstance().getCommandString("makevariable");
 		} catch (CommandNameNotFoundException e) {
 			return "";
 		}
 		for(Variable v : myVariableList){
 			b.append(declare);
-			b.append(" :");
+			b.append(" ");
 			b.append(v.getNameProperty().get());
 			b.append(" ");
 			b.append(v.getValue().toString());

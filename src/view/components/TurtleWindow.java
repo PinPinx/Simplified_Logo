@@ -288,7 +288,7 @@ public class TurtleWindow extends Group implements Observer {
 			changeBackground(myPalette.getColor(bgColorID.getValue()));
 			
 			for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
-				turtle.getValue().updatePalatte(myPalette);
+				turtle.getValue().updatePalette(myPalette);
 			}
 			if (vu.isClearStamps()) {
 				for (int id: myTurtles.keySet()) {
