@@ -111,7 +111,7 @@ public class TurtleWindow extends Group implements Observer {
 	
 	private void setDefaultColorPalette(){
 		ColorIndex def_1 = new ColorIndex(0, "Red", Color.RED);
-		ColorIndex def_2 = new ColorIndex(1, "Blue", Color.BLUE);
+		ColorIndex def_2 = new ColorIndex(1, "Gray", Color.GRAY);
 		ColorIndex def_3 = new ColorIndex(2, "Green", Color.GREEN);
 		myPalette.addColor(def_1, def_2, def_3);
 	}
