@@ -1,5 +1,8 @@
 package model;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,8 +57,18 @@ public class Model {
 		myParser.setActiveState(myActiveState);
 	}
 	
-	public void saveUDCommands(int workspaceID){
+	public void saveUDCommands(int workspaceID, File f){
 		List<String> udCommandDeclarations = myStates.get(workspaceID).getCommandHistory().saveUDCommands();
+	}
+	
+	private void writeToFile(File f, String... strs) throws IOException{
+		FileWriter fw = new FileWriter(f);
+		for(String s : strs){
+			fw.write(s);
+			fw.append(' ');
+		}
+		fw.close();
+		//fw.write();
 	}
 
 }

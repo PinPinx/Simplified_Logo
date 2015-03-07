@@ -12,6 +12,7 @@ import view.components.Observer;
 public class TurtleMultiple implements Turtle {
 	private Map<Integer,TurtleSingle> myTurtleMap;
 	private TurtleSingle lastActingTurtle;
+	private boolean stampsOut;
 
 	public TurtleMultiple(){
 		myTurtleMap = new HashMap<>();
@@ -191,7 +192,11 @@ public class TurtleMultiple implements Turtle {
 
 	@Override
 	public boolean getStamp() {
-		return lastActingTurtle.getStamp();
+		boolean b = lastActingTurtle.getStamp();
+		if(b){
+			stampsOut = true;
+		}
+		return b;
 	}
 
 	//TODO: Kaighn, tell me if you're unhappy with these additions

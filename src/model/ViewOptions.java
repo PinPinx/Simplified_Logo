@@ -11,12 +11,13 @@ import view.components.Observer;
 public class ViewOptions implements ViewUpdate, ViewInitializer, Observable{
 	private IntegerProperty backgroundIDProperty;
 	private int paletteR, paletteG, paletteB, paletteIndex;
-	private boolean isClear, isClearStamps;
+	private boolean isClear, isClearStamps, isStampsOut;
 	private List<Observer> myObservers;
 
 	public ViewOptions(){
 		this.myObservers = new ArrayList<>();
 		backgroundIDProperty = new SimpleIntegerProperty(0);
+		notifyObservers((ViewInitializer)this);
 	}
 	
 	public IntegerProperty getBackgroundID() {
@@ -45,6 +46,7 @@ public class ViewOptions implements ViewUpdate, ViewInitializer, Observable{
 
 	public void setBackgroundID(int backgroundID) {
 		backgroundIDProperty.set(backgroundID);
+		notifyObservers();
 	}
 	public void setClear(boolean isClear) {
 		this.isClear = isClear;
@@ -64,6 +66,16 @@ public class ViewOptions implements ViewUpdate, ViewInitializer, Observable{
 		this.paletteIndex = index;
 		notifyObservers();
 	}
+	
+	public void setStampsOut(boolean b){
+		isStampsOut = b;
+	}
+	
+	public boolean isStampsOut(){
+		boolean b = isStampsOut;
+		isStampsOut = false;
+		return b;
+	}
 
 	
 	@Override
@@ -80,6 +92,12 @@ public class ViewOptions implements ViewUpdate, ViewInitializer, Observable{
 	public void notifyObservers() {
 		for(Observer o : myObservers){
 			o.update((ViewUpdate)this);
+		}
+	}
+	
+	public void notifyObservers(Object obj) {
+		for(Observer o : myObservers){
+			o.update(obj);
 		}
 	}
 
