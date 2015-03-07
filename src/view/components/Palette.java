@@ -39,14 +39,20 @@ public class Palette {
 			addColor(colx);
 			return;
 		}
-		myColorPalettes.set(index, colx);
+		myColorPalettes.set(myColorPalettes.size(), colx);
 	}
 	
 	public Image getImage(int index){
+		if (index > myImagePalettes.size()){
+			return null;
+		}
 		return myImagePalettes.get(index).getImage();
 	}
 	
 	public Color getColor(int index){
+		if (index > myColorPalettes.size()){
+			return null;
+		}
 		return myColorPalettes.get(index).getColor();
 	}
 

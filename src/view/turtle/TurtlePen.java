@@ -2,6 +2,8 @@ package view.turtle;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -17,6 +19,8 @@ public class TurtlePen {
 	
 	private IntegerProperty penColorIndex;
 	private DoubleProperty penSize;
+	private Integer initialColorIndex = 1;
+	private Double initialPenSize = 3.0;
 	
 	// dash length arrays for the different line styles
 	private static final double[] SOLID = {1, 0};
@@ -29,6 +33,8 @@ public class TurtlePen {
 	
 	public TurtlePen(GraphicsContext graphicsContext) {
 		gc = graphicsContext;
+		penColorIndex = new SimpleIntegerProperty(initialColorIndex);
+		penSize = new SimpleDoubleProperty(initialPenSize);
 	}
 	
 	public void drawLine(Point2D start, Point2D end) {
@@ -118,10 +124,10 @@ public class TurtlePen {
 	}
 	
 	public void updatePen(Color color){
-		if (penSize!=null){
-			gc.setLineWidth(penSize.getValue());
+		gc.setLineWidth(penSize.getValue());
+		if (color!=null){
 			gc.setStroke(color);
-		}
+			}	
 	}
 	
 	public int getColorIndex(){
