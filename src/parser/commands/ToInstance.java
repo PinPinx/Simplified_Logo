@@ -30,6 +30,7 @@ public class ToInstance extends SyntaxNode{
 	@Override
 	public double execute(State myState) throws BadArgumentException{
 		IVariablesCollection variables = myState.getVariablesCollection();
+		variables.enterScope();
 		for (int i=0; i < varList.getSize(); i++){
 			VariableNode currentVar = ((VariableNode) varList.getNode(i));
 			String newValue = Double.toString(paramList.get(i).execute(myState));
@@ -40,6 +41,8 @@ public class ToInstance extends SyntaxNode{
 				throw new BadArgumentException("Problem with variable factory.");
 			}
 		}
-		return commandList.execute(myState);
+		double ret = commandList.execute(myState);
+		variables.exitScope();
+		return ret;
 	}
 }
