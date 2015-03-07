@@ -120,7 +120,9 @@ public class TurtlePen {
 	public void updatePen(Color color){
 		if (penSize!=null){
 			gc.setLineWidth(penSize.getValue());
-			gc.setStroke(color);
+			if (color!=null){
+				gc.setStroke(color);
+			}	
 		}
 	}
 	

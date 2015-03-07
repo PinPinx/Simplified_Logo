@@ -272,7 +272,7 @@ public class TurtleWindow extends Group implements Observer {
 		
 		if(update instanceof ViewUpdate){
 			ViewUpdate vu =  (ViewUpdate) update;
-			changeBackground(myPalette.getColor(vu.getBackgroundID()));
+			//changeBackground(myPalette.getColor(vu.getBackgroundID()));
 			for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
 				turtle.getValue().updatePalatte(myPalette);
 			}
@@ -280,7 +280,6 @@ public class TurtleWindow extends Group implements Observer {
 		
 		if(update instanceof PenUpdate){
 			PenUpdate pu = (PenUpdate) update;
-			myTurtles.get(pu.getTurtleID()).setPenProperties(pu);
 			System.out.println(pu);
 		}
 		
