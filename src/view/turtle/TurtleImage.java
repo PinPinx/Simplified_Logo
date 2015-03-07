@@ -1,6 +1,7 @@
 package view.turtle;
 
 import java.io.File;
+import java.util.PriorityQueue;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
@@ -38,6 +39,8 @@ public class TurtleImage extends ImageView {
 	private double myHeight;
 	private double mySpeed = 0.6;
 	private boolean moving = false;
+	private boolean busy;
+	private PriorityQueue<TurtleUpdate> pendingUpdates;
 	
 	private Boolean active;
 	private Boolean visible;
@@ -74,6 +77,9 @@ public class TurtleImage extends ImageView {
 		active = false;
 		visible = true;
 		penUp = false;
+		busy = false;
+		
+		pendingUpdates = new PriorityQueue<TurtleUpdate>();
 		
 		this.setImage(myImage);
 		resize(width, height);
@@ -135,8 +141,31 @@ public class TurtleImage extends ImageView {
 			
 		}
 	}
+	
+	/*
+	public void update(TurtleUpdate tu){
+		if (busy){
+			pendingUpdates.add(tu);
+			return;
+		}
+		pendingUpdates.add(tu);
+		update2();
+	}
+	
+	public void update2(){
+			if (busy==false){
+				update3(pendingUpdates.poll());
+			}
+	}
+	
+	public void debugForward(){
+		busy = false;
+		update2();
+	}
+	*/
 
 	public void update(TurtleUpdate tu) {
+		busy = true;
 		active = !tu.isTurtleInactive();
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
@@ -147,7 +176,6 @@ public class TurtleImage extends ImageView {
 		
 		this.animatedMove(createTranslateTransition(newPos));
 		this.animatedMove(createRotateTransition(-tu.getTurtleAngle().getAngleValue()));
-		
 		this.hide(tu.isTurtleHidden());
 
 		if (!penUp) {
@@ -192,7 +220,7 @@ public class TurtleImage extends ImageView {
 	}
 	
 	private void popMyMenu() {
-		contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
+		//contextMenu.show(this, this.getTranslateX(), this.getTranslateY());
 	}
 	
 	private MenuItem makeMenuItem(String label, EventHandler<ActionEvent> event) {
@@ -209,6 +237,7 @@ public class TurtleImage extends ImageView {
 		transition.setOnFinished(finished -> {
 			moving = false;
 		});
+
 	}
 	
 	private Transition createRotateTransition(double destination) {

@@ -3,7 +3,7 @@ package model;
 /**
  * A data object for 
  */
-public class TurtleUpdate {
+public class TurtleUpdate implements Comparable<Object>{
 	private int turtleID;
 	private Angle turtleAngle;
 	private Coordinates turtleOldCoordinates, turtleNewCoordinates;
@@ -43,6 +43,11 @@ public class TurtleUpdate {
 	
 	public boolean isTurtleClear() {
 		return turtleClear;
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		return 0;
 	}
 	
 }
