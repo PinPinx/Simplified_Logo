@@ -117,16 +117,16 @@ public class TurtlePen {
 		dashLengthArray = DASHDOT;
 	}
 	
-	public void setPenColorIndex(int ind, Color c){
-		gc.setStroke(c);
-		penColorIndex.setValue(ind);
+	public void updatePen(Color color){
+		if (penSize!=null){
+			gc.setLineWidth(penSize.getValue());
+			gc.setStroke(color);
+		}
 	}
 	
-	public void setPenSizeIndex(double size){
-		gc.setLineWidth(size);
-		penSize.setValue(size);
+	public int getColorIndex(){
+		return penColorIndex.getValue();
 	}
-	
 	public void setProperties(IntegerProperty colorIndex, DoubleProperty size){
 		penColorIndex = colorIndex;
 		penSize = size;

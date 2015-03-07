@@ -46,6 +46,7 @@ public class TurtleImage extends ImageView {
 	private boolean rotating = false;
 	private boolean busy;
 	private PriorityQueue<TurtleUpdate> pendingUpdates;
+	private Palette myPalette;
 	
 	private Boolean active;
 	private Boolean visible;
@@ -138,10 +139,13 @@ public class TurtleImage extends ImageView {
 	
 
 	
-	public void updatePen(PenUpdate pu, Palette p){
+	public void setPenProperties(PenUpdate pu){
 		myPen.setProperties(pu.getPenColorIDProperty(),pu.getPenSizeProperty());
-		myPen.setPenColorIndex(pu.getPenColorIDProperty().getValue(), p.getColor(pu.getPenColorIDProperty().getValue()));
-		myPen.setPenSizeIndex(pu.getPenSizeProperty().getValue());
+		myPen.updatePen(myPalette.getColor(myPen.getColorIndex()));
+	}
+	
+	public void updatePalatte(Palette p){
+		myPalette = p;
 	}
 	
 	
@@ -168,6 +172,8 @@ public class TurtleImage extends ImageView {
 	public void processUpdate(TurtleUpdate tu) {
 		busy = true;
 		active = !tu.isTurtleInactive();
+		
+		myPen.updatePen(myPalette.getColor(myPen.getColorIndex()));
 		
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()

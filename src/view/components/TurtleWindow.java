@@ -191,6 +191,7 @@ public class TurtleWindow extends Group implements Observer {
 		gc.put(id, layerGC);
 		
 		TurtleImage turtle = new TurtleImage(layerGC, id);
+		turtle.updatePalatte(myPalette);
 		myTurtles.put(id, turtle);
 		myTurtles.get(id).hide(!showInactiveTurtles);
 		myLayers.getChildren().add(layer);
@@ -272,12 +273,15 @@ public class TurtleWindow extends Group implements Observer {
 		if(update instanceof ViewUpdate){
 			ViewUpdate vu =  (ViewUpdate) update;
 			changeBackground(myPalette.getColor(vu.getBackgroundID()));
-			
+			for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
+				turtle.getValue().updatePalatte(myPalette);
+			}
 		}
 		
 		if(update instanceof PenUpdate){
 			PenUpdate pu = (PenUpdate) update;
-			
+			myTurtles.get(pu.getTurtleID()).setPenProperties(pu);
+			System.out.println(pu);
 		}
 		
 	}
