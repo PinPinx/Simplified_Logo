@@ -25,7 +25,7 @@ public class TurtleSingle implements Turtle {
 	}
 	
 	public void createPen(){
-		myPen = new Pen();
+		myPen = new Pen(ID);
 		notifyObservers((PenUpdate)myPen);
 	}
 	

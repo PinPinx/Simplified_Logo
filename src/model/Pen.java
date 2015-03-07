@@ -6,10 +6,11 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class Pen implements PenUpdate {
+	private int turtleID;
 	private IntegerProperty penColorID;
 	private DoubleProperty penSize;
 	
-	public Pen(){
+	public Pen(int ID){
 		penColorID = new SimpleIntegerProperty(0);
 		penSize = new SimpleDoubleProperty(5.0);
 	}
@@ -36,6 +37,10 @@ public class Pen implements PenUpdate {
 	}
 	public void setPenSize(double penSize) {
 		this.penSize.set(penSize);;
+	}
+	@Override
+	public int getTurtleID() {
+		return turtleID;
 	}
 
 }

@@ -9,12 +9,14 @@ import parser.nodes.SyntaxNode;
 public class ToData extends SyntaxNode{
 
 	private String myName;
+	private String myDeclaration;
 	private ListNode varList;
 	private ListNode commandList;
 	
 	//TODO: A little duplicated from For
-	public ToData(String name, Stack<SyntaxNode> input){
+	public ToData(String name, String declaration, Stack<SyntaxNode> input){
 		myName = name;
+		myDeclaration = declaration;
 		varList = (ListNode) input.pop();
 		commandList = (ListNode) input.pop();
 	}
@@ -25,6 +27,10 @@ public class ToData extends SyntaxNode{
 	
 	public String getName(){
 		return new String(myName);
+	}
+	
+	public String getDeclaration(){
+		return new String(myDeclaration);
 	}
 	
 	public ListNode getCommandList(){
