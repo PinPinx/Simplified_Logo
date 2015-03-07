@@ -36,7 +36,8 @@ public class Parser {
 					cls = Class.forName(str);
 				} catch (ClassNotFoundException | CommandNameNotFoundException e) {
 						if(i>0 && commandStream[i-1].equalsIgnoreCase("to")){
-							inputStack.peek().push(new ToData(commandStream[i], inputStack.peek()));
+							inputStack.peek().push(new ToData(commandStream[i], isolateToDeclaration(commandStream,i-1), inputStack.peek()));
+							
 							i--;
 							continue;
 						}
@@ -66,17 +67,10 @@ public class Parser {
 			case VARIABLE:
 				inputStack.peek().push(new VariableNode(commandStream[i]));
 				break;
-			case GROUPEND: //TODO
+			case LISTEND: case GROUPEND:
 				inputStack.push(new Stack<SyntaxNode>());
 				break;
-			case GROUPSTART: //TODO
-				Stack<SyntaxNode> groupStack = inputStack.pop();
-				inputStack.peek().push(new GroupNode(groupStack));
-				break;
-			case LISTEND:
-				inputStack.push(new Stack<SyntaxNode>());
-				break;
-			case LISTSTART:
+			case LISTSTART: case GROUPSTART:
 				Stack<SyntaxNode> listStack = inputStack.pop();
 				inputStack.peek().push(new ListNode(listStack));
 				break;
@@ -85,5 +79,37 @@ public class Parser {
 			}
 		}
 		return new CommandRoot(command, inputStack.peek());
+	}
+	
+	/**
+	 * Kind of a hacky solution to go through the command stream starting at a command "To"
+	 * and recreating the "To name [ variables ] [ commands ]" string.
+	 */
+	private String isolateToDeclaration(String[] commandStream, int toIndex){
+		StringBuilder b = new StringBuilder();
+		int listStartCounter = 0;
+		int numLists = 0;
+		for(int i = toIndex; i < commandStream.length; i++){
+			b.append(commandStream[i]);
+			b.append(" ");
+			
+			GeneralType type = Regex.getInstance().getType(commandStream[i]);
+			if(type == GeneralType.LISTSTART){
+				listStartCounter++;
+			} else if (type == GeneralType.LISTEND){
+				listStartCounter--;
+				if(listStartCounter == 0){
+					numLists++;
+					if(numLists == 2){
+						break;
+					}
+				}
+			}
+		}
+		return b.toString();
+	}
+	public static void main(String[] args) throws CommandNameNotFoundException, SyntaxErrorWrongFormat{
+		Parser p = new Parser();
+		p.parse("fd 50 fd 50 fd 50 left 90 to hello [ :a ] [ fd :a ] to diego [ :a :b ] [ fd :a for [ :i 1 100 1 ] [ fd :a ] ] fd 100");
 	}
 }
