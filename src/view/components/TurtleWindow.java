@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import view.dialogs.InputDialogBox;
 import view.dialogs.TextInputDialogBox;
 import view.turtle.TurtleImage;
+import model.PenUpdate;
 import model.TurtleUpdate;
 import model.ViewUpdate;
 import javafx.scene.Group;
@@ -63,7 +64,7 @@ public class TurtleWindow extends Group implements Observer {
 		
 		initializeMenu();
 
-		this.getChildren().addAll(myLayers, mainCanvas, myTImages);
+		this.getChildren().addAll(mainCanvas, myLayers, myTImages);
 		
 		addTurtle();
 		
@@ -271,9 +272,12 @@ public class TurtleWindow extends Group implements Observer {
 		if(update instanceof ViewUpdate){
 			ViewUpdate vu =  (ViewUpdate) update;
 			changeBackground(myPalette.getColor(vu.getBackgroundID()));
-			for (Map.Entry<Integer, TurtleImage> ti : myTurtles.entrySet()){
-				ti.getValue().update(vu, myPalette);
-			}
+			
+		}
+		
+		if(update instanceof PenUpdate){
+			PenUpdate pu = (PenUpdate) update;
+			
 		}
 		
 	}
