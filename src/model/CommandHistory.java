@@ -10,6 +10,9 @@ import parser.nodes.CommandRoot;
 import view.components.Observer;
 import parser.nodes.VariableNode;
 
+/**
+ * Keeps account of commands already run, and user defined commands.
+ */
 public class CommandHistory implements Observable {
 	private List<CommandRoot> myCommandList;
 	private List<Observer> myObserverList;
@@ -21,12 +24,17 @@ public class CommandHistory implements Observable {
 		this.myObserverList = new ArrayList<>();
 	}
 
+	/**
+	 * To add command to command history.
+	 */
 	public void addCommand(CommandRoot cr) {
 		myCommandList.add(cr);
 		notifyObservers();
 	}
 	
-	//TODO: Duplicated code
+	/**
+	 * Attempts to find an existing UD command by name.
+	 */
 	public ToData getUDCommand(String name) throws UDCommandNotFoundException{
 		for(ToData datum : myUDCommands){
 			if(datum.getName().equalsIgnoreCase(name)){
@@ -35,6 +43,10 @@ public class CommandHistory implements Observable {
 		}
 		throw new UDCommandNotFoundException("UDCommand "+name+" doesn't exist.");
 	}
+	
+	/**
+	 * Adds a newly created UD command.
+	 */
 	public boolean addUDCommand(ToData udCommand){
 		for(ToData datum : myUDCommands){
 			if(datum.getName().equalsIgnoreCase(udCommand.getName())){
@@ -44,7 +56,10 @@ public class CommandHistory implements Observable {
 		return myUDCommands.add(udCommand);
 	}
 
-
+	/**
+	 * Prepares a String list of all the existing commands in the history to send to the front end.
+	 * @return
+	 */
 	public List<String> getCommandList(){
 		List<String> ret = new ArrayList<>();
 		for (CommandRoot cr : myCommandList) {
@@ -53,6 +68,9 @@ public class CommandHistory implements Observable {
 		return ret;
 	}
 	
+	/**
+	 * Prepares a String list of UD command displays to send to the front end.
+	 */
 	public List<String> getUDCommandList(){
 		List<String> ret = new ArrayList<>();
 		for (ToData datum : myUDCommands) {
@@ -67,6 +85,9 @@ public class CommandHistory implements Observable {
 		return ret;
 	}
 	
+	/**
+	 * Concatenates all UD command declarations into a single string, for the purpose of saving.
+	 */
 	public String saveUDCommands(){
 		StringBuilder b = new StringBuilder();
 		for(ToData udCommand : myUDCommands){

@@ -6,6 +6,9 @@ import java.io.IOException;
 
 import view.View;
 
+/**
+ * Class that contains all the information that can change due to user actions.
+ */
 public class State {
 	private TurtleMultiple myTurtleMultiple;
 	private IVariablesCollection myVariablesCollection;

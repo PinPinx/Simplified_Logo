@@ -13,6 +13,9 @@ import exceptions.TurtleNotFoundException;
 import view.View;
 import view.components.Observer;
 
+/**
+ * Has similar behavior to TurtleSingle following the composite pattern.
+ */
 public class TurtleMultiple implements Turtle {
 	private Map<Integer,TurtleSingle> myTurtleMap;
 	private TurtleSingle lastActingTurtle;

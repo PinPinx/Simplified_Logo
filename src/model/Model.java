@@ -57,6 +57,10 @@ public class Model {
 		myParser.setActiveState(myActiveState);
 	}
 	
+	/**
+	 * Concatenates a long string of UDCommands and variable declarations that
+	 * already exist in the workspace, for the purpose of saving.
+	 */
 	public String saveLibrary(int workspaceID){
 		StringBuilder b = new StringBuilder();
 		b.append(myStates.get(workspaceID).getCommandHistory().saveUDCommands());
@@ -64,14 +68,4 @@ public class Model {
 		b.append(myStates.get(workspaceID).getVariablesCollection().saveState());
 		return b.toString();
 	}
-	
-	private void writeToFile(File f, String... strs) throws IOException{
-		FileWriter fw = new FileWriter(f);
-		for(String s : strs){
-			fw.write(s);
-			fw.append(' ');
-		}
-		fw.close();
-	}
-
 }

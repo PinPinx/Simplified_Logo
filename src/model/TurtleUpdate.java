@@ -1,7 +1,8 @@
 package model;
 
 /**
- * A data object for 
+ * A data object that captures a snapshot of the turtle's state. Is sent to observers any time the
+ * turtle changes. 
  */
 public class TurtleUpdate implements Comparable<Object>{
 	private int turtleID, shapeID;
