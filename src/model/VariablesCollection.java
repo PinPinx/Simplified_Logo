@@ -86,16 +86,6 @@ public class VariablesCollection implements IVariablesCollection{
 		waitingVariableList.clear();
 	}
 	
-	/* (non-Javadoc)
-	 * @see model.IVariablesCollection#deleteVariable(java.lang.String)
-	 */
-	private void deleteVariable(String varName) throws VariableNotFoundException{
-		Variable var = findVariable(varName);
-		myVariableList.remove(var);
-		notifyObservers();
-		return;
-	}
-	
 	private Variable findVariable(String varName) throws VariableNotFoundException{
 		for (Variable v : myVariableList){
 			if(v.getNameProperty().get().equals(varName))
@@ -125,9 +115,6 @@ public class VariablesCollection implements IVariablesCollection{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see model.IVariablesCollection#addObserver(view.components.Observer)
-	 */
 	@Override
 	public void addObserver(Observer o) {
 		myObserverList.add(o);

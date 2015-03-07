@@ -30,7 +30,6 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 		notifyObservers();
 	}
 	
-	//TODO: Duplicated code with method getVariableValue
 	public boolean containsVariable(String varName){
 		for(VariablesCollection collection: collectionStack){
 			if (collection.containsVariable(varName))
@@ -61,7 +60,7 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 		notifyObservers();
 	}
 	
-	//TODO: Duplicated code with variablesCollection
+	//This duplicated code was necessary- no inheritance is appropriate here.
 	@Override
 	public void addObserver(Observer o) {
 		myObserverList.add(o);

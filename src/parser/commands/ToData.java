@@ -13,7 +13,6 @@ public class ToData extends SyntaxNode{
 	private ListNode varList;
 	private ListNode commandList;
 	
-	//TODO: A little duplicated from For
 	public ToData(String name, String declaration, Stack<SyntaxNode> input){
 		myName = name;
 		myDeclaration = declaration;
