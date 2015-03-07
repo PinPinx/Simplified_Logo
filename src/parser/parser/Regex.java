@@ -64,25 +64,16 @@ public class Regex {
 		throw new CommandNameNotFoundException("This command "+s+" is not a preset command.");
 	}
 
-	private void testMatches (String[] tests, List<Entry<String, Pattern>> patterns) {
-		for (String s : tests) {
-			boolean matched = false;
-			if (s.trim().length() > 0) {
-				for (Entry<String, Pattern> p : patterns) {
-					if (match(s, p.getValue())) {
-						System.out.println(String.format("%s matches %s", s, p.getKey()));
-						matched = true;
-						break;
-					}
-				}
-				if (! matched) {
-					System.out.println(String.format("%s not matched", s));
-				}
+	public String getCommandString(String commandName) throws CommandNameNotFoundException{
+		for (Entry<String, Pattern> p : this.commandPatterns) {
+			if (commandName.equalsIgnoreCase(p.getKey())) {
+				String regString = p.getValue().toString();
+				return regString.substring(0,regString.indexOf('|'));
 			}
 		}
-		System.out.println();
+		throw new CommandNameNotFoundException("This command "+commandName+" is not a preset command.");
 	}
-
+	
 	private List<Entry<String, Pattern>> makePatterns (String syntax) {
 		ResourceBundle resources = ResourceBundle.getBundle(syntax);
 		List<Entry<String, Pattern>> patterns = new ArrayList<>();
@@ -94,6 +85,10 @@ public class Regex {
 					Pattern.compile(regex, Pattern.CASE_INSENSITIVE)));
 		}
 		return patterns;
+	}
+	
+	public static void main(String[] args) throws CommandNameNotFoundException{
+		System.out.println(Regex.getInstance().getCommandString("forward"));
 	}
 }
 

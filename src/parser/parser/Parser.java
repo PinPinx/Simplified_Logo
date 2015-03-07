@@ -108,8 +108,4 @@ public class Parser {
 		}
 		return b.toString();
 	}
-	public static void main(String[] args) throws CommandNameNotFoundException, SyntaxErrorWrongFormat{
-		Parser p = new Parser();
-		p.parse("fd 50 fd 50 fd 50 left 90 to hello [ :a ] [ fd :a ] to diego [ :a :b ] [ fd :a for [ :i 1 100 1 ] [ fd :a ] ] fd 100");
-	}
 }

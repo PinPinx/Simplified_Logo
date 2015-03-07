@@ -67,12 +67,13 @@ public class CommandHistory implements Observable {
 		return ret;
 	}
 	
-	public List<String> saveUDCommands(){
-		List<String> savedUDCommands = new ArrayList<String>();
+	public String saveUDCommands(){
+		StringBuilder b = new StringBuilder();
 		for(ToData udCommand : myUDCommands){
-			savedUDCommands.add(udCommand.getDeclaration());
+			b.append(udCommand.getDeclaration());
+			b.append(" \n");
 		}
-		return savedUDCommands;
+		return b.toString();
 	}
 	
 	@Override

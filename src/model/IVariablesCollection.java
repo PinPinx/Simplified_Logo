@@ -16,6 +16,7 @@ public interface IVariablesCollection extends Observable{
 	public void addObserver(Observer o);
 	public void removeObserver(Observer o);
 	public void notifyObservers();
+	public String saveState();
 	public void enterScope();
 	public void exitScope();
 	/*public abstract void deleteVariable(String varName)
