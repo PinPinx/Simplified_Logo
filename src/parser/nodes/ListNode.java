@@ -26,10 +26,21 @@ public class ListNode extends SyntaxNode {
 	
 	@Override
 	public double execute(State myState) throws BadArgumentException {
+		myState.getVariablesCollection().enterScope();
 		for (int i=0; i<myList.size()-1; i++){
 			myList.get(i).execute(myState);
 		}
-		return myList.get(myList.size()-1).execute(myState);
+		double ret = executeNodes(myState);
+		myState.getVariablesCollection().exitScope();
+		return ret;
+	}
+	
+	protected double executeNodes(State myState) throws BadArgumentException{
+		for (int i=0; i<myList.size()-1; i++){
+			myList.get(i).execute(myState);
+		}
+		double ret = myList.get(myList.size()-1).execute(myState);
+		return ret;
 	}
 	
 	public int getSize(){

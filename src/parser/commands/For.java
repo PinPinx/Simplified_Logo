@@ -32,6 +32,7 @@ public class For extends BinaryNode {
 	//TODO: Duplicate code with DoTimes
 	@Override
 	public double execute(State myState) throws BadArgumentException {
+		myState.getVariablesCollection().enterScope();
 		int start = (int) listReference.getNode(1).execute(myState);
 		int end = (int) listReference.getNode(2).execute(myState);
 		int increment = (int) listReference.getNode(3).execute(myState);
@@ -40,7 +41,9 @@ public class For extends BinaryNode {
 			runCode(myState, count);
 			count+=increment;
 		}
-		return runCode(myState, count);
+		double ret = runCode(myState, count);
+		myState.getVariablesCollection().exitScope();
+		return ret;
 	}
 	
 	private double runCode(State myState, int i) throws BadArgumentException{

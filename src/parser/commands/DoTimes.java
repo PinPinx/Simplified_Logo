@@ -37,7 +37,9 @@ public class DoTimes extends BinaryNode {
 		for (int i = 1; i<limit; i++){
 			runCode(myState, i);
 		}
-		return runCode(myState, limit);
+		double ret = runCode(myState, limit);
+		myState.getVariablesCollection().exitScope();
+		return ret;
 	}
 	
 	private double runCode(State myState, int i) throws BadArgumentException{

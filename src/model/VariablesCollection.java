@@ -135,5 +135,15 @@ public class VariablesCollection implements IVariablesCollection{
 	public void removeObserver(Observer o) {
 		myObserverList.remove(o);
 	}
+
+	@Override
+	public void enterScope() {
+		//Do nothing
+	}
+
+	@Override
+	public void exitScope() {
+		//Do nothing
+	}
 	
 }
