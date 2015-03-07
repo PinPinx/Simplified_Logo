@@ -15,7 +15,10 @@ import view.dialogs.TextInputDialogBox;
 import view.turtle.TurtleImage;
 import model.PenUpdate;
 import model.TurtleUpdate;
+import model.ViewInitializer;
 import model.ViewUpdate;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -33,6 +36,8 @@ public class TurtleWindow extends Group implements Observer {
 	private GraphicsContext mainGC;
 	private double myWidth;
 	private double myHeight;
+	private IntegerProperty bgColorID;
+	private Integer initialColorIndex = 1;
 	
 	private int numTurtles;
 	private int activeTurtleID;
@@ -59,12 +64,13 @@ public class TurtleWindow extends Group implements Observer {
 		
 		mainCanvas = new Canvas(myWidth, myHeight);
 		mainGC = mainCanvas.getGraphicsContext2D();
+		bgColorID = new SimpleIntegerProperty(initialColorIndex);
 		
 		showInactiveTurtles = true;
 		
 		initializeMenu();
 
-		this.getChildren().addAll(mainCanvas, myLayers, myTImages);
+		this.getChildren().addAll( mainCanvas, myLayers, myTImages);
 		
 		addTurtle();
 		
@@ -82,16 +88,17 @@ public class TurtleWindow extends Group implements Observer {
 		contextMenu = new ContextMenu(imagePalettes, colorPalettes);
 		
 		mainCanvas.setOnMouseClicked(e->{
-			setImagePaletteMenu();
-			setColorPaletteMenu();
-			contextMenu = new ContextMenu(imagePalettes, colorPalettes);
 			popMyMenu(e);
 			
 		});
 		
 	}
 	
+	
 	private void popMyMenu(MouseEvent event){
+		setImagePaletteMenu();
+		setColorPaletteMenu();
+		contextMenu = new ContextMenu(imagePalettes, colorPalettes);
 		contextMenu.show(this, event.getX(), event.getY());
 	}
 	
@@ -187,6 +194,9 @@ public class TurtleWindow extends Group implements Observer {
 	public void addTurtle(int id) {
 		numTurtles++;
 		Canvas layer = new Canvas(mainCanvas.getWidth(), mainCanvas.getWidth());
+		layer.setOnMouseClicked(e->{
+			popMyMenu(e);
+		});
 		GraphicsContext layerGC = layer.getGraphicsContext2D();
 		gc.put(id, layerGC);
 		
@@ -270,17 +280,32 @@ public class TurtleWindow extends Group implements Observer {
 			myTurtles.get(id).addUpdate(tu);
 		}
 		
+		
 		if(update instanceof ViewUpdate){
+			
 			ViewUpdate vu =  (ViewUpdate) update;
-			//changeBackground(myPalette.getColor(vu.getBackgroundID()));
+			
+			changeBackground(myPalette.getColor(bgColorID.getValue()));
+			
 			for(Map.Entry<Integer, TurtleImage> turtle : myTurtles.entrySet()){
 				turtle.getValue().updatePalatte(myPalette);
 			}
+			if (vu.isClearStamps()) {
+				for (int id: myTurtles.keySet()) {
+					myTurtles.get(id).clearStamps();
+				}
+			}
+			
 		}
 		
 		if(update instanceof PenUpdate){
 			PenUpdate pu = (PenUpdate) update;
-			System.out.println(pu);
+			myTurtles.get(pu.getTurtleID()).setPenProperties(pu);
+		}
+		
+		if(update instanceof ViewInitializer){
+			ViewInitializer vi = (ViewInitializer) update;
+			bgColorID = vi.getBackgroundID();
 		}
 		
 	}
