@@ -1,2 +1,0 @@
-to hello [ :a :b ] [ for [ :i 1 360 1 ] [ fd :a left :b ] ]  
- 
