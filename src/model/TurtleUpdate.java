@@ -4,10 +4,12 @@ package model;
  * A data object for 
  */
 public class TurtleUpdate {
-	private int turtleID;
+	private int turtleID, shapeID;
 	private Angle turtleAngle;
 	private Coordinates turtleOldCoordinates, turtleNewCoordinates;
-	private boolean turtleHidden, turtleActive, turtlePenUp, turtleClear;
+	private boolean turtleHidden, turtleActive, 
+		turtlePenUp, turtleClear, turtleStamp;
+	
 	
 	public TurtleUpdate(TurtleSingle t){
 		this.turtleID = t.getID();
@@ -17,6 +19,8 @@ public class TurtleUpdate {
 		this.turtleHidden = t.getHidden();
 		this.turtleActive = t.getInactive();
 		this.turtlePenUp = t.getPenUp();
+		this.shapeID = t.getShapeID();
+		this.turtleStamp = t.getStamp();
 	}
 	
 	public int getTurtleID(){
@@ -43,6 +47,12 @@ public class TurtleUpdate {
 	
 	public boolean isTurtleClear() {
 		return turtleClear;
+	}
+	public int getShapeID(){
+		return shapeID;
+	}
+	public boolean isStamp(){
+		return turtleStamp;
 	}
 	
 }

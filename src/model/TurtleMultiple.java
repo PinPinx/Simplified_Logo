@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import parser.nodes.SyntaxNode;
-import exceptions.BadArgumentException;
 import exceptions.TurtleNotFoundException;
 import view.View;
 import view.components.Observer;
@@ -17,8 +15,7 @@ public class TurtleMultiple implements Turtle {
 
 	public TurtleMultiple(){
 		myTurtleMap = new HashMap<>();
-		myTurtleMap.put(0,new TurtleSingle(0));
-		lastActingTurtle = myTurtleMap.get(0);
+		addNewTurtle(0);
 	}
 
 	public void addNewTurtle(int turtleID){
@@ -26,6 +23,7 @@ public class TurtleMultiple implements Turtle {
 		myTurtleMap.put(turtleID,newTurtle);
 		setLastTurtle(newTurtle);
 		newTurtle.addObserver(View.getInstance().getTurtleWindow());
+		newTurtle.createPen();
 		newTurtle.notifyObservers();
 	}
 
@@ -80,6 +78,8 @@ public class TurtleMultiple implements Turtle {
 	public Coordinates getOldCoordinates() {
 		return lastActingTurtle.getOldCoordinates();
 	}
+	
+	
 
 	@Override
 	public double addDegree(double degree){
@@ -183,6 +183,16 @@ public class TurtleMultiple implements Turtle {
 	public boolean getPenUp() {
 		return lastActingTurtle.getPenUp();
 	}
+	
+	@Override
+	public int getShapeID() {
+		return lastActingTurtle.getShapeID();
+	}
+
+	@Override
+	public boolean getStamp() {
+		return lastActingTurtle.getStamp();
+	}
 
 	//TODO: Kaighn, tell me if you're unhappy with these additions
 	public List<Integer> activeTurtleIDs(){
@@ -203,10 +213,10 @@ public class TurtleMultiple implements Turtle {
 		lastActingTurtle = t;
 	}
 	
-	public void changeViewOptions(ViewChanger vc) {
+	public void changePen(PenChanger pc) {
 		for(TurtleSingle t : myTurtleMap.values()){
 			if(!t.getInactive()){
-				t.changeViewOptions(vc);
+				t.changePen(pc);
 				setLastTurtle(t);
 			}
 		}	
@@ -219,6 +229,31 @@ public class TurtleMultiple implements Turtle {
 				setLastTurtle(t);
 			}
 		}
+	}
+
+	@Override
+	public void setStamp(boolean b) {
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				t.setStamp(b);
+				setLastTurtle(t);
+
+			}
+		}	
+	}
+
+	@Override
+	public void setShapeID(int ID) {
+		for(TurtleSingle t : myTurtleMap.values()){
+			if(!t.getInactive()){
+				t.setShapeID(ID);
+			}
+		}			
+	}
+
+	@Override
+	public int getPenColor() {
+		return lastActingTurtle.getPenColor();
 	}
 
 }

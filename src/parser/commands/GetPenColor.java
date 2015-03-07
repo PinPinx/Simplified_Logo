@@ -9,17 +9,13 @@ import parser.nodes.SyntaxNode;
 import model.Coordinates;
 import model.State;
 
-public class Forward extends SimpleTurtleCommand{
+public class GetPenColor extends SyntaxNode{
 	
-	public Forward(Stack<SyntaxNode> input) throws BadArgumentException {
-		super(input);
-	}
+	public GetPenColor(Stack<SyntaxNode> input) throws BadArgumentException {}
 
 	@Override
 	public double execute(State myState) throws BadArgumentException{
-		double distance = referenceNode.execute(myState);
-		myState.getTurtle().change(ts -> ts.moveDistance(distance));
-		return distance;
+		return myState.getTurtle().getPenColor();
 	}
 	
 }

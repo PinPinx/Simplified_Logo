@@ -7,12 +7,11 @@ import exceptions.InvalidViewSettingException;
 import view.components.Observer;
 
 public class ViewOptions implements ViewUpdate, Observable{
-	private int backgroundID, penColorID, shapeID,
+	private int backgroundID,
 		paletteR, paletteG, paletteB;
-	private boolean isClear, isStamp, isClearStamps;
-	private double penSize;
+	private boolean isClear, isClearStamps;
 	private List<Observer> myObservers;
-	
+
 	public ViewOptions(){
 		this.myObservers = new ArrayList<>();
 	}
@@ -29,24 +28,16 @@ public class ViewOptions implements ViewUpdate, Observable{
 	public int getPaletteR() {
 		return paletteR;
 	}
-	public int getPenColorID() {
-		return penColorID;
-	}
-	public double getPenSize() {
-		return penSize;
-	}
-	public int getShapeID() {
-		return shapeID;
-	}
+
 	public boolean isClear() {
-		return isClear;
+		boolean b = isClear;
+		isClear = false;
+		return b;
 	}
 	public boolean isClearStamps() {
 		return isClearStamps;
 	}
-	public boolean isStamp() {
-		return isStamp;
-	}
+
 	public void setBackgroundID(int backgroundID) {
 		this.backgroundID = backgroundID;
 		notifyObservers();
@@ -68,22 +59,7 @@ public class ViewOptions implements ViewUpdate, Observable{
 		this.paletteR = r;
 		notifyObservers();
 	}
-	public void setPenColorID(int penColorID) {
-		this.penColorID = penColorID;
-		notifyObservers();
-	}
-	public void setPenSize(double penSize) {
-		this.penSize = penSize;
-		notifyObservers();
-	}
-	public void setShapeID(int shapeID) {
-		this.shapeID = shapeID;
-		notifyObservers();
-	}
-	public void setStamp(boolean isStamp) {
-		this.isStamp = isStamp;
-		notifyObservers();
-	}
+
 	
 	@Override
 	public void addObserver(Observer o) {

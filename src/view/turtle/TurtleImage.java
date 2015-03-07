@@ -1,12 +1,13 @@
 package view.turtle;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
 import view.components.Palette;
-import view.components.TurtleWindow;
 import model.TurtleUpdate;
 import model.ViewUpdate;
 import javafx.animation.RotateTransition;
@@ -15,6 +16,8 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Menu;
@@ -43,6 +46,8 @@ public class TurtleImage extends ImageView {
 	private Boolean visible;
 	private Boolean penUp;
 	
+	private Group myStamps;
+	
 	// items in the pop-up context menu
 	private ContextMenu contextMenu;
 	private MenuItem changeImage;
@@ -70,6 +75,7 @@ public class TurtleImage extends ImageView {
 		gc = gcon;
 		myID = id;
 		myPen = new TurtlePen(gc);
+		myStamps = new Group();
 		
 		active = false;
 		visible = true;
@@ -138,6 +144,7 @@ public class TurtleImage extends ImageView {
 
 	public void update(TurtleUpdate tu) {
 		active = !tu.isTurtleInactive();
+		
 		Point2D oldPos = mathCoordsToCanvasCoords(new Point2D(tu
 				.getTurtleOldCoordinates().getX(), tu.getTurtleOldCoordinates()
 				.getY()));
@@ -175,7 +182,6 @@ public class TurtleImage extends ImageView {
 			setPenUpDown();
 		});
 
-		// TODO:
 		penColor = makeMenuItem("Choose Turtle Pen Color", e -> {
 			selectPenColor();
 		});
@@ -210,6 +216,7 @@ public class TurtleImage extends ImageView {
 			moving = false;
 		});
 	}
+	
 	
 	private Transition createRotateTransition(double destination) {
 		double distance = Math.abs(this.getRotate() - destination);
@@ -354,6 +361,22 @@ public class TurtleImage extends ImageView {
 	private Point2D canvasCoordsToMathCoords(Point2D canvasCoords) {
 		return new Point2D(canvasCoords.getX() - (gc.getCanvas().getWidth() / 2 - myWidth / 2),
 				          -canvasCoords.getY() + (gc.getCanvas().getHeight() / 2 - myHeight / 2));
+	}
+	
+	private void leaveStamp() {
+		ImageView stamp = new ImageView(myImage);
+		stamp.setRotate(this.getRotate());
+		stamp.setTranslateX(this.getTranslateX());
+		stamp.setTranslateY(this.getTranslateY());
+		myStamps.getChildren().add(stamp);
+	}
+	
+	private void clearStamps() {
+		myStamps.getChildren().removeAll();
+	}
+	
+	public Node getStamps() {
+		return myStamps;
 	}
 
 }
