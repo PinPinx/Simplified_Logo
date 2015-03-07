@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import exceptions.TurtleNotFoundException;
 import view.View;
@@ -34,9 +36,7 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	public void deactiveAll(){
-		for(TurtleSingle t : myTurtleMap.values()){
-			t.setInactive(true);
-		}
+		getStream().forEach(s -> s.setInactive(true));		
 	}
 
 	public TurtleSingle getTurtleSingle(int turtleID) throws TurtleNotFoundException{
@@ -51,16 +51,12 @@ public class TurtleMultiple implements Turtle {
 
 	@Override
 	public void addObserver(Observer o) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			t.addObserver(o);
-		}
+		getStream().forEach(s -> s.addObserver(o));		
 	}
 
 	@Override
 	public void removeObserver(Observer o) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			t.removeObserver(o);
-		}
+		getStream().forEach(s -> s.removeObserver(o));		
 	}
 
 	@Override
@@ -145,30 +141,17 @@ public class TurtleMultiple implements Turtle {
 
 	@Override
 	public void setHidden(boolean b) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.setHidden(b);
-				setLastTurtle(t);
-			}
-		}
+		getStream().forEach(s -> s.setHidden(b));		
 	}
 
 	@Override
 	public void setInactive(boolean b) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			t.setInactive(b);
-			setLastTurtle(t);
-		}		
+		getStream().forEach(s -> s.setInactive(b));				
 	}
 
 	@Override
 	public void setPenUp(boolean b) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.setPenUp(b);
-				setLastTurtle(t);
-			}
-		}		
+		getStream().forEach(s -> s.setPenUp(b));			
 	}
 
 	@Override
@@ -200,7 +183,6 @@ public class TurtleMultiple implements Turtle {
 		return b;
 	}
 
-	//TODO: Kaighn, tell me if you're unhappy with these additions
 	public List<Integer> activeTurtleIDs(){
 		ArrayList<Integer> returner = new ArrayList<Integer>();
 		for(TurtleSingle t : myTurtleMap.values()){
@@ -220,43 +202,21 @@ public class TurtleMultiple implements Turtle {
 	}
 	
 	public void changePen(PenChanger pc) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.changePen(pc);
-				setLastTurtle(t);
-			}
-		}	
+		getStream().forEach(s -> s.changePen(pc));		
 	}
 	
 	public void change(TurtleSingleChanger tsc){
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.change(tsc);
-				setLastTurtle(t);
-			}
-		}
+		getStream().forEach(s -> s.change(tsc));		
 	}
 
 	@Override
 	public void setStamp(boolean b) {
-		System.out.println("HELLO");
-
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.setStamp(b);
-				setLastTurtle(t);
-
-			}
-		}	
+		getStream().forEach(s -> s.setStamp(b));		
 	}
 
 	@Override
 	public void setShapeID(int ID) {
-		for(TurtleSingle t : myTurtleMap.values()){
-			if(!t.getInactive()){
-				t.setShapeID(ID);
-			}
-		}			
+		getStream().forEach(s -> s.setShapeID(ID));		
 	}
 
 	@Override
@@ -264,22 +224,12 @@ public class TurtleMultiple implements Turtle {
 		return lastActingTurtle.getPenColor();
 	}
 	
-	public void apply(String methodName){
-		java.lang.reflect.Method method;
-		 try {
-			method = this.getClass().getMethod(methodName, Object.class);
-		} catch (NoSuchMethodException | SecurityException e) {
-			e.printStackTrace();
-			return;
-		}
-		 try {
-			method.invoke(this);
-		} catch (IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-		}
-	}
-	public static void main(String[] args){
-		TurtleMultiple t = new TurtleMultiple();
-		t.apply("setStamp");
+	private Stream<TurtleSingle> getStream(){
+		Stream<TurtleSingle> stream =  this.myTurtleMap.values().stream() 
+	      .filter(s -> !s.getInactive());
+		setLastTurtle(stream.max((a,b)-> {return Integer.compare(a.getID(), b.getID());}).get());
+		stream =  this.myTurtleMap.values().stream() 
+			      .filter(s -> !s.getInactive());
+		return stream;
 	}
 }

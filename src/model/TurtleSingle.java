@@ -202,4 +202,8 @@ public class TurtleSingle implements Turtle {
 	public int getPenColor() {
 		return myPen.getPenColorIDProperty().get();
 	}
+	
+	public boolean equals(TurtleSingle t){
+		return t.getID() == this.getID();
+	}
 }
