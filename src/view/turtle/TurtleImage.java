@@ -410,7 +410,7 @@ public class TurtleImage extends ImageView {
 	}
 	
 	public void clearStamps() {
-		myStamps.getChildren().removeAll();
+		myStamps.getChildren().remove(0, myStamps.getChildren().size());;
 	}
 	
 	public Node getStamps() {
