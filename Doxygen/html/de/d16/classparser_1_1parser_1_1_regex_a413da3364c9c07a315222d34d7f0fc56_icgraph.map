@@ -1,0 +1,31 @@
+<map id="parser.parser.Regex.makePatterns" name="parser.parser.Regex.makePatterns">
+<area shape="rect" id="node2" href="$de/d16/classparser_1_1parser_1_1_regex.html#a59c7e0d8366fc8c3e94d909f9fc27a14" title="parser.parser.Regex.change\lLanguage" alt="" coords="497,105,695,146"/>
+<area shape="rect" id="node11" href="$de/d16/classparser_1_1parser_1_1_regex.html#a1fd187b9f2b45d0707cb10057e80d7ff" title="parser.parser.Regex.Regex" alt="" coords="243,192,434,219"/>
+<area shape="rect" id="node3" href="$d3/dbe/classview_1_1_view.html#ae77f0f711bba491940c5c6c184dcff70" title="view.View.showAndChangeLanguage" alt="" coords="764,61,1017,88"/>
+<area shape="rect" id="node6" href="$d3/dbe/classview_1_1_view.html#a43a4310c3789a93e0fa6b98b0bb4f8aa" title="view.View.tabChangeUpdate" alt="" coords="790,112,991,139"/>
+<area shape="rect" id="node4" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a8e395aa3dd6b23abf4e158d4a2f19d10" title="view.components.SLogoMenu\lBar.makePreferencesMenu" alt="" coords="1360,6,1571,47"/>
+<area shape="rect" id="node5" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#afbe8434fba1476e5cbe7401c6bc158ec" title="view.components.SLogoMenu\lBar.SLogoMenuBar" alt="" coords="1655,39,1865,81"/>
+<area shape="rect" id="node7" href="$d3/dbe/classview_1_1_view.html#a59bb3de727676a9d3c1630f9e58b9614" title="view.View.addTopBars" alt="" coords="1106,137,1265,164"/>
+<area shape="rect" id="node9" href="$d3/dbe/classview_1_1_view.html#aef53667bcfbe243d64e3416529c35f8f" title="view.View.addNewTab" alt="" coords="1107,87,1263,113"/>
+<area shape="rect" id="node8" href="$d3/dbe/classview_1_1_view.html#ab8997f733f923e68829b13b7e9633bc7" title="view.View.View" alt="" coords="1409,137,1522,164"/>
+<area shape="rect" id="node10" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a50a896e8874b794c164559d97c531b78" title="view.components.SLogoMenu\lBar.makeFileMenu" alt="" coords="1360,71,1571,113"/>
+<area shape="rect" id="node12" href="$de/d16/classparser_1_1parser_1_1_regex.html#a9da6d787de06ba7ea76d52326b532bd1" title="parser.parser.Regex.getInstance" alt="" coords="483,221,709,248"/>
+<area shape="rect" id="node13" href="$d2/d66/classparser_1_1parser_1_1_command_factory.html#a0dc44bc9972a4652d98146b5e30a5e72" title="parser.parser.CommandFactory.create\lCommand" alt="" coords="757,214,1024,255"/>
+<area shape="rect" id="node14" href="$d4/d3a/classparser_1_1parser_1_1_parser.html#a51f4baa200eb0c94b804119b1439a1aa" title="parser.parser.Parser.parse" alt="" coords="1091,209,1280,236"/>
+<area shape="rect" id="node24" href="$d8/da2/classmodel_1_1_variable_factory.html#a73fd0c25fff2bd36a01fbdeadbaab5ec" title="model.VariableFactory.create\lVariable" alt="" coords="787,279,994,321"/>
+<area shape="rect" id="node27" href="$dc/d09/classparser_1_1parser_1_1_to_factory.html#aa6f21d062bb4f3ba4d708d0a5b450a4b" title="parser.parser.ToFactory.isolate\lToDeclaration" alt="" coords="784,345,997,386"/>
+<area shape="rect" id="node29" href="$d6/d00/classmodel_1_1_variables_collection.html#a435e59bf689f308d937cd7748bb466f0" title="model.VariablesCollection.save\lState" alt="" coords="781,410,1001,451"/>
+<area shape="rect" id="node30" href="$d2/d1d/classmodel_1_1_variable_string.html#a10995e85337a47efad5c2591eeda95bd" title="model.VariableString.set\lValue" alt="" coords="801,475,980,517"/>
+<area shape="rect" id="node15" href="$d3/d42/classmodel_1_1_model.html#a8a07e7f2040e8a2ab50ec2955504f6c4" title="model.Model.parse" alt="" coords="1393,255,1537,281"/>
+<area shape="rect" id="node23" href="$d5/dc1/classparser_1_1commands_1_1_parser_test.html#a6a3cc2c0d6ca8b502de3cad94a6ad0a5" title="parser.commands.ParserTest.test\lParse" alt="" coords="1347,189,1583,230"/>
+<area shape="rect" id="node16" href="$d3/dbe/classview_1_1_view.html#ab8b25d25b79752feed7b786ed496f642" title="view.View.loadLibrary" alt="" coords="1683,196,1837,223"/>
+<area shape="rect" id="node17" href="$da/df5/classview_1_1listwindows_1_1_commands_list_window.html#a3611428a65d6e7a436971f1b237e644e" title="view.listwindows.Commands\lListWindow.parseCommand" alt="" coords="1660,247,1860,289"/>
+<area shape="rect" id="node20" href="$db/d98/classview_1_1components_1_1_command_port.html#a687e2098038140e833e1bac1a759b587" title="view.components.CommandPort.run\lCommand" alt="" coords="1633,313,1887,354"/>
+<area shape="rect" id="node18" href="$df/d26/classview_1_1listwindows_1_1_commands_history_window.html#af341417d427f8b0548670f1efbb3acac" title="view.listwindows.Commands\lHistoryWindow.setButtonAction" alt="" coords="1954,182,2174,223"/>
+<area shape="rect" id="node19" href="$d7/dc7/classview_1_1listwindows_1_1_user_defined_commands_window.html#adaf32233789f6a07c42b4e459699bf53" title="view.listwindows.UserDefined\lCommandsWindow.setButtonAction" alt="" coords="1939,247,2189,289"/>
+<area shape="rect" id="node21" href="$db/d98/classview_1_1components_1_1_command_port.html#a37ae451233579691839c4a52072c94e9" title="view.components.CommandPort.\lCommandPort" alt="" coords="1947,313,2181,354"/>
+<area shape="rect" id="node22" href="$db/d98/classview_1_1components_1_1_command_port.html#afcdcfbfa864e7438dc0f0a3f1c541294" title="view.components.CommandPort.run\lCommand" alt="" coords="1937,378,2191,419"/>
+<area shape="rect" id="node25" href="$d6/d00/classmodel_1_1_variables_collection.html#add84dfc7ce130a9bde135a9bf1d080ff" title="model.VariablesCollection.add\lVariable" alt="" coords="1078,282,1293,323"/>
+<area shape="rect" id="node26" href="$d6/d00/classmodel_1_1_variables_collection.html#a9060d5c67d836153c2e0daff3b92c297" title="model.VariablesCollection.get\lVariableValue" alt="" coords="1360,306,1571,347"/>
+<area shape="rect" id="node28" href="$dc/d09/classparser_1_1parser_1_1_to_factory.html#a623e33082dd154838b16f7a12dcf334d" title="parser.parser.ToFactory.createTo" alt="" coords="1073,352,1298,379"/>
+</map>

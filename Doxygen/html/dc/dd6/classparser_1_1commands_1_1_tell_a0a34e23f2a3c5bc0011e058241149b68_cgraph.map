@@ -1,0 +1,8 @@
+<map id="parser.commands.Tell.execute" name="parser.commands.Tell.execute">
+<area shape="rect" id="node2" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a5d8a36f60191801dfdcfe491f5b62966" title="model.TurtleMultiple.deactiveAll" alt="" coords="279,12,502,39"/>
+<area shape="rect" id="node5" href="$da/d96/classparser_1_1nodes_1_1_syntax_node.html#a21b459bd103a7f1f3a1a5f52bb3b3132" title="parser.nodes.SyntaxNode.execute" alt="" coords="269,63,512,89"/>
+<area shape="rect" id="node6" href="$d4/d1c/classparser_1_1nodes_1_1_list_node.html#a20dc3121f383968aade0535bbe80b015" title="parser.nodes.ListNode.getNode" alt="" coords="279,113,503,140"/>
+<area shape="rect" id="node7" href="$d4/d1c/classparser_1_1nodes_1_1_list_node.html#a06d95a825392910e4f1744c706c658df" title="parser.nodes.ListNode.getSize" alt="" coords="282,164,499,191"/>
+<area shape="rect" id="node3" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a39a093480efa352c2066e4ef8534f26e" title="model.TurtleMultiple.get\lStream" alt="" coords="561,5,735,46"/>
+<area shape="rect" id="node4" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a47e5a06bab25ead16ef3098a4257aa4b" title="model.TurtleMultiple.set\lLastTurtle" alt="" coords="784,5,957,46"/>
+</map>

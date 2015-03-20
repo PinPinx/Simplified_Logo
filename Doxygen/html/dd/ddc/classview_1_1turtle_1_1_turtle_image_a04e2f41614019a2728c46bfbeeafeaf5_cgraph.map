@@ -1,0 +1,15 @@
+<map id="view.turtle.TurtleImage.initializeMenu" name="view.turtle.TurtleImage.initializeMenu">
+<area shape="rect" id="node2" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a90023b9af10fa08debafd5c787806382" title="view.turtle.TurtleImage.make\lMenuItem" alt="" coords="311,5,515,46"/>
+<area shape="rect" id="node3" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#ad597408f95d6d36d8756c4990a2343fe" title="view.turtle.TurtleImage.pop\lMyMenu" alt="" coords="317,70,509,111"/>
+<area shape="rect" id="node4" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#aef5a93a2c3465ac4261bf52b9f9c36de" title="view.turtle.TurtleImage.select\lImageFile" alt="" coords="310,135,517,177"/>
+<area shape="rect" id="node5" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#afb36381593a3955aefeb6a61b7c9a709" title="view.turtle.TurtleImage.select\lPenColor" alt="" coords="310,201,517,242"/>
+<area shape="rect" id="node6" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a46a855e3a400fc5f6050cad58859cf76" title="view.turtle.TurtleImage.set\lLineStyleMenu" alt="" coords="319,266,507,307"/>
+<area shape="rect" id="node11" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#afa13a52ae70e4fdfa1070b099d85b54d" title="view.turtle.TurtleImage.set\lLineWidthMenu" alt="" coords="319,331,507,373"/>
+<area shape="rect" id="node12" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a861a4cd4d81b8040540d27bb17172a52" title="view.turtle.TurtleImage.set\lPenUpDown" alt="" coords="319,397,507,438"/>
+<area shape="rect" id="node13" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a9466dd0cc8b23a1f7f1c660dda958c88" title="view.turtle.TurtleImage.toggle\lTurtle" alt="" coords="309,462,517,503"/>
+<area shape="rect" id="node7" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a242aa76ca677c1f6fc0737bf8b7e8efa" title="view.turtle.TurtlePen.set\lSolid" alt="" coords="577,169,749,210"/>
+<area shape="rect" id="node8" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#acc40539aea0be30a2f367149d938817b" title="view.turtle.TurtlePen.set\lDashed" alt="" coords="577,234,749,275"/>
+<area shape="rect" id="node9" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a7f86c7b312b141e82c695363ce59acce" title="view.turtle.TurtlePen.set\lDotted" alt="" coords="577,299,749,341"/>
+<area shape="rect" id="node10" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a3fdf6ec7e6ebd59e5e0ef1ef501d0a6c" title="view.turtle.TurtlePen.set\lDashDot" alt="" coords="577,365,749,406"/>
+<area shape="rect" id="node14" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a6798d71b6457a6b70b472171e64f11f2" title="view.turtle.TurtleImage.hide" alt="" coords="565,469,760,496"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="view.dialogs.DialogBox.show" name="view.dialogs.DialogBox.show">
+<area shape="rect" id="node2" href="$d3/dbe/classview_1_1_view.html#a4a0ca8adc68660017e319de54dedcb83" title="view.View.showDialog" alt="" coords="257,176,413,203"/>
+<area shape="rect" id="node10" href="$d3/dbe/classview_1_1_view.html#aacbd4ae00ce6787a1eacbaed76c8f36f" title="view.View.showHelp" alt="" coords="262,233,407,260"/>
+<area shape="rect" id="node3" href="$da/df5/classview_1_1listwindows_1_1_commands_list_window.html#a3611428a65d6e7a436971f1b237e644e" title="view.listwindows.Commands\lListWindow.parseCommand" alt="" coords="489,70,689,111"/>
+<area shape="rect" id="node6" href="$db/d98/classview_1_1components_1_1_command_port.html#a687e2098038140e833e1bac1a759b587" title="view.components.CommandPort.run\lCommand" alt="" coords="462,135,717,177"/>
+<area shape="rect" id="node9" href="$d2/d1d/classmodel_1_1_variable_string.html#a10995e85337a47efad5c2591eeda95bd" title="model.VariableString.set\lValue" alt="" coords="500,201,679,242"/>
+<area shape="rect" id="node4" href="$df/d26/classview_1_1listwindows_1_1_commands_history_window.html#af341417d427f8b0548670f1efbb3acac" title="view.listwindows.Commands\lHistoryWindow.setButtonAction" alt="" coords="783,5,1003,46"/>
+<area shape="rect" id="node5" href="$d7/dc7/classview_1_1listwindows_1_1_user_defined_commands_window.html#adaf32233789f6a07c42b4e459699bf53" title="view.listwindows.UserDefined\lCommandsWindow.setButtonAction" alt="" coords="769,70,1018,111"/>
+<area shape="rect" id="node7" href="$db/d98/classview_1_1components_1_1_command_port.html#a37ae451233579691839c4a52072c94e9" title="view.components.CommandPort.\lCommandPort" alt="" coords="777,135,1010,177"/>
+<area shape="rect" id="node8" href="$db/d98/classview_1_1components_1_1_command_port.html#afcdcfbfa864e7438dc0f0a3f1c541294" title="view.components.CommandPort.run\lCommand" alt="" coords="766,201,1021,242"/>
+<area shape="rect" id="node11" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a3cc248b5d32b90a011d060bbac6e778e" title="view.components.SLogoMenu\lBar.makeHelpMenu" alt="" coords="484,266,695,307"/>
+<area shape="rect" id="node12" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#afbe8434fba1476e5cbe7401c6bc158ec" title="view.components.SLogoMenu\lBar.SLogoMenuBar" alt="" coords="788,266,999,307"/>
+</map>

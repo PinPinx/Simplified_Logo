@@ -1,0 +1,10 @@
+<map id="view.dialogs.InputDialogBox.updateUserInput" name="view.dialogs.InputDialogBox.updateUserInput">
+<area shape="rect" id="node2" href="$d0/de5/classview_1_1dialogs_1_1_input_dialog_box.html#a47a0db1150edb25d69f50d7d199e0d20" title="view.dialogs.InputDialog\lBox.showInputDialog" alt="" coords="227,129,400,170"/>
+<area shape="rect" id="node3" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a7342cf3ccb9ce9705b8643c09c7ae102" title="view.components.TurtleWindow.modify\lColorPaletteMenu" alt="" coords="449,5,711,46"/>
+<area shape="rect" id="node4" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a017d8aa14181e31499ff8a9c3b957b61" title="view.components.TurtleWindow.modify\lImagePaletteMenu" alt="" coords="449,70,711,111"/>
+<area shape="rect" id="node5" href="$d3/dbe/classview_1_1_view.html#a950a31211081c537c7b2cc9866b09720" title="view.View.promptFileToSave" alt="" coords="482,136,678,163"/>
+<area shape="rect" id="node6" href="$d7/dc7/classview_1_1listwindows_1_1_user_defined_commands_window.html#adaf32233789f6a07c42b4e459699bf53" title="view.listwindows.UserDefined\lCommandsWindow.setButtonAction" alt="" coords="455,187,705,229"/>
+<area shape="rect" id="node7" href="$d3/dbe/classview_1_1_view.html#ae77f0f711bba491940c5c6c184dcff70" title="view.View.showAndChangeLanguage" alt="" coords="453,253,707,280"/>
+<area shape="rect" id="node8" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a8e395aa3dd6b23abf4e158d4a2f19d10" title="view.components.SLogoMenu\lBar.makePreferencesMenu" alt="" coords="760,246,971,287"/>
+<area shape="rect" id="node9" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#afbe8434fba1476e5cbe7401c6bc158ec" title="view.components.SLogoMenu\lBar.SLogoMenuBar" alt="" coords="1019,246,1229,287"/>
+</map>

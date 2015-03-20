@@ -1,0 +1,5 @@
+<map id="view.toolbar.TurtleSpecificToolbarItem" name="view.toolbar.TurtleSpecificToolbarItem">
+<area shape="rect" id="node4" href="$d5/d89/classview_1_1toolbar_1_1_turtle_image_toolbar_item.html" title="view.toolbar.TurtleImage\lToolbarItem" alt="" coords="5,246,179,287"/>
+<area shape="rect" id="node5" href="$d7/d7b/classview_1_1toolbar_1_1_turtle_pen_color_toolbar_item.html" title="view.toolbar.TurtlePenColor\lToolbarItem" alt="" coords="203,246,393,287"/>
+<area shape="rect" id="node2" href="$dc/de6/classview_1_1toolbar_1_1_toolbar_item.html" title="view.toolbar.ToolbarItem" alt="" coords="107,80,281,107"/>
+</map>

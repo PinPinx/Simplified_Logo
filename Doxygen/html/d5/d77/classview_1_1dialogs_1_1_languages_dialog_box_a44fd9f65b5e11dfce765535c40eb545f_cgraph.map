@@ -1,0 +1,4 @@
+<map id="view.dialogs.LanguagesDialogBox.LanguagesDialogBox" name="view.dialogs.LanguagesDialogBox.LanguagesDialogBox">
+<area shape="rect" id="node2" href="$d7/dd7/classview_1_1components_1_1_language_controller.html#a46ac40e3112f70d2b6392d21abed0b14" title="view.components.Language\lController.getAvailableLanguages" alt="" coords="264,5,499,46"/>
+<area shape="rect" id="node3" href="$d5/d77/classview_1_1dialogs_1_1_languages_dialog_box.html#af9e2b623215eed35f1ed849d2eb0f179" title="view.dialogs.LanguagesDialog\lBox.populateChoiceBox" alt="" coords="276,70,487,111"/>
+</map>

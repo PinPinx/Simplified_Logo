@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html" title="view.components.TurtleWindow" alt="" coords="358,5,575,32"/>
+<area shape="rect" id="node3" href="$da/d76/classview_1_1listwindows_1_1_list_window.html" title="view.listwindows.ListWindow" alt="" coords="115,113,309,140"/>
+<area shape="rect" id="node8" href="$df/dd6/classview_1_1toolbar_1_1_toolbar.html" title="view.toolbar.Toolbar" alt="" coords="139,164,285,191"/>
+<area shape="rect" id="node4" href="$da/df5/classview_1_1listwindows_1_1_commands_list_window.html" title="view.listwindows.Commands\lListWindow" alt="" coords="367,57,567,98"/>
+<area shape="rect" id="node7" href="$de/d8c/classview_1_1listwindows_1_1_variables_window.html" title="view.listwindows.Variables\lWindow" alt="" coords="375,122,559,163"/>
+<area shape="rect" id="node5" href="$df/d26/classview_1_1listwindows_1_1_commands_history_window.html" title="view.listwindows.Commands\lHistoryWindow" alt="" coords="627,23,827,65"/>
+<area shape="rect" id="node6" href="$d7/dc7/classview_1_1listwindows_1_1_user_defined_commands_window.html" title="view.listwindows.UserDefined\lCommandsWindow" alt="" coords="624,89,829,130"/>
+<area shape="rect" id="node9" href="$dd/db2/interfaceview_1_1components_1_1_observer.html" title="view.components.Observer" alt="" coords="115,63,309,89"/>
+</map>

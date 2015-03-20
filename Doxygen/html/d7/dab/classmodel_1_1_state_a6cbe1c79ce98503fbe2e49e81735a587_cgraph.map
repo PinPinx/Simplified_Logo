@@ -1,0 +1,12 @@
+<map id="model.State.State" name="model.State.State">
+<area shape="rect" id="node2" href="$df/d15/interfacemodel_1_1_i_variables_collection.html#ae9ef6ed4d4040cb1faefd2fe459162c0" title="model.IVariablesCollection.add\lObserver" alt="" coords="210,5,427,46"/>
+<area shape="rect" id="node3" href="$d3/d73/classmodel_1_1_view_options.html#af9d84002f3ccfc85303fea4083033d0c" title="model.ViewOptions.addObserver" alt="" coords="203,71,434,97"/>
+<area shape="rect" id="node4" href="$db/df9/classmodel_1_1_command_history.html#a9239d5b4f6556e0fa367b2bdd903ac27" title="model.CommandHistory.add\lObserver" alt="" coords="217,122,421,163"/>
+<area shape="rect" id="node5" href="$d3/dbe/classview_1_1_view.html#ac6e2538aa85cbb6f86ba52d1c255e0d7" title="view.View.getCommandHistory\lWindow" alt="" coords="210,187,427,229"/>
+<area shape="rect" id="node6" href="$d3/dbe/classview_1_1_view.html#a6950e4055440ab5672a2453b149f41d0" title="view.View.getInstance" alt="" coords="239,253,398,280"/>
+<area shape="rect" id="node7" href="$d3/dbe/classview_1_1_view.html#a4dc01ce59b5abd00927536703b9fc8b5" title="view.View.getTurtleWindow" alt="" coords="225,304,412,331"/>
+<area shape="rect" id="node8" href="$d3/dbe/classview_1_1_view.html#a95326d18982b188c4bca57562e40c374" title="view.View.getUDCommandsWindow" alt="" coords="195,355,442,381"/>
+<area shape="rect" id="node9" href="$d3/dbe/classview_1_1_view.html#a11d86d0748c928c04004517570f49f77" title="view.View.getVariablesWindow" alt="" coords="213,405,424,432"/>
+<area shape="rect" id="node10" href="$d3/d73/classmodel_1_1_view_options.html#ac7f15ec7293495db247cf7ca92b18c46" title="model.ViewOptions.initialize" alt="" coords="219,456,418,483"/>
+<area shape="rect" id="node11" href="$d3/d73/classmodel_1_1_view_options.html#abef1fb93bd57c31edcdd2c55565c1219" title="model.ViewOptions.notify\lObservers" alt="" coords="491,449,674,490"/>
+</map>

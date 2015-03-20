@@ -1,0 +1,6 @@
+<map id="view.dialogs.InputDialogBox" name="view.dialogs.InputDialogBox">
+<area shape="rect" id="node4" href="$d5/d77/classview_1_1dialogs_1_1_languages_dialog_box.html" title="view.dialogs.LanguagesDialogBox" alt="" coords="5,229,239,256"/>
+<area shape="rect" id="node5" href="$da/d22/classview_1_1dialogs_1_1_text_input_dialog_box.html" title="view.dialogs.TextInputDialogBox" alt="" coords="263,229,485,256"/>
+<area shape="rect" id="node2" href="$d2/dee/classview_1_1dialogs_1_1_message_dialog_box.html" title="view.dialogs.MessageDialogBox" alt="" coords="137,80,359,107"/>
+<area shape="rect" id="node3" href="$d2/d9f/classview_1_1dialogs_1_1_dialog_box.html" title="view.dialogs.DialogBox" alt="" coords="165,5,329,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="model.TurtleMultiple.deactiveAll" name="model.TurtleMultiple.deactiveAll">
+<area shape="rect" id="node2" href="$d5/d51/classparser_1_1commands_1_1_ask_with.html#ada3c73665fbd49550e041239bfee2bf5" title="parser.commands.AskWith.create\lNewActiveStack" alt="" coords="277,5,515,46"/>
+<area shape="rect" id="node3" href="$dc/dd6/classparser_1_1commands_1_1_tell.html#a0a34e23f2a3c5bc0011e058241149b68" title="parser.commands.Tell.execute" alt="" coords="288,71,504,97"/>
+<area shape="rect" id="node4" href="$db/dea/classparser_1_1commands_1_1_ask.html#a658c13e8dfb321e6349eb39413f038f9" title="parser.commands.Ask.runCode" alt="" coords="563,71,786,97"/>
+<area shape="rect" id="node5" href="$db/dea/classparser_1_1commands_1_1_ask.html#ae3a52ad1be99031d4a926942771fd71c" title="parser.commands.Ask.execute" alt="" coords="835,71,1055,97"/>
+</map>

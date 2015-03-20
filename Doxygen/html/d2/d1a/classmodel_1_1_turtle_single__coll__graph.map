@@ -1,0 +1,8 @@
+<map id="model.TurtleSingle" name="model.TurtleSingle">
+<area shape="rect" id="node2" href="$d8/d18/interfacemodel_1_1_turtle.html" title="model.Turtle" alt="" coords="341,5,441,32"/>
+<area shape="rect" id="node3" href="$dc/ddc/interfacemodel_1_1_observable.html" title="model.Observable" alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node4" href="$de/dfa/classmodel_1_1_angle.html" title="model.Angle" alt="" coords="339,56,442,83"/>
+<area shape="rect" id="node5" href="$de/ded/classmodel_1_1_pen.html" title="model.Pen" alt="" coords="345,107,436,133"/>
+<area shape="rect" id="node6" href="$da/d87/interfacemodel_1_1_pen_update.html" title="model.PenUpdate" alt="" coords="6,56,143,83"/>
+<area shape="rect" id="node9" href="$d8/d6a/classmodel_1_1_coordinates.html" title="model.Coordinates" alt="" coords="319,164,462,191"/>
+</map>

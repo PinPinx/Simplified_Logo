@@ -1,0 +1,6 @@
+<map id="model.TurtleSingle.setHeading" name="model.TurtleSingle.setHeading">
+<area shape="rect" id="node2" href="$de/dfa/classmodel_1_1_angle.html#aa1b069cc47fadd893fe8527c356dd8fd" title="model.Angle.getAngleValue" alt="" coords="270,5,469,32"/>
+<area shape="rect" id="node3" href="$da/d88/classmodel_1_1_turtle_single.html#a40853b6f8c9ba455489ad8ea9535e99d" title="model.TurtleSingle.notify\lObservers" alt="" coords="280,57,459,98"/>
+<area shape="rect" id="node4" href="$de/dfa/classmodel_1_1_angle.html#abc668dbdb92ee339fea7492cda826061" title="model.Angle.setAngleValue" alt="" coords="271,123,468,149"/>
+<area shape="rect" id="node5" href="$de/dfa/classmodel_1_1_angle.html#a33d4e2194b10ee4aa384b74c7f73f3e6" title="model.Angle.modAngleValue" alt="" coords="518,123,725,149"/>
+</map>
