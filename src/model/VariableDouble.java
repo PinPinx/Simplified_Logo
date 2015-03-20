@@ -1,3 +1,6 @@
+// This entire file is part of my masterpiece.
+// Kaighn Kevlin kgk6
+
 package model;
 
 import exceptions.VariableWrongTypeException;

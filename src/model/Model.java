@@ -34,10 +34,14 @@ public class Model {
 		return instance;
 	}
 	
+	public CommandRoot parseString(String command) throws CommandNameNotFoundException, SyntaxErrorWrongFormat, BadArgumentException{
+			return myParser.parse(command);
+	}
+	
 	public void parse(String command) throws CommandNameNotFoundException, SyntaxErrorWrongFormat, BadArgumentException{
-			CommandRoot hello = myParser.parse(command);
-			hello.execute(myActiveState);
-			myActiveState.getCommandHistory().addCommand(hello);
+		CommandRoot root = parseString(command);
+		root.execute(myActiveState);
+		myActiveState.getCommandHistory().addCommand(root);
 	}
 	
 	/**
