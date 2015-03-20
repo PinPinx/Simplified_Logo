@@ -1,3 +1,6 @@
+// This entire file is part of my masterpiece.
+// Danny Oh
+
 package model;
 
 import java.util.ArrayList;
