@@ -1,9 +1,0 @@
-<map id="parser.parser.ToFactory.createTo" name="parser.parser.ToFactory.createTo">
-<area shape="rect" id="node2" href="$dc/d09/classparser_1_1parser_1_1_to_factory.html#aa6f21d062bb4f3ba4d708d0a5b450a4b" title="parser.parser.ToFactory.isolate\lToDeclaration" alt="" coords="280,30,493,71"/>
-<area shape="rect" id="node3" href="$de/d16/classparser_1_1parser_1_1_regex.html#a9da6d787de06ba7ea76d52326b532bd1" title="parser.parser.Regex.getInstance" alt="" coords="541,12,768,39"/>
-<area shape="rect" id="node6" href="$de/d16/classparser_1_1parser_1_1_regex.html#a5d526d752521b953619721c6d3e930bd" title="parser.parser.Regex.getType" alt="" coords="554,63,755,89"/>
-<area shape="rect" id="node4" href="$de/d16/classparser_1_1parser_1_1_regex.html#a1fd187b9f2b45d0707cb10057e80d7ff" title="parser.parser.Regex.Regex" alt="" coords="842,12,1033,39"/>
-<area shape="rect" id="node5" href="$de/d16/classparser_1_1parser_1_1_regex.html#a413da3364c9c07a315222d34d7f0fc56" title="parser.parser.Regex.make\lPatterns" alt="" coords="1107,5,1295,46"/>
-<area shape="rect" id="node7" href="$d7/dda/enumparser_1_1parser_1_1_general_type.html#af35aa06f434667ca22f66abcc181eb30" title="parser.parser.GeneralType.findType" alt="" coords="816,63,1059,89"/>
-<area shape="rect" id="node8" href="$de/d16/classparser_1_1parser_1_1_regex.html#a162d120a60bdb10238c3d31c4f5f6903" title="parser.parser.Regex.match" alt="" coords="841,113,1034,140"/>
-</map>

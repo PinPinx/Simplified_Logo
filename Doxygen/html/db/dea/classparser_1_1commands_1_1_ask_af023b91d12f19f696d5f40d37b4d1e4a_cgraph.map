@@ -1,5 +1,0 @@
-<map id="parser.commands.Ask.createNewActiveStack" name="parser.commands.Ask.createNewActiveStack">
-<area shape="rect" id="node2" href="$da/d96/classparser_1_1nodes_1_1_syntax_node.html#a21b459bd103a7f1f3a1a5f52bb3b3132" title="parser.nodes.SyntaxNode.execute" alt="" coords="264,5,507,32"/>
-<area shape="rect" id="node3" href="$d4/d1c/classparser_1_1nodes_1_1_list_node.html#a20dc3121f383968aade0535bbe80b015" title="parser.nodes.ListNode.getNode" alt="" coords="273,56,497,83"/>
-<area shape="rect" id="node4" href="$d4/d1c/classparser_1_1nodes_1_1_list_node.html#a06d95a825392910e4f1744c706c658df" title="parser.nodes.ListNode.getSize" alt="" coords="277,107,494,133"/>
-</map>

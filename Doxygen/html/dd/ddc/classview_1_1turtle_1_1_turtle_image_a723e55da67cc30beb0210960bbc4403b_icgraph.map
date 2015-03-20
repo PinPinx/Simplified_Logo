@@ -1,7 +1,0 @@
-<map id="view.turtle.TurtleImage.setDebugMode" name="view.turtle.TurtleImage.setDebugMode">
-<area shape="rect" id="node2" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a16e7723d456ac7fa532544e477e43728" title="view.components.TurtleWindow.enter\lDebugMode" alt="" coords="243,5,498,46"/>
-<area shape="rect" id="node3" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a101f8c1f0ab5d6096b14ba2350d145bb" title="view.components.SLogoWorkspace.start\lDebugger" alt="" coords="547,5,826,46"/>
-<area shape="rect" id="node4" href="$d3/dbe/classview_1_1_view.html#af73241772a154fae88c348f602b25216" title="view.View.addDebuger" alt="" coords="875,12,1037,39"/>
-<area shape="rect" id="node5" href="$db/d98/classview_1_1components_1_1_command_port.html#a5963d9acc7cb5497eeda04b2a6666592" title="view.components.CommandPort.enter\lDebugMode" alt="" coords="1085,5,1352,46"/>
-<area shape="rect" id="node6" href="$db/d98/classview_1_1components_1_1_command_port.html#a37ae451233579691839c4a52072c94e9" title="view.components.CommandPort.\lCommandPort" alt="" coords="1401,5,1634,46"/>
-</map>

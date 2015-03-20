@@ -1,5 +1,0 @@
-<map id="view.toolbar.ShowTurtlesToolbarItem.createNode" name="view.toolbar.ShowTurtlesToolbarItem.createNode">
-<area shape="rect" id="node2" href="$df/dd6/classview_1_1toolbar_1_1_toolbar.html#af475087a1d6bd9a705ed213f676f3339" title="view.toolbar.Toolbar.get\lTurtleWindow" alt="" coords="275,5,445,46"/>
-<area shape="rect" id="node3" href="$dc/de6/classview_1_1toolbar_1_1_toolbar_item.html#a9894c0b88f523491c2d748dbaac57ceb" title="view.toolbar.ToolbarItem.set\lLabel" alt="" coords="261,70,459,111"/>
-<area shape="rect" id="node4" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a271ae7340dd14e919cecb8596690b2dc" title="view.components.TurtleWindow.toggle\lInactiveTurtles" alt="" coords="230,135,490,177"/>
-</map>

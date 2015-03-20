@@ -1,8 +1,0 @@
-<map id="view.components.SLogoMenuBar" name="view.components.SLogoMenuBar">
-<area shape="rect" id="node3" href="$d3/dbe/classview_1_1_view.html" title="view.View" alt="" coords="1763,209,1845,236"/>
-<area shape="rect" id="node8" href="$d2/d9f/classview_1_1dialogs_1_1_dialog_box.html" title="view.dialogs.DialogBox" alt="" coords="216,311,381,337"/>
-<area shape="rect" id="node5" href="$d5/d77/classview_1_1dialogs_1_1_languages_dialog_box.html" title="view.dialogs.LanguagesDialogBox" alt="" coords="1360,295,1595,321"/>
-<area shape="rect" id="node6" href="$d0/de5/classview_1_1dialogs_1_1_input_dialog_box.html" title="view.dialogs.InputDialogBox" alt="" coords="984,361,1181,388"/>
-<area shape="rect" id="node7" href="$d2/dee/classview_1_1dialogs_1_1_message_dialog_box.html" title="view.dialogs.MessageDialogBox" alt="" coords="518,361,741,388"/>
-<area shape="rect" id="node14" href="$dc/d6d/classview_1_1dialogs_1_1_help_dialog_box.html" title="view.dialogs.HelpDialogBox" alt="" coords="765,227,960,253"/>
-</map>

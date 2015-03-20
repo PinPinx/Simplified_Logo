@@ -1,9 +1,0 @@
-<map id="view.toolbar.TurtleImageToolbarItem.createNode" name="view.toolbar.TurtleImageToolbarItem.createNode">
-<area shape="rect" id="node2" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#a681453ed9b710bab03151e682b577843" title="view.toolbar.TurtleSpecific\lToolbarItem.getAndModifyTurtles" alt="" coords="230,83,458,125"/>
-<area shape="rect" id="node8" href="$d5/d89/classview_1_1toolbar_1_1_turtle_image_toolbar_item.html#a85d2d6ac531d2bb2d14599e85d4b0926" title="view.toolbar.TurtleImage\lToolbarItem.makeImageChooser" alt="" coords="229,149,459,190"/>
-<area shape="rect" id="node3" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#a22d6ddd39dd881cc916afab2c6f6e050" title="view.toolbar.TurtleSpecific\lToolbarItem.getUserInput" alt="" coords="539,50,722,91"/>
-<area shape="rect" id="node7" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#aca2dc6e061991957002113af853e76a4" title="view.toolbar.TurtleSpecific\lToolbarItem.changeTurtleProperties" alt="" coords="507,115,754,157"/>
-<area shape="rect" id="node4" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#aff87aa6f38bcdb6418b027d88c6bd90c" title="view.toolbar.TurtleSpecific\lToolbarItem.getAvailableTurtles" alt="" coords="803,50,1021,91"/>
-<area shape="rect" id="node5" href="$df/dd6/classview_1_1toolbar_1_1_toolbar.html#af475087a1d6bd9a705ed213f676f3339" title="view.toolbar.Toolbar.get\lTurtleWindow" alt="" coords="1106,5,1275,46"/>
-<area shape="rect" id="node6" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a56c45ccd42635856219886f438d1a12c" title="view.components.TurtleWindow.get\lAvailableTurtles" alt="" coords="1070,83,1311,125"/>
-</map>

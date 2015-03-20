@@ -1,6 +1,0 @@
-<map id="view.listwindows.ListWindow" name="view.listwindows.ListWindow">
-<area shape="rect" id="node3" href="$da/df5/classview_1_1listwindows_1_1_commands_list_window.html" title="view.listwindows.Commands\lListWindow" alt="" coords="119,155,317,197"/>
-<area shape="rect" id="node6" href="$de/d8c/classview_1_1listwindows_1_1_variables_window.html" title="view.listwindows.Variables\lWindow" alt="" coords="343,155,527,197"/>
-<area shape="rect" id="node4" href="$df/d26/classview_1_1listwindows_1_1_commands_history_window.html" title="view.listwindows.Commands\lHistoryWindow" alt="" coords="5,246,204,287"/>
-<area shape="rect" id="node5" href="$d7/dc7/classview_1_1listwindows_1_1_user_defined_commands_window.html" title="view.listwindows.UserDefined\lCommandsWindow" alt="" coords="229,246,435,287"/>
-</map>

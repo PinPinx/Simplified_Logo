@@ -1,7 +1,0 @@
-<map id="model.TurtleSingle.getCoordinates" name="model.TurtleSingle.getCoordinates">
-<area shape="rect" id="node2" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a8a11dcf391169f97a7b889b9d6d59fd2" title="model.TurtleMultiple.get\lCoordinates" alt="" coords="305,5,479,46"/>
-<area shape="rect" id="node4" href="$da/d88/classmodel_1_1_turtle_single.html#afd2d49972b498f78ddb54fab9e70f221" title="model.TurtleSingle.moveTo\lPosition" alt="" coords="296,70,488,111"/>
-<area shape="rect" id="node6" href="$db/dce/classmodel_1_1_turtle_update.html#a483f6cdd16cedb0e3a05492ddf7fe709" title="model.TurtleUpdate.Turtle\lUpdate" alt="" coords="299,135,485,177"/>
-<area shape="rect" id="node3" href="$d5/dc1/classparser_1_1commands_1_1_parser_test.html#a6a3cc2c0d6ca8b502de3cad94a6ad0a5" title="parser.commands.ParserTest.test\lParse" alt="" coords="537,5,773,46"/>
-<area shape="rect" id="node5" href="$d9/dea/classmodel_1_1_turtle_multiple.html#ab96e6d9114df066c4a1a5fc670742abb" title="model.TurtleMultiple.move\lToPosition" alt="" coords="560,70,749,111"/>
-</map>

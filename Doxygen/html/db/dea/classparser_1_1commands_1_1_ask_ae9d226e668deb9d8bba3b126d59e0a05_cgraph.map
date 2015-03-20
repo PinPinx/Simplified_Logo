@@ -1,5 +1,0 @@
-<map id="parser.commands.Ask.createOldActiveStack" name="parser.commands.Ask.createOldActiveStack">
-<area shape="rect" id="node2" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a8d4e9d8254a29cb12982469a8ee05982" title="model.TurtleMultiple.active\lTurtleIDs" alt="" coords="265,5,455,46"/>
-<area shape="rect" id="node3" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a39a093480efa352c2066e4ef8534f26e" title="model.TurtleMultiple.get\lStream" alt="" coords="505,5,679,46"/>
-<area shape="rect" id="node4" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a47e5a06bab25ead16ef3098a4257aa4b" title="model.TurtleMultiple.set\lLastTurtle" alt="" coords="728,5,901,46"/>
-</map>

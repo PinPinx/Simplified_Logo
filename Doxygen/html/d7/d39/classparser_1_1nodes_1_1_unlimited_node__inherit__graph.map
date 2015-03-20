@@ -1,7 +1,0 @@
-<map id="parser.nodes.UnlimitedNode" name="parser.nodes.UnlimitedNode">
-<area shape="rect" id="node3" href="$d8/d87/classparser_1_1commands_1_1_and.html" title="parser.commands.And" alt="" coords="5,155,171,181"/>
-<area shape="rect" id="node4" href="$d0/dee/classparser_1_1commands_1_1_or.html" title="parser.commands.Or" alt="" coords="196,155,353,181"/>
-<area shape="rect" id="node5" href="$d5/ddb/classparser_1_1commands_1_1_product.html" title="parser.commands.Product" alt="" coords="378,155,568,181"/>
-<area shape="rect" id="node6" href="$d8/d6e/classparser_1_1commands_1_1_sum.html" title="parser.commands.Sum" alt="" coords="593,155,764,181"/>
-<area shape="rect" id="node2" href="$da/d96/classparser_1_1nodes_1_1_syntax_node.html" title="parser.nodes.SyntaxNode" alt="" coords="280,5,467,32"/>
-</map>

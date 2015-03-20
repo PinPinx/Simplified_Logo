@@ -1,9 +1,0 @@
-<map id="model.TurtleMultiple.addDegree" name="model.TurtleMultiple.addDegree">
-<area shape="rect" id="node2" href="$da/d88/classmodel_1_1_turtle_single.html#a03df9ead84cfaec0317ddbcb8a3a465e" title="model.TurtleSingle.addDegree" alt="" coords="233,41,447,68"/>
-<area shape="rect" id="node6" href="$da/d88/classmodel_1_1_turtle_single.html#a2a2d4c76b711eabbf4132222c6f0c8aa" title="model.TurtleSingle.getID" alt="" coords="251,92,429,119"/>
-<area shape="rect" id="node7" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a39a093480efa352c2066e4ef8534f26e" title="model.TurtleMultiple.get\lStream" alt="" coords="253,143,427,185"/>
-<area shape="rect" id="node3" href="$de/dfa/classmodel_1_1_angle.html#aef359cf2d8f49b345732939644cd8d29" title="model.Angle.addAngleValue" alt="" coords="497,5,698,32"/>
-<area shape="rect" id="node5" href="$da/d88/classmodel_1_1_turtle_single.html#a40853b6f8c9ba455489ad8ea9535e99d" title="model.TurtleSingle.notify\lObservers" alt="" coords="508,57,687,98"/>
-<area shape="rect" id="node4" href="$de/dfa/classmodel_1_1_angle.html#a33d4e2194b10ee4aa384b74c7f73f3e6" title="model.Angle.modAngleValue" alt="" coords="747,5,954,32"/>
-<area shape="rect" id="node8" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a47e5a06bab25ead16ef3098a4257aa4b" title="model.TurtleMultiple.set\lLastTurtle" alt="" coords="511,143,684,185"/>
-</map>

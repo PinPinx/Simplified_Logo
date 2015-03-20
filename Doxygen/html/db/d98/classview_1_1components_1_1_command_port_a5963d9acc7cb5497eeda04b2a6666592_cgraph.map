@@ -1,7 +1,0 @@
-<map id="view.components.CommandPort.enterDebugMode" name="view.components.CommandPort.enterDebugMode">
-<area shape="rect" id="node2" href="$d3/dbe/classview_1_1_view.html#af73241772a154fae88c348f602b25216" title="view.View.addDebuger" alt="" coords="320,12,483,39"/>
-<area shape="rect" id="node6" href="$d3/dbe/classview_1_1_view.html#a6950e4055440ab5672a2453b149f41d0" title="view.View.getInstance" alt="" coords="322,63,481,89"/>
-<area shape="rect" id="node3" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a101f8c1f0ab5d6096b14ba2350d145bb" title="view.components.SLogoWorkspace.start\lDebugger" alt="" coords="531,5,810,46"/>
-<area shape="rect" id="node4" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a16e7723d456ac7fa532544e477e43728" title="view.components.TurtleWindow.enter\lDebugMode" alt="" coords="859,5,1114,46"/>
-<area shape="rect" id="node5" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a723e55da67cc30beb0210960bbc4403b" title="view.turtle.TurtleImage.set\lDebugMode" alt="" coords="1163,5,1351,46"/>
-</map>

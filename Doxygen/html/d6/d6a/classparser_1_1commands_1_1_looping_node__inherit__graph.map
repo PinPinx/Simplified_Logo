@@ -1,6 +1,0 @@
-<map id="parser.commands.LoopingNode" name="parser.commands.LoopingNode">
-<area shape="rect" id="node4" href="$d6/dde/classparser_1_1commands_1_1_do_times.html" title="parser.commands.DoTimes" alt="" coords="5,229,203,256"/>
-<area shape="rect" id="node5" href="$d3/d16/classparser_1_1commands_1_1_for.html" title="parser.commands.For" alt="" coords="228,229,391,256"/>
-<area shape="rect" id="node2" href="$db/d11/classparser_1_1nodes_1_1_binary_node.html" title="parser.nodes.BinaryNode" alt="" coords="115,80,297,107"/>
-<area shape="rect" id="node3" href="$da/d96/classparser_1_1nodes_1_1_syntax_node.html" title="parser.nodes.SyntaxNode" alt="" coords="113,5,300,32"/>
-</map>

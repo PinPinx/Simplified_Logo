@@ -1,6 +1,0 @@
-<map id="parser.commands.PenDown.execute" name="parser.commands.PenDown.execute">
-<area shape="rect" id="node2" href="$d7/dab/classmodel_1_1_state.html#a212cf725afb88937ea4ac5e10167d4a7" title="model.State.getTurtle" alt="" coords="316,5,476,32"/>
-<area shape="rect" id="node3" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a6a540c1e091febf099dcf3db988e4d62" title="model.TurtleMultiple.set\lPenUp" alt="" coords="309,57,483,98"/>
-<area shape="rect" id="node4" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a39a093480efa352c2066e4ef8534f26e" title="model.TurtleMultiple.get\lStream" alt="" coords="531,57,706,98"/>
-<area shape="rect" id="node5" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a47e5a06bab25ead16ef3098a4257aa4b" title="model.TurtleMultiple.set\lLastTurtle" alt="" coords="755,57,928,98"/>
-</map>

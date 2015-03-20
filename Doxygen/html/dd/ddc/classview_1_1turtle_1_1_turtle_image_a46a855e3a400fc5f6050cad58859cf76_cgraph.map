@@ -1,6 +1,0 @@
-<map id="view.turtle.TurtleImage.setLineStyleMenu" name="view.turtle.TurtleImage.setLineStyleMenu">
-<area shape="rect" id="node2" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a3fdf6ec7e6ebd59e5e0ef1ef501d0a6c" title="view.turtle.TurtlePen.set\lDashDot" alt="" coords="243,5,415,46"/>
-<area shape="rect" id="node3" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#acc40539aea0be30a2f367149d938817b" title="view.turtle.TurtlePen.set\lDashed" alt="" coords="243,70,415,111"/>
-<area shape="rect" id="node4" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a7f86c7b312b141e82c695363ce59acce" title="view.turtle.TurtlePen.set\lDotted" alt="" coords="243,135,415,177"/>
-<area shape="rect" id="node5" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a242aa76ca677c1f6fc0737bf8b7e8efa" title="view.turtle.TurtlePen.set\lSolid" alt="" coords="243,201,415,242"/>
-</map>

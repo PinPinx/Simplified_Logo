@@ -1,5 +1,0 @@
-<map id="view.View.removeDebuger" name="view.View.removeDebuger">
-<area shape="rect" id="node2" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a18de98d8715eaf2d6a0d1d43f499a28e" title="view.components.SLogoWorkspace.stop\lDebugger" alt="" coords="243,5,519,46"/>
-<area shape="rect" id="node3" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a62cb84bc01e37c12c7e650318e43c1fb" title="view.components.TurtleWindow.exit\lDebugMode" alt="" coords="568,5,811,46"/>
-<area shape="rect" id="node4" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#aa4659cd85d2c53df2a990b1a140af98d" title="view.turtle.TurtleImage.set\lRunMode" alt="" coords="859,5,1047,46"/>
-</map>

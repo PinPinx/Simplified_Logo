@@ -1,7 +1,0 @@
-<map id="view.components.Observer" name="view.components.Observer">
-<area shape="rect" id="node2" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html" title="view.components.TurtleWindow" alt="" coords="249,5,466,32"/>
-<area shape="rect" id="node3" href="$da/df5/classview_1_1listwindows_1_1_commands_list_window.html" title="view.listwindows.Commands\lListWindow" alt="" coords="257,57,457,98"/>
-<area shape="rect" id="node6" href="$de/d8c/classview_1_1listwindows_1_1_variables_window.html" title="view.listwindows.Variables\lWindow" alt="" coords="265,122,449,163"/>
-<area shape="rect" id="node4" href="$df/d26/classview_1_1listwindows_1_1_commands_history_window.html" title="view.listwindows.Commands\lHistoryWindow" alt="" coords="517,23,717,65"/>
-<area shape="rect" id="node5" href="$d7/dc7/classview_1_1listwindows_1_1_user_defined_commands_window.html" title="view.listwindows.UserDefined\lCommandsWindow" alt="" coords="515,89,720,130"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="view.components.SLogoWorkspace.runDebugger" name="view.components.SLogoWorkspace.runDebugger">
-<area shape="rect" id="node2" href="$d3/dbe/classview_1_1_view.html#af4860035310eeafc92cf78cbbc53290a" title="view.View.runDebugger" alt="" coords="323,12,491,39"/>
-<area shape="rect" id="node3" href="$d4/d6b/classview_1_1components_1_1_debugger_port.html#a6dd594b7c6572e0f4ef2ab7d8845f2ce" title="view.components.Debugger\lPort.stepDebug" alt="" coords="539,5,738,46"/>
-<area shape="rect" id="node4" href="$d4/d6b/classview_1_1components_1_1_debugger_port.html#a7055f8fe86c7e1078dc9909a7f000b8b" title="view.components.Debugger\lPort.DebuggerPort" alt="" coords="787,5,986,46"/>
-</map>

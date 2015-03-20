@@ -1,4 +1,0 @@
-<map id="model.Turtle.moveToPosition" name="model.Turtle.moveToPosition">
-<area shape="rect" id="node2" href="$dc/d45/classparser_1_1commands_1_1_home.html#af9f963a4a20107d7a92ede5a5dec6f12" title="parser.commands.Home.execute" alt="" coords="273,5,509,32"/>
-<area shape="rect" id="node3" href="$df/d76/classparser_1_1commands_1_1_set_position.html#a757db63b48d90808d2f0996f05b37129" title="parser.commands.SetPosition.execute" alt="" coords="256,56,525,83"/>
-</map>

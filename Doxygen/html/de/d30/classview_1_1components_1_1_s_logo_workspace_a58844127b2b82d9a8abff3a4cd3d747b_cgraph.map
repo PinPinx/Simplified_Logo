@@ -1,8 +1,0 @@
-<map id="view.components.SLogoWorkspace.SLogoWorkspace" name="view.components.SLogoWorkspace.SLogoWorkspace">
-<area shape="rect" id="node2" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#ad2322d26c2ab8bb5d5bfc6c11421c101" title="view.components.SLogoWorkspace.add\lCommandPortWindow" alt="" coords="301,5,573,46"/>
-<area shape="rect" id="node3" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a97f6905e38fcb41e0ee7fc281d9e253f" title="view.components.SLogoWorkspace.add\lListWindows" alt="" coords="301,70,573,111"/>
-<area shape="rect" id="node5" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#ad5530155fffb23a907eae04677596f66" title="view.components.SLogoWorkspace.add\lToolbar" alt="" coords="301,135,573,177"/>
-<area shape="rect" id="node7" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a9a79399c07620a8f8e008ffa6f928c99" title="view.components.SLogoWorkspace.add\lTurtleWindow" alt="" coords="301,201,573,242"/>
-<area shape="rect" id="node4" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#afc3ca9b83f5f6a223f0ca7973fe39006" title="view.components.SLogoWorkspace.init\lLists" alt="" coords="621,70,888,111"/>
-<area shape="rect" id="node6" href="$df/dd6/classview_1_1toolbar_1_1_toolbar.html#abae6df669b62c580f7869d6d0c60c02d" title="view.toolbar.Toolbar.set\lTurtleWindow" alt="" coords="671,135,839,177"/>
-</map>

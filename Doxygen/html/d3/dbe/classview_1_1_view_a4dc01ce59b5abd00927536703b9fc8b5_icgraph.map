@@ -1,7 +1,0 @@
-<map id="view.View.getTurtleWindow" name="view.View.getTurtleWindow">
-<area shape="rect" id="node2" href="$d9/dea/classmodel_1_1_turtle_multiple.html#aa13efbce628306faad5ba5a2ace04658" title="model.TurtleMultiple.add\lNewTurtle" alt="" coords="257,5,434,46"/>
-<area shape="rect" id="node4" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a8e395aa3dd6b23abf4e158d4a2f19d10" title="view.components.SLogoMenu\lBar.makePreferencesMenu" alt="" coords="240,70,451,111"/>
-<area shape="rect" id="node6" href="$d7/dab/classmodel_1_1_state.html#a6cbe1c79ce98503fbe2e49e81735a587" title="model.State.State" alt="" coords="275,136,415,163"/>
-<area shape="rect" id="node3" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a6068e4774b6c15ea02445e207fd22395" title="model.TurtleMultiple.Turtle\lMultiple" alt="" coords="511,5,697,46"/>
-<area shape="rect" id="node5" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#afbe8434fba1476e5cbe7401c6bc158ec" title="view.components.SLogoMenu\lBar.SLogoMenuBar" alt="" coords="499,70,709,111"/>
-</map>

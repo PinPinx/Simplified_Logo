@@ -1,5 +1,0 @@
-<map id="model.State.getTurtle" name="model.State.getTurtle">
-<area shape="rect" id="node2" href="$d7/d3b/classparser_1_1commands_1_1_pen_down.html#a3e16164bf1598a341653d51d0cb0b989" title="parser.commands.PenDown.execute" alt="" coords="213,5,469,32"/>
-<area shape="rect" id="node3" href="$de/d75/classparser_1_1commands_1_1_pen_up.html#ab2cc693085c58ad98ad75023de1bf949" title="parser.commands.PenUp.execute" alt="" coords="222,56,461,83"/>
-<area shape="rect" id="node4" href="$d5/dc1/classparser_1_1commands_1_1_parser_test.html#a6a3cc2c0d6ca8b502de3cad94a6ad0a5" title="parser.commands.ParserTest.test\lParse" alt="" coords="223,107,459,149"/>
-</map>

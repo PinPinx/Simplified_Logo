@@ -1,8 +1,0 @@
-<map id="view.turtle.TurtleImage.setPenProperties" name="view.turtle.TurtleImage.setPenProperties">
-<area shape="rect" id="node2" href="$d5/d46/classview_1_1components_1_1_palette.html#acf5106175f97e28619e7ed993b9fce93" title="view.components.Palette.get\lColor" alt="" coords="251,5,456,46"/>
-<area shape="rect" id="node3" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#ab0c25ebb2a0dd4243c58a4c57f4413b6" title="view.turtle.TurtlePen.get\lColorIndex" alt="" coords="267,70,440,111"/>
-<area shape="rect" id="node4" href="$da/d87/interfacemodel_1_1_pen_update.html#af78331b08d2c0383a311d1c83ced5a25" title="model.PenUpdate.getPenColor\lIDProperty" alt="" coords="244,135,463,177"/>
-<area shape="rect" id="node5" href="$da/d87/interfacemodel_1_1_pen_update.html#a88522e239a5ec0a9f34750d844141907" title="model.PenUpdate.getPenSize\lProperty" alt="" coords="247,201,460,242"/>
-<area shape="rect" id="node6" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a1029f25ff2fee222cf224f0343029437" title="view.turtle.TurtlePen.set\lProperties" alt="" coords="267,266,439,307"/>
-<area shape="rect" id="node7" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#ae7dfe008f68eef44da5ee831b062952a" title="view.turtle.TurtlePen.updatePen" alt="" coords="243,332,464,359"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="view.components.TurtleWindow.initializeMenu" name="view.components.TurtleWindow.initializeMenu">
-<area shape="rect" id="node2" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a8054a28718caed4dc748aa1c05e20067" title="view.components.TurtleWindow.pop\lMyMenu" alt="" coords="361,5,605,46"/>
-<area shape="rect" id="node3" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a31c7742f40dc77cd7f7c211c24b5d2be" title="view.components.TurtleWindow.set\lColorPaletteMenu" alt="" coords="363,70,603,111"/>
-<area shape="rect" id="node4" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#afd6f13b04109b0f2b591626e5346065c" title="view.components.TurtleWindow.set\lDefaultColorPalette" alt="" coords="363,135,603,177"/>
-<area shape="rect" id="node5" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a8b03eaae70dcae6eef8205ac391ea985" title="view.components.TurtleWindow.set\lDefaultImagePalette" alt="" coords="363,201,603,242"/>
-<area shape="rect" id="node6" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a8693833628c43ffe3d2dc9d8ca0e07c1" title="view.components.TurtleWindow.set\lImagePaletteMenu" alt="" coords="363,266,603,307"/>
-</map>

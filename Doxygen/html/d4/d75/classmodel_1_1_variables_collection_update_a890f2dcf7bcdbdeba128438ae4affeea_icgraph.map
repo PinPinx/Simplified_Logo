@@ -1,7 +1,0 @@
-<map id="model.VariablesCollectionUpdate.getDisplayProperties" name="model.VariablesCollectionUpdate.getDisplayProperties">
-<area shape="rect" id="node2" href="$d1/dfc/classmodel_1_1_scoped_variables_collection.html#ad2c7270c4dd14869848ccb21c330107c" title="model.ScopedVariablesCollection.notify\lObservers" alt="" coords="259,63,533,105"/>
-<area shape="rect" id="node6" href="$de/d8c/classview_1_1listwindows_1_1_variables_window.html#a044467e4f91793ad830c0b4257537d20" title="view.listwindows.Variables\lWindow.update" alt="" coords="304,129,488,170"/>
-<area shape="rect" id="node3" href="$d1/dfc/classmodel_1_1_scoped_variables_collection.html#a97c904df13f78cd228155acb66682af0" title="model.ScopedVariablesCollection.add\lVariable" alt="" coords="582,5,845,46"/>
-<area shape="rect" id="node4" href="$d1/dfc/classmodel_1_1_scoped_variables_collection.html#ad857a8d43176e6105ff1ae1964576d7c" title="model.ScopedVariablesCollection.get\lVariableValue" alt="" coords="893,34,1152,75"/>
-<area shape="rect" id="node5" href="$d1/dfc/classmodel_1_1_scoped_variables_collection.html#ab3bfb97681098d2ad0c0429ad1ac2684" title="model.ScopedVariablesCollection.exit\lScope" alt="" coords="583,122,844,163"/>
-</map>

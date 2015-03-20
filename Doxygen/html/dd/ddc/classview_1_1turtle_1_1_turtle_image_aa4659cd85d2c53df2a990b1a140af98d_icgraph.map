@@ -1,6 +1,0 @@
-<map id="view.turtle.TurtleImage.setRunMode" name="view.turtle.TurtleImage.setRunMode">
-<area shape="rect" id="node2" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a62cb84bc01e37c12c7e650318e43c1fb" title="view.components.TurtleWindow.exit\lDebugMode" alt="" coords="243,5,485,46"/>
-<area shape="rect" id="node3" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a18de98d8715eaf2d6a0d1d43f499a28e" title="view.components.SLogoWorkspace.stop\lDebugger" alt="" coords="534,5,810,46"/>
-<area shape="rect" id="node4" href="$d3/dbe/classview_1_1_view.html#ac7c7e9f35d78a83a1b6da5a0614c5b7a" title="view.View.removeDebuger" alt="" coords="859,12,1047,39"/>
-<area shape="rect" id="node5" href="$d4/d6b/classview_1_1components_1_1_debugger_port.html#a18fd0abad345eed2738b7e156ac1fbe1" title="view.components.Debugger\lPort.exitDebugMode" alt="" coords="1097,5,1295,46"/>
-</map>

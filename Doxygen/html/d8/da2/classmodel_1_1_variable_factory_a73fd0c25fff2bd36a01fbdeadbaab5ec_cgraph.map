@@ -1,8 +1,0 @@
-<map id="model.VariableFactory.createVariable" name="model.VariableFactory.createVariable">
-<area shape="rect" id="node2" href="$de/d16/classparser_1_1parser_1_1_regex.html#a9da6d787de06ba7ea76d52326b532bd1" title="parser.parser.Regex.getInstance" alt="" coords="261,12,488,39"/>
-<area shape="rect" id="node5" href="$de/d16/classparser_1_1parser_1_1_regex.html#a5d526d752521b953619721c6d3e930bd" title="parser.parser.Regex.getType" alt="" coords="274,63,475,89"/>
-<area shape="rect" id="node3" href="$de/d16/classparser_1_1parser_1_1_regex.html#a1fd187b9f2b45d0707cb10057e80d7ff" title="parser.parser.Regex.Regex" alt="" coords="562,12,753,39"/>
-<area shape="rect" id="node4" href="$de/d16/classparser_1_1parser_1_1_regex.html#a413da3364c9c07a315222d34d7f0fc56" title="parser.parser.Regex.make\lPatterns" alt="" coords="827,5,1015,46"/>
-<area shape="rect" id="node6" href="$de/d16/classparser_1_1parser_1_1_regex.html#a162d120a60bdb10238c3d31c4f5f6903" title="parser.parser.Regex.match" alt="" coords="561,63,754,89"/>
-<area shape="rect" id="node7" href="$d7/dda/enumparser_1_1parser_1_1_general_type.html#af35aa06f434667ca22f66abcc181eb30" title="parser.parser.GeneralType.findType" alt="" coords="536,113,779,140"/>
-</map>
