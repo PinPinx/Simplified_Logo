@@ -40,5 +40,6 @@ public abstract class LoopingNode extends BinaryNode {
 		double ret = runCode(myState, i);
 		myState.getVariablesCollection().exitScope();
 		return ret;
+		
 	}
 }

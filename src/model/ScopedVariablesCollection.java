@@ -1,6 +1,3 @@
-// This entire file is part of my masterpiece.
-// Danny Oh
-
 package model;
 
 import java.util.ArrayList;
@@ -14,7 +11,7 @@ import exceptions.VariableCreationInvalidValueException;
 
 public class ScopedVariablesCollection implements IVariablesCollection{
 
-	private List<VariablesCollection> collectionStack;
+	private ArrayList<VariablesCollection> collectionStack;
 	private List<Observer> myObserverList;
 	
 	public ScopedVariablesCollection(){
