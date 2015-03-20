@@ -7,18 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.beans.property.StringProperty;
-import view.components.Observer;
 import exceptions.VariableCreationException;
 import exceptions.VariableCreationInvalidValueException;
 
 
-public class ScopedVariablesCollection implements IVariablesCollection{
+public class ScopedVariablesCollection extends VCObservable implements IVariablesCollection{
 
-	private ArrayList<VariablesCollection> collectionStack;
-	private List<Observer> myObserverList;
+	private List<VariablesCollection> collectionStack;
 	
 	public ScopedVariablesCollection(){
-		myObserverList = new ArrayList<>();
 		collectionStack = new ArrayList<VariablesCollection>();
 		collectionStack.add(new VariablesCollection());
 	}
@@ -62,20 +59,8 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 		collectionStack.get(0).addVariable(varName, varValue);
 		notifyObservers();
 	}
-	
-	//This duplicated code was necessary- no inheritance is appropriate here.
-	@Override
-	public void addObserver(Observer o) {
-		myObserverList.add(o);
-	}
 
-	@Override
-	public void removeObserver(Observer o) {
-		myObserverList.remove(o);
-	}
-
-	@Override
-	public void notifyObservers() {
+	protected VariablesCollectionUpdate produceUpdate(){
 		List<StringProperty> variableDisplayProperties = new ArrayList<>();
 		List<StringProperty> variableNameProperties = new ArrayList<>();
 		for (VariablesCollection collection: collectionStack){
@@ -83,11 +68,7 @@ public class ScopedVariablesCollection implements IVariablesCollection{
 			variableDisplayProperties.addAll(update.getDisplayProperties());
 			variableNameProperties.addAll(update.getNameProperties());
 		}
-		VariablesCollectionUpdate update = new 
-				VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
-		for (Observer observer: myObserverList){
-			observer.update(update);
-		}
+		return new VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
 	}
 
 	@Override

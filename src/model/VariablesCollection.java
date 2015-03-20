@@ -13,16 +13,13 @@ import exceptions.VariableCreationInvalidValueException;
 import exceptions.VariableNotFoundException;
 import exceptions.VariableWrongTypeException;
 import javafx.beans.property.StringProperty;
-import view.components.Observer;
 
-public class VariablesCollection implements IVariablesCollection{
+public class VariablesCollection extends VCObservable implements IVariablesCollection{
 	private List<Variable> myVariableList;
 	private List<Variable> waitingVariableList;
-	private List<Observer> myObserverList;
 	
 	public VariablesCollection(){
-		this.myVariableList = new ArrayList<>();
-		this.myObserverList = new ArrayList<>();
+		myVariableList = new ArrayList<>();
 		waitingVariableList = new ArrayList<>();
 	}
 	
@@ -90,7 +87,7 @@ public class VariablesCollection implements IVariablesCollection{
 		throw new VariableNotFoundException("Variable " + varName + " does not exist.");
 	}
 	
-	public VariablesCollectionUpdate produceUpdate(){
+	protected VariablesCollectionUpdate produceUpdate(){
 		List<StringProperty> variableDisplayProperties = new ArrayList<>();
 		List<StringProperty> variableNameProperties = new ArrayList<>();
 		for(Variable v : myVariableList){
@@ -98,24 +95,6 @@ public class VariablesCollection implements IVariablesCollection{
 			variableNameProperties.add(v.getNameProperty());
 		}
 		return new VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
-	}
-	
-	@Override
-	public void notifyObservers() {
-		VariablesCollectionUpdate vcu = produceUpdate();
-		for(Observer o : myObserverList){
-			o.update(vcu);
-		}
-	}
-
-	@Override
-	public void addObserver(Observer o) {
-		myObserverList.add(o);
-	}
-
-	@Override
-	public void removeObserver(Observer o) {
-		myObserverList.remove(o);
 	}
 
 	@Override
