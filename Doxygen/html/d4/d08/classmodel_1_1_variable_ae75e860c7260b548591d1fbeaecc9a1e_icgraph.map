@@ -1,0 +1,5 @@
+<map id="model.Variable.getNameProperty" name="model.Variable.getNameProperty">
+<area shape="rect" id="node2" href="$d7/ddd/classmodel_1_1_variable_int.html#a6a916738fec1fd0c6692897d307556f7" title="model.VariableInt.clone" alt="" coords="303,5,473,32"/>
+<area shape="rect" id="node3" href="$d2/d1d/classmodel_1_1_variable_string.html#abf61f1c69afa811ba2a1a69b90ed40d9" title="model.VariableString.clone" alt="" coords="291,56,485,83"/>
+<area shape="rect" id="node4" href="$d8/d1b/classmodel_1_1_variable_double.html#aae43a2657fd58b4f78018a936ebb3228" title="model.VariableDouble.clone" alt="" coords="288,107,488,133"/>
+</map>

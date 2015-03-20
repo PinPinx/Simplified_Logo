@@ -1,0 +1,13 @@
+<map id="view.components.Palette.getColor" name="view.components.Palette.getColor">
+<area shape="rect" id="node2" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#afd9abc603b052b7c9c14108400109917" title="view.turtle.TurtleImage.process\lUpdate" alt="" coords="259,129,477,170"/>
+<area shape="rect" id="node12" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a617c137e40fb50b93d2fa112c8cc87f0" title="view.turtle.TurtleImage.set\lPenProperties" alt="" coords="274,194,462,235"/>
+<area shape="rect" id="node3" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a68a832da6825e57061dbc49b30098291" title="view.turtle.TurtleImage.pop\lUpdate" alt="" coords="525,70,717,111"/>
+<area shape="rect" id="node4" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a84744ff6c257318689fc0e014350fb05" title="view.components.TurtleWindow.step\lDebug" alt="" coords="781,5,1029,46"/>
+<area shape="rect" id="node9" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a02651da4da9b4b48bd91656f734ccb03" title="view.turtle.TurtleImage.add\lUpdate" alt="" coords="809,70,1001,111"/>
+<area shape="rect" id="node10" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a958417ed4561c0b910f80944a5110ec7" title="view.turtle.TurtleImage.animatedMove" alt="" coords="774,136,1037,163"/>
+<area shape="rect" id="node11" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#aca0a62f113534161f725da472e1f4d9f" title="view.turtle.TurtleImage.unanimatedMove" alt="" coords="766,187,1045,213"/>
+<area shape="rect" id="node5" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#ad2141a5cca8101b3d22b2cf7b7473281" title="view.components.SLogoWorkspace.run\lDebugger" alt="" coords="1093,5,1363,46"/>
+<area shape="rect" id="node6" href="$d3/dbe/classview_1_1_view.html#af4860035310eeafc92cf78cbbc53290a" title="view.View.runDebugger" alt="" coords="1411,12,1579,39"/>
+<area shape="rect" id="node7" href="$d4/d6b/classview_1_1components_1_1_debugger_port.html#a6dd594b7c6572e0f4ef2ab7d8845f2ce" title="view.components.Debugger\lPort.stepDebug" alt="" coords="1627,5,1826,46"/>
+<area shape="rect" id="node8" href="$d4/d6b/classview_1_1components_1_1_debugger_port.html#a7055f8fe86c7e1078dc9909a7f000b8b" title="view.components.Debugger\lPort.DebuggerPort" alt="" coords="1875,5,2074,46"/>
+</map>

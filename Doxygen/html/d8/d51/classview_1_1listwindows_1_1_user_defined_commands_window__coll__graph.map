@@ -1,0 +1,9 @@
+<map id="view.listwindows.UserDefinedCommandsWindow" name="view.listwindows.UserDefinedCommandsWindow">
+<area shape="rect" id="node2" href="$da/df5/classview_1_1listwindows_1_1_commands_list_window.html" title="view.listwindows.Commands\lListWindow" alt="" coords="583,138,783,179"/>
+<area shape="rect" id="node3" href="$da/d76/classview_1_1listwindows_1_1_list_window.html" title="view.listwindows.ListWindow" alt="" coords="240,107,435,133"/>
+<area shape="rect" id="node13" href="$d2/d9f/classview_1_1dialogs_1_1_dialog_box.html" title="view.dialogs.DialogBox" alt="" coords="255,285,420,312"/>
+<area shape="rect" id="node9" href="$dd/db2/interfaceview_1_1components_1_1_observer.html" title="view.components.Observer" alt="" coords="240,157,435,184"/>
+<area shape="rect" id="node10" href="$da/d22/classview_1_1dialogs_1_1_text_input_dialog_box.html" title="view.dialogs.TextInputDialogBox" alt="" coords="1169,196,1391,223"/>
+<area shape="rect" id="node11" href="$d0/de5/classview_1_1dialogs_1_1_input_dialog_box.html" title="view.dialogs.InputDialogBox" alt="" coords="845,247,1043,273"/>
+<area shape="rect" id="node12" href="$d2/dee/classview_1_1dialogs_1_1_message_dialog_box.html" title="view.dialogs.MessageDialogBox" alt="" coords="571,247,794,273"/>
+</map>

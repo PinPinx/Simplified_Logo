@@ -1,0 +1,29 @@
+<map id="model.TurtleMultiple.setLastTurtle" name="model.TurtleMultiple.setLastTurtle">
+<area shape="rect" id="node2" href="$d9/dea/classmodel_1_1_turtle_multiple.html#aa13efbce628306faad5ba5a2ace04658" title="model.TurtleMultiple.add\lNewTurtle" alt="" coords="227,5,405,46"/>
+<area shape="rect" id="node4" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a39a093480efa352c2066e4ef8534f26e" title="model.TurtleMultiple.get\lStream" alt="" coords="229,547,403,589"/>
+<area shape="rect" id="node28" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a87c4dc38e39d840acf71714c258ed332" title="model.TurtleMultiple.get\lTurtleSingle" alt="" coords="229,70,403,111"/>
+<area shape="rect" id="node3" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a6068e4774b6c15ea02445e207fd22395" title="model.TurtleMultiple.Turtle\lMultiple" alt="" coords="472,5,659,46"/>
+<area shape="rect" id="node5" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a8d4e9d8254a29cb12982469a8ee05982" title="model.TurtleMultiple.active\lTurtleIDs" alt="" coords="470,242,661,283"/>
+<area shape="rect" id="node8" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a601396d8123665647fa640e0191ecbe0" title="model.TurtleMultiple.add\lDegree" alt="" coords="477,373,654,414"/>
+<area shape="rect" id="node9" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a4b611088c9cab39ae0a215be279e7aa0" title="model.TurtleMultiple.add\lObserver" alt="" coords="477,438,654,479"/>
+<area shape="rect" id="node10" href="$d9/dea/classmodel_1_1_turtle_multiple.html#ab7543dde0375049b74dd264b864b89a7" title="model.TurtleMultiple.change" alt="" coords="465,504,665,531"/>
+<area shape="rect" id="node11" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a4bb35a5e84f47e135614feaa453d9118" title="model.TurtleMultiple.changePen" alt="" coords="453,555,677,581"/>
+<area shape="rect" id="node12" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a5d8a36f60191801dfdcfe491f5b62966" title="model.TurtleMultiple.deactiveAll" alt="" coords="454,191,677,217"/>
+<area shape="rect" id="node16" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a49086cf96575756ecc4a1070aef50aa7" title="model.TurtleMultiple.move\lDistance" alt="" coords="471,606,660,647"/>
+<area shape="rect" id="node17" href="$d9/dea/classmodel_1_1_turtle_multiple.html#ab96e6d9114df066c4a1a5fc670742abb" title="model.TurtleMultiple.move\lToPosition" alt="" coords="471,671,660,713"/>
+<area shape="rect" id="node18" href="$d9/dea/classmodel_1_1_turtle_multiple.html#abeef8fd290f172faeb370acc5b7260f1" title="model.TurtleMultiple.remove\lObserver" alt="" coords="464,737,667,778"/>
+<area shape="rect" id="node19" href="$d9/dea/classmodel_1_1_turtle_multiple.html#af499d8a2611dcbab8cfc5274395fd043" title="model.TurtleMultiple.set\lHeading" alt="" coords="479,802,652,843"/>
+<area shape="rect" id="node20" href="$d9/dea/classmodel_1_1_turtle_multiple.html#aa152be202f489f2deb3c8a6905d62374" title="model.TurtleMultiple.set\lHidden" alt="" coords="479,867,652,909"/>
+<area shape="rect" id="node21" href="$d9/dea/classmodel_1_1_turtle_multiple.html#ac1993c82207d7409f52753bc368a589b" title="model.TurtleMultiple.set\lInactive" alt="" coords="479,933,652,974"/>
+<area shape="rect" id="node22" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a6a540c1e091febf099dcf3db988e4d62" title="model.TurtleMultiple.set\lPenUp" alt="" coords="479,998,652,1039"/>
+<area shape="rect" id="node25" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a23a6e0113102cb81eb0af9a6ae957cfc" title="model.TurtleMultiple.set\lShapeID" alt="" coords="479,1063,652,1105"/>
+<area shape="rect" id="node26" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a96d310d6e1f2b85274cb70148c72e4e5" title="model.TurtleMultiple.set\lStamp" alt="" coords="479,125,652,166"/>
+<area shape="rect" id="node27" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a03519dd8e6614f4404c6dca3160c9f65" title="model.TurtleMultiple.set\lTowards" alt="" coords="479,307,652,349"/>
+<area shape="rect" id="node6" href="$db/dea/classparser_1_1commands_1_1_ask.html#ae9d226e668deb9d8bba3b126d59e0a05" title="parser.commands.Ask.create\lOldActiveStack" alt="" coords="1036,242,1247,283"/>
+<area shape="rect" id="node7" href="$db/dea/classparser_1_1commands_1_1_ask.html#ae3a52ad1be99031d4a926942771fd71c" title="parser.commands.Ask.execute" alt="" coords="1302,220,1522,247"/>
+<area shape="rect" id="node13" href="$d5/d51/classparser_1_1commands_1_1_ask_with.html#ada3c73665fbd49550e041239bfee2bf5" title="parser.commands.AskWith.create\lNewActiveStack" alt="" coords="735,95,972,137"/>
+<area shape="rect" id="node14" href="$dc/dd6/classparser_1_1commands_1_1_tell.html#a0a34e23f2a3c5bc0011e058241149b68" title="parser.commands.Tell.execute" alt="" coords="745,191,961,217"/>
+<area shape="rect" id="node15" href="$db/dea/classparser_1_1commands_1_1_ask.html#a658c13e8dfb321e6349eb39413f038f9" title="parser.commands.Ask.runCode" alt="" coords="1030,191,1253,217"/>
+<area shape="rect" id="node23" href="$d7/d3b/classparser_1_1commands_1_1_pen_down.html#a3e16164bf1598a341653d51d0cb0b989" title="parser.commands.PenDown.execute" alt="" coords="725,1031,981,1057"/>
+<area shape="rect" id="node24" href="$de/d75/classparser_1_1commands_1_1_pen_up.html#ab2cc693085c58ad98ad75023de1bf949" title="parser.commands.PenUp.execute" alt="" coords="734,980,973,1007"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="view.components.SLogoMenuBar.makeHelpMenu" name="view.components.SLogoMenuBar.makeHelpMenu">
+<area shape="rect" id="node2" href="$d3/dbe/classview_1_1_view.html#aacbd4ae00ce6787a1eacbaed76c8f36f" title="view.View.showHelp" alt="" coords="265,12,410,39"/>
+<area shape="rect" id="node3" href="$d2/d9f/classview_1_1dialogs_1_1_dialog_box.html#a4553f61aafc3f1113c85ac09fa8e8d0f" title="view.dialogs.DialogBox.show" alt="" coords="459,12,661,39"/>
+</map>

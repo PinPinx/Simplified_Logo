@@ -1,0 +1,7 @@
+<map id="view.components.DebuggerPort.exitDebugMode" name="view.components.DebuggerPort.exitDebugMode">
+<area shape="rect" id="node2" href="$d3/dbe/classview_1_1_view.html#a6950e4055440ab5672a2453b149f41d0" title="view.View.getInstance" alt="" coords="269,5,427,32"/>
+<area shape="rect" id="node3" href="$d3/dbe/classview_1_1_view.html#ac7c7e9f35d78a83a1b6da5a0614c5b7a" title="view.View.removeDebuger" alt="" coords="254,56,442,83"/>
+<area shape="rect" id="node4" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a18de98d8715eaf2d6a0d1d43f499a28e" title="view.components.SLogoWorkspace.stop\lDebugger" alt="" coords="491,49,767,90"/>
+<area shape="rect" id="node5" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a62cb84bc01e37c12c7e650318e43c1fb" title="view.components.TurtleWindow.exit\lDebugMode" alt="" coords="816,49,1059,90"/>
+<area shape="rect" id="node6" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#aa4659cd85d2c53df2a990b1a140af98d" title="view.turtle.TurtleImage.set\lRunMode" alt="" coords="1107,49,1295,90"/>
+</map>

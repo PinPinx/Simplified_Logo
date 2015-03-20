@@ -1,0 +1,14 @@
+<map id="parser.commands.Ask.execute" name="parser.commands.Ask.execute">
+<area shape="rect" id="node2" href="$db/dea/classparser_1_1commands_1_1_ask.html#af023b91d12f19f696d5f40d37b4d1e4a" title="parser.commands.Ask.create\lNewActiveStack" alt="" coords="549,5,760,46"/>
+<area shape="rect" id="node6" href="$db/dea/classparser_1_1commands_1_1_ask.html#ae9d226e668deb9d8bba3b126d59e0a05" title="parser.commands.Ask.create\lOldActiveStack" alt="" coords="281,213,492,254"/>
+<area shape="rect" id="node10" href="$db/dea/classparser_1_1commands_1_1_ask.html#a658c13e8dfb321e6349eb39413f038f9" title="parser.commands.Ask.runCode" alt="" coords="275,136,498,163"/>
+<area shape="rect" id="node3" href="$da/d96/classparser_1_1nodes_1_1_syntax_node.html#a21b459bd103a7f1f3a1a5f52bb3b3132" title="parser.nodes.SyntaxNode.execute" alt="" coords="811,136,1053,163"/>
+<area shape="rect" id="node4" href="$d4/d1c/classparser_1_1nodes_1_1_list_node.html#a20dc3121f383968aade0535bbe80b015" title="parser.nodes.ListNode.getNode" alt="" coords="820,19,1044,45"/>
+<area shape="rect" id="node5" href="$d4/d1c/classparser_1_1nodes_1_1_list_node.html#a06d95a825392910e4f1744c706c658df" title="parser.nodes.ListNode.getSize" alt="" coords="823,75,1041,101"/>
+<area shape="rect" id="node7" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a8d4e9d8254a29cb12982469a8ee05982" title="model.TurtleMultiple.active\lTurtleIDs" alt="" coords="559,238,750,279"/>
+<area shape="rect" id="node8" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a39a093480efa352c2066e4ef8534f26e" title="model.TurtleMultiple.get\lStream" alt="" coords="1102,209,1277,250"/>
+<area shape="rect" id="node9" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a47e5a06bab25ead16ef3098a4257aa4b" title="model.TurtleMultiple.set\lLastTurtle" alt="" coords="1325,209,1499,250"/>
+<area shape="rect" id="node11" href="$db/dea/classparser_1_1commands_1_1_ask.html#aa9aba093dd5b53b0755ab02a07455902" title="parser.commands.Ask.tell\lMaker" alt="" coords="561,70,749,111"/>
+<area shape="rect" id="node12" href="$dc/dd6/classparser_1_1commands_1_1_tell.html#a0a34e23f2a3c5bc0011e058241149b68" title="parser.commands.Tell.execute" alt="" coords="547,136,763,163"/>
+<area shape="rect" id="node13" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a5d8a36f60191801dfdcfe491f5b62966" title="model.TurtleMultiple.deactiveAll" alt="" coords="821,188,1043,215"/>
+</map>

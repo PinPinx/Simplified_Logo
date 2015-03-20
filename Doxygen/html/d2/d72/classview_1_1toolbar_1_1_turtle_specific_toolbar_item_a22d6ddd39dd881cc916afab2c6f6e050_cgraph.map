@@ -1,0 +1,5 @@
+<map id="view.toolbar.TurtleSpecificToolbarItem.getUserInput" name="view.toolbar.TurtleSpecificToolbarItem.getUserInput">
+<area shape="rect" id="node2" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#aff87aa6f38bcdb6418b027d88c6bd90c" title="view.toolbar.TurtleSpecific\lToolbarItem.getAvailableTurtles" alt="" coords="237,50,456,91"/>
+<area shape="rect" id="node3" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a56c45ccd42635856219886f438d1a12c" title="view.components.TurtleWindow.get\lAvailableTurtles" alt="" coords="505,5,746,46"/>
+<area shape="rect" id="node4" href="$df/dd6/classview_1_1toolbar_1_1_toolbar.html#af475087a1d6bd9a705ed213f676f3339" title="view.toolbar.Toolbar.get\lTurtleWindow" alt="" coords="541,83,710,125"/>
+</map>

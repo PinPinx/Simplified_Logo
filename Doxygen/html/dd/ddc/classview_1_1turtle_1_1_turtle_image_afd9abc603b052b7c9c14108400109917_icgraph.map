@@ -1,0 +1,11 @@
+<map id="view.turtle.TurtleImage.processUpdate" name="view.turtle.TurtleImage.processUpdate">
+<area shape="rect" id="node2" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a68a832da6825e57061dbc49b30098291" title="view.turtle.TurtleImage.pop\lUpdate" alt="" coords="272,74,464,115"/>
+<area shape="rect" id="node3" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a02651da4da9b4b48bd91656f734ccb03" title="view.turtle.TurtleImage.add\lUpdate" alt="" coords="556,57,748,98"/>
+<area shape="rect" id="node4" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a958417ed4561c0b910f80944a5110ec7" title="view.turtle.TurtleImage.animatedMove" alt="" coords="521,5,783,32"/>
+<area shape="rect" id="node5" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a84744ff6c257318689fc0e014350fb05" title="view.components.TurtleWindow.step\lDebug" alt="" coords="528,122,776,163"/>
+<area shape="rect" id="node10" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#aca0a62f113534161f725da472e1f4d9f" title="view.turtle.TurtleImage.unanimatedMove" alt="" coords="513,188,791,215"/>
+<area shape="rect" id="node6" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#ad2141a5cca8101b3d22b2cf7b7473281" title="view.components.SLogoWorkspace.run\lDebugger" alt="" coords="840,122,1109,163"/>
+<area shape="rect" id="node7" href="$d3/dbe/classview_1_1_view.html#af4860035310eeafc92cf78cbbc53290a" title="view.View.runDebugger" alt="" coords="1157,129,1325,156"/>
+<area shape="rect" id="node8" href="$d4/d6b/classview_1_1components_1_1_debugger_port.html#a6dd594b7c6572e0f4ef2ab7d8845f2ce" title="view.components.Debugger\lPort.stepDebug" alt="" coords="1374,122,1573,163"/>
+<area shape="rect" id="node9" href="$d4/d6b/classview_1_1components_1_1_debugger_port.html#a7055f8fe86c7e1078dc9909a7f000b8b" title="view.components.Debugger\lPort.DebuggerPort" alt="" coords="1622,122,1821,163"/>
+</map>

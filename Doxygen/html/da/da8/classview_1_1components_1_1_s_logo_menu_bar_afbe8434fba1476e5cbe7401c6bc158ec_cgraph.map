@@ -1,0 +1,30 @@
+<map id="view.components.SLogoMenuBar.SLogoMenuBar" name="view.components.SLogoMenuBar.SLogoMenuBar">
+<area shape="rect" id="node2" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a50a896e8874b794c164559d97c531b78" title="view.components.SLogoMenu\lBar.makeFileMenu" alt="" coords="264,134,475,175"/>
+<area shape="rect" id="node15" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a3cc248b5d32b90a011d060bbac6e778e" title="view.components.SLogoMenu\lBar.makeHelpMenu" alt="" coords="264,382,475,423"/>
+<area shape="rect" id="node18" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#a8e395aa3dd6b23abf4e158d4a2f19d10" title="view.components.SLogoMenu\lBar.makePreferencesMenu" alt="" coords="523,279,733,321"/>
+<area shape="rect" id="node3" href="$da/da8/classview_1_1components_1_1_s_logo_menu_bar.html#ac97df21ee29449621765213368dca15b" title="view.components.SLogoMenu\lBar.makeMenuItem" alt="" coords="523,75,733,117"/>
+<area shape="rect" id="node4" href="$d3/dbe/classview_1_1_view.html#aef53667bcfbe243d64e3416529c35f8f" title="view.View.addNewTab" alt="" coords="550,141,706,168"/>
+<area shape="rect" id="node5" href="$d3/dbe/classview_1_1_view.html#a43a4310c3789a93e0fa6b98b0bb4f8aa" title="view.View.tabChangeUpdate" alt="" coords="814,53,1015,80"/>
+<area shape="rect" id="node6" href="$de/d16/classparser_1_1parser_1_1_regex.html#a59c7e0d8366fc8c3e94d909f9fc27a14" title="parser.parser.Regex.change\lLanguage" alt="" coords="1131,131,1330,173"/>
+<area shape="rect" id="node9" href="$de/d16/classparser_1_1parser_1_1_regex.html#a9da6d787de06ba7ea76d52326b532bd1" title="parser.parser.Regex.getInstance" alt="" coords="1117,200,1344,227"/>
+<area shape="rect" id="node11" href="$d3/d42/classmodel_1_1_model.html#a58696dcb49d5de7290734289922cd126" title="model.Model.getInstance" alt="" coords="1139,45,1322,72"/>
+<area shape="rect" id="node13" href="$d3/d42/classmodel_1_1_model.html#a068261e6e8761ccabf6d227ee17732ea" title="model.Model.setState" alt="" coords="1720,12,1883,39"/>
+<area shape="rect" id="node7" href="$d7/dd7/classview_1_1components_1_1_language_controller.html#ac2d831466c4813fceca89979e7d838ed" title="view.components.Language\lController.getCommandLanguages\lFilePath" alt="" coords="1413,139,1659,195"/>
+<area shape="rect" id="node8" href="$de/d16/classparser_1_1parser_1_1_regex.html#a413da3364c9c07a315222d34d7f0fc56" title="parser.parser.Regex.make\lPatterns" alt="" coords="1707,125,1895,166"/>
+<area shape="rect" id="node10" href="$de/d16/classparser_1_1parser_1_1_regex.html#a1fd187b9f2b45d0707cb10057e80d7ff" title="parser.parser.Regex.Regex" alt="" coords="1441,219,1631,245"/>
+<area shape="rect" id="node12" href="$d3/d42/classmodel_1_1_model.html#af870d64d87a18f6cd1a84a77ff6dc3a1" title="model.Model.Model" alt="" coords="1463,37,1609,64"/>
+<area shape="rect" id="node14" href="$d4/d3a/classparser_1_1parser_1_1_parser.html#a6e5a4c214fd0af163bdf2f1f5ad84505" title="parser.parser.Parser.set\lActiveState" alt="" coords="1944,5,2117,46"/>
+<area shape="rect" id="node16" href="$d3/dbe/classview_1_1_view.html#aacbd4ae00ce6787a1eacbaed76c8f36f" title="view.View.showHelp" alt="" coords="555,432,701,459"/>
+<area shape="rect" id="node17" href="$d2/d9f/classview_1_1dialogs_1_1_dialog_box.html#a4553f61aafc3f1113c85ac09fa8e8d0f" title="view.dialogs.DialogBox.show" alt="" coords="814,520,1015,547"/>
+<area shape="rect" id="node19" href="$d3/dbe/classview_1_1_view.html#ae77f0f711bba491940c5c6c184dcff70" title="view.View.showAndChangeLanguage" alt="" coords="788,236,1041,263"/>
+<area shape="rect" id="node22" href="$d7/dcf/classview_1_1components_1_1_workspace_loader.html#a8951443c75e461f8abfe7fca125440dd" title="view.components.Workspace\lLoader.loadWorkspace" alt="" coords="813,403,1017,445"/>
+<area shape="rect" id="node24" href="$d3/dbe/classview_1_1_view.html#a4dc01ce59b5abd00927536703b9fc8b5" title="view.View.getTurtleWindow" alt="" coords="821,469,1008,496"/>
+<area shape="rect" id="node25" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#ad4f625758c236a2e57e44a7c201e21d2" title="view.components.TurtleWindow.change\lBackground" alt="" coords="781,105,1048,146"/>
+<area shape="rect" id="node26" href="$dc/d44/classview_1_1components_1_1_workspace_file.html#a9910c6fe6588851d40475ae0a920da89" title="view.components.Workspace\lFile.getColor" alt="" coords="813,170,1017,211"/>
+<area shape="rect" id="node27" href="$d3/dbe/classview_1_1_view.html#a6d891974ab09718e4e9300ef371d66e9" title="view.View.setTabTitle" alt="" coords="839,287,990,313"/>
+<area shape="rect" id="node29" href="$dc/d44/classview_1_1components_1_1_workspace_file.html#a8322c0b693dfaf41dd83ae619a20237a" title="view.components.Workspace\lFile.getTitle" alt="" coords="813,338,1017,379"/>
+<area shape="rect" id="node20" href="$d0/de5/classview_1_1dialogs_1_1_input_dialog_box.html#a47a0db1150edb25d69f50d7d199e0d20" title="view.dialogs.InputDialog\lBox.showInputDialog" alt="" coords="1144,251,1317,293"/>
+<area shape="rect" id="node21" href="$d0/de5/classview_1_1dialogs_1_1_input_dialog_box.html#a92b4c523eacf67cc2aa16970380cdb01" title="view.dialogs.InputDialog\lBox.updateUserInput" alt="" coords="1449,270,1623,311"/>
+<area shape="rect" id="node23" href="$dc/d44/classview_1_1components_1_1_workspace_file.html#a3b001a17a3680903778ccddc64381e05" title="view.components.Workspace\lFile.setTitle" alt="" coords="1129,403,1333,445"/>
+<area shape="rect" id="node28" href="$de/d30/classview_1_1components_1_1_s_logo_workspace.html#a8fbee7a2543e9082d0b553f73b1eb6ae" title="view.components.SLogoWorkspace.set\lTitle" alt="" coords="1097,317,1365,358"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="model.VariablesCollection.findVariable" name="model.VariablesCollection.findVariable">
+<area shape="rect" id="node2" href="$d6/d00/classmodel_1_1_variables_collection.html#add84dfc7ce130a9bde135a9bf1d080ff" title="model.VariablesCollection.add\lVariable" alt="" coords="267,5,482,46"/>
+<area shape="rect" id="node3" href="$d6/d00/classmodel_1_1_variables_collection.html#a9060d5c67d836153c2e0daff3b92c297" title="model.VariablesCollection.get\lVariableValue" alt="" coords="531,34,741,75"/>
+<area shape="rect" id="node4" href="$d6/d00/classmodel_1_1_variables_collection.html#a9b1943d986eb19239d153750aaed3a75" title="model.VariablesCollection.wait\lScopeVariable" alt="" coords="267,122,482,163"/>
+</map>

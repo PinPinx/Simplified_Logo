@@ -1,0 +1,29 @@
+<map id="view.turtle.TurtleImage.popUpdate" name="view.turtle.TurtleImage.popUpdate">
+<area shape="rect" id="node2" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#afd9abc603b052b7c9c14108400109917" title="view.turtle.TurtleImage.process\lUpdate" alt="" coords="245,626,464,667"/>
+<area shape="rect" id="node3" href="$db/dce/classmodel_1_1_turtle_update.html#a7ebfc78794f604d565e22150004b8325" title="model.TurtleUpdate.isTurtle\lInactive" alt="" coords="555,357,749,398"/>
+<area shape="rect" id="node4" href="$db/dce/classmodel_1_1_turtle_update.html#a6c2e9c2e4216253c37801998a329455b" title="model.TurtleUpdate.isTurtle\lPenUp" alt="" coords="555,422,749,463"/>
+<area shape="rect" id="node5" href="$d5/d46/classview_1_1components_1_1_palette.html#af6c1989fcbc763b66af3fc609fa59ff9" title="view.components.Palette.get\lImage" alt="" coords="549,487,755,529"/>
+<area shape="rect" id="node6" href="$db/dce/classmodel_1_1_turtle_update.html#a36b8205a61dd875ac4521cf51906c275" title="model.TurtleUpdate.getShapeID" alt="" coords="539,553,765,580"/>
+<area shape="rect" id="node7" href="$db/dce/classmodel_1_1_turtle_update.html#a5e88189d0b5f21c9474b5617cb396b13" title="model.TurtleUpdate.isStamp" alt="" coords="550,604,754,631"/>
+<area shape="rect" id="node8" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#aa1a5f2d4c96c64f526f4df58fd5e77d6" title="view.turtle.TurtleImage.leave\lStamp" alt="" coords="551,655,753,697"/>
+<area shape="rect" id="node9" href="$db/dce/classmodel_1_1_turtle_update.html#ab56febaad846cad5592395c3a67a68db" title="model.TurtleUpdate.isTurtle\lClear" alt="" coords="555,721,749,762"/>
+<area shape="rect" id="node10" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#ae7dfe008f68eef44da5ee831b062952a" title="view.turtle.TurtlePen.updatePen" alt="" coords="541,787,763,813"/>
+<area shape="rect" id="node11" href="$d5/d46/classview_1_1components_1_1_palette.html#acf5106175f97e28619e7ed993b9fce93" title="view.components.Palette.get\lColor" alt="" coords="549,838,755,879"/>
+<area shape="rect" id="node12" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#ab0c25ebb2a0dd4243c58a4c57f4413b6" title="view.turtle.TurtlePen.get\lColorIndex" alt="" coords="565,903,739,945"/>
+<area shape="rect" id="node13" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a86b462f57b86f6c0a72357fdc2655aa1" title="view.turtle.TurtleImage.math\lCoordsToCanvasCoords" alt="" coords="551,969,753,1010"/>
+<area shape="rect" id="node14" href="$db/dce/classmodel_1_1_turtle_update.html#a4a8bce496fed0074bb206694b80de851" title="model.TurtleUpdate.getTurtle\lOldCoordinates" alt="" coords="549,1034,755,1075"/>
+<area shape="rect" id="node15" href="$d8/d6a/classmodel_1_1_coordinates.html#a52f6ed56424da9a52c598f9c94f2c8ff" title="model.Coordinates.getY" alt="" coords="565,1100,739,1127"/>
+<area shape="rect" id="node16" href="$db/dce/classmodel_1_1_turtle_update.html#a2b6573ce1d167dd921e9abc9fff7c1dd" title="model.TurtleUpdate.getTurtle\lNewCoordinates" alt="" coords="549,5,755,46"/>
+<area shape="rect" id="node17" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a6798d71b6457a6b70b472171e64f11f2" title="view.turtle.TurtleImage.hide" alt="" coords="555,71,749,97"/>
+<area shape="rect" id="node18" href="$db/dce/classmodel_1_1_turtle_update.html#a7288583a573d839635a8773a01563300" title="model.TurtleUpdate.isTurtle\lHidden" alt="" coords="555,122,749,163"/>
+<area shape="rect" id="node19" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#aeb591e6c3666a998228a86dbe9121c35" title="view.turtle.TurtlePen.drawLine" alt="" coords="548,188,756,215"/>
+<area shape="rect" id="node23" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#aca0a62f113534161f725da472e1f4d9f" title="view.turtle.TurtleImage.unanimatedMove" alt="" coords="513,1151,791,1177"/>
+<area shape="rect" id="node24" href="$db/dce/classmodel_1_1_turtle_update.html#aff8157b2082cdae408655d87ed85b74e" title="model.TurtleUpdate.getTurtle\lAngle" alt="" coords="549,239,755,281"/>
+<area shape="rect" id="node25" href="$de/dfa/classmodel_1_1_angle.html#aa1b069cc47fadd893fe8527c356dd8fd" title="model.Angle.getAngleValue" alt="" coords="553,305,751,332"/>
+<area shape="rect" id="node26" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a958417ed4561c0b910f80944a5110ec7" title="view.turtle.TurtleImage.animatedMove" alt="" coords="521,1201,783,1228"/>
+<area shape="rect" id="node20" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a3eea64b5d17767f655096870f4a5850d" title="view.turtle.TurtlePen.draw\lGappedLine" alt="" coords="854,181,1037,222"/>
+<area shape="rect" id="node21" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a78a412ae5c294fd37981146020ea4009" title="view.turtle.TurtlePen.generate\lDashVectorArray" alt="" coords="1099,181,1309,222"/>
+<area shape="rect" id="node22" href="$d4/d93/classview_1_1turtle_1_1_turtle_pen.html#a1553953625d014db95e9af6faa83e667" title="view.turtle.TurtlePen.get\lUnitVector" alt="" coords="1357,181,1531,222"/>
+<area shape="rect" id="node27" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#afad70374651ad6165f7d48b7bf268d71" title="view.turtle.TurtleImage.create\lRotateTransition" alt="" coords="841,1226,1050,1267"/>
+<area shape="rect" id="node28" href="$dd/ddc/classview_1_1turtle_1_1_turtle_image.html#a579bab57c4e802a8a119ba0253b58ed9" title="view.turtle.TurtleImage.create\lTranslateTransition" alt="" coords="841,1161,1050,1202"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="model.TurtleMultiple.addNewTurtle" name="model.TurtleMultiple.addNewTurtle">
+<area shape="rect" id="node2" href="$da/d88/classmodel_1_1_turtle_single.html#aba0071e51acee087eef14deae548b3ae" title="model.TurtleSingle.addObserver" alt="" coords="233,5,458,32"/>
+<area shape="rect" id="node3" href="$da/d88/classmodel_1_1_turtle_single.html#a794583d8965cd381fe88c8d729564317" title="model.TurtleSingle.createPen" alt="" coords="241,56,449,83"/>
+<area shape="rect" id="node4" href="$da/d88/classmodel_1_1_turtle_single.html#a40853b6f8c9ba455489ad8ea9535e99d" title="model.TurtleSingle.notify\lObservers" alt="" coords="507,74,685,115"/>
+<area shape="rect" id="node5" href="$d3/dbe/classview_1_1_view.html#a6950e4055440ab5672a2453b149f41d0" title="view.View.getInstance" alt="" coords="266,157,425,184"/>
+<area shape="rect" id="node6" href="$d3/dbe/classview_1_1_view.html#a4dc01ce59b5abd00927536703b9fc8b5" title="view.View.getTurtleWindow" alt="" coords="252,208,439,235"/>
+<area shape="rect" id="node7" href="$d9/dea/classmodel_1_1_turtle_multiple.html#a47e5a06bab25ead16ef3098a4257aa4b" title="model.TurtleMultiple.set\lLastTurtle" alt="" coords="259,259,432,301"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="view.toolbar.TurtlePenColorToolbarItem.createNode" name="view.toolbar.TurtlePenColorToolbarItem.createNode">
+<area shape="rect" id="node2" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#a681453ed9b710bab03151e682b577843" title="view.toolbar.TurtleSpecific\lToolbarItem.getAndModifyTurtles" alt="" coords="246,83,474,125"/>
+<area shape="rect" id="node3" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#a22d6ddd39dd881cc916afab2c6f6e050" title="view.toolbar.TurtleSpecific\lToolbarItem.getUserInput" alt="" coords="555,50,738,91"/>
+<area shape="rect" id="node7" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#aca2dc6e061991957002113af853e76a4" title="view.toolbar.TurtleSpecific\lToolbarItem.changeTurtleProperties" alt="" coords="523,115,770,157"/>
+<area shape="rect" id="node4" href="$d2/d72/classview_1_1toolbar_1_1_turtle_specific_toolbar_item.html#aff87aa6f38bcdb6418b027d88c6bd90c" title="view.toolbar.TurtleSpecific\lToolbarItem.getAvailableTurtles" alt="" coords="819,50,1037,91"/>
+<area shape="rect" id="node5" href="$df/dd6/classview_1_1toolbar_1_1_toolbar.html#af475087a1d6bd9a705ed213f676f3339" title="view.toolbar.Toolbar.get\lTurtleWindow" alt="" coords="1122,5,1291,46"/>
+<area shape="rect" id="node6" href="$d5/d4b/classview_1_1components_1_1_turtle_window.html#a56c45ccd42635856219886f438d1a12c" title="view.components.TurtleWindow.get\lAvailableTurtles" alt="" coords="1086,83,1327,125"/>
+</map>
