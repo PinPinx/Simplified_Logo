@@ -24,7 +24,5 @@ public interface IVariablesCollection extends Observable{
 	public String saveState();
 	public void enterScope();
 	public void exitScope();
-	/*public abstract void deleteVariable(String varName)
-			throws VariableNotFoundException;*/
 
 }

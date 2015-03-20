@@ -23,7 +23,6 @@ public class VariablesCollection implements IVariablesCollection{
 		waitingVariableList = new ArrayList<>();
 	}
 	
-	//TODO: Duplicated code with method getVariableValue
 	public boolean containsVariable(String varName){
 		for(Variable v : myVariableList){
 			if(v.getNameProperty().get().equals(varName)){
@@ -33,9 +32,6 @@ public class VariablesCollection implements IVariablesCollection{
 		return false;
 	}
 		
-	/* (non-Javadoc)
-	 * @see model.IVariablesCollection#getVariableValue(java.lang.String)
-	 */
 	@Override
 	public Object getVariableValue(String varName){
 		try {
@@ -50,9 +46,6 @@ public class VariablesCollection implements IVariablesCollection{
 		return getVariableValue(varName);
 	}
 	
-	/* (non-Javadoc)
-	 * @see model.IVariablesCollection#addVariable(java.lang.String, java.lang.String)
-	 */
 	@Override
 	public void addVariable(String varName, String varValue) throws VariableCreationException, VariableCreationInvalidValueException{
 			try {
@@ -104,9 +97,6 @@ public class VariablesCollection implements IVariablesCollection{
 		return new VariablesCollectionUpdate(variableNameProperties, variableDisplayProperties);
 	}
 	
-	/* (non-Javadoc)
-	 * @see model.IVariablesCollection#notifyObservers()
-	 */
 	@Override
 	public void notifyObservers() {
 		VariablesCollectionUpdate vcu = produceUpdate();
