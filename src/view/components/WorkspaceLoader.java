@@ -1,4 +1,7 @@
 package view.components;
+/*
+ * This class is part of the component that I have chose for my code masterpiece. 
+ */
 
 import java.io.File;
 import java.io.FileInputStream;
