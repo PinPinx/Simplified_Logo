@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.java.swing.plaf.windows.resources.windows;
+
+import view.View;
 import view.components.Observer;
 
 public class TurtleSingle implements Turtle {
@@ -12,11 +15,13 @@ public class TurtleSingle implements Turtle {
 	private boolean isPenUp, isHidden, isInactive;
 	private Pen myPen;
 	private int shapeID; private boolean isStamp;
+	private boolean isFenced;
 
 
 	private List<Observer> myObservers;
 	
 	public TurtleSingle(int id){
+		isFenced = false;
 		myCoordinates = new Coordinates(0,0);
 		myOldCoordinates = new Coordinates(myCoordinates);
 		myAngle = new Angle(0);
@@ -59,13 +64,40 @@ public class TurtleSingle implements Turtle {
 	}
 
 	@Override
+	public void setFenced(boolean fenced){
+		isFenced = fenced;
+	}
+	
+	@Override
 	public double moveDistance(double distance) {
 		double param = distance;
 		myOldCoordinates = new Coordinates(myCoordinates);
 		Coordinates change = distanceToCoordinates(param);
 		myCoordinates.addCoordinates(change);
+		if (isFenced){
+			enforceFence();
+		}
 		notifyObservers();
 		return param;
+	}
+	
+	private void enforceFence(){
+		double xMin = -View.getInstance().getTurtleWindow().getWindowSize().getX()/2;
+	    double yMin = -View.getInstance().getTurtleWindow().getWindowSize().getY()/2;
+		double xMax = View.getInstance().getTurtleWindow().getWindowSize().getX()/2;
+        double yMax = View.getInstance().getTurtleWindow().getWindowSize().getY()/2;
+		if (myCoordinates.getX() < xMin){
+			myCoordinates.add(xMin - myCoordinates.getX(), 0);
+		}
+		if (myCoordinates.getY() < 0){
+			myCoordinates.add(0, xMin - myCoordinates.getY());
+		}
+		if (myCoordinates.getX() > xMax){
+			myCoordinates.add(xMax - myCoordinates.getX(), 0);
+		}
+		if (myCoordinates.getY() > yMax){
+			myCoordinates.add(0, yMax - myCoordinates.getY());
+		}
 	}
 	
 	@Override
@@ -148,12 +180,9 @@ public class TurtleSingle implements Turtle {
 		}
 	}
 
-
-	//TODO: Check over this Kaighn?
 	@Override
 	public double moveToPosition(double x, double y){
 		Coordinates delta = new Coordinates(x - myCoordinates.getX(), y - myCoordinates.getY());
-		//TODO: Following two lines may need to be put into a helper
 		myOldCoordinates = new Coordinates(myCoordinates);
 		myCoordinates.addCoordinates(delta);
 		notifyObservers();

@@ -1,5 +1,6 @@
 package view.components;
 
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -181,6 +182,10 @@ public class TurtleWindow extends Group implements Observer {
 		return;
 	}
 
+	public Point2D.Double getWindowSize(){
+		return new Point2D.Double(myWidth, myHeight);
+	}
+	
 	public void addTurtle() {
 		int i = 0;
 		

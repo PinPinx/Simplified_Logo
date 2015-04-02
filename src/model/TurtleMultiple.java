@@ -90,6 +90,10 @@ public class TurtleMultiple implements Turtle {
 	}
 
 	@Override
+	public void setFenced(boolean fenced){
+		myTurtleMap.forEach((i, t) -> t.setFenced(fenced));
+	}
+	@Override
 	public double moveDistance(double distance){
 		getStream().filter(s -> s.getID()!=lastActingTurtle.getID()).forEach(s->s.moveDistance(distance));
 		return lastActingTurtle.moveDistance(distance);

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.geom.Point2D;
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;

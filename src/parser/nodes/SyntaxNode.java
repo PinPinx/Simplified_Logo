@@ -1,5 +1,7 @@
 package parser.nodes;
 
+import java.util.Stack;
+
 import exceptions.BadArgumentException;
 import model.State;
 
