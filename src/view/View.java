@@ -2,12 +2,10 @@ package view;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 import exceptions.BadArgumentException;
 import exceptions.CommandNameNotFoundException;

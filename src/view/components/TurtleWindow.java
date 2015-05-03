@@ -28,6 +28,8 @@ import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class TurtleWindow extends Group implements Observer {
@@ -50,6 +52,12 @@ public class TurtleWindow extends Group implements Observer {
 	private Palette myPalette = new Palette();
 	private Group myTImages =  new Group();
 	
+	//SLogo Addition
+	private VBox imagesBox;
+	private Group canvasGroup;
+	private HBox turtleWindowDisplay;
+	private String vbox_style = "-fx-border-color: silver; -fx-border-width: 5px; -fx-padding: 10; -fx-spacing: 8;";
+	
 	private ContextMenu contextMenu;
 	private Menu imagePalettes;
 	private Menu colorPalettes;
@@ -62,6 +70,9 @@ public class TurtleWindow extends Group implements Observer {
 		myHeight = height;
 		numTurtles = 0;
 		
+		imagesBox = new VBox();
+		canvasGroup = new Group();
+		turtleWindowDisplay = new HBox();
 		mainCanvas = new Canvas(myWidth, myHeight);
 		mainGC = mainCanvas.getGraphicsContext2D();
 		bgColorID = new SimpleIntegerProperty(initialColorIndex);
@@ -71,7 +82,11 @@ public class TurtleWindow extends Group implements Observer {
 		
 		initializeMenu();
 
-		this.getChildren().addAll( mainCanvas, myLayers, myTImages);
+		
+		canvasGroup.getChildren().addAll( mainCanvas, myLayers, myTImages);
+		turtleWindowDisplay.getChildren().addAll(canvasGroup, imagesBox);
+		this.getChildren().addAll(turtleWindowDisplay);
+		imagesBox.setStyle(vbox_style);
 		
 		addTurtle();
 		
@@ -208,6 +223,8 @@ public class TurtleWindow extends Group implements Observer {
 		myLayers.getChildren().add(layer);
 		myTImages.getChildren().add(turtle);
 		
+		imagesBox.getChildren().add(turtle.getSideView());
+		
 		this.getChildren().add(turtle.getStamps());
 	}
 	
@@ -330,6 +347,5 @@ public class TurtleWindow extends Group implements Observer {
 		}
 		
 	}
-
 	
 }

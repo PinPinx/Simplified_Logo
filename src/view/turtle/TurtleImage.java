@@ -2,8 +2,6 @@ package view.turtle;
 
 import java.io.File;
 import java.util.PriorityQueue;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
@@ -11,7 +9,6 @@ import javax.swing.JFileChooser;
 import view.components.Palette;
 import model.PenUpdate;
 import model.TurtleUpdate;
-import model.ViewUpdate;
 import javafx.animation.RotateTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Transition;
@@ -53,6 +50,9 @@ public class TurtleImage extends ImageView {
 	private Boolean penUp;
 
 	private Group myStamps;
+	
+	//SLogo addition
+	private ImageView sideBoxView;
 
 	// items in the pop-up context menu
 	private ContextMenu contextMenu;
@@ -96,6 +96,11 @@ public class TurtleImage extends ImageView {
 		pendingUpdates = new PriorityQueue<TurtleUpdate>();
 
 		this.setImage(myImage);
+		sideBoxView = new ImageView(myImage);
+		sideBoxView.setFitHeight(width);
+		sideBoxView.setFitWidth(height);
+		sideBoxView.setOnMouseClicked(e -> selectImageFile());
+		
 		resize(width, height);
 
 		Point2D startingPos = mathCoordsToCanvasCoords(new Point2D(xPos, yPos));
@@ -116,10 +121,15 @@ public class TurtleImage extends ImageView {
 	public void changeImage(Image img) {
 		myImage = img;
 		this.setImage(myImage);
+		sideBoxView.setImage(myImage);
 	}
 
 	public void changeImage(String imagePath) {
 		this.changeImage(new Image(imagePath));
+	}
+	
+	public ImageView getSideView(){
+		return sideBoxView;
 	}
 
 	public void changeImage(File file) {
