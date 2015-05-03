@@ -23,7 +23,12 @@ public class TurtleImageToolbarItem extends TurtleSpecificToolbarItem {
 	protected TurtleImageToolbarItem(String label, Toolbar tb) {
 		super(label, tb);
 	}
-
+	
+	@Override
+	protected void getUserInput() {
+	    
+	}
+	
 	@Override
 	public void changeTurtleProperties(int turtleID) {
 		myToolbar.getTurtleWindow().changeTurtleImage(myFile, turtleID);

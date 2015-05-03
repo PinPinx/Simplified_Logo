@@ -15,7 +15,7 @@ import view.dialogs.TextInputDialogBox;
  */
 public abstract class TurtleSpecificToolbarItem extends ToolbarItem {
 
-	List<Integer> selectedTurtles;
+	protected List<Integer> selectedTurtles;
 
 	// TODO: Hard coded to English
 	protected static final String TURTLE_PROMPT = "Please enter turtle ID(s) separated by spaces,\n"
@@ -42,7 +42,7 @@ public abstract class TurtleSpecificToolbarItem extends ToolbarItem {
 	 * list of selected turtles.
 	 * 
 	 */
-	private void getUserInput() {
+	protected void getUserInput() {
 		selectedTurtles = new ArrayList<Integer>();
 		InputDialogBox dialog = new TextInputDialogBox(TURTLE_PROMPT
 				+ getAvailableTurtles());
