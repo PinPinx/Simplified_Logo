@@ -200,4 +200,14 @@ public class TurtleMultiple implements Turtle {
 			      .filter(s -> !s.getInactive());
 		return stream;
 	}
+
+	@Override
+	public boolean isFence() {
+		return lastActingTurtle.isFence();
+	}
+
+	@Override
+	public void setFence(boolean b) {
+		getStream().forEach(t -> t.setFence(b));
+	}
 }

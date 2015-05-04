@@ -1,0 +1,3 @@
+to hello [ :a :b ] [ for [ :i 0 360 1 ] [ fd :a left :b ] ]  
+ 
+make :a 100.0

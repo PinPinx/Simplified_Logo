@@ -3,19 +3,21 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import view.Main;
+import view.View;
 import view.components.Observer;
 
 public class TurtleSingle implements Turtle {
 	private int ID;
 	private Coordinates myCoordinates, myOldCoordinates;
 	private Angle myAngle;
-	private boolean isPenUp, isHidden, isInactive;
+	private boolean isPenUp, isHidden, isInactive, isFence;
 	private Pen myPen;
 	private int shapeID; private boolean isStamp;
 
 
 	private List<Observer> myObservers;
-	
+
 	public TurtleSingle(int id){
 		myCoordinates = new Coordinates(0,0);
 		myOldCoordinates = new Coordinates(myCoordinates);
@@ -23,28 +25,28 @@ public class TurtleSingle implements Turtle {
 		myObservers = new ArrayList<>();
 		ID = id;
 	}
-	
+
 	public void createPen(){
 		myPen = new Pen(ID);
 		notifyObservers((PenUpdate)myPen);
 	}
-	
+
 	public int getID(){
 		return ID;
 	}
-	
+
 	@Override
 	public Angle getAngle() {
 		return new Angle(myAngle);
 	}
-	
-	
+
+
 
 	@Override
 	public Coordinates getCoordinates() {
 		return new Coordinates(myCoordinates);
 	}
-	
+
 	@Override
 	public Coordinates getOldCoordinates() {
 		return new Coordinates(myOldCoordinates);
@@ -63,11 +65,33 @@ public class TurtleSingle implements Turtle {
 		double param = distance;
 		myOldCoordinates = new Coordinates(myCoordinates);
 		Coordinates change = distanceToCoordinates(param);
-		myCoordinates.addCoordinates(change);
+		Coordinates newCoords = new Coordinates(myOldCoordinates.getX()+change.getX(), myOldCoordinates.getY()+change.getY());
+		if(outOfBounds(newCoords)){
+			if(this.isFence){
+				newCoords = new Coordinates(myOldCoordinates);
+				while(!outOfBounds(newCoords)){
+					newCoords.addCoordinates(distanceToCoordinates(param/Math.abs(param)));
+				}
+				newCoords.addCoordinates(distanceToCoordinates(param/Math.abs(param)));
+			}
+			else{
+				setHidden(true);
+			}
+		}
+		myCoordinates = newCoords;
+//		if(!isFence && outOfBounds(myOldCoordinates) && !outOfBounds(myCoordinates)){
+//			setHidden(false);
+//		}
 		notifyObservers();
 		return param;
 	}
-	
+
+	private boolean outOfBounds(Coordinates c){
+		double h = View.getInstance().getTurtleWindow().getHeight();
+		double w = View.getInstance().getTurtleWindow().getWidth();
+		return c.getX() < -w/2 || c.getY() < -h/2 || c.getX() > w/2|| c.getY() > h/2;	
+	}
+
 	@Override
 	public double setHeading(double degrees){
 		double ret = Math.abs(myAngle.getAngleValue() - degrees);
@@ -75,7 +99,7 @@ public class TurtleSingle implements Turtle {
 		notifyObservers();
 		return ret;
 	}
-//TODO: Clean this.
+	//TODO: Clean this.
 	@Override
 	public double setTowards(double x, double y){
 		double yDiff = myCoordinates.getY() - y;
@@ -90,7 +114,7 @@ public class TurtleSingle implements Turtle {
 		notifyObservers();
 		return setHeading(Math.toDegrees(finalAngle));
 	}
-	
+
 	@Override
 	public void setHidden(boolean b) {
 		isHidden = b;
@@ -123,7 +147,7 @@ public class TurtleSingle implements Turtle {
 	public boolean getPenUp() {
 		return isPenUp;
 	}
-	
+
 	@Override
 	public void addObserver(Observer o) {
 		myObservers.add(o);
@@ -136,12 +160,15 @@ public class TurtleSingle implements Turtle {
 
 	@Override
 	public void notifyObservers() {
+		if(!isFence && outOfBounds(myOldCoordinates) && !outOfBounds(myCoordinates)){
+			isHidden = false;
+		}
 		for(Observer o : myObservers){
 			o.update(new TurtleUpdate(this));
 		}
 		myOldCoordinates = new Coordinates(myCoordinates);
 	}
-	
+
 	public void notifyObservers(Object obj) {
 		for(Observer o : myObservers){
 			o.update(obj);
@@ -159,7 +186,7 @@ public class TurtleSingle implements Turtle {
 		notifyObservers();
 		return delta.distance(getCoordinates());
 	}
-	
+
 	protected Coordinates distanceToCoordinates(double distance){
 		double param = myAngle.getAngleValueInRadians();
 		double deltaX, deltaY;
@@ -169,16 +196,16 @@ public class TurtleSingle implements Turtle {
 		returner.scale(distance);
 		return returner;
 	}
-	
+
 	public void changePen(PenChanger vc){
 		vc.change(myPen);
 		notifyObservers();
 	}
-	
+
 	public void change(TurtleSingleChanger tsc){
 		tsc.change(this);
 	}
-	
+
 	public int getShapeID() {
 		return shapeID;
 	}
@@ -202,8 +229,18 @@ public class TurtleSingle implements Turtle {
 	public int getPenColor() {
 		return myPen.getPenColorIDProperty().get();
 	}
-	
+
 	public boolean equals(TurtleSingle t){
 		return t.getID() == this.getID();
+	}
+
+	@Override
+	public boolean isFence() {
+		return isFence;
+	}
+
+	@Override
+	public void setFence(boolean b) {
+		isFence = b;
 	}
 }

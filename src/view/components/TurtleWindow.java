@@ -57,7 +57,6 @@ public class TurtleWindow extends Group implements Observer {
 	private ToggleGroup colorPaletteGroup = new ToggleGroup();
 
 	public TurtleWindow(double width, double height) {
-
 		myWidth = width;
 		myHeight = height;
 		numTurtles = 0;
@@ -77,6 +76,14 @@ public class TurtleWindow extends Group implements Observer {
 		
 		activeTurtleID = Collections.min(myTurtles.keySet());
 		
+	}
+	
+	public double getWidth(){
+		return myWidth;
+	}
+	
+	public double getHeight(){
+		return myHeight;
 	}
 	
 	private void initializeMenu(){
