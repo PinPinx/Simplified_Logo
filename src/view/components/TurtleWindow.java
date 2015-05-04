@@ -63,7 +63,9 @@ public class TurtleWindow extends Group implements Observer {
     private Menu colorPalettes;
     private ToggleGroup imagePaletteGroup = new ToggleGroup();
     private ToggleGroup colorPaletteGroup = new ToggleGroup();
-
+    
+    private final static double DISPLAY_IMAGE_SIZE = 90;
+    
     public TurtleWindow (double width, double height) {
 
         myWidth = width;
@@ -148,6 +150,8 @@ public class TurtleWindow extends Group implements Observer {
             VBox turtle = new VBox();
             Label turtleLabel = new Label(Integer.toString(id));
             ImageView image = new ImageView(myTurtles.get(id).getImage());
+            image.setFitHeight(DISPLAY_IMAGE_SIZE);
+            image.setFitWidth(DISPLAY_IMAGE_SIZE);
             image.setOnMouseClicked(e -> updateTurtleImage(makeImageChooser().showOpenDialog(null), id, image));
             turtle.getChildren().addAll(turtleLabel, image);
             tImagesList.getChildren().add(turtle);
